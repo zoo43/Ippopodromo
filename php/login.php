@@ -9,26 +9,12 @@ session_start();
         <title>Login</title>
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap">
         <link rel="stylesheet" href="/css/style.css">
-        <script type="text/javascript">
-            function validazioneInput()
-            {
-                var a = document.forms["Form"]["username"].value;
-                var b = document.forms["Form"]["password"].value;
-                if(a=="" || b==""){
-                    alert ("Nome Utente o password mancanti");
-                    return false;
-                }
-                else{
-                    return true;
-                }
-            }
-        </script>
     </head>
     
-    <form method="post" name="Form" onsubmit="return validazioneInput()" action="check.php">
+    <form method="post" name="Form" action="checkLogin.php">
     <h1>Login</h1>
-    <input type="text" id="username" placeholder="Username" name="username">
-    <input type="password" id="password" placeholder="Password" name="password">
+    <input type="text" id="username" placeholder="Username" name="username" required>
+    <input type="password" id="password" placeholder="Password" name="password" required>
     <button type="submit" name="login">Accedi</button>
     <?php
         if(isset($_SESSION["error"])){
