@@ -63,7 +63,20 @@ class DBAccess{
        else{
            return false;
        }
+   }
 
+   public function getCavalli()
+   {
+       $query = "SELECT idCavallo, descrizione from cavallo";
+       $result = mysqli_query($this->connection, $query);
+       return $result;
+   }
+
+   public function getInfoCavallo($id)
+   {
+       $query = "SELECT descrizione, fiducia from cavallo where idCavallo='$id'";
+       $result = mysqli_query($this->connection, $query);
+       return $result;
    }
 }
 ?>
