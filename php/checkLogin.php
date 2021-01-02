@@ -7,7 +7,7 @@ session_Start();
 if(isset($_POST['login'])){
     $dbAccess = new DBAccess();
     $conn = $dbAccess->openDBConnection();
-    if($dbAccess->verificaUtente($_POST['username'], $_POST['password'])){
+    if($dbAccess->autentica($_POST['username'], $_POST['password'])){
         echo "ci sei!";
     }
     else{
