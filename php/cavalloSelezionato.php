@@ -8,11 +8,19 @@ require_once('database.php');
  $dbAccess = new DBAccess();
  $conn = $dbAccess->openDBConnection();
  $result=$dbAccess->getInfoCavallo($params['value']);
+
+
  while($row = mysqli_fetch_array($result))
 {
-    //Da mettere immagine, risultati, ecc
-    print($row[0]);
-    print($row[1]);
+    $id = $row['idCavallo'];
+    $descrizione = $row['descrizione'];
+    print  "data: " . $row['dataGara'] . " posizione: " . $row['posizione']; 
+    echo "<br>";
 }
+
+//Immagine
+$immagine;
+echo "Nome cavallo:" . $id . "," . $descrizione . "///Sto pezzo qua con il css va messo sopra o in qualche posto bello con img";
+
  $dbAccess->closeDBConnection();
 ?>

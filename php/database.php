@@ -74,7 +74,9 @@ class DBAccess{
 
    public function getInfoCavallo($id)
    {
-       $query = "SELECT descrizione, fiducia from cavallo where idCavallo='$id'";
+       $query = "SELECT cavallo.idCavallo,descrizione, posizione, dataGara FROM (cavallo INNER JOIN partecipante ON cavallo.idCavallo = partecipante.idCavallo)
+       INNER JOIN gara ON gara.idGara=partecipante.idGara
+       WHERE cavallo.idCavallo = '$id' AND gara.stato=2";
        $result = mysqli_query($this->connection, $query);
        return $result;
    }
