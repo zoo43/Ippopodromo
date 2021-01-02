@@ -25,6 +25,7 @@ session_start();
         }
     ?>
 </form>
+<p><a href="../"> Torna Indietro </a></p>
 </html>
 
 <?php

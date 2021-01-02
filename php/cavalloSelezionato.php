@@ -13,14 +13,15 @@ require_once('database.php');
  while($row = mysqli_fetch_array($result))
 {
     $id = $row['idCavallo'];
+    $immagine = $row['immagine'];
     $descrizione = $row['descrizione'];
     print  "data: " . $row['dataGara'] . " posizione: " . $row['posizione']; 
     echo "<br>";
 }
 
-//Immagine
-$immagine;
-echo "Nome cavallo:" . $id . "," . $descrizione . "///Sto pezzo qua con il css va messo sopra o in qualche posto bello con img";
 
+echo "Nome cavallo:" . $id . "," . $descrizione ."<img src='../$immagine' alt='Immagine del cavallo $id'>";
+echo "<br>";
+echo "<p><a href='cavalli.php'> Torna indietro </a></p>";
  $dbAccess->closeDBConnection();
 ?>
