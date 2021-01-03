@@ -80,5 +80,19 @@ class DBAccess{
        $result = mysqli_query($this->connection, $query);
        return $result;
    }
+
+   public function getRisultati()
+   {
+       $query = "SELECT dataGara, idGara from Gara";
+       $result = mysqli_query($this->connection, $query);
+       return $result;
+   }
+
+   public function getInfoGara($id)
+   {
+        $query = "SELECT dataGara, idCavallo, posizione, stato from gara inner join partecipante on gara.idGara=partecipante.idGara where partecipante.idGara=$id order by posizione";
+        $result = mysqli_query($this->connection, $query);
+        return $result;
+   }
 }
 ?>
