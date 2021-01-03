@@ -1,11 +1,14 @@
 <?php
-class DBAccess{
+
+class DBAccess{   
    private const SERVERNAME =  "localhost" ;
    private const USERNAME = "root";
    private const PASSWORD = "";
    private const DBNAME = "ippopodromo";
    private $connection;
 
+
+   //Connessioni
    public function openDBConnection(){
        $this->connection = mysqli_connect(DBAccess::SERVERNAME, DBAccess::USERNAME, DBAccess::PASSWORD, DBAccess::DBNAME);
       if(mysqli_connect_errno($this->connection)){
@@ -20,12 +23,13 @@ class DBAccess{
         mysqli_close($this->connection);
    }
 
+   
+   //Registrazione
    public function verificaPresenza($username, $mail)
    {
-        $query = "SELECT * from Utente where nomeUtente='$username' and mail='$mail'";
+        $query = "SELECT * from Utente where nomeUtente='$username' or mail='$mail'";
 
         $result = mysqli_query($this->connection, $query);
-    
         if(mysqli_num_rows($result)>0){
             return true;
         }
@@ -49,7 +53,7 @@ class DBAccess{
        }
    }
 
-   
+   //Login
 
    public function autentica($nome, $password)
    {   
@@ -65,7 +69,9 @@ class DBAccess{
        }
    }
 
-   public function getCavalli()
+
+   //Cavalli
+   function getCavalli()
    {
        $query = "SELECT idCavallo, descrizione from cavallo";
        $result = mysqli_query($this->connection, $query);
@@ -81,6 +87,8 @@ class DBAccess{
        return $result;
    }
 
+
+   //Risultati
    public function getRisultati()
    {
        $query = "SELECT dataGara, idGara from Gara";
