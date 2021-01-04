@@ -69,6 +69,14 @@ class DBAccess{
        }
    }
 
+   public function getCredito($username)
+   {
+        $query = "SELECT credito from Utente where nomeUtente='$username'";
+
+        $result = mysqli_query($this->connection, $query);
+
+        return $result;
+   }
 
    //Cavalli
    function getCavalli()

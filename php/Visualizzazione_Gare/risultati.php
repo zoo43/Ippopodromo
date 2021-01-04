@@ -1,5 +1,7 @@
 <?php
 require_once('../database.php');
+session_Start();
+
 $dbAccess = new DBAccess();
 $conn = $dbAccess->openDBConnection();
 $result = $dbAccess->getRisultati();
