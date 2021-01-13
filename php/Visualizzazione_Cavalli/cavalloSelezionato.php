@@ -21,7 +21,7 @@ require_once('../database.php');
 }
 
 
-echo "$nome ," . $descrizione ."<img src='../../immagini/$immagine' alt='Immagine del cavallo $id'>";
+echo "$nome ," . $descrizione ."<img src='../../images/$immagine' alt='Immagine del cavallo $id'>";
 echo "<br>";
 echo "<p><a href='cavalli.php'> Torna indietro </a></p>";
  $dbAccess->closeDBConnection();
