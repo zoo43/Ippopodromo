@@ -1,11 +1,14 @@
 <?php
-class DBAccess{
+
+class DBAccess{   
    private const SERVERNAME =  "localhost" ;
    private const USERNAME = "root";
    private const PASSWORD = "";
    private const DBNAME = "ippopodromo";
    private $connection;
 
+
+   //Connessioni
    public function openDBConnection(){
        $this->connection = mysqli_connect(DBAccess::SERVERNAME, DBAccess::USERNAME, DBAccess::PASSWORD, DBAccess::DBNAME);
       if(mysqli_connect_errno($this->connection)){
@@ -20,12 +23,13 @@ class DBAccess{
         mysqli_close($this->connection);
    }
 
+   
+   //Registrazione
    public function verificaPresenza($username, $mail)
    {
-        $query = "SELECT * from Utente where nomeUtente='$username' and mail='$mail'";
+        $query = "SELECT * from Utente where nomeUtente='$username' or mail='$mail'";
 
         $result = mysqli_query($this->connection, $query);
-    
         if(mysqli_num_rows($result)>0){
             return true;
         }
@@ -49,7 +53,7 @@ class DBAccess{
        }
    }
 
-   
+   //Login
 
    public function autentica($nome, $password)
    {   
@@ -65,20 +69,46 @@ class DBAccess{
        }
    }
 
-   public function getCavalli()
+   public function getCredito($username)
    {
-       $query = "SELECT idCavallo, descrizione from cavallo";
+        $query = "SELECT credito from Utente where nomeUtente='$username'";
+
+        $result = mysqli_query($this->connection, $query);
+
+        return $result;
+   }
+
+   //Cavalli
+   function getCavalli()
+   {
+       $query = "SELECT idCavallo, descrizione, nome from cavallo";
        $result = mysqli_query($this->connection, $query);
        return $result;
    }
 
    public function getInfoCavallo($id)
    {
-       $query = "SELECT cavallo.idCavallo,descrizione, posizione, dataGara FROM (cavallo INNER JOIN partecipante ON cavallo.idCavallo = partecipante.idCavallo)
+       $query = "SELECT cavallo.idCavallo,descrizione, posizione, dataGara,nome, immagine FROM (cavallo INNER JOIN partecipante ON cavallo.idCavallo = partecipante.idCavallo)
        INNER JOIN gara ON gara.idGara=partecipante.idGara
        WHERE cavallo.idCavallo = '$id' AND gara.stato=2";
        $result = mysqli_query($this->connection, $query);
        return $result;
+   }
+
+
+   //Risultati
+   public function getRisultati($stato)
+   {
+       $query = "SELECT dataGara, idGara from Gara where stato=$stato";
+       $result = mysqli_query($this->connection, $query);
+       return $result;
+   }
+
+   public function getInfoGara($id)
+   {
+        $query = "SELECT dataGara, idCavallo, posizione, stato from gara inner join partecipante on gara.idGara=partecipante.idGara where partecipante.idGara=$id order by posizione";
+        $result = mysqli_query($this->connection, $query);
+        return $result;
    }
 }
 ?>
