@@ -12,10 +12,10 @@ if(isset($_POST['register'])){
         header("location:register.php");
     }
     else{
-        echo "Sei registrato!";
         $dbAccess->inserisciUtente($username,$_POST['password'], $_POST['name'], $_POST['surname'], $_POST['date'], $_POST['address'], $_POST['city'], $_POST['mail']);
         $_SESSION["username"] = $username;
         $_SESSION["credito"] = "100";
+        header("location:../../");
     }
     $dbAccess->closeDBConnection();
 }
