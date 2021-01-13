@@ -13,6 +13,7 @@ require_once('../database.php');
  while($row = mysqli_fetch_array($result))
 {
     $id = $row['idCavallo'];
+    $nome = $row['nome'];
     $immagine = $row['immagine'];
     $descrizione = $row['descrizione'];
     print  "data: " . $row['dataGara'] . " posizione: " . $row['posizione']; 
@@ -20,7 +21,7 @@ require_once('../database.php');
 }
 
 
-echo "Nome cavallo:" . $id . "," . $descrizione ."<img src='../../$immagine' alt='Immagine del cavallo $id'>";
+echo "$nome ," . $descrizione ."<img src='../../immagini/$immagine' alt='Immagine del cavallo $id'>";
 echo "<br>";
 echo "<p><a href='cavalli.php'> Torna indietro </a></p>";
  $dbAccess->closeDBConnection();

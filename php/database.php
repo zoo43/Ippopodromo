@@ -81,14 +81,14 @@ class DBAccess{
    //Cavalli
    function getCavalli()
    {
-       $query = "SELECT idCavallo, descrizione from cavallo";
+       $query = "SELECT idCavallo, descrizione, nome from cavallo";
        $result = mysqli_query($this->connection, $query);
        return $result;
    }
 
    public function getInfoCavallo($id)
    {
-       $query = "SELECT cavallo.idCavallo,descrizione, posizione, dataGara, immagine FROM (cavallo INNER JOIN partecipante ON cavallo.idCavallo = partecipante.idCavallo)
+       $query = "SELECT cavallo.idCavallo,descrizione, posizione, dataGara,nome, immagine FROM (cavallo INNER JOIN partecipante ON cavallo.idCavallo = partecipante.idCavallo)
        INNER JOIN gara ON gara.idGara=partecipante.idGara
        WHERE cavallo.idCavallo = '$id' AND gara.stato=2";
        $result = mysqli_query($this->connection, $query);
@@ -97,9 +97,9 @@ class DBAccess{
 
 
    //Risultati
-   public function getRisultati()
+   public function getRisultati($stato)
    {
-       $query = "SELECT dataGara, idGara from Gara";
+       $query = "SELECT dataGara, idGara from Gara where stato=$stato";
        $result = mysqli_query($this->connection, $query);
        return $result;
    }

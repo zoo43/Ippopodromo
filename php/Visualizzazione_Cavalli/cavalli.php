@@ -10,7 +10,7 @@ $conn = $dbAccess->openDBConnection();
 $result = $dbAccess->getCavalli();
 while($row = mysqli_fetch_array($result))
 {                                                                       
-    print("<p><a href='cavalloSelezionato.php?value=" . $row['idCavallo'] . "'>".$row['idCavallo'] ." ".  $row['descrizione']."</a></p>");
+    print("<p><a href='cavalloSelezionato.php?value=" . $row['idCavallo'] . "'>".$row['nome'] . "</a></p>");
     print("<br>");
 }
 
