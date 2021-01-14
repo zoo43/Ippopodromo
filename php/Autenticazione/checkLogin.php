@@ -7,6 +7,8 @@ session_Start();
 if(isset($_POST['login'])){
     $dbAccess = new DBAccess();
     $conn = $dbAccess->openDBConnection();
+	if($conn)
+	{
     $username = $_POST['username'];
     if($dbAccess->autentica($username, $_POST['password'])){
         $_SESSION["username"] = $username;
@@ -21,6 +23,11 @@ if(isset($_POST['login'])){
         $_SESSION["error"] = 'Nome Utente o password errati';
         header("location:login.php");
     }
+	}else
+	{
+		printf("Si è verificato un errore di connessione. Si prega di attendere prima di riprovare.");
+	}
+	
     $dbAccess->closeDBConnection();
 }
 ?>

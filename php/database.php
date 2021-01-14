@@ -11,8 +11,8 @@ class DBAccess{
    //Connessioni
    public function openDBConnection(){
        $this->connection = mysqli_connect(DBAccess::SERVERNAME, DBAccess::USERNAME, DBAccess::PASSWORD, DBAccess::DBNAME);
-      if(mysqli_connect_errno($this->connection)){
-           return false;
+      if(!($this->connection)){
+			return false;
        }
        else{
            return true;
