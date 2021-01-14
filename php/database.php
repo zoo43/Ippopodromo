@@ -62,23 +62,14 @@ class DBAccess{
        $result = mysqli_query($this->connection, $query);
        
        if(mysqli_affected_rows($this->connection)>0){
-           return true;
+           return $result;
        }
        else{
            return false;
        }
    }
 
-   public function getCredito($username)
-   {
-        $query = "SELECT credito from Utente where nomeUtente='$username'";
-
-        $result = mysqli_query($this->connection, $query);
-
-        return $result;
-   }
-
-   //Cavalli
+   
    function getCavalli()
    {
        $query = "SELECT idCavallo, descrizione, nome from cavallo";
