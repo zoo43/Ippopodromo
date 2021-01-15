@@ -5,8 +5,7 @@ session_Start();
 
 if(isset($_POST['register'])){
     $dbAccess = new DBAccess();
-    $conn = $dbAccess->openDBConnection();
-	if($conn)
+	if($dbAccess->openDBConnection())
 	{
     $username = $_POST['username'];
     if($dbAccess->verificaPresenza($username, $_POST['mail'])){
@@ -19,11 +18,8 @@ if(isset($_POST['register'])){
         $_SESSION["credito"] = "100";
         header("location:../../");
     }
+		$dbAccess->closeDBConnection();
 	}
-	else
-	{
-		printf("Si è verificato un errore di connessione. Si prega di attendere prima di riprovare.");
-	}
-	$dbAccess->closeDBConnection();
+	
 }
 ?>

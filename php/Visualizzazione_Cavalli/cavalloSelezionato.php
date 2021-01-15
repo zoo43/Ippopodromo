@@ -5,8 +5,7 @@ require_once('../database.php');
  parse_str($url_components['query'], $params); 
 
  $dbAccess = new DBAccess();
- $conn = $dbAccess->openDBConnection();
- if($conn)
+ if($dbAccess->openDBConnection())
  {
  $result=$dbAccess->getInfoCavallo($params['value']);
  
@@ -22,11 +21,8 @@ require_once('../database.php');
 
 echo "$nome ," . $descrizione ."<img src='../../images/$immagine' alt='Immagine del cavallo $id'>";
 echo "<br />";
-}
-else
-{
-	printf("Si è verificato un errore di connessione. Si prega di attendere prima di riprovare.");
-}
 $dbAccess->closeDBConnection();
+}
+
 echo "<p><a href='cavalli.php'> Torna indietro </a></p>";
 ?>

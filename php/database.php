@@ -10,9 +10,10 @@ class DBAccess{
 
    //Connessioni
    public function openDBConnection(){
-       $this->connection = mysqli_connect(DBAccess::SERVERNAME, DBAccess::USERNAME, DBAccess::PASSWORD, DBAccess::DBNAME);
+       $this->connection = @mysqli_connect(DBAccess::SERVERNAME, DBAccess::USERNAME, DBAccess::PASSWORD, DBAccess::DBNAME);
       if(!($this->connection)){
-			return false;
+		  printf("Si è verificato un errore di connessione. Si prega di attendere prima di riprovare.");
+		return false;
        }
        else{
            return true;
@@ -69,7 +70,16 @@ class DBAccess{
        }
    }
 
-   
+   public function getCredito($username)
+   {
+        $query = "SELECT credito from Utente where nomeUtente='$username'";
+
+        $result = mysqli_query($this->connection, $query);
+
+        return $result;
+   }
+
+   //Cavalli
    function getCavalli()
    {
        $query = "SELECT idCavallo, descrizione, nome from cavallo";

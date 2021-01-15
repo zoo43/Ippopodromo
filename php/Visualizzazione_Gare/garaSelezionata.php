@@ -6,8 +6,7 @@ parse_str($url_components['query'], $params);
      
 
 $dbAccess = new DBAccess();
-$conn = $dbAccess->openDBConnection();
-if($conn)
+if($dbAccess->openDBConnection())
 {
 $result=$dbAccess->getInfoGara($params['value']);
 
@@ -19,11 +18,8 @@ while($row = mysqli_fetch_array($result))
     echo "<p> ". $row['posizione'] . " " . $row['idCavallo'] . "</p>" ;
 }
 echo "<p>Gara svoltasi in data: " . $data . "</p>";
+$dbAccess->closeDBConnection();
 }
-else
-{
-	printf("Si è verificato un errore di connessione. Si prega di attendere prima di riprovare.");
-}
-$dbAccess ->closeDBConnection();
+
 echo "<p><a href='risultati.php'> Torna indietro </a></p>";
 ?>

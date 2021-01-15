@@ -24,7 +24,7 @@ session_start();
         <input type="text" id="name" placeholder="Nome" name="name" maxlength="50" required>
         <input type="text" id="surname" placeholder="Cognome" name="surname" maxlength="50" required>
         
-        <input type="date" id="date" placeholder="Data di Nascita" name="date" required>
+        <input type="date" id="date" placeholder="Data di Nascita" name="date" maxlength="50" required>
         
         <input type="text" id="address" placeholder="Indirizzo" name="address" maxlength="50" required>
         <input type="text" id="city" placeholder="Città" name="city" maxlength="50" required>
