@@ -11,8 +11,8 @@ class DBAccess{
    //Connessioni
    public function openDBConnection(){
        $this->connection = mysqli_connect(DBAccess::SERVERNAME, DBAccess::USERNAME, DBAccess::PASSWORD, DBAccess::DBNAME);
-      if(mysqli_connect_errno($this->connection)){
-           return false;
+      if(!($this->connection)){
+			return false;
        }
        else{
            return true;
@@ -62,23 +62,14 @@ class DBAccess{
        $result = mysqli_query($this->connection, $query);
        
        if(mysqli_affected_rows($this->connection)>0){
-           return true;
+           return $result;
        }
        else{
            return false;
        }
    }
 
-   public function getCredito($username)
-   {
-        $query = "SELECT credito from Utente where nomeUtente='$username'";
-
-        $result = mysqli_query($this->connection, $query);
-
-        return $result;
-   }
-
-   //Cavalli
+   
    function getCavalli()
    {
        $query = "SELECT idCavallo, descrizione, nome from cavallo";
