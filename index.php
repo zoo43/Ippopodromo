@@ -6,7 +6,7 @@ if(isset($_SESSION["username"]))
     print($_SESSION["username"]);
     if(isset($_SESSION["admin"]))
     {
-        $admin = "<li><a href='html/aggiungiGara.html'>Aggiungi gara! (Solo admin)</a></li>";
+        $admin = "<li><a href='html/aggiungiGara.php'>Aggiungi gara! (Solo admin)</a></li>";
     }
     $autenticazione = "<li><a href='php/Autenticazione/logout.php'>Logout</a></li>";
 }

@@ -6,7 +6,7 @@ $dbAccess = new DBAccess();
 $conn = $dbAccess->openDBConnection();
 if($conn)
 {
-
+	
 }
 else
 {
