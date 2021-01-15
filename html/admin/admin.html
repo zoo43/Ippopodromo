@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+  <title>Pannello amministratore - Ippodromo NO₂</title> <!-- oppure &#8322; -->
+  <meta name="title" content="Pannello amministratore - Ippodromo NO₂" />
+  <meta name="description" content="" />
+  <meta name="keywords" content="" />
+  <meta charset="UTF-8">
+  <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+  <link rel="stylesheet" type="text/css" href="style/style.css" media="screen" />
+  <link rel="stylesheet" type="text/css" href="style/small.css" media="" />
+  <link rel="stylesheet" type="text/css" href="style/print.css" media="print" />
+</head>
+
+<body>
+  <header>
+    <div id="breadcrumb"> <!-- potrebbe essere inutile dato dato che non abbiamo molto da andare in profonditá-->
+      <ul>
+        <li lang="en">Pannello amministratore</li>
+      </ul>
+    </div>
+    <nav id="menu">
+      <ul>
+        <li>Dashboard</li>
+        <li><a href="./admin_cavali.php">Cavalli</a></li>
+        <li><a href="./admin_gare.php">Gare</a></li>
+        <li><a href="../../index.php">Abbandona pannello</a></li>
+        <autenticazione />
+      </ul>
+    </nav>
+    <img src="images/logo.jpg" alt="logo ippodromo rimuovi questo alt" />
+  </header>
+  <main>
+    <nav> <!-- questa cosa va mostrata solo se si é loggati, se non lo si é bisogna reindirizzare al login --> 
+      <dl id="db-cards"> <!-- aggiungere delle icone in css -->
+        <dt>
+          <h2>Cavalli</h2>
+        </dt>
+        <dd>
+          <p><num-cavalli /> <!-- 21 cavalli inseriti --></p>
+          <p><a href="./admin_cavalli.php">Gestici i cavalli</a></p>
+        </dd>
+      </dl>
+        <dt>
+          <h2>Gare</h2>
+        </dt>
+        <dd>
+          <p><num-gare /></p>
+          <p><a href="./admin_gare.php">Gestisci le gare</a></p>
+        </dd>
+        <dt>
+          <h2>Risultati</h2>
+        </dt>
+        <dd>
+          <p><num-risultati /></p>
+          <p><a href="./admin_gare#aggiungiRisultato.php">Aggiungi risultati alle gare concluse</a></p>
+        </dd>
+      </dl>
+    </nav>
+  </main>
+  <footer>
+    <img id="img-valid-code" src="../../images/valid-xhtml10.png" alt="HTML valido" />
+    <img id="img-valid-css" src="../../images/vcss-blue.gif" alt="CSS valido" />
+    <!-- cambiare src dopo aver validato -->
+    boh info varie su noi che non ricordo quali fossero ma si posso aggiungere
+  </footer>
+</body>
+
+</html>
