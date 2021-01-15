@@ -10,10 +10,9 @@ class DBAccess{
 
    //Connessioni
    public function openDBConnection(){
-       $this->connection = @mysqli_connect(DBAccess::SERVERNAME, DBAccess::USERNAME, DBAccess::PASSWORD, DBAccess::DBNAME);
+       $this->connection = mysqli_connect(DBAccess::SERVERNAME, DBAccess::USERNAME, DBAccess::PASSWORD, DBAccess::DBNAME);
       if(!($this->connection)){
-		  printf("Si è verificato un errore di connessione. Si prega di attendere prima di riprovare.");
-		return false;
+			return false;
        }
        else{
            return true;
@@ -70,16 +69,7 @@ class DBAccess{
        }
    }
 
-   public function getCredito($username)
-   {
-        $query = "SELECT credito from Utente where nomeUtente='$username'";
-
-        $result = mysqli_query($this->connection, $query);
-
-        return $result;
-   }
-
-   //Cavalli
+   
    function getCavalli()
    {
        $query = "SELECT idCavallo, descrizione, nome from cavallo";
@@ -111,5 +101,34 @@ class DBAccess{
         $result = mysqli_query($this->connection, $query);
         return $result;
    }
+
+
+   //Admin
+   public function caricaGare($date,$time,$arr)
+   {
+        $query = "INSERT INTO gara (dataGara,stato) VALUES('$date $time', '0')";
+
+        mysqli_query($this->connection, $query);
+
+
+        $query = "SELECT max(idGara) from gara";
+        $result = mysqli_query($this->connection, $query);
+        $row = mysqli_fetch_array($result);
+        $id=$row[0];
+
+        if(mysqli_affected_rows($this->connection)>0){
+        for ($i = 0; $i < count($arr) ; $i++) {
+            
+            $string = $arr[$i];
+            $query = "INSERT INTO partecipante (idGara,idCavallo) VALUES('$id','" . $string . "')"; 
+            mysqli_query($this->connection, $query);
+            echo $query;
+        }
+       }
+       else{
+           return false;
+       }
+   }
+
 }
 ?>

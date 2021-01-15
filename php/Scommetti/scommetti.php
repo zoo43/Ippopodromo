@@ -3,7 +3,8 @@ require_once('../database.php');
 session_Start();
 
 $dbAccess = new DBAccess();
-if($dbAccess->openDBConnection())
+$conn = $dbAccess->openDBConnection();
+if($conn)
 {
 if(isset($_SESSION["username"]))
 {
@@ -20,8 +21,11 @@ else
 {
     echo "Accedi per poter scommettere";
 }
-	$dbAccess->closeDBConnection();
 }
-
+else
+{
+	printf("Si è verificato un errore di connessione. Si prega di attendere prima di riprovare.");
+}
+$dbAccess->closeDBConnection();
 echo "<p><a href='../../'> Torna indietro </a></p>";
 ?>
