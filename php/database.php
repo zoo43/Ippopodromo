@@ -88,7 +88,7 @@ class DBAccess{
 
 
    //Risultati
-   public function getRisultati($stato)
+   public function getGare($stato)
    {
        $query = "SELECT dataGara, idGara from Gara where stato=$stato";
        $result = mysqli_query($this->connection, $query);
@@ -97,9 +97,38 @@ class DBAccess{
 
    public function getInfoGara($id)
    {
-        $query = "SELECT dataGara, idCavallo, posizione, stato from gara inner join partecipante on gara.idGara=partecipante.idGara where partecipante.idGara=$id order by posizione";
+        $query = "SELECT dataGara, nome, cavallo.idCavallo, posizione, stato from gara inner join partecipante on gara.idGara=partecipante.idGara inner join cavallo on cavallo.idCavallo=partecipante.idCavallo where partecipante.idGara=$id order by posizione";
         $result = mysqli_query($this->connection, $query);
         return $result;
    }
+
+
+   //Admin
+   public function caricaGare($date,$time,$arr)
+   {
+        $query = "INSERT INTO gara (dataGara,stato) VALUES('$date $time', '0')";
+
+        mysqli_query($this->connection, $query);
+
+
+        $query = "SELECT max(idGara) from gara";
+        $result = mysqli_query($this->connection, $query);
+        $row = mysqli_fetch_array($result);
+        $id=$row[0];
+
+        if(mysqli_affected_rows($this->connection)>0){
+        for ($i = 0; $i < count($arr) ; $i++) {
+            
+            $string = $arr[$i];
+            $query = "INSERT INTO partecipante (idGara,idCavallo) VALUES('$id','" . $string . "')"; 
+            mysqli_query($this->connection, $query);
+            echo $query;
+        }
+       }
+       else{
+           return false;
+       }
+   }
+
 }
 ?>

@@ -16,7 +16,7 @@ echo "<p>Posizione Cavallo </p>";
 while($row = mysqli_fetch_array($result))
 {
     $data = $row['dataGara'];
-    echo "<p> ". $row['posizione'] . " " . $row['idCavallo'] . "</p>" ;
+    echo "<p> ". $row['posizione'] . " " . $row['nome'] . "</p>" ;
 }
 echo "<p>Gara svoltasi in data: " . $data . "</p>";
 }
