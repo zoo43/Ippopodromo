@@ -88,7 +88,7 @@ class DBAccess{
 
 
    //Risultati
-   public function getRisultati($stato)
+   public function getGare($stato)
    {
        $query = "SELECT dataGara, idGara from Gara where stato=$stato";
        $result = mysqli_query($this->connection, $query);
@@ -97,7 +97,7 @@ class DBAccess{
 
    public function getInfoGara($id)
    {
-        $query = "SELECT dataGara, idCavallo, posizione, stato from gara inner join partecipante on gara.idGara=partecipante.idGara where partecipante.idGara=$id order by posizione";
+        $query = "SELECT dataGara, nome, cavallo.idCavallo, posizione, stato from gara inner join partecipante on gara.idGara=partecipante.idGara inner join cavallo on cavallo.idCavallo=partecipante.idCavallo where partecipante.idGara=$id order by posizione";
         $result = mysqli_query($this->connection, $query);
         return $result;
    }
