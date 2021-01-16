@@ -77,13 +77,27 @@ class DBAccess{
        return $result;
    }
 
-   public function getInfoCavallo($id)
+   public function getInfoCavallo($id,$cavalloNuovo)
    {
-       $query = "SELECT cavallo.idCavallo,descrizione, posizione, dataGara,nome, immagine FROM (cavallo INNER JOIN partecipante ON cavallo.idCavallo = partecipante.idCavallo)
-       INNER JOIN gara ON gara.idGara=partecipante.idGara
-       WHERE cavallo.idCavallo = '$id' AND gara.stato=2";
-       $result = mysqli_query($this->connection, $query);
-       return $result;
+       if($cavalloNuovo)
+       {
+           $query = "SELECT cavallo.idCavallo,descrizione, posizione, dataGara,nome, immagine FROM (cavallo INNER JOIN partecipante ON cavallo.idCavallo = partecipante.idCavallo)
+           INNER JOIN gara ON gara.idGara=partecipante.idGara
+           WHERE cavallo.idCavallo = '$id' AND gara.stato=2";
+           $result = mysqli_query($this->connection, $query);
+           if(mysqli_affected_rows($this->connection)>0)
+           {
+               return $result;
+           }
+           else
+           {return false;}
+       }
+       else
+       {
+           $query = "SELECT idCavallo, descrizione, nome, immagine FROM cavallo WHERE cavallo.idCavallo = '$id'";
+           $result = mysqli_query($this->connection, $query);
+           return $result;
+       }
    }
 
 
@@ -122,8 +136,21 @@ class DBAccess{
             $string = $arr[$i];
             $query = "INSERT INTO partecipante (idGara,idCavallo) VALUES('$id','" . $string . "')"; 
             mysqli_query($this->connection, $query);
-            echo $query;
         }
+        return true;
+       }
+       else{
+           return false;
+       }
+   }
+
+   public function caricaCavalli($nome,$velocita,$descrizione, $img)
+   {
+        $query = "INSERT INTO cavallo (nome,velocita,descrizione,immagine, fiducia,stanchezza) VALUES('$nome', '$velocita', '$descrizione','$img',15,0)";
+
+        mysqli_query($this->connection, $query);
+        if(mysqli_affected_rows($this->connection)>0){
+        return true;
        }
        else{
            return false;

@@ -8,20 +8,29 @@ require_once('../database.php');
  $conn = $dbAccess->openDBConnection();
  if($conn)
  {
- $result=$dbAccess->getInfoCavallo($params['value']);
+ $result=$dbAccess->getInfoCavallo($params['value'],true);
  
- while($row = mysqli_fetch_array($result))
+if($result)
+{ 
+    while($row = mysqli_fetch_array($result))
+    {    
+        $id = $row['idCavallo'];
+        $nome = $row['nome'];
+        $immagine = $row['immagine'];
+        $descrizione = $row['descrizione'];
+        print  "data: " . $row['dataGara'] . " posizione: " . $row['posizione']; 
+        echo "<br />";
+    }
+    echo "<p>$nome," . $descrizione ."<img src='../../images/$immagine' alt='Immagine del cavallo $nome'</p>";
+}
+else
 {
-    $id = $row['idCavallo'];
-    $nome = $row['nome'];
-    $immagine = $row['immagine'];
-    $descrizione = $row['descrizione'];
-    print  "data: " . $row['dataGara'] . " posizione: " . $row['posizione']; 
+    $result=$dbAccess->getInfoCavallo($params['value'],false);
+    $row = mysqli_fetch_array($result);
+    echo "<p>" .$row['nome'] ." , ". $row['descrizione'] ."<img src='../../images/".$row['immagine'] ."' alt='Immagine del cavallo ".$row['nome'] . "' </p>";
+    echo "Questo cavallo non ha ancora partecipato a nessuna gara";
     echo "<br />";
 }
-
-echo "$nome ," . $descrizione ."<img src='../../images/$immagine' alt='Immagine del cavallo $id'>";
-echo "<br />";
 }
 else
 {
@@ -29,4 +38,6 @@ else
 }
 $dbAccess->closeDBConnection();
 echo "<p><a href='cavalli.php'> Torna indietro </a></p>";
+
+
 ?>

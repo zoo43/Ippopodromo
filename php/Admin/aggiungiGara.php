@@ -23,15 +23,15 @@
         </div>
         <nav id="menu">
             <ul>
-                <li lang="en"><a href="../">Home</a></li>
-                <li><a href="../php/Visualizzazione_Gare/risultati.php">Gare</a></li>
-                <li><a href="../php/Visualizzazione_Cavalli/cavalli.php">Cavalli</a></li>
+                <li lang="en"><a href="../../html/Admin/admin.html">Torna al pannello</a></li>
+                <li><a href="../../php/Visualizzazione_Cavalli/cavalli.php">Cavalli</a></li>
+                <li><a href="../../php/Visualizzazione_Gare/risultati.php">Gare</a></li>
             </ul>
         </nav>
         <img src="../../images/logo.jpg" alt="logo ippodromo rimuovi questo alt" />
     </header>
     <section>
-        <form method="post" onsubmit="return validazioneInput()" action="../Admin/caricaGara.php">
+        <form method="post" action="../Admin/caricaGara.php">
             <h1>Scegli i dati della gara!</h1>         
             <input type="date" id="date" name="date" required>
             <input type="time" id="time" name="time" min="08.00.00" required>
