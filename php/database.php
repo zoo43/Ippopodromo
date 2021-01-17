@@ -171,18 +171,30 @@ class DBAccess{
 
    public function updateRisultati($posizioni, $idCavalli, $idGara)
    {
-        for($i=0;$i<count($idCavalli);$i++)
+       $bool = false;
+        for($i=0;$i<count($posizioni);$i++)
         {
-            $query = "UPDATE partecipante SET  posizione" . "=". $posizioni[$i]['id'] ." WHERE idGara='$idGara' AND idCavallo='". $idCavalli[$i] ."'";
-            echo  $query;
-            //mysqli_query($this->connection, $query);
-            //if(mysqli_affected_rows($this->connection)>0){
-            //return true;
-            //}
-            //else{
-              // return false;
-            //}
+            $query = "UPDATE partecipante SET  posizione" . "=". $posizioni[$i]." WHERE idGara='$idGara' AND idCavallo='". $idCavalli[$i]['id'] ."'";
+            echo "$query";
+            mysqli_query($this->connection, $query);
+            if(mysqli_affected_rows($this->connection)>0){
+                $bool=true;
+            }
+            else{
+                $bool = false;
+            }
         }
+
+        $query = "UPDATE gara SET stato='2' where idGara='$idGara'"; 
+        echo $query;
+        mysqli_query($this->connection, $query);
+        if(mysqli_affected_rows($this->connection)>0){
+            $bool = true;
+        }
+        else{
+            $bool = false;
+        }
+        return $bool;
    }
 
 }
