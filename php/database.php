@@ -196,6 +196,20 @@ class DBAccess{
         }
         return $bool;
    }
+   
+      public function updateDopoPagamento($username, $costo)
+   {
+	   $query = "UPDATE Utente SET credito"."=credito-".$costo." WHERE username='".$username."'";
+	   if($this->connection->query($query))
+	   {
+		  return true;
+	   }
+	   else
+	   {
+		  return false;
+	   }
+    
+   }
 
 }
 ?>

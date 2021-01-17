@@ -3,7 +3,6 @@ require_once('../database.php');
 $url = $_SERVER['REQUEST_URI'];    
 $url_components = parse_url($url); 
 parse_str($url_components['query'], $params); 
-     
 
 $dbAccess = new DBAccess();
 $conn = $dbAccess->openDBConnection();
