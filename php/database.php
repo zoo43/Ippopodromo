@@ -162,5 +162,28 @@ class DBAccess{
        }
    }
 
+   public function getCavalliGara($idGara)
+   {
+    $query = "SELECT cavallo.idCavallo, descrizione, nome from cavallo inner join partecipante on cavallo.idCavallo=partecipante.idCavallo where idGara=$idGara";
+    $result = mysqli_query($this->connection, $query);
+    return $result;
+   }
+
+   public function updateRisultati($posizioni, $idCavalli, $idGara)
+   {
+        for($i=0;$i<count($idCavalli);$i++)
+        {
+            $query = "UPDATE partecipante SET  posizione" . "=". $posizioni[$i]['id'] ." WHERE idGara='$idGara' AND idCavallo='". $idCavalli[$i] ."'";
+            echo  $query;
+            //mysqli_query($this->connection, $query);
+            //if(mysqli_affected_rows($this->connection)>0){
+            //return true;
+            //}
+            //else{
+              // return false;
+            //}
+        }
+   }
+
 }
 ?>
