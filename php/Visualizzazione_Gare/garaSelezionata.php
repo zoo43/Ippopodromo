@@ -19,6 +19,7 @@ while($row = mysqli_fetch_array($result))
     echo "<p> ". $row['posizione'] . " " . $row['nome'] . "</p>" ;
 }
 echo "<p>Gara svoltasi in data: " . $data . "</p>";
+mysqli_free_result($result);
 }
 else
 {

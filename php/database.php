@@ -31,9 +31,11 @@ class DBAccess{
 
         $result = mysqli_query($this->connection, $query);
         if(mysqli_num_rows($result)>0){
+            mysqli_free_result($result);
             return true;
         }
         else{
+            mysqli_free_result($result);
             return false;
         }
    }
@@ -65,6 +67,7 @@ class DBAccess{
            return $result;
        }
        else{
+            mysqli_free_result($result);
            return false;
        }
    }
@@ -90,7 +93,7 @@ class DBAccess{
                return $result;
            }
            else
-           {return false;}
+           {  mysqli_free_result($result); return false;}
        }
        else
        {
@@ -137,9 +140,11 @@ class DBAccess{
             $query = "INSERT INTO partecipante (idGara,idCavallo) VALUES('$id','" . $string . "')"; 
             mysqli_query($this->connection, $query);
         }
+        mysqli_free_result($result);
         return true;
        }
        else{
+        mysqli_free_result($result);
            return false;
        }
    }

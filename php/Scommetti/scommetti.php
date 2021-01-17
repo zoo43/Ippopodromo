@@ -16,6 +16,7 @@ if(isset($_SESSION["username"]))
     {          
         echo "<p>" . "Numero Gara: ". $row['idGara'] . " Data della Gara:" . $row['dataGara'] ."</p>";                                                       
     }
+    mysqli_free_result($result);
 }
 else
 {

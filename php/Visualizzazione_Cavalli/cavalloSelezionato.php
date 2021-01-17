@@ -31,6 +31,7 @@ else
     echo "Questo cavallo non ha ancora partecipato a nessuna gara";
     echo "<br />";
 }
+mysqli_free_result($result);
 }
 else
 {
