@@ -27,19 +27,20 @@
 :root{
   --border-radius: 0.5em;
   --header-color: rgb(50, 50, 50);
-  --footer-color: tomato;
+  --footer-color: #006699;
   --section-color: #efefef;
-  --clr1: #ddd;
+  --clr1: #663300;
   --clr2: #efefef;
-  --clr3: #333;
-  --clr4: tomato;
+  --clr3: #339933;
+  --clr4: #cc9900;
+  --clr3: #2d862d;
 }
 
 body{
-  width: 100%;
+  background-color: var(--clr1);
 }
 .navTop {
-  background-color: var(--header-color);
+  background-color: var(--clr1);
   position: fixed;
   z-index: 9999;
   top: 0;
@@ -84,7 +85,7 @@ body{
 }
 
 .navTop a:hover {
-  color: rgb(220, 120, 0);
+  color: var(--clr4);
 }
 
 .nav-bg {
@@ -104,7 +105,7 @@ body{
   width: 100% !important;
   height: 750px !important;
   background: rgb(50, 50, 50);
-  background: url("../immagini/ippodromoCostantino.jpg") no-repeat 50% 50% fixed;
+  background: url("../images/ippodromoCostantino.jpg") no-repeat 50% 50% fixed;
   background-size: 130%;
   overflow: hidden;
   border-radius: var(--border-radius);
@@ -146,10 +147,9 @@ body{
   position: relative;
   border-radius: var(--border-radius);
   z-index: 0;
-  position: relative;
   height: 100%;
-  padding: 0 5px 0 5px;
-  background: var(--clr1);
+  padding: 5px 0 5px 0;
+  background: var(--clr3);
 }
 
 .wrapper{
@@ -157,6 +157,7 @@ body{
   box-shadow: 0px 0px 40px rgba(0, 0, 0, 0.8);
   border-radius: var(--border-radius);
   z-index: 0;
+  background: var(--clr5);
 }
 
 
@@ -168,31 +169,7 @@ section{
   position: relative;
   margin: 10px 0 0 0;
 }
-section .headline {
-  display: block;
-  margin: 0 auto;
-  list-style: none;
-  max-width: 260px;
-  height: 30px;
-  background: var(--clr3);
-  border-radius: var(--text-radius);
-}
-section .text {
-  display: block;
-  margin: 10px auto;
-  max-width: 500px;
-  height: 14px;
-  background: var(--clr3);
-  border-radius: var(--text-radius);
-}
-section .button {
-  display: block;
-  margin: 20px auto 0 auto;
-  max-width: 120px;
-  height: 35px;
-  background: var(--clr4);
-  border-radius: var(--text-radius);
-}
+
 section:last-child{
   margin-bottom: 100px;
 }
@@ -201,27 +178,48 @@ section:last-child{
 
 
 .contentbox{
-  width: 100%;
+  width: calc(100% - 10px);
   padding: 5px 0px 5px 0px;
+  margin: 0 5px 0 5px;
 }
 .contentbox .headline{
-  margin: 10px 0;
+  display: block;
+  margin: 0 auto;
+  list-style: none;
+  max-width: 260px;
+  height: 30px;
+  background: var(--clr3);
+  border-radius: var(--text-radius);
+  margin: 5px 0 0 5px;
   max-width: 65%;
 }
 .contentbox .text{
-  margin: 10px 0;
-  max-width: 100%;
+  display: block;
+  margin: 10px auto;
+  max-width: 500px;
+  height: 18px;
+  background: var(--clr3);
+  border-radius: var(--text-radius);
+  margin: 10px 0 0 5px;
+  max-width: 99%;
 }
 .contentbox .button{
+  display: block;
+  margin: 20px auto 0 auto;
+  max-width: 120px;
+  height: 35px;
+  background: var(--clr4);
+  border-radius: var(--text-radius);
   margin: 10px 0;
 }
+
 
 
 .cards {
   padding: 0px;
   background: transparent;
   display: table;
-  vertical-align: middle;
+  vertical-align: center;
   margin: 2px 0px 2px 0px;
 }
  .card {
@@ -231,7 +229,32 @@ section:last-child{
   margin: 5px 5px 5px 5px;
   border-radius: var(--border-radius);
   display: inline-block;
-  vertical-align: middle;
+  vertical-align: center;
+}
+.card .headline {
+  display: block;
+  margin: 0 auto;
+  list-style: none;
+  max-width: 260px;
+  height: 30px;
+  background: var(--clr3);
+  border-radius: var(--text-radius);
+}
+.card .text {
+  display: block;
+  margin: 10px auto;
+  max-width: 500px;
+  height: 18px;
+  background: var(--clr3);
+  border-radius: var(--text-radius);
+}
+.card .button {
+  display: block;
+  margin: 20px auto 0 auto;
+  max-width: 120px;
+  height: 35px;
+  background: var(--clr4);
+  border-radius: var(--text-radius);
 }
 
 .cards .content {
@@ -253,7 +276,7 @@ footer{
   height: 270px;
 }
 footer .logo{
-  background: #efefef;
+  background: var(--clr2);
   width: 50px;
   height: 50px;
   border-radius: var(--border-radius);
@@ -281,9 +304,11 @@ footer ul li{
   display: inline-block;
   list-style: none;
   width: 60px;
-  height: 10px;
-  background: #efefef;
+  height: 18px;
+  background: var(--section-color);
   border-radius: var(--border-radius);
+  margin: 0 auto;
+
 }
 
 #img-valid-code{
