@@ -208,8 +208,21 @@ class DBAccess{
 
    //Scommesse
 
-      public function updateDopoPagamento($username, $costo)
-   {
+	public function aggiuntaScommessa($username, $idGara, $idCavallo, $puntata)
+	{
+		$query = "INSERT INTO scommessa(idGara, idCavallo, nomeUtente, puntata) VALUES ('".$idGara."','".$idCavallo."','".$username."','".$puntata."')";
+		if($this->connection->query($query))
+		{
+			return updateDopoPagamento($username, $puntata); 
+		}
+		else
+		{
+			return false;
+		}
+	}
+
+    public function updateDopoPagamento($username, $costo)
+	{
 	   $query = "UPDATE Utente SET credito"."=credito-".$costo." WHERE username='".$username."'";
 	   if($this->connection->query($query))
 	   {
@@ -219,8 +232,7 @@ class DBAccess{
 	   {
 		  return false;
 	   }
-    
-   }
+    }
 
 }
 ?>
