@@ -29,7 +29,7 @@ if($conn)
     for($i=0; $i<count($cavalli);$i++)
     {
         $risultati = $risultati. $cavalli[$i]['name'];
-        $risultati = $risultati. "<input type='number' id=' ".$cavalli[$i]['id']."' placeholder='Pos' name='cavalli[]' min='1' max='".count($cavalli)."' required><br/>";
+        $risultati = $risultati. "<input type='number' onchange='controllaPosizioni()' id=' ".$cavalli[$i]['id']."' placeholder='Pos' name='cavalli[]' value='1' min='1' max='".count($cavalli)."' required><br/>";
     }
 
     $pagina = file_get_contents("../../html/admin/inserisciRisultati.html");
