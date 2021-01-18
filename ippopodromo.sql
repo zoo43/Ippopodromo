@@ -1,6 +1,6 @@
 -- --------------------------------------------------------
--- Host:                         127.0.0.1
--- Versione server:              10.4.14-MariaDB - mariadb.org binary distribution
+-- Host:                         localhost
+-- Versione server:              10.4.17-MariaDB - mariadb.org binary distribution
 -- S.O. server:                  Win64
 -- HeidiSQL Versione:            11.1.0.6116
 -- --------------------------------------------------------
@@ -48,8 +48,8 @@ CREATE TABLE IF NOT EXISTS `gara` (
 -- Dump dei dati della tabella ippopodromo.gara: ~2 rows (circa)
 /*!40000 ALTER TABLE `gara` DISABLE KEYS */;
 INSERT INTO `gara` (`idGara`, `dataGara`, `stato`) VALUES
-	(1, '2005-01-13 09:59:39', 2),
-	(2, '2013-01-13 09:59:57', 2);
+	(1, '2005-01-13 09:59:39', 0),
+	(2, '2013-01-13 09:59:57', 0);
 /*!40000 ALTER TABLE `gara` ENABLE KEYS */;
 
 -- Dump della struttura di tabella ippopodromo.partecipante
@@ -74,6 +74,25 @@ INSERT INTO `partecipante` (`idGara`, `idCavallo`, `posizione`) VALUES
 	(2, 3, 3);
 /*!40000 ALTER TABLE `partecipante` ENABLE KEYS */;
 
+-- Dump della struttura di tabella ippopodromo.scommessa
+CREATE TABLE IF NOT EXISTS `scommessa` (
+  `idGara` int(11) NOT NULL,
+  `idCavallo` int(11) NOT NULL,
+  `nomeUtente` varchar(40) NOT NULL,
+  `puntata` int(11) NOT NULL,
+  PRIMARY KEY (`idGara`,`idCavallo`,`nomeUtente`),
+  UNIQUE KEY `UN_Scommessa` (`idGara`,`nomeUtente`),
+  KEY `idCavallo` (`idCavallo`),
+  KEY `nomeUtente` (`nomeUtente`),
+  CONSTRAINT `scommessa_ibfk_1` FOREIGN KEY (`idGara`) REFERENCES `gara` (`idGara`) ON DELETE NO ACTION ON UPDATE CASCADE,
+  CONSTRAINT `scommessa_ibfk_2` FOREIGN KEY (`idCavallo`) REFERENCES `cavallo` (`idCavallo`) ON DELETE NO ACTION ON UPDATE CASCADE,
+  CONSTRAINT `scommessa_ibfk_3` FOREIGN KEY (`nomeUtente`) REFERENCES `utente` (`nomeUtente`) ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- Dump dei dati della tabella ippopodromo.scommessa: ~0 rows (circa)
+/*!40000 ALTER TABLE `scommessa` DISABLE KEYS */;
+/*!40000 ALTER TABLE `scommessa` ENABLE KEYS */;
+
 -- Dump della struttura di tabella ippopodromo.utente
 CREATE TABLE IF NOT EXISTS `utente` (
   `nomeUtente` varchar(40) NOT NULL,
@@ -89,12 +108,11 @@ CREATE TABLE IF NOT EXISTS `utente` (
   PRIMARY KEY (`nomeUtente`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
--- Dump dei dati della tabella ippopodromo.utente: ~3 rows (circa)
+-- Dump dei dati della tabella ippopodromo.utente: ~1 rows (circa)
 /*!40000 ALTER TABLE `utente` DISABLE KEYS */;
 INSERT INTO `utente` (`nomeUtente`, `nome`, `cognome`, `dataNascita`, `indirizzo`, `citta`, `credito`, `password`, `mail`, `admin`) VALUES
 	('admin', 'Gianluca', 'Innusa', '1999-12-25', 'Via degli Admin 33', 'Castelfranco Veneto', 9999, 'admin', 'matteo16.martini@outlook.it', 1),
-	('Leo', 'Matteo', 'Martini', '2021-01-14', 'Via dei Cavalli 15', 'San Martino di Lupari', 100, 'adminsd', 'leol', 0),
-	('Leosdasgffshdjkhglkòjàl', 'Matteo', 'Martini', '2021-01-15', 'Via dei Cavalli 15', 'San Martino di Lupari', 100, 'adminsd', 'slkdj-gnjldsfngadskljgds', 0);
+	('utente', 'utente', 'utente', '2000-03-03', 'Via degli utenti 69', 'quella bella', 100, 'utente', 'random@random.com', 0);
 /*!40000 ALTER TABLE `utente` ENABLE KEYS */;
 
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
