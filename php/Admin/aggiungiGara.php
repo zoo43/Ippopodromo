@@ -11,7 +11,7 @@ if($conn)
     {                                                                       
         $id = $row['idCavallo'];
         $name = $row['nome'];
-        $cavalli = $cavalli . "<input type='checkbox' id='$id' name='cavalli[]' value='$id'><label for='$id'>$name</label>";
+        $cavalli = $cavalli . "<input type='checkbox' onchange='controllaNumeroCavalli()' id='$id' name='cavalli[]' value='$id'><label for='$id'>$name</label>";
     }
     mysqli_free_result($result);
 }

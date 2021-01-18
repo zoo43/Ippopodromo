@@ -107,9 +107,18 @@ class DBAccess{
    //Risultati
    public function getGare($stato)
    {
-       $query = "SELECT dataGara, idGara from Gara where stato=$stato";
-       $result = mysqli_query($this->connection, $query);
-       return $result;
+        if($stato == 2)
+        {
+            $query = "SELECT dataGara, idGara from Gara where stato=$stato";
+            $result = mysqli_query($this->connection, $query);
+            return $result;
+        }
+        else
+        {
+            $query = "SELECT dataGara, idGara from Gara where stato=$stato and dataGara< " . "'".date('Y-m-d H:i:s') ."'";
+            $result = mysqli_query($this->connection, $query);
+            return $result;
+        }
    }
 
    public function getInfoGara($id)
@@ -175,7 +184,6 @@ class DBAccess{
         for($i=0;$i<count($posizioni);$i++)
         {
             $query = "UPDATE partecipante SET  posizione" . "=". $posizioni[$i]." WHERE idGara='$idGara' AND idCavallo='". $idCavalli[$i]['id'] ."'";
-            echo "$query";
             mysqli_query($this->connection, $query);
             if(mysqli_affected_rows($this->connection)>0){
                 $bool=true;
@@ -197,6 +205,9 @@ class DBAccess{
         return $bool;
    }
    
+
+   //Scommesse
+
       public function updateDopoPagamento($username, $costo)
    {
 	   $query = "UPDATE Utente SET credito"."=credito-".$costo." WHERE username='".$username."'";
