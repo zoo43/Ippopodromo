@@ -24,7 +24,8 @@
 						return true;
 						else
 						{
-							alert('Non hai abbastanza bitSquits :(. Si prega di inserire un importo valido') 
+							alert('Non hai abbastanza bitSquits :(. Si prega di inserire un importo valido');
+							return false;
 						}
 					}
 				}
@@ -76,8 +77,10 @@ if($conn)
 		print('<input type="radio" name="cavallo" value="'.$row["idCavallo"].'">'.$row["nome"]);
 		print("<br />");
 	}
+	
 	echo '<input type="hidden" name="idGara" value="'.$params["value"].'"/>';
 	echo '<input type="hidden" name="dataGara" value="'.$data.'"/>';
+	
 	echo '<button type="submit" name="scommetti">Scommetti</button>';
 	$dbAccess->closeDBConnection();
 	echo '</form>';

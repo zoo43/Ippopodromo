@@ -208,22 +208,9 @@ class DBAccess{
 
    //Scommesse
 
-	public function aggiuntaScommessa($username, $idGara, $idCavallo, $puntata)
-	{
-		$query = "INSERT INTO scommessa(idGara, idCavallo, nomeUtente, puntata) VALUES ('".$idGara."','".$idCavallo."','".$username."','".$puntata."')";
-		if($this->connection->query($query))
-		{
-			return updateDopoPagamento($username, $puntata); 
-		}
-		else
-		{
-			return false;
-		}
-	}
-
     public function updateDopoPagamento($username, $costo)
 	{
-	   $query = "UPDATE Utente SET credito"."=credito-".$costo." WHERE username='".$username."'";
+	   $query = "UPDATE utente SET credito"."=credito-".$costo." WHERE nomeUtente='".$username."'";
 	   if($this->connection->query($query))
 	   {
 		  return true;
@@ -234,5 +221,19 @@ class DBAccess{
 	   }
     }
 
+	
+	public function aggiuntaScommessa($username, $idGara, $idCavallo, $puntata)
+	{
+		$query = "INSERT INTO scommessa(idGara, idCavallo, nomeUtente, puntata) VALUES ('".$idGara."','".$idCavallo."','".$username."','".$puntata."')";
+		if($this->connection->query($query))
+		{
+			return $this->updateDopoPagamento($username, $puntata); 
+		}
+		else
+		{
+			return false;
+		}
+	}
 }
+	
 ?>
