@@ -11,11 +11,13 @@ if(isset($_SESSION["username"]))
     $username = $_SESSION["username"];
     $credito = $_SESSION["credito"];
     echo $username . " Credito:" . $credito;
-    $result = $dbAccess->getRisultati("0");
+    $result = $dbAccess->getGare("0");
     while($row = mysqli_fetch_array($result))
     {          
-        echo "<p>" . "Numero Gara: ". $row['idGara'] . " Data della Gara:" . $row['dataGara'] ."</p>";                                                       
+        echo "<p>" . "Numero Gara: ". $row['idGara'] . " Data della Gara:" . $row['dataGara'] ."</p>";  
+		echo "<p><a href='garaScommessa.php?value=".$row['idGara']."'>Scommetti sulla gara</p></a>";
     }
+    mysqli_free_result($result);
 }
 else
 {

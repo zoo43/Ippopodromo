@@ -15,6 +15,7 @@ while($row = mysqli_fetch_array($result))
     print("<p><a href='cavalloSelezionato.php?value=" . $row['idCavallo'] . "'>".$row['nome'] . "</a></p>");
     print("<br />");
 }
+mysqli_free_result($result);
 }
 else
 {

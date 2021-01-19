@@ -1,14 +1,17 @@
 <?php
 session_Start();
 $admin = "";
+$scommessa = "";
 if(isset($_SESSION["username"]))
 {
-    print($_SESSION["username"]);
     if(isset($_SESSION["admin"]))
     {
-        $admin = "<li><a href='html/aggiungiGara.php'>Aggiungi gara! (Solo admin)</a></li>";
+        header("location:../html/admin/admin.html");
     }
-    $autenticazione = "<li><a href='php/Autenticazione/logout.php'>Logout</a></li>";
+    else
+    {
+        $autenticazione = "<li><a href='php/Autenticazione/logout.php'>Logout</a></li>";
+    }
 }
 else{
     $autenticazione = "<li><a href='php/Autenticazione/register.php'>Registrati</a></li>
@@ -18,8 +21,8 @@ $pagina = file_get_contents("html/index.html");
 
 
 echo str_replace(
-    array("<autenticazione />","<admin />"),
-    array($autenticazione, $admin), 
+    array("<autenticazione />"),
+    array($autenticazione), 
     $pagina
 );
 
