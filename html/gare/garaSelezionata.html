@@ -2,8 +2,8 @@
 <html lang="it">
 
 <head>
-  <title><nome-cavallo /> - Ippodromo NO₂</title>
-  <meta-title-cavallo />
+  <title>Classifica gara - Ippodromo NO₂</title>
+  <meta-title-gara />
   <meta name="description" content="" />
   <meta name="keywords" content="" />
   <meta charset="UTF-8">
@@ -18,8 +18,8 @@
     <div id="breadcrumb">
       <ul>
         <li lang="en">Home</li>
-        <li>Cavalli</li>
-        <li><nome-cavallo /></li>
+        <li>Gare</li>
+        <li><data-gara /></li>
       </ul>
     </div>
     <nav id="menu">
@@ -36,25 +36,33 @@
     <img src="images/logo.jpg" alt="" />
   </header>
   <main>
-    <dl class="info-cavallo">
+    <dl class="info-gara">
       <dt>
         <h1>
-          <nome-cavallo />
+          Gara del <data-gara />
         </h1>
       </dt>
       <dd id="descrizione-cavallo">
-        <p><descrizione /></p>
-        <h2>Fiducia</h2>
-        <p><fiducia /></p>
-        <h2>Velocità</h2>
-        <p><velocita /></p>
-        <h2>Stanchezza</h2>
-        <p><stanchezza /></p>
-        <risultati-gare />
-        <img-cavallo />
+        <h2>Stato della gara</h2>
+        <p><stato-gara /></p>
+        <h2>Classifica</h2>
+        <table>
+          <thead>
+            <th>Posizione</th>
+            <th>Cavallo</th>
+          </thead>
+          <tfoot></tfoot>
+          <tbody>
+            <classifica-gara />
+          </tbody>
+        </table>
+        <h2>Partecipanti</h2>
+        <ol>
+          <partecipanti />
+        </ol>
       </dd>
     </dl>
-    <p><a href='cavalli.php'> Torna indietro </a></p>
+    <p><a href='risultati.php'> Torna indietro </a></p>
   </main>
   <footer>
     <img id="img-valid-code" src="images/valid-xhtml10.png" alt="HTML valido" />
