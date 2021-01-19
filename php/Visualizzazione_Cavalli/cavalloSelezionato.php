@@ -38,7 +38,7 @@ else
 	printf("Si è verificato un errore di connessione. Si prega di attendere prima di riprovare.");
 }
 $dbAccess->closeDBConnection();
-echo "<p><a href='cavalli.php'> Torna indietro </a></p>";
+echo "<p><a href='javascript:history.back()'>Torna indietro</a></p>";
 
 
 ?>
