@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <title>Aggiungi Cavallo</title> <!-- nitrito hihihihi -->
+    <meta name="title" content="aggiungi-gara" />
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <meta charset="UTF-8">
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+    <link rel="stylesheet" type="text/css" href="style/style.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="style/small.css" media="" />
+    <link rel="stylesheet" type="text/css" href="style/print.css" media="print" />
+
+    <script>
+        function controllaPosizioni()
+        {    
+            var x = document.getElementsByName("cavalli[]"); 
+            var y = x;
+            var uguali = false;
+            
+            for(i=0;i<x.length;i++)
+            {                
+                for(j=0;j<x.length;j++)
+                {
+                    if(x[i].value==x[j].value && x[i].value!="" && x[j].value!="" && i!=j)
+                    {
+                        uguali = true;
+                    }
+                }
+            }       
+            document.getElementById('btn').disabled=uguali;
+        }
+    </script>
+
+</head>
+
+<body>
+    <header>
+        <div id="breadcrumb">
+            <!-- potrebbe essere inutile dato dato che non abbiamo molto da andare in profonditá-->
+            <ul>
+                <li lang="en">Aggiungi Cavallo</li>
+            </ul>
+        </div>
+        <nav id="menu">
+            <ul>
+                <li lang="en"><a href="../../html/Admin/admin.html">Torna al pannello</a></li>
+                <li><a href="../../php/Visualizzazione_Cavalli/cavalli.php">Cavalli</a></li>
+                <li><a href="../../php/Visualizzazione_Gare/risultati.php">Gare</a></li>
+            </ul>
+        </nav>
+        <img src="../../images/logo.jpg" alt="logo ippodromo rimuovi questo alt" />
+    </header>
+    <section>
+        <form method="post" action="../../php/Admin/caricaRisultati.php" id="inserimentoCavallo" enctype="multipart/form-data">
+            <h1>Inserisci i dati riguardanti questa gara!</h1>         
+            <risultati />
+            <br />
+            <button id="btn" type="submit" name="register" disabled>Inserisci</button>
+        </form>
+    </section>
+    <footer>
+        <img id="img-valid-code" src="images/valid-xhtml10.png" alt="HTML valido" />
+        <img id="img-valid-css" src="images/vcss-blue.gif" alt="CSS valido" /> <!-- cambiare src dopo aver validato -->
+    </footer>
+</body>
+
+</html>

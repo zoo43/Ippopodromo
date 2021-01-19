@@ -40,7 +40,6 @@ body{
   background-color: var(--clr1);
 }
 .navTop {
-  background-color: var(--clr1);
   position: fixed;
   z-index: 9999;
   top: 0;
@@ -96,8 +95,18 @@ body{
   width: 100%;
   height: 100%;
   z-index: -1;
-  background: rgb(50, 50, 50);
+  background-color: var(--clr1);
   transition: .45s ease-in-out;
+}
+
+.bg-hidden {
+  top: -100%;
+  opacity: 0;
+}
+
+.bg-visible {
+  top: 0;
+  opacity: 1;
 }
 
 .init {
@@ -106,7 +115,8 @@ body{
   left: 0px;
   width: 100% !important;
   height: 33em !important;
-  background: url("../images/ippodromoCostantino.jpg") no-repeat 50% 50% fixed;  /*fixa e home e` responsiva*/
+  background: url("../images/ippodromoCostantino.jpg") no-repeat fixed; 
+  background-position: center;
   background-size: 130%;
   overflow: hidden;
   border-radius: var(--border-radius);
@@ -122,7 +132,6 @@ body{
   font-size: 6em;
   font-weight: lighter;
   letter-spacing: 1px;
-
   color: white;
 }
 .contentuto {
