@@ -43,13 +43,14 @@ CREATE TABLE IF NOT EXISTS `gara` (
   `dataGara` datetime NOT NULL,
   `stato` int(11) NOT NULL,
   PRIMARY KEY (`idGara`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4;
 
 -- Dump dei dati della tabella ippopodromo.gara: ~2 rows (circa)
 /*!40000 ALTER TABLE `gara` DISABLE KEYS */;
 INSERT INTO `gara` (`idGara`, `dataGara`, `stato`) VALUES
-	(1, '2005-01-13 09:59:39', 0),
-	(2, '2013-01-13 09:59:57', 0);
+	(1, '2005-01-13 09:59:39', 2),
+	(2, '2013-01-13 09:59:57', 0),
+	(3, '2021-01-19 16:51:56', 0);
 /*!40000 ALTER TABLE `gara` ENABLE KEYS */;
 
 -- Dump della struttura di tabella ippopodromo.partecipante
@@ -71,7 +72,8 @@ INSERT INTO `partecipante` (`idGara`, `idCavallo`, `posizione`) VALUES
 	(1, 3, 2),
 	(2, 1, 2),
 	(2, 2, 1),
-	(2, 3, 3);
+	(2, 3, 3),
+	(3, 3, NULL);
 /*!40000 ALTER TABLE `partecipante` ENABLE KEYS */;
 
 -- Dump della struttura di tabella ippopodromo.scommessa
@@ -80,6 +82,7 @@ CREATE TABLE IF NOT EXISTS `scommessa` (
   `idCavallo` int(11) NOT NULL,
   `nomeUtente` varchar(40) NOT NULL,
   `puntata` int(11) NOT NULL,
+  `stato` tinyint(1) NOT NULL DEFAULT 0,
   PRIMARY KEY (`idGara`,`idCavallo`,`nomeUtente`),
   UNIQUE KEY `UN_Scommessa` (`idGara`,`nomeUtente`),
   KEY `idCavallo` (`idCavallo`),
@@ -89,8 +92,11 @@ CREATE TABLE IF NOT EXISTS `scommessa` (
   CONSTRAINT `scommessa_ibfk_3` FOREIGN KEY (`nomeUtente`) REFERENCES `utente` (`nomeUtente`) ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
--- Dump dei dati della tabella ippopodromo.scommessa: ~0 rows (circa)
+-- Dump dei dati della tabella ippopodromo.scommessa: ~2 rows (circa)
 /*!40000 ALTER TABLE `scommessa` DISABLE KEYS */;
+INSERT INTO `scommessa` (`idGara`, `idCavallo`, `nomeUtente`, `puntata`, `stato`) VALUES
+	(1, 1, 'utente', 30, 1),
+	(1, 1, 'utente2', 13, 1);
 /*!40000 ALTER TABLE `scommessa` ENABLE KEYS */;
 
 -- Dump della struttura di tabella ippopodromo.utente
@@ -108,11 +114,12 @@ CREATE TABLE IF NOT EXISTS `utente` (
   PRIMARY KEY (`nomeUtente`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
--- Dump dei dati della tabella ippopodromo.utente: ~1 rows (circa)
+-- Dump dei dati della tabella ippopodromo.utente: ~3 rows (circa)
 /*!40000 ALTER TABLE `utente` DISABLE KEYS */;
 INSERT INTO `utente` (`nomeUtente`, `nome`, `cognome`, `dataNascita`, `indirizzo`, `citta`, `credito`, `password`, `mail`, `admin`) VALUES
 	('admin', 'Gianluca', 'Innusa', '1999-12-25', 'Via degli Admin 33', 'Castelfranco Veneto', 9999, 'admin', 'matteo16.martini@outlook.it', 1),
-	('utente', 'utente', 'utente', '2000-03-03', 'Via degli utenti 69', 'quella bella', 100, 'utente', 'random@random.com', 0);
+	('utente', 'utente', 'utente', '2000-03-03', 'Via degli utenti 69', 'quella bella', 400, 'utente', 'random@random.com', 0),
+	('utente2', 'rewqrewq', 'rewqrewq', '0004-04-04', 'rewqrewq', 'fewqfewq', 75, 'utente2', 'fdasfdsa@fdsafd.it', 0);
 /*!40000 ALTER TABLE `utente` ENABLE KEYS */;
 
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
