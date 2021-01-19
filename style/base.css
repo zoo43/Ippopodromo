@@ -102,10 +102,11 @@ body{
 
 .init {
   position: relative;
+  top: 0px;
+  left: 0px;
   width: 100% !important;
-  height: 750px !important;
-  background: rgb(50, 50, 50);
-  background: url("../images/ippodromoCostantino.jpg") no-repeat 50% 50% fixed;
+  height: 33em !important;
+  background: url("../images/ippodromoCostantino.jpg") no-repeat 50% 50% fixed;  /*fixa e home e` responsiva*/
   background-size: 130%;
   overflow: hidden;
   border-radius: var(--border-radius);
@@ -168,6 +169,7 @@ section{
   border-radius: var(--border-radius);
   position: relative;
   margin: 10px 0 0 0;
+  vertical-align: middle;
 }
 
 section:last-child{
@@ -216,10 +218,13 @@ section:last-child{
 
 
 .cards {
+  width: 100%;
   padding: 0px;
   background: transparent;
-  display: table;
-  vertical-align: center;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-self: center;
   margin: 2px 0px 2px 0px;
 }
  .card {
@@ -228,8 +233,6 @@ section:last-child{
   width: calc(33.3% - 15px);
   margin: 5px 5px 5px 5px;
   border-radius: var(--border-radius);
-  display: inline-block;
-  vertical-align: center;
 }
 .card .headline {
   display: block;
