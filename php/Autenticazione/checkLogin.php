@@ -26,6 +26,7 @@ if(isset($_POST['login'])){
         $_SESSION["error"] = 'Nome Utente o password errati';
         header("location:login.php");
     }
+    mysqli_free_result($result);
 	}else
 	{
 		printf("Si è verificato un errore di connessione. Si prega di attendere prima di riprovare.");

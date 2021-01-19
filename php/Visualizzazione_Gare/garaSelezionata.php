@@ -3,7 +3,6 @@ require_once('../database.php');
 $url = $_SERVER['REQUEST_URI'];    
 $url_components = parse_url($url); 
 parse_str($url_components['query'], $params); 
-     
 
 $dbAccess = new DBAccess();
 $conn = $dbAccess->openDBConnection();
@@ -16,9 +15,10 @@ echo "<p>Posizione Cavallo </p>";
 while($row = mysqli_fetch_array($result))
 {
     $data = $row['dataGara'];
-    echo "<p> ". $row['posizione'] . " " . $row['idCavallo'] . "</p>" ;
+    echo "<p> ". $row['posizione'] . " " . $row['nome'] . "</p>" ;
 }
 echo "<p>Gara svoltasi in data: " . $data . "</p>";
+mysqli_free_result($result);
 }
 else
 {
