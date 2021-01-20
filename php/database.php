@@ -84,7 +84,7 @@ class DBAccess{
    {
        if($cavalloNuovo)
        {
-           $query = "SELECT cavallo.idCavallo,descrizione, posizione, dataGara,nome, immagine FROM (cavallo INNER JOIN partecipante ON cavallo.idCavallo = partecipante.idCavallo)
+           $query = "SELECT cavallo.idCavallo, descrizione, posizione, dataGara, nome, immagine, velocita, fiducia FROM (cavallo INNER JOIN partecipante ON cavallo.idCavallo = partecipante.idCavallo)
            INNER JOIN gara ON gara.idGara=partecipante.idGara
            WHERE cavallo.idCavallo = '$id' AND gara.stato=2";
            $result = mysqli_query($this->connection, $query);
@@ -97,7 +97,7 @@ class DBAccess{
        }
        else
        {
-           $query = "SELECT idCavallo, descrizione, nome, immagine FROM cavallo WHERE cavallo.idCavallo = '$id'";
+           $query = "SELECT idCavallo, descrizione, nome, immagine, velocita, fiducia FROM cavallo WHERE cavallo.idCavallo = '$id'";
            $result = mysqli_query($this->connection, $query);
            return $result;
        }

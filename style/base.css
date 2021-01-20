@@ -33,7 +33,8 @@
   --clr2: #efefef;
   --clr3: #339933;
   --clr4: #cc9900;
-  --clr3: #2d862d;
+  --clr5: #2d862d;
+  --clr6: #ff6666;
 }
 
 body{
@@ -117,7 +118,7 @@ body{
   height: 33em !important;
   background: url("../images/ippodromoCostantino.jpg") no-repeat fixed; 
   background-position: center;
-  background-size: 130%;
+  background-size: 100%;
   overflow: hidden;
   border-radius: var(--border-radius);
 }
@@ -192,6 +193,7 @@ section:last-child{
   width: calc(100% - 10px);
   padding: 5px 0px 5px 0px;
   margin: 0 5px 0 5px;
+  background: var(--clr1);
 }
 .contentbox .headline{
   display: block;
@@ -237,12 +239,15 @@ section:last-child{
   margin: 2px 0px 2px 0px;
   text-align: center;
 }
- .card {
+.card {
   min-width: 33em;
-  background: var(--clr2);
+  background: var(--clr1);
   width: calc(33.3% - 15px);
   margin: 5px 5px 5px 5px;
   border-radius: var(--border-radius);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 .card .headline {
   display: block;
@@ -257,7 +262,7 @@ section:last-child{
   display: block;
   margin: 10px auto;
   max-width: 500px;
-  height: 18px;
+  height: 20px;
   background: var(--clr3);
   border-radius: var(--text-radius);
 }
@@ -272,6 +277,7 @@ section:last-child{
 
 .cards .content {
   padding: 40px;
+  vertical-align: bottom;
 }
 .cards img {
   width: 100%;
@@ -333,4 +339,16 @@ footer ul li{
   position: absolute;
   right: 5px;
   bottom: 5px;
+}
+
+
+
+
+#gare-cavallo{
+  min-width: 33em;
+
+  width: calc(66.6% - 15px);
+  height: auto;
+  flex-direction: column;
+  align-self: center;
 }

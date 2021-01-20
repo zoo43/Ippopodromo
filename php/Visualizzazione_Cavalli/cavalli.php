@@ -10,12 +10,12 @@ if ($conn) {
 	$result = $dbAccess->getCavalli();
 	while ($row = mysqli_fetch_array($result)) {
 		$cavallo = '<div class="card">
-          <img src="../../images/<foto-cavallo />" alt="<descrizione-cavallo />" />
+          <img src="../../images/<foto-cavallo />" alt="<descrizione-cavallo />"/>
           <div class="content">
             <div class="headline"> <h2><nome-cavallo /></h2> </div>
             <div class="text"> <h3>Fiducia: <fiducia-cavallo /></h3> </div>
             <div class="text"> <h3>Velocità: <velocita-cavallo /></h3>  </div>
-            <div class="button"> <p><a href="cavalloSelezionato.php?value=<id-cavallo />">Informazioni</a></p> </div>
+            <div class="button"> <h4><a href="cavalloSelezionato.php?value=<id-cavallo />">Informazioni</a></h4> </div>
           </div>
         </div>';
 		$cavallo = str_replace(
