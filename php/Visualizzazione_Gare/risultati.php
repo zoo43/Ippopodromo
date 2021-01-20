@@ -1,5 +1,6 @@
 <?php
 require_once('../database.php');
+require_once('../../index.php');
 
 $lista_gare = "";
 
@@ -31,5 +32,6 @@ $pagina = str_replace(
     array($lista_gare, ""),
     $pagina
 );
+$pagina = areaAutenticazione($pagina);
 
 echo $pagina;

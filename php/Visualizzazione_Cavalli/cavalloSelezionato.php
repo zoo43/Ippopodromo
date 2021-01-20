@@ -1,5 +1,6 @@
 <?php
 require_once('../database.php');
+require_once('../../index.php');
 $url = $_SERVER['REQUEST_URI'];
 $url_components = parse_url($url);
 parse_str($url_components['query'], $params);
@@ -43,5 +44,6 @@ $pagina = str_replace(
     array($nome, $meta_title, $descrizione, $fiducia, $velocita, $stanchezza, $gare, $immagine),
     $pagina
 );
+$pagina = areaAutenticazione($pagina);
 
 echo $pagina;
