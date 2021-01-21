@@ -1,5 +1,6 @@
 <?php
 session_Start();
+
 $admin = "";
 $scommessa = "";
 if(isset($_SESSION["username"]))
@@ -26,5 +27,7 @@ echo str_replace(
     $pagina
 );
 
+$pagina = areaAutenticazione(file_get_contents('html/index.html'));
+echo $pagina;
 
 ?>
