@@ -183,7 +183,7 @@ class DBAccess{
        $bool = false;
         for($i=0;$i<count($posizioni);$i++)
         {
-            $query = "UPDATE partecipante SET  posizione" . "=". $posizioni[$i]." WHERE idGara='$idGara' AND idCavallo='". $idCavalli[$i]['id'] ."'";
+            $query = "UPDATE partecipante SET posizione" . "=". $posizioni[$i]." WHERE idGara='$idGara' AND idCavallo='". $idCavalli[$i]['id'] ."'";
             mysqli_query($this->connection, $query);
             if(mysqli_affected_rows($this->connection)>0){
                 $bool=true;
@@ -194,7 +194,6 @@ class DBAccess{
         }
 
         $query = "UPDATE gara SET stato='2' where idGara='$idGara'"; 
-        echo $query;
         mysqli_query($this->connection, $query);
         if(mysqli_affected_rows($this->connection)>0){
             $bool = true;
@@ -207,6 +206,20 @@ class DBAccess{
    
 
    //Scommesse
+
+	public function getCreditoUtente($username)
+	{
+		$query = "SELECT credito FROM utente WHERE nomeUtente='".$username."'";
+		$result = mysqli_query($this->connection, $query);
+		return $result;
+	}
+	
+	public function getScommesseUtente($username)
+	{
+		$query = "SELECT DISTINCT scommessa.idGara,scommessa.idCavallo, dataGara, cavallo.nome,puntata FROM scommessa INNER JOIN partecipante ON scommessa.idGara = partecipante.idGara INNER JOIN cavallo ON scommessa.idCavallo = cavallo.idCavallo INNER JOIN gara ON partecipante.idGara = gara.idGara WHERE nomeUtente='".$username."'";
+		$result = mysqli_query($this->connection, $query);
+		return $result;
+	}
 
     public function updateDopoPagamento($username, $costo)
 	{
@@ -233,6 +246,33 @@ class DBAccess{
 		{
 			return false;
 		}
+	}
+	
+	public function confermaScommesse($idGara)
+	{
+		$noError = true;
+		$query = "SELECT * FROM scommessa WHERE idCavallo=(SELECT idCavallo FROM partecipante WHERE idGara=".$idGara." AND posizione=1) AND idGara=".$idGara." AND stato=0";
+		$resultQuery = mysqli_query($this->connection, $query);
+		while($row = mysqli_fetch_array($resultQuery))
+		{
+			$toAdd = $row['puntata']*2;
+			$queryUpdateCredito = "UPDATE utente SET credito"."=credito+".$toAdd." WHERE nomeUtente"." ='".$row['nomeUtente']."'";
+			if($this->connection->query($queryUpdateCredito))
+			{
+				$queryUpdateStatoScommessa = "UPDATE scommessa SET stato=1 WHERE nomeUtente='".$row['nomeUtente']."' AND idGara=".$idGara;
+				if($this->connection->query($queryUpdateStatoScommessa))
+				{
+					return true;
+				}
+				else{
+					return false;
+				}
+			}
+			else{
+				return false;
+			}
+		}
+		return false;
 	}
 }
 	
