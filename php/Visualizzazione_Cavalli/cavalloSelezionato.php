@@ -1,5 +1,6 @@
 <?php
 require_once('../database.php');
+require_once('../auth.php');
 $url = $_SERVER['REQUEST_URI'];    
 $url_components = parse_url($url); 
 parse_str($url_components['query'], $params); 
@@ -13,6 +14,7 @@ $cavallo = '<div id="info-cavallo" class="card">';
 $lista_gare = '<section id="gare-cavallo" class="contentbox">';
 
 $lista_gare .= '<div class="headline"><h1>Gare Corse</h1></div>';
+$nome_cavallo= '';
 
 if($conn)
 {
@@ -55,6 +57,7 @@ if($conn)
         );
         $cavallo .= $Scavallo;
         $apertura .= $immagine . '\') no-repeat fixed; background-position: center; background-size: 100%;"> <h1>'. $nome .'</h1>';
+        $nome_cavallo = $nome;
     }
     else
     {
@@ -80,6 +83,7 @@ if($conn)
         );
         $cavallo .= $Scavallo;
         $apertura .= $row['immagine'] . '\') no-repeat fixed; background-position: center; background-size: 100%;"> <h1>'. $row['nome'] .'</h1>';
+        $nome_cavallo = $row['nome'];
     }
     mysqli_free_result($result);
 }
@@ -94,9 +98,12 @@ $lista_gare .= ' </section>';
 $apertura .= ' </div>';
 
 $pagina = file_get_contents('../../html/cavalli/cavalloSelezionato.html');
+
+$pagina = str_replace("<nome-cavallo />", $nome_cavallo, $pagina);
 $pagina = str_replace("<apertura-cavallo />", $apertura, $pagina);
 $pagina = str_replace("<info-cavallo />", $cavallo, $pagina);
 $pagina = str_replace("<gare-cavallo />", $lista_gare, $pagina);
+$pagina = areaAutenticazione($pagina);
 
 echo $pagina;
 ?>

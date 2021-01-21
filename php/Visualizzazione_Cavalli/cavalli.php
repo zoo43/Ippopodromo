@@ -1,5 +1,6 @@
 <?php
 require_once('../database.php');
+require_once('../auth.php');
 
 $lista_cavalli = '<div id="lista-cavalli" class="cards">';
 
@@ -34,6 +35,8 @@ $dbAccess->closeDBConnection();
 $lista_cavalli .= '</div>';
 
 $pagina = file_get_contents('../../html/cavalli/cavalli.html');
+$pagina = areaAutenticazione($pagina);
 $pagina = str_replace("<lista-cavalli />", $lista_cavalli, $pagina);
+
 
 echo $pagina;
