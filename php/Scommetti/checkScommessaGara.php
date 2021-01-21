@@ -17,8 +17,6 @@ if($conn)
 	{
 		if($dbAccess->aggiuntaScommessa($_SESSION['username'],$_POST['numeroGara'],$_POST['numeroCavallo'],$_POST['valorePuntata']))
 		{
-			$row = $dbAccess->getCreditoUtente($_SESSION['username']);
-			$_SESSION['credito'] = mysqli_fetch_array($row)['credito'];
 			echo('Il pagamento è avvenuto con successo');
 		}else
 		{

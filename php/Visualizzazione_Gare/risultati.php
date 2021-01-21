@@ -1,6 +1,6 @@
 <?php
 require_once('../database.php');
-require_once('../../index.php');
+require_once('../auth.php');
 
 $lista_gare = "";
 
@@ -24,7 +24,6 @@ else
 {
 	printf("Si è verificato un errore di connessione. Si prega di attendere prima di riprovare.");
 }
-
 $dbAccess->closeDBConnection();
 
 $pagina = file_get_contents('../../html/gare/risultati.html');

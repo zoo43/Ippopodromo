@@ -1,58 +1,108 @@
 <?php
 require_once('../database.php');
-require_once('../../index.php');
-$url = $_SERVER['REQUEST_URI'];
-$url_components = parse_url($url);
-parse_str($url_components['query'], $params);
+require_once('../auth.php');
+$url = $_SERVER['REQUEST_URI'];    
+$url_components = parse_url($url); 
+parse_str($url_components['query'], $params); 
+
 $dbAccess = new DBAccess();
-
-$nome = "";
-$immagine = '<img src="../../images/';
-$descrizione = "";
-$descrizione = "";
-$fiducia = "";
-$velocita = "";
-$stanchezza = "";
-$gare = '<table class="risultati-gare"><thead><th>Data</th><th>Posizione</th><tfoot></tfoot><tbody>';
-
 $conn = $dbAccess->openDBConnection();
-if ($conn) {
-    $result = $dbAccess->getInfoCavallo($params['value']);
 
-    if($result) {
-       $num_riga = 0;
-       while ($row = mysqli_fetch_array($result)) {
-           $nome = $nome === "" ? $row['nome'] : $nome;
-           $immagine = $immagine === '<img src="../../images/' ? $immagine . $row['immagine'] . '" alt="Foto di ' . $nome . '" />' : $immagine;
-           $descrizione = $descrizione === "" ? $row['descrizione'] : $descrizione;
-           $fiducia = $fiducia === "" ? $row['fiducia'] : $fiducia;
-           $velocita = $velocita === "" ? $row['velocita'] : $velocita;
-           $stanchezza = $stanchezza === "" ? $row['stanchezza'] : $stanchezza;
-           $gare .= '<tr class="row-'. $num_riga % 2 . '"><td>' . $row['dataGara'] .'</td><td>'.$row['posizione'] .'</td></tr>';
-           $id++;
-       }
-    }
-    else {
+$apertura =  '<div class= "init" style="background: url(\'../../images/';
+
+$cavallo = '<div id="info-cavallo" class="card">';
+$lista_gare = '<section id="gare-cavallo" class="contentbox">';
+
+$lista_gare .= '<div class="headline"><h1>Gare Corse</h1></div>';
+$nome_cavallo= '';
+
+if($conn)
+{
+    $gareggiato=true;
+
+    $result=$dbAccess->getInfoCavallo($params['value'],true);
+    if(!$result){
         $result=$dbAccess->getInfoCavallo($params['value'],false);
-        $row = mysqli_fetch_array($result);
-        echo "<p>" .$row['nome'] ." , ". $row['descrizione'] ."<img src='../../images/".$row['immagine'] ."' alt='Immagine del cavallo ".$row['nome'] . "' </p>";
-        echo "Questo cavallo non ha ancora partecipato a nessuna gara";
-        echo "<br />";
+        $gareggiato=false;
     }
-} else {
-    printf("Si è verificato un errore di connessione. Si prega di attendere prima di riprovare.");
+
+
+    if($gareggiato)
+    { 
+        while($row = mysqli_fetch_array($result))
+        {    
+            $nome = $row['nome'];
+            $immagine = $row['immagine'];
+            $descrizione = $row['descrizione'];
+            $fiducia = $row['fiducia'];
+            $velocita = $row['velocita'];
+            $lista_gare .= '<div class="text"><p>Data: ' . $row["dataGara"] . '     Posizione: ' . $row["posizione"] . '</p></div>';
+        } 
+        $Scavallo = '
+        './/<img src="../../images/<foto-cavallo />" alt="<descrizione-cavallo />"/>
+        '<div class="content">
+        <div class="headline"> <h2><nome-cavallo /></h2> </div>
+        <div class="text"> <h3>Fiducia: <fiducia-cavallo /></h3> </div>
+        <div class="text"> <h3>Velocità: <velocita-cavallo /></h3>  </div>
+        <div class="text"> <p><descrizione-cavallo /></p>  </div>
+        </div>';
+        $Scavallo = str_replace(
+            array(//"<foto-cavallo />",
+                  "<descrizione-cavallo />", "<nome-cavallo />", "<fiducia-cavallo />", "<velocita-cavallo />"),
+            array(
+                //$immagine,
+                $descrizione, $nome, $fiducia, $velocita
+            ),
+            $Scavallo
+        );
+        $cavallo .= $Scavallo;
+        $apertura .= $immagine . '\') no-repeat fixed; background-position: center; background-size: 100%;"> <h1>'. $nome .'</h1>';
+        $nome_cavallo = $nome;
+    }
+    else
+    {
+        $row = mysqli_fetch_array($result);
+        $lista_gare .= '<div class="text"><p>Questo cavallo non ha ancora partecipato a nessuna gara </p></div>';
+
+        $Scavallo = '
+        './/<img src="../../images/<foto-cavallo />" alt="<descrizione-cavallo />"/>
+       '<div class="content">
+        <div class="headline"> <h2><nome-cavallo /></h2> </div>
+        <div class="text"> <h3>Fiducia: <fiducia-cavallo /></h3> </div>
+        <div class="text"> <h3>Velocità: <velocita-cavallo /></h3>  </div>
+        <div class="text"> <p><descrizione-cavallo /></p>  </div>
+        </div>';
+        $Scavallo = str_replace(
+            array(//"<foto-cavallo />",
+                  "<descrizione-cavallo />", "<nome-cavallo />", "<fiducia-cavallo />", "<velocita-cavallo />"),
+            array(
+                //$row['immagine'],
+                $row['descrizione'], $row['nome'], $row['fiducia'], $row['velocita']
+            ),
+            $Scavallo
+        );
+        $cavallo .= $Scavallo;
+        $apertura .= $row['immagine'] . '\') no-repeat fixed; background-position: center; background-size: 100%;"> <h1>'. $row['nome'] .'</h1>';
+        $nome_cavallo = $row['nome'];
+    }
+    mysqli_free_result($result);
+}
+else
+{
+	printf("Si è verificato un errore di connessione. Si prega di attendere prima di riprovare.");
 }
 $dbAccess->closeDBConnection();
 
-$gare .= "</tbody></table>";
-$meta_title = '<meta name="title" content="'.$nome.' - Cavallo - Ippodromo NO₂" />';
+$cavallo .= ' </div>';
+$lista_gare .= ' </section>';
+$apertura .= ' </div>';
 
 $pagina = file_get_contents('../../html/cavalli/cavalloSelezionato.html');
-$pagina = str_replace(
-    array("<nome-cavallo />", "<meta-title-cavallo />", "<descrizione />", "<fiducia />", "<velocita />", "<stanchezza />", "<risultati-gare />", "<img-cavallo />"),
-    array($nome, $meta_title, $descrizione, $fiducia, $velocita, $stanchezza, $gare, $immagine),
-    $pagina
-);
+
+$pagina = str_replace("<nome-cavallo />", $nome_cavallo, $pagina);
+$pagina = str_replace("<apertura-cavallo />", $apertura, $pagina);
+$pagina = str_replace("<info-cavallo />", $cavallo, $pagina);
+$pagina = str_replace("<gare-cavallo />", $lista_gare, $pagina);
 $pagina = areaAutenticazione($pagina);
 
 echo $pagina;

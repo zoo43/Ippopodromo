@@ -18,8 +18,6 @@ if(isset($_SESSION["username"]))
 		echo "<p><a href='garaScommessa.php?value=".$row['idGara']."'>Scommetti sulla gara</p></a>";
     }
     mysqli_free_result($result);
-	
-	echo "<p><a href='scommesseUtente.php'>Visualizza le tue scommesse</a></p>";
 }
 else
 {
