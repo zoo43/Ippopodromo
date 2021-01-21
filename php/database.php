@@ -31,9 +31,11 @@ class DBAccess{
 
         $result = mysqli_query($this->connection, $query);
         if(mysqli_num_rows($result)>0){
+            mysqli_free_result($result);
             return true;
         }
         else{
+            mysqli_free_result($result);
             return false;
         }
    }
@@ -65,6 +67,7 @@ class DBAccess{
            return $result;
        }
        else{
+            mysqli_free_result($result);
            return false;
        }
    }
@@ -77,22 +80,45 @@ class DBAccess{
        return $result;
    }
 
-   public function getInfoCavallo($id)
+   public function getInfoCavallo($id,$cavalloNuovo)
    {
-       $query = "SELECT cavallo.idCavallo,descrizione, posizione, dataGara,nome, immagine, fiducia, stanchezza, velocita FROM (cavallo INNER JOIN partecipante ON cavallo.idCavallo = partecipante.idCavallo)
-       INNER JOIN gara ON gara.idGara=partecipante.idGara
-       WHERE cavallo.idCavallo = '$id' AND gara.stato=2";
-       $result = mysqli_query($this->connection, $query);
-       return $result;
+       if($cavalloNuovo)
+       {
+           $query = "SELECT cavallo.idCavallo, descrizione, posizione, dataGara, nome, immagine, fiducia, stanchezza, velocita FROM (cavallo INNER JOIN partecipante ON cavallo.idCavallo = partecipante.idCavallo)
+           INNER JOIN gara ON gara.idGara=partecipante.idGara
+           WHERE cavallo.idCavallo = '$id' AND gara.stato=2";
+           $result = mysqli_query($this->connection, $query);
+           if(mysqli_affected_rows($this->connection)>0)
+           {
+               return $result;
+           }
+           else
+           {  mysqli_free_result($result); return false;}
+       }
+       else
+       {
+           $query = "SELECT idCavallo, descrizione, nome, immagine, velocita, fiducia FROM cavallo WHERE cavallo.idCavallo = '$id'";
+           $result = mysqli_query($this->connection, $query);
+           return $result;
+       }
    }
 
 
    //Risultati
    public function getGare($stato)
    {
-       $query = "SELECT dataGara, idGara from Gara where stato=$stato";
-       $result = mysqli_query($this->connection, $query);
-       return $result;
+        if($stato == 2)
+        {
+            $query = "SELECT dataGara, idGara from Gara where stato=$stato";
+            $result = mysqli_query($this->connection, $query);
+            return $result;
+        }
+        else
+        {
+            $query = "SELECT dataGara, idGara from Gara where stato=$stato and dataGara< " . "'".date('Y-m-d H:i:s') ."'";
+            $result = mysqli_query($this->connection, $query);
+            return $result;
+        }
    }
 
    public function getInfoGara($id)
@@ -122,13 +148,132 @@ class DBAccess{
             $string = $arr[$i];
             $query = "INSERT INTO partecipante (idGara,idCavallo) VALUES('$id','" . $string . "')"; 
             mysqli_query($this->connection, $query);
-            echo $query;
         }
+        mysqli_free_result($result);
+        return true;
+       }
+       else{
+        mysqli_free_result($result);
+           return false;
+       }
+   }
+
+   public function caricaCavalli($nome,$velocita,$descrizione, $img)
+   {
+        $query = "INSERT INTO cavallo (nome,velocita,descrizione,immagine, fiducia,stanchezza) VALUES('$nome', '$velocita', '$descrizione','$img',15,0)";
+
+        mysqli_query($this->connection, $query);
+        if(mysqli_affected_rows($this->connection)>0){
+        return true;
        }
        else{
            return false;
        }
    }
 
+   public function getCavalliGara($idGara)
+   {
+    $query = "SELECT cavallo.idCavallo, descrizione, nome from cavallo inner join partecipante on cavallo.idCavallo=partecipante.idCavallo where idGara=$idGara";
+    $result = mysqli_query($this->connection, $query);
+    return $result;
+   }
+
+   public function updateRisultati($posizioni, $idCavalli, $idGara)
+   {
+       $bool = false;
+        for($i=0;$i<count($posizioni);$i++)
+        {
+            $query = "UPDATE partecipante SET posizione" . "=". $posizioni[$i]." WHERE idGara='$idGara' AND idCavallo='". $idCavalli[$i]['id'] ."'";
+            mysqli_query($this->connection, $query);
+            if(mysqli_affected_rows($this->connection)>0){
+                $bool=true;
+            }
+            else{
+                $bool = false;
+            }
+        }
+
+        $query = "UPDATE gara SET stato='2' where idGara='$idGara'"; 
+        mysqli_query($this->connection, $query);
+        if(mysqli_affected_rows($this->connection)>0){
+            $bool = true;
+        }
+        else{
+            $bool = false;
+        }
+        return $bool;
+   }
+   
+
+   //Scommesse
+
+	public function getCreditoUtente($username)
+	{
+		$query = "SELECT credito FROM utente WHERE nomeUtente='".$username."'";
+		$result = mysqli_query($this->connection, $query);
+		return $result;
+	}
+	
+	public function getScommesseUtente($username)
+	{
+		$query = "SELECT DISTINCT scommessa.idGara,scommessa.idCavallo, dataGara, cavallo.nome,puntata FROM scommessa INNER JOIN partecipante ON scommessa.idGara = partecipante.idGara INNER JOIN cavallo ON scommessa.idCavallo = cavallo.idCavallo INNER JOIN gara ON partecipante.idGara = gara.idGara WHERE nomeUtente='".$username."'";
+		$result = mysqli_query($this->connection, $query);
+		return $result;
+	}
+
+    public function updateDopoPagamento($username, $costo)
+	{
+	   $query = "UPDATE utente SET credito"."=credito-".$costo." WHERE nomeUtente='".$username."'";
+	   if($this->connection->query($query))
+	   {
+		  return true;
+	   }
+	   else
+	   {
+		  return false;
+	   }
+    }
+
+	
+	public function aggiuntaScommessa($username, $idGara, $idCavallo, $puntata)
+	{
+		$query = "INSERT INTO scommessa(idGara, idCavallo, nomeUtente, puntata) VALUES ('".$idGara."','".$idCavallo."','".$username."','".$puntata."')";
+		if($this->connection->query($query))
+		{
+			return $this->updateDopoPagamento($username, $puntata); 
+		}
+		else
+		{
+			return false;
+		}
+	}
+	
+	public function confermaScommesse($idGara)
+	{
+		$noError = true;
+		$query = "SELECT * FROM scommessa WHERE idCavallo=(SELECT idCavallo FROM partecipante WHERE idGara=".$idGara." AND posizione=1) AND idGara=".$idGara." AND stato=0";
+		$resultQuery = mysqli_query($this->connection, $query);
+		while($row = mysqli_fetch_array($resultQuery))
+		{
+			$toAdd = $row['puntata']*2;
+			$queryUpdateCredito = "UPDATE utente SET credito"."=credito+".$toAdd." WHERE nomeUtente"." ='".$row['nomeUtente']."'";
+			if($this->connection->query($queryUpdateCredito))
+			{
+				$queryUpdateStatoScommessa = "UPDATE scommessa SET stato=1 WHERE nomeUtente='".$row['nomeUtente']."' AND idGara=".$idGara;
+				if($this->connection->query($queryUpdateStatoScommessa))
+				{
+					return true;
+				}
+				else{
+					return false;
+				}
+			}
+			else{
+				return false;
+			}
+		}
+		return false;
+	}
 }
+	
 ?>

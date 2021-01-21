@@ -28,6 +28,7 @@ if($conn)
             $classifica = '<tr><td colspan="2">Attendi la fine della gara per vedere la classifica finale.</td></tr>';
         }
     }
+
 }
 else
 {
