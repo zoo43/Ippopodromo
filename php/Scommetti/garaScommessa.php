@@ -52,7 +52,8 @@
 <body>
 <?php
 require_once('../database.php');
-session_Start();
+require_once('../auth.php');
+
 
 $url = $_SERVER['REQUEST_URI'];    
 $url_components = parse_url($url); 

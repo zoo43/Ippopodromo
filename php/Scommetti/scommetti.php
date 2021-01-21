@@ -1,6 +1,6 @@
 <?php
 require_once('../database.php');
-session_Start();
+require_once('../auth.php');
 
 $dbAccess = new DBAccess();
 $conn = $dbAccess->openDBConnection();
