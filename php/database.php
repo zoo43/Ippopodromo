@@ -262,16 +262,20 @@ class DBAccess{
 				$queryUpdateStatoScommessa = "UPDATE scommessa SET stato=1 WHERE nomeUtente='".$row['nomeUtente']."' AND idGara=".$idGara;
 				if($this->connection->query($queryUpdateStatoScommessa))
 				{
+                    mysqli_free_result($resultQuery);
 					return true;
 				}
 				else{
+                    mysqli_free_result($resultQuery);
 					return false;
 				}
 			}
 			else{
+                mysqli_free_result($resultQuery);
 				return false;
 			}
-		}
+        }
+        mysqli_free_result($resultQuery);
 		return false;
 	}
 }

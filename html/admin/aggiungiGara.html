@@ -28,9 +28,16 @@
             }
             var currentTime = ora + ':' + minuti;
         
+            var min = "08:00:00";
+            if(currentTime>min)
+            {
+                min=currentTime;
+            }
+
             document.getElementById('date').setAttribute("min", currentDate);
             document.getElementById('date').setAttribute("value", currentDate);
             document.getElementById('time').setAttribute("value", currentTime);
+            document.getElementById('time').setAttribute("min", min);
         }
 
         function controllaNumeroCavalli()
@@ -77,7 +84,7 @@
         <form method="post" action="../Admin/caricaGara.php">
             <h1>Scegli i dati della gara! (Ricorda, una gara deve avere almeno 4 cavalli e un massimo di 8)</h1>         
             <input type="date" id="date" name="date" required>
-            <input type="time" id="time" name="time" min="08:00:00" max="22:00:00" required>
+            <input type="time" id="time" name="time" max="22:00:00" required>
             <cavalli />
             <button id='btn' type="submit" name="register" disabled>Inserisci</button>
         </form>
