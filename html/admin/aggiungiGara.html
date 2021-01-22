@@ -18,9 +18,9 @@
             var date = new Date();
             var currentDate = date.toISOString().slice(0,10);
         
-            var ora = date.getHours()+1;
+            var ora = date.getHours();
             var minuti = date.getMinutes();
-            if (date.getHours()+1 < 10) {
+            if (date.getHours() < 10) {
                 ora = "0" + ora;
             }
             if (date.getMinutes() < 10) {

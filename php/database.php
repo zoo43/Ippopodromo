@@ -10,13 +10,15 @@ class DBAccess{
 
    //Connessioni
    public function openDBConnection(){
-       $this->connection = mysqli_connect(DBAccess::SERVERNAME, DBAccess::USERNAME, DBAccess::PASSWORD, DBAccess::DBNAME);
-      if(!($this->connection)){
-			return false;
+
+      if(!(mysqli_connect(DBAccess::SERVERNAME, DBAccess::USERNAME, DBAccess::PASSWORD, DBAccess::DBNAME))){
+            return false;
        }
        else{
+            $this->connection = mysqli_connect(DBAccess::SERVERNAME, DBAccess::USERNAME, DBAccess::PASSWORD, DBAccess::DBNAME);
            return true;
        }
+
    }
 
    public function closeDBConnection(){
