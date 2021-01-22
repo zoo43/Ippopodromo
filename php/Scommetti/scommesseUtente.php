@@ -1,6 +1,6 @@
 <?php 
 require_once('../database.php');
-session_Start();
+require_once('../auth.php');
 
 $dbAccess = new DBAccess();
 $conn = $dbAccess->openDBConnection();
@@ -21,6 +21,7 @@ if($conn)
 				print("<br />");
 			}
 		}
+		mysqli_free_result($userResult);
 	}
 	$dbAccess->closeDBConnection();
 	echo "<p><a href='scommetti.php'> Torna indietro </a></p>";

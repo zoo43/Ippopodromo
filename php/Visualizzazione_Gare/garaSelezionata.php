@@ -1,5 +1,7 @@
 <?php
 require_once('../database.php');
+require_once('../auth.php');
+
 $url = $_SERVER['REQUEST_URI'];    
 $url_components = parse_url($url); 
 parse_str($url_components['query'], $params); 

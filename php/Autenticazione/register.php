@@ -17,7 +17,7 @@ session_start();
         </script>
 </head>
 <body>
-    <form method="post" onsubmit="return validazioneInput()" action="checkRegister.php">
+    <form method="post" onsubmit="return validazioneInput()" action="check.php">
         <h1>Registrazione</h1>
         <input type="text" id="username" placeholder="Nome Utente" name="username" maxlength="50" required>
         <input type="password" id="password" placeholder="Password" name="password" minlength="6" required>

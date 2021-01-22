@@ -2,70 +2,152 @@
 <html lang="it">
 
 <head>
-  <title>Ippodromo NO₂</title> <!-- nitrito hihihihi -->
-  <meta name="title" content="Ippodromo" />
-  <meta name="description" content="" />
-  <meta name="keywords" content="" />
-  <meta charset="UTF-8">
-  <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
-  <link rel="stylesheet" type="text/css" href="style/style.css" media="screen" />
-  <link rel="stylesheet" type="text/css" href="style/small.css" media="" />
-  <link rel="stylesheet" type="text/css" href="style/print.css" media="print" />
+    <title>Ippodromo NO₂</title> <!-- nitrito hihihihi -->
+    <meta name="title" content="Ippodromo" />
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <meta charset="UTF-8">
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+    <link rel="stylesheet" type="text/css" href="style/base.css"/>
+    <link rel="stylesheet" type="text/css" href="style/small.css" media="" />
+    <link rel="stylesheet" type="text/css" href="style/print.css" media="print" />
 </head>
 
 <body>
-  <header>
-    <div id="breadcrumb">
-      <!-- potrebbe essere inutile dato dato che non abbiamo molto da andare in profonditá-->
+
+    <!-- <header>
+        <div id="breadcrumb">
+            <!-- potrebbe essere inutile dato dato che non abbiamo molto da andare in profonditá-!->
+            <ul>
+                <li lang="en">Home</li>
+            </ul>
+        </div>
+        <nav id="menu">
+            <ul>
+                <li lang="en">Home</li>
+                <li><a href="php/Scommetti/scommetti.php">Scommesse</a></li>
+                <li><a href="php/Visualizzazione_Gare/risultati.php">Gare</a></li>
+                <li><a href="php/Visualizzazione_Cavalli/cavalli.php">Cavalli</a></li>
+                <autenticazione /> <!-- controlla sulla sessione per vedere se aggiungere login/register o logut -!->
+            </ul>
+        </nav>
+        <img src="images/logo.jpg" alt="logo ippodromo rimuovi questo alt" />
+    </header> -->
+    <nav class="navTop">
+      <div class="nav-bg"></div>
+      <h1 lang="en">Home</h1>
       <ul>
-        <li lang="en">Home</li>
-      </ul>
-    </div>
-    <nav id="menu">
-      <ul>
-        <li lang="en">Home</li>
+        <li lang="en"><a>Home</a></li>
+        <li><a href="php/Scommetti/scommetti.php">Scommesse</a></li>
         <li><a href="php/Visualizzazione_Gare/risultati.php">Gare</a></li>
         <li><a href="php/Visualizzazione_Cavalli/cavalli.php">Cavalli</a></li>
-        <li><a href='php/Scommetti/scommetti.php'>Scommesse</a></li>
-        <autenticazione /> <!-- controlla sulla sessione per vedere se aggiungere login/register o logut -->
-      </ul>
-    </nav>
-    <img src="images/logo.jpg" alt="logo ippodromo rimuovi questo alt" />
-  </header>
-  <main>
+        <li><a> / </a></li>
+        <admin />
+        <autenticazione />
+    </ul>
+</nav>
+
+
+<div class="init">
     <h1>Ippodromo NO₂</h1>
-    <dl id="home-content" class="content">
-      <div class="dl-element left-element">
-        <!-- left/right si puó mettere come id se serve -->
-        <dt>cose ippodromo</dt>
-        <dd>
-          <img src="images/ippodromo.jpg" alt="Vista aerea notturna del nostro ippodromo" />
-          <p>blah blah</p>
-        </dd>
-      </div>
-      <div class="dl-element right-element">
-        <dt>Scommesse</dt>
-        <dd>
-          <img src="images/scommesse.jpg" alt="" /> <!-- non so se vada messa, non é molto di contenuto -->
-          <p>qui puoi fare scommesse in tempo reale ecc. ecc.</p>
-        </dd>
-      </div>
-      <div class="dl-element left-element">
-        <dt>Valuta virtuale: Cookies</dt>
-        <dd>
-          <img src="images/cookies.jps" alt="Il simbolo della moneta é un bisotto" />
-          <!-- non so se vada messa, non é molto di contenuto -->
-          <p>Utilizza la nostra valuta per scommettere e non dover accedere di continuo al tuo conto bancario. Otterrai
-            non so quanti cookies gratuiti se decidi di registrarti!</p>
-        </dd>
-      </div>
-    </dl>
-  </main>
-  <footer>
-    <img id="img-valid-code" src="images/valid-xhtml10.png" alt="HTML valido" />
-    <img id="img-valid-css" src="images/vcss-blue.gif" alt="CSS valido" /> <!-- cambiare src dopo aver validato -->
-    boh info varie su noi che non ricordo quali fossero ma si posso aggiungere
-  </footer>
+</div>
+<div class="wrapper">
+    <div class="wrap">
+        <div class="contenuto">
+            <dl id="home-content" class="content">
+                <div class="dl-element left-element">
+                    <!-- left/right si puó mettere come id se serve -->
+                    <dt>cose ippodromo</dt>
+                    <dd>
+                        <img src="images/ippodromoNO.jpg" alt="Vista aerea notturna del nostro ippodromo" />
+                        <p>blah blah</p>
+                    </dd>
+                </div>
+                <div class="dl-element right-element">
+                    <dt>Scommesse</dt>
+                    <dd>
+                        <img src="images/scommesse.jpg" alt="" /> <!-- non so se vada messa, non é molto di contenuto -->
+                        <p>qui puoi fare scommesse in tempo reale ecc. ecc.</p>
+                    </dd>
+                </div>
+                <div class="dl-element left-element">
+                    <dt>Valuta virtuale: Cookies</dt>
+                    <dd>
+                        <img src="images/cookies.jps" alt="Il simbolo della moneta é un bisotto" />
+                        <!-- non so se vada messa, non é molto di contenuto -->
+                        <p>Utilizza la nostra valuta per scommettere e non dover accedere di continuo al tuo conto bancario.
+                            Otterrai
+                        non so quanti cookies gratuiti se decidi di registrarti!</p>
+                    </dd>
+                </div>
+            </dl>
+        </div>
+
+
+        <div class="cards">
+            <div class="card">
+              <img src="https://imgplaceholder.com/500x300/transparent/ddd/ion-image" alt="">
+              <div class="content">
+                <div class="headline"></div>
+                <div class="text"></div>
+                <div class="text"></div>
+                <div class="button"></div>
+            </div>
+        </div>
+        <div class="card">
+          <img src="https://imgplaceholder.com/500x300/transparent/ddd/ion-image" alt="">
+          <div class="content">
+            <div class="headline"></div>
+            <div class="text"></div>
+            <div class="text"></div>
+            <div class="button"></div>
+        </div>
+    </div>
+    <div class="card">
+      <img src="https://imgplaceholder.com/500x300/transparent/ddd/ion-image" alt="">
+      <div class="content">
+        <div class="headline"></div>
+        <div class="text"></div>
+        <div class="text"></div>
+        <div class="button"></div>
+    </div>
+</div>
+</div>
+
+<section class="contentbox">
+    <div class="headline"><h1>cose ippodromo</h1></div>
+    <div class="text"><p>blah</p></div>
+    <div class="text"><p>blah</p></div>
+    <div class="text"><p>blah</p></div>
+    <div class="text"><p>blah</p></div>
+    <div class="text"><p>blah</p></div>
+    <div class="text"><p>blah</p></div>
+    <div class="text"><p>blah</p></div>
+    <div class="text"></div>
+    <div class="text"></div>
+    <div class="button"></div>
+</section>
+
+</div>
+</div>
+
+<footer>
+  <div class="content">
+      <div><img class="logo" src="images/logo.jpg" alt="Logo"/></div>
+      
+      <nav>
+        <ul>
+          <li>Sam</li>
+          <li>Dam</li>
+          <li>Martz</li>
+      </ul>
+  </nav>
+  
+</div>
+<img id="img-valid-code" src="images/valid-xhtml10.png" alt="HTML valido"/>
+<img id="img-valid-css" src="images/vcss-blue.gif" alt="CSS valido"/>
+</footer>
+
 </body>
 
 </html>
