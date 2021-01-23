@@ -30,7 +30,6 @@ if($conn)
 					{
 						echo "Risultati gara: hai perso <br />";
 					}
-					mysqli_free_result($result);
 				}else
 				{
 					echo "Risultati gara: risultati non ancora pubblicati <br />";
@@ -39,7 +38,7 @@ if($conn)
 			}
 		}
 		mysqli_free_result($userResult);
-		
+		mysqli_free_result($result);
 	}
 	$dbAccess->closeDBConnection();
 	echo "<p><a href='scommetti.php'> Torna indietro </a></p>";

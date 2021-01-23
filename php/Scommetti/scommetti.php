@@ -13,12 +13,24 @@ if(isset($_SESSION["username"]))
     echo $username . " Credito:" . $credito;
     $result = $dbAccess->getGare("0");
     while($row = mysqli_fetch_array($result))
-    {          
-        echo "<p>" . "Numero Gara: ". $row['idGara'] . " Data della Gara:" . $row['dataGara'] ."</p>";  
+    {
+	$insert = true;
+	$lsu = $dbAccess->getScommesseUtente($username);
+		while($rowlsu = mysqli_fetch_array($lsu)) 
+		{
+			if($rowlsu['idGara'] == $row['idGara'])
+			{
+				$insert = false;
+			}
+		}
+		if($insert){
+		echo "<p>" . "Numero Gara: ". $row['idGara'] . " Data della Gara:" . $row['dataGara'] ."</p>";  
 		echo "<p><a href='garaScommessa.php?value=".$row['idGara']."'>Scommetti sulla gara</p></a>";
+		}
+		mysqli_free_result($lsu);
     }
 	
-	echo "<a href='scommesseUtente.php'>Visualizza le tue scommesse</a>";
+	echo "<p><a href='scommesseUtente.php'>Visualizza le tue scommesse</a></p>";
     mysqli_free_result($result);
 }
 else
