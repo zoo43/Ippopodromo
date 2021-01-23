@@ -1,8 +1,7 @@
 <?php 
 require_once('../database.php');
 
-
-
+$risultatiAggiunta = '';
 $dbAccess = new DBAccess();
 $conn = $dbAccess->openDBConnection();
 
@@ -11,20 +10,18 @@ if(isset($_POST['register']))
 {
 if($conn)
 {
-if($dbAccess->caricaGare($_POST['date'], $_POST['time'], $_POST['cavalli']))
-{
-    echo "Gara inserita con successo";
-}
-else
-{
-    echo "C'è stato un problema";
-}
-
-echo "//Pulsante per tornare indietro";
-$dbAccess->closeDBConnection();
+    if($dbAccess->caricaGare($_POST['date'], $_POST['time'], $_POST['cavalli']))
+    {
+        $risultatiAggiunta = "<p class='inserimentoRiuscito>Gara inserita con successo</p>";
+    }
+    else
+    {
+        $risultatoAggiunta .= "<p class='inserimentoFallito'>C'è stato un problema</p>";
+    }
+    $dbAccess->closeDBConnection();
 }
 else{
-echo "Problema di connessione al DB";}
+    $risultatoAggiunta = "<p class='inserimentoFallito'>Problema di connessione al DB</p>";}
 }
 else{
 $cavalli = "";
@@ -47,14 +44,12 @@ else
 
 
 $pagina = file_get_contents("../../html/admin/aggiungiGara.html");
-
-
-echo str_replace(
-    array("<cavalli />"),
-    array($cavalli), 
+$pagina = str_replace(
+    array("<risultati-inserimento />", "<cavalli />"),
+    array($risultatiAggiunta, $cavalli), 
     $pagina
 );
 }
 
-
+echo $pagina;
 ?>

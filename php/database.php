@@ -207,7 +207,6 @@ class DBAccess{
 
    public function evitaDoppioni($name)
    {
-       echo "$name";
         $query = "select * from cavallo where nome='$name'";
 
         mysqli_query($this->connection, $query);
