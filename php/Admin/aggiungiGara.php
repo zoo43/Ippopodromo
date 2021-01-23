@@ -1,8 +1,32 @@
 <?php 
 require_once('../database.php');
 
+
+
 $dbAccess = new DBAccess();
 $conn = $dbAccess->openDBConnection();
+
+
+if(isset($_POST['register']))
+{
+if($conn)
+{
+if($dbAccess->caricaGare($_POST['date'], $_POST['time'], $_POST['cavalli']))
+{
+    echo "Gara inserita con successo";
+}
+else
+{
+    echo "C'è stato un problema";
+}
+
+echo "//Pulsante per tornare indietro";
+$dbAccess->closeDBConnection();
+}
+else{
+echo "Problema di connessione al DB";}
+}
+else{
 $cavalli = "";
 if($conn)
 {
@@ -30,4 +54,7 @@ echo str_replace(
     array($cavalli), 
     $pagina
 );
+}
+
+
 ?>

@@ -1,6 +1,9 @@
 <?php
 require_once('../database.php');
 
+
+if(isset($_POST['submit']))
+{
 $dbAccess = new DBAccess();
 $conn = $dbAccess->openDBConnection();
 
@@ -50,7 +53,7 @@ if($conn)
                 echo "tutt'apposto";
             }
             else {
-                echo "C'è stato un problema";
+                echo "C'è stato un problema con db";
             }
         } else {
         echo "C'è stato un problema";
@@ -62,5 +65,6 @@ $dbAccess->closeDBConnection();
 else
 {
     echo "Problema nel collegarsi al DB";
+}
 }
 ?>
