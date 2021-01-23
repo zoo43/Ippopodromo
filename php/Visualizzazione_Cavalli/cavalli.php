@@ -28,6 +28,7 @@ if ($conn) {
 		);
 		$lista_cavalli .= $cavallo;
 	}
+	mysqli_free_result($result);
 } else {
 	printf("Si è verificato un errore di connessione. Si prega di attendere prima di riprovare.");
 }

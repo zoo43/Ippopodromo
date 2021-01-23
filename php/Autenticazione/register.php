@@ -38,7 +38,11 @@ session_start();
         </script>
 </head>
 <body>
+<<<<<<< Updated upstream
     <form method="post" onsubmit="return validazioneInput()" action="check.php" id="register">
+=======
+    <form method="post" onsubmit="return validazioneInput()" action="check.php">
+>>>>>>> Stashed changes
         <h1>Registrazione</h1>
         <input type="text" id="username" placeholder="Nome Utente" name="username" maxlength="50" required>
         <input type="password" id="password" placeholder="Password" name="password" minlength="6" required>
