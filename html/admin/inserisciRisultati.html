@@ -12,26 +12,7 @@
     <link rel="stylesheet" type="text/css" href="style/small.css" media="" />
     <link rel="stylesheet" type="text/css" href="style/print.css" media="print" />
 
-    <script>
-        function controllaPosizioni()
-        {    
-            var x = document.getElementsByName("cavalli[]"); 
-            var y = x;
-            var uguali = false;
-            
-            for(i=0;i<x.length;i++)
-            {                
-                for(j=0;j<x.length;j++)
-                {
-                    if(x[i].value==x[j].value && x[i].value!="" && x[j].value!="" && i!=j)
-                    {
-                        uguali = true;
-                    }
-                }
-            }       
-            document.getElementById('btn').disabled=uguali;
-        }
-    </script>
+    <script type="text/javascript" src="../../script/controlli.js"></script>
 
 </head>
 

@@ -14,6 +14,10 @@ if($conn)
     {
         while($row = mysqli_fetch_array($result))
         {          
+            $arr=explode(" ",$row['dataGara']);
+            $giorno = $arr[0];
+            $ora=$arr[1];
+            
             $lista_gare .= "<li><a href='garaSelezionata.php?value=". $row['idGara'] ."'>Numero Gara: ". $row['idGara'] . " Data della Gara:" . $row['dataGara'] ."</a></li>";
         }
     }
