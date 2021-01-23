@@ -52,7 +52,8 @@
 <body>
 <?php
 require_once('../database.php');
-session_Start();
+require_once('../auth.php');
+
 
 $url = $_SERVER['REQUEST_URI'];    
 $url_components = parse_url($url); 
@@ -67,6 +68,7 @@ if($conn)
 	echo '<form method="post" onsubmit="return checkDoc($creditoUtente);" action="confirmScommessaGara.php" id="formScommessa">';
 	$result=@$dbAccess->getInfoGara($params['value']);
 	$data = mysqli_fetch_array($result)["dataGara"];
+	mysqli_free_result($result);
 	echo 'Numero Gara: <label form="formScommessa">'.$params["value"].'</label><br />';
 	echo 'Data Gara: <label form="formScommessa">'.$data.'</label><br />';
 	echo '<input type="number" name="scommessa" value="1" min="1" max='.$creditoUtente.'>'; 
@@ -77,7 +79,7 @@ if($conn)
 		print('<input type="radio" name="cavallo" value="'.$row["idCavallo"].'">'.$row["nome"]);
 		print("<br />");
 	}
-	
+	mysqli_free_result($cavGara);
 	echo '<input type="hidden" name="idGara" value="'.$params["value"].'"/>';
 	echo '<input type="hidden" name="dataGara" value="'.$data.'"/>';
 	

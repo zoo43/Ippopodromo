@@ -22,7 +22,7 @@
       <h1>Risultati gare</h1>
 
       <ul>
-        <li lang="en"><a href=".,/../index.php">Home</a></li>
+        <li lang="en"><a href="../../index.php">Home</a></li>
         <li><a href="../Scommetti/scommesse.php">Scommesse</a></li>
         <li><a>Gare</a></li>
         <li><a href="../Visualizzazione_Cavalli/cavalli.php">Cavalli</a></li>
@@ -40,9 +40,19 @@
   <div class="wrapper">
     <div class="wrap">
       <main>
-        <ol>
-          <lista-gare />
-        </ol>
+        <table>
+          <thead class="norm">
+            <tr>
+              <th scope="col">ID</th>
+              <th scope="col">Giorno</th>
+              <th scope="col">Ora</th>
+            </tr>
+          </thead>
+          <tbody>
+            <lista-gare />
+          </tbody>
+        </table>
+
       </main>
 
     </div>

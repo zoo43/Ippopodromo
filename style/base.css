@@ -268,6 +268,9 @@ section:last-child{
   background: var(--clr4);
   border-radius: var(--text-radius);
 }
+.card .button a {
+  color: #ddd;
+}
 
 .cards .content {
   padding: 40px;
@@ -278,6 +281,102 @@ section:last-child{
   height: auto;
   border-radius: var(--border-radius);
 }
+
+
+/*body {
+  line-height: 1.25;
+}*/
+
+table {
+  border: 1px solid #ccc;
+  border-collapse: collapse;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  table-layout: fixed;
+  margin: 20px 0 20px 0;
+  border-radius: var(--border-radius);
+  color: var(--clr4);
+}
+
+table caption {
+  font-size: 1.5em;
+  margin: .5em 0 .75em;
+}
+
+table tr {
+  background: var(--clr1);
+  border: 1px solid var(--clr4);
+  padding: .35em;
+  border-radius: var(--border-radius);
+}
+
+table th,
+table td {
+  padding: .625em;
+  text-align: center;
+  border-radius: var(--border-radius);
+}
+
+table td a{
+  color: #ddd;
+}
+
+table th {
+  font-size: .85em;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  border-radius: var(--border-radius);
+}
+
+@media screen and (max-width: 600px) {
+  table {
+    border: 0;
+    border-radius: var(--border-radius);
+  }
+
+  table caption {
+    font-size: 1.3em;
+  }
+  
+  .norm {
+    border: none;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+  }
+  
+  table tr {
+    border-bottom: 3px solid var(--clr4);
+    display: block;
+    margin-bottom: .625em;
+    border-radius: var(--border-radius);
+  }
+  
+  table td {
+    border-bottom: 1px solid var(--clr4);
+    display: block;
+    font-size: .8em;
+    text-align: right;
+    border-radius: var(--border-radius);
+  }
+  
+  table td::before {
+    content: attr(data-label);
+    float: left;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+  
+  table td:last-child {
+    border-bottom: 0;
+  }
+}
+
 
 footer{
   background: var(--footer-color);
