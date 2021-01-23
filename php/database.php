@@ -37,7 +37,6 @@ class DBAccess{
             return true;
         }
         else{
-            mysqli_free_result($result);
             return false;
         }
    }
@@ -204,6 +203,24 @@ class DBAccess{
             $bool = false;
         }
         return $bool;
+   }
+
+   public function evitaDoppioni($name)
+   {
+       echo "$name";
+        $query = "select * from cavallo where nome='$name'";
+
+        mysqli_query($this->connection, $query);
+
+        $result = mysqli_query($this->connection, $query);
+        
+        if(mysqli_num_rows($result)>0){
+            mysqli_free_result($result);
+            return false;
+        }
+        else{
+            return true;
+        }
    }
    
 
