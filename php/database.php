@@ -232,9 +232,16 @@ class DBAccess{
 		return $result;
 	}
 	
+	public function getPosizioneCavalloScommessa($idGara,$idCavallo)
+	{
+		$query = "SELECT DISTINCT posizione FROM scommessa,partecipante WHERE scommessa.idGara=partecipante.idGara AND scommessa.idCavallo=partecipante.idCavallo AND scommessa.idGara='".$idGara."' AND scommessa.idCavallo='".$idCavallo."'";
+		$result = mysqli_query($this->connection, $query);
+		return $result;
+	}
+	
 	public function getScommesseUtente($username)
 	{
-		$query = "SELECT DISTINCT scommessa.idGara,scommessa.idCavallo, dataGara, cavallo.nome,puntata FROM scommessa INNER JOIN partecipante ON scommessa.idGara = partecipante.idGara INNER JOIN cavallo ON scommessa.idCavallo = cavallo.idCavallo INNER JOIN gara ON partecipante.idGara = gara.idGara WHERE nomeUtente='".$username."'";
+		$query = "SELECT DISTINCT scommessa.idGara,scommessa.idCavallo, dataGara, cavallo.nome, puntata, scommessa.stato FROM scommessa INNER JOIN partecipante ON scommessa.idGara = partecipante.idGara INNER JOIN cavallo ON scommessa.idCavallo = cavallo.idCavallo INNER JOIN gara ON partecipante.idGara = gara.idGara WHERE nomeUtente='".$username."'";
 		$result = mysqli_query($this->connection, $query);
 		return $result;
 	}
