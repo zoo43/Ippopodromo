@@ -221,6 +221,26 @@ class DBAccess{
             return true;
         }
    }
+
+   public function eliminaCavallo($id)
+   {
+        $query = "select * from partecipante inner join gara on gara.idGara=partecipante.idGara where idCavallo=" . "'$id' and stato=0";
+        mysqli_query($this->connection, $query);
+        if(mysqli_affected_rows($this->connection)>0){
+            return false;
+        }
+        else{
+            $query = "delete from cavallo where idCavallo=" . "'$id'";
+            mysqli_query($this->connection, $query);
+        if(mysqli_affected_rows($this->connection)>0){
+            return true;
+        }
+        else{
+            return false;
+        }
+        }       
+
+   }
    
 
    //Scommesse

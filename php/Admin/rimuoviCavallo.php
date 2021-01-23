@@ -1,0 +1,26 @@
+<?php
+require_once('../database.php');
+$url = $_SERVER['REQUEST_URI'];    
+$url_components = parse_url($url); 
+parse_str($url_components['query'], $params); 
+
+$dbAccess = new DBAccess();
+$conn = $dbAccess->openDBConnection();
+
+
+if($conn)
+{
+    if($dbAccess->eliminaCavallo($params['value'])){
+        echo "cavallo eliminato con successo";
+    }
+    else
+    {
+        echo "problema nel dialogo con il db";
+    }
+}
+else
+{
+	printf("Si è verificato un errore di connessione. Si prega di attendere prima di riprovare.");
+}
+$dbAccess->closeDBConnection();
+?>
