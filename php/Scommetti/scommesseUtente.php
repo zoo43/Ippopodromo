@@ -21,6 +21,7 @@ if($conn)
 				print("<br />");
 			}
 		}
+		mysqli_free_result($userResult);
 	}
 	$dbAccess->closeDBConnection();
 	echo "<p><a href='scommetti.php'> Torna indietro </a></p>";

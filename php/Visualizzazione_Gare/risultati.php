@@ -2,6 +2,7 @@
 require_once('../database.php');
 require_once('../auth.php');
 
+
 $lista_gare = "";
 
 $dbAccess = new DBAccess();
@@ -19,6 +20,7 @@ if($conn)
     else {
         $lista_gare = "<li>Ancora nessuna gara si é conclusa</li>";
     }
+    mysqli_free_result($result);
 }
 else
 {

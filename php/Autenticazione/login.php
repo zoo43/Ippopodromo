@@ -11,7 +11,7 @@ session_start();
         <link rel="stylesheet" href="/css/style.css">
     </head>
     
-    <form method="post" name="Form" action="checkLogin.php">
+    <form method="post" name="Form" action="check.php">
     <h1>Login</h1>
     <input type="text" id="username" placeholder="Username" name="username" required>
     <input type="password" id="password" placeholder="Password" name="password" required>

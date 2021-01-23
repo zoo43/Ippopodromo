@@ -10,13 +10,15 @@ class DBAccess{
 
    //Connessioni
    public function openDBConnection(){
-       $this->connection = mysqli_connect(DBAccess::SERVERNAME, DBAccess::USERNAME, DBAccess::PASSWORD, DBAccess::DBNAME);
-      if(!($this->connection)){
-			return false;
+
+      if(!(mysqli_connect(DBAccess::SERVERNAME, DBAccess::USERNAME, DBAccess::PASSWORD, DBAccess::DBNAME))){
+            return false;
        }
        else{
+            $this->connection = mysqli_connect(DBAccess::SERVERNAME, DBAccess::USERNAME, DBAccess::PASSWORD, DBAccess::DBNAME);
            return true;
        }
+
    }
 
    public function closeDBConnection(){
@@ -262,16 +264,20 @@ class DBAccess{
 				$queryUpdateStatoScommessa = "UPDATE scommessa SET stato=1 WHERE nomeUtente='".$row['nomeUtente']."' AND idGara=".$idGara;
 				if($this->connection->query($queryUpdateStatoScommessa))
 				{
+                    mysqli_free_result($resultQuery);
 					return true;
 				}
 				else{
+                    mysqli_free_result($resultQuery);
 					return false;
 				}
 			}
 			else{
+                mysqli_free_result($resultQuery);
 				return false;
 			}
-		}
+        }
+        mysqli_free_result($resultQuery);
 		return false;
 	}
 }

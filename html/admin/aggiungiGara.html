@@ -18,9 +18,9 @@
             var date = new Date();
             var currentDate = date.toISOString().slice(0,10);
         
-            var ora = date.getHours()+1;
+            var ora = date.getHours();
             var minuti = date.getMinutes();
-            if (date.getHours()+1 < 10) {
+            if (date.getHours() < 10) {
                 ora = "0" + ora;
             }
             if (date.getMinutes() < 10) {
@@ -28,9 +28,16 @@
             }
             var currentTime = ora + ':' + minuti;
         
+            var min = "08:00:00";
+            if(currentTime>min)
+            {
+                min=currentTime;
+            }
+
             document.getElementById('date').setAttribute("min", currentDate);
             document.getElementById('date').setAttribute("value", currentDate);
             document.getElementById('time').setAttribute("value", currentTime);
+            document.getElementById('time').setAttribute("min", min);
         }
 
         function controllaNumeroCavalli()
@@ -74,10 +81,10 @@
         <img src="../../images/logo.jpg" alt="logo ippodromo rimuovi questo alt" />
     </header>
     <section>
-        <form method="post" action="../Admin/caricaGara.php">
+        <form method="post" action="../Admin/aggiungiGara.php">
             <h1>Scegli i dati della gara! (Ricorda, una gara deve avere almeno 4 cavalli e un massimo di 8)</h1>         
             <input type="date" id="date" name="date" required>
-            <input type="time" id="time" name="time" min="08:00:00" max="22:00:00" required>
+            <input type="time" id="time" name="time" max="22:00:00" required>
             <cavalli />
             <button id='btn' type="submit" name="register" disabled>Inserisci</button>
         </form>

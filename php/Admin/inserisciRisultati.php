@@ -9,6 +9,7 @@ parse_str($url_components['query'], $params);
 
 $dbAccess = new DBAccess();
 $conn = $dbAccess->openDBConnection();
+$risultati="";
 if($conn)
 {
     $result = $dbAccess->getCavalliGara($params['value']);
@@ -31,15 +32,12 @@ if($conn)
         $risultati = $risultati. $cavalli[$i]['name'];
         $risultati = $risultati. "<input type='number' onchange='controllaPosizioni()' id=' ".$cavalli[$i]['id']."' placeholder='Pos' name='cavalli[]' value='1' min='1' max='".count($cavalli)."' required><br/>";
     }
-
-    $pagina = file_get_contents("../../html/admin/inserisciRisultati.html");
-    echo str_replace(
-        array("<risultati />"),
-        array($risultati), 
-        $pagina
-    );
-
-
 }
+$pagina = file_get_contents("../../html/admin/inserisciRisultati.html");
+echo str_replace(
+    array("<risultati />"),
+    array($risultati), 
+    $pagina
+);
 $dbAccess ->closeDBConnection();
 ?>

@@ -10,14 +10,35 @@ session_start();
 <script type="text/javascript">
             function validazioneInput()
             {
-                var a = document.forms["Form"]["date"].value;
-                var b = document.forms["Form"]["mail"].value;
-                //Mancano da definire controlli (tipo date e mail)
+                var maggiorenne = document.getElementById('date').value;
+				if(calculate_age(new Date(maggiorenne)))
+				{
+					return true;
+				}
+				else
+				{
+					alert('Per poterti iscrivere a questo servizio devi avere più di 18 anni');
+					return false;
+				}
+            }
+			
+			function calculate_age(dob) { 
+				var diff = Date.now() - dob.getTime();
+				var age = new Date(diff); 
+				var maggiorenne = Math.abs(age.getUTCFullYear() - 1970);
+				if(maggiorenne>=18)
+				{
+					return true;
+				}
+				else
+				{
+					return false;
+				}
             }
         </script>
 </head>
 <body>
-    <form method="post" onsubmit="return validazioneInput()" action="checkRegister.php">
+    <form method="post" onsubmit="return validazioneInput()" action="check.php" id="register">
         <h1>Registrazione</h1>
         <input type="text" id="username" placeholder="Nome Utente" name="username" maxlength="50" required>
         <input type="password" id="password" placeholder="Password" name="password" minlength="6" required>

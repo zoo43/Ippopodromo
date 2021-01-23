@@ -1,10 +1,14 @@
 <?php
 require_once('../database.php');
 
+
+if(isset($_POST['submit']))
+{
 $dbAccess = new DBAccess();
 $conn = $dbAccess->openDBConnection();
 
-
+if($conn)
+{
     $target_dir = "../../images/";
     $target_file = $target_dir . basename($_FILES["img"]["name"]);
     $uploadOk = 1;
@@ -49,14 +53,18 @@ $conn = $dbAccess->openDBConnection();
                 echo "tutt'apposto";
             }
             else {
-                echo "C'è stato un problema";
+                echo "C'è stato un problema con db";
             }
         } else {
         echo "C'è stato un problema";
     }
   }
-
-
 echo "//Pulsante per tornare indietro";
 $dbAccess->closeDBConnection();
+}
+else
+{
+    echo "Problema nel collegarsi al DB";
+}
+}
 ?>
