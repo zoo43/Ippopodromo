@@ -26,15 +26,16 @@ CREATE TABLE IF NOT EXISTS `cavallo` (
   `stanchezza` int(11) NOT NULL,
   `velocita` int(11) NOT NULL,
   `nome` varchar(50) NOT NULL,
+  `ritiro` tinyint(1) NOT NULL,
   PRIMARY KEY (`idCavallo`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4;
 
 -- Dump dei dati della tabella ippopodromo.cavallo: ~3 rows (circa)
 /*!40000 ALTER TABLE `cavallo` DISABLE KEYS */;
-INSERT INTO `cavallo` (`idCavallo`, `descrizione`, `immagine`, `fiducia`, `stanchezza`, `velocita`, `nome`) VALUES
-	(1, 'Il cavallo più veloce del west', 'cavallo1.jpg', 15, 5, 10, 'Samu Merda'),
-	(2, 'Cavallo celebroleso', 'cavallo2.png', 20, 0, 1, 'Aperino'),
-	(3, 'Il cavallo più lento del West', 'cavallo3.png', 15, 5, 2, 'Lucatoni');
+INSERT INTO `cavallo` (`idCavallo`, `descrizione`, `immagine`, `fiducia`, `stanchezza`, `velocita`, `nome`, `ritiro`) VALUES
+	(1, 'Il cavallo più veloce del west', 'cavallo1.jpg', 15, 5, 10, 'Samu Merda',0),
+	(2, 'Cavallo celebroleso', 'cavallo2.png', 20, 0, 1, 'Aperino',0),
+	(3, 'Il cavallo più lento del West', 'cavallo3.png', 15, 5, 2, 'Lucatoni',0);
 /*!40000 ALTER TABLE `cavallo` ENABLE KEYS */;
 
 -- Dump della struttura di tabella ippopodromo.gara
@@ -48,7 +49,7 @@ CREATE TABLE IF NOT EXISTS `gara` (
 -- Dump dei dati della tabella ippopodromo.gara: ~2 rows (circa)
 /*!40000 ALTER TABLE `gara` DISABLE KEYS */;
 INSERT INTO `gara` (`idGara`, `dataGara`, `stato`) VALUES
-	(1, '2005-01-13 09:59:39', 2),
+	(1ippopodromo, '2005-01-13 09:59:39', 2),
 	(2, '2013-01-13 09:59:57', 0),
 	(3, '2021-01-19 16:51:56', 0);
 /*!40000 ALTER TABLE `gara` ENABLE KEYS */;
@@ -126,3 +127,4 @@ INSERT INTO `utente` (`nomeUtente`, `nome`, `cognome`, `dataNascita`, `indirizzo
 /*!40014 SET FOREIGN_KEY_CHECKS=IF(@OLD_FOREIGN_KEY_CHECKS IS NULL, 1, @OLD_FOREIGN_KEY_CHECKS) */;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+ippopodromo
