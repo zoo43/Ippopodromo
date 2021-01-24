@@ -74,6 +74,7 @@ if($conn)
 	echo '<input type="number" name="scommessa" value="1" min="1" max='.$creditoUtente.'>'; 
 	print("<br />");
 	$cavGara = $dbAccess->getCavalliGara($params['value']);
+	
 	while($row = mysqli_fetch_array($cavGara))
 	{
 		print('<input type="radio" name="cavallo" value="'.$row["idCavallo"].'">'.$row["nome"]);
@@ -82,7 +83,6 @@ if($conn)
 	mysqli_free_result($cavGara);
 	echo '<input type="hidden" name="idGara" value="'.$params["value"].'"/>';
 	echo '<input type="hidden" name="dataGara" value="'.$data.'"/>';
-	
 	echo '<button type="submit" name="scommetti">Scommetti</button>';
 	$dbAccess->closeDBConnection();
 	echo '</form>';

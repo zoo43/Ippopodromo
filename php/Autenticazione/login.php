@@ -32,8 +32,6 @@ if(isset($_POST['login'])){
     $dbAccess->closeDBConnection();
 }else{
 
-$errori="";
-
 if(isset($_SESSION["error"])){
     $error = $_SESSION["error"];
     echo "<script language='javascript'>

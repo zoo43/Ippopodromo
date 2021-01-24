@@ -60,7 +60,7 @@ class DBAccess{
 
    public function autentica($nome, $password)
    {   
-       $query = "SELECT * from Utente where nomeUtente='$nome' and password='$password'";
+       $query = "SELECT * from Utente where nomeUtente='$nome' and BINARY password='$password'";
 
        $result = mysqli_query($this->connection, $query);
        
