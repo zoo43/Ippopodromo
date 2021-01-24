@@ -7,9 +7,9 @@ function areaAutenticazione($pagina, $index = false){
         if(isset($_SESSION["admin"]))
         {
             $admin = "<li><a href='../Admin/admin.php'>Pannello amministratore</a></li>";
-        }
-        else if($index) {
-            $admin = "<li><a href='php/Admin/admin.php'>Pannello amministratore</a></li>";
+            if ($index) {
+                $admin = "<li><a href='php/Admin/admin.php'>Pannello amministratore</a></li>";
+            }
         }
         $autenticazione = "<li><a href='../Autenticazione/logout.php'>Logout</a></li>";
     }
