@@ -224,7 +224,7 @@ class DBAccess{
 
    public function eliminaCavallo($id)
    {
-        $query = "select * from partecipante inner join gara on gara.idGara=partecipante.idGara where idCavallo=" . "'$id' and stato=0";
+        $query = "select * from partecipante inner join gara on gara.idGara=partecipante.idGara where cavallo.idCavallo=" . "'$id' and stato=0";
         mysqli_query($this->connection, $query);
         if(mysqli_affected_rows($this->connection)>0){
             return false;
@@ -232,12 +232,18 @@ class DBAccess{
         else{
             $query = "delete from cavallo where idCavallo=" . "'$id'";
             mysqli_query($this->connection, $query);
-        if(mysqli_affected_rows($this->connection)>0){
-            return true;
-        }
-        else{
-            return false;
-        }
+            echo mysqli_affected_rows($this->connection);
+            if(mysqli_affected_rows($this->connection)!=0){
+                $query = "select immagine from cavallo where idCavallo = " ."'$id'";
+                $result=mysqli_query($this->connection, $query);
+                $row = mysqli_fetch_array($result);
+                $path = $row['immagine'];
+                mysqli_query($this->connection, $query);
+                return $path;
+            }
+            else{
+                return false;
+            }
         }       
 
    }

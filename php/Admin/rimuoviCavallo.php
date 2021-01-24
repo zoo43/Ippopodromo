@@ -10,12 +10,15 @@ $conn = $dbAccess->openDBConnection();
 
 if($conn)
 {
-    if($dbAccess->eliminaCavallo($params['value'])){
+    $path =$dbAccess->eliminaCavallo($params['value']);
+    if($path != false){
+        echo "$path";
+        unlink("../../images/$path");
         echo "cavallo eliminato con successo";
     }
     else
     {
-        echo "problema nel dialogo con il db";
+        echo "problema nel dialogo con il db (il cavallo potrebbe partecipare una gara e sarebbe quindi impossibile da eliminare)";
     }
 }
 else
