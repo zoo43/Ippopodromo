@@ -268,7 +268,7 @@ section:last-child{
   background: var(--clr4);
   border-radius: var(--text-radius);
 }
-.card .button a {
+.card a {
   color: #ddd;
 }
 
@@ -329,7 +329,7 @@ table th {
   border-radius: var(--border-radius);
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 1200px) {
   table {
     border: 0;
     border-radius: var(--border-radius);
