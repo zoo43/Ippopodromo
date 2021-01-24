@@ -1,33 +1,47 @@
 <?php
-session_start();
-?>
+require_once('../auth.php');
+require_once('../database.php');
+if(isset($_POST['login'])){
+    $dbAccess = new DBAccess();
+    $conn = $dbAccess->openDBConnection();
+	if($conn)
+	{
+    $username = $_POST['username'];
+    $result = $dbAccess->autentica($username, $_POST['password']);
+    if($result!=false){
+        $_SESSION["username"] = $username;
 
+        $row = mysqli_fetch_array($result);
+        $_SESSION["credito"] = $row['credito'];
+        if($row['admin'])
+        {
+            $_SESSION["admin"]=$row["admin"];
+        }   
+        header("location:../../");
+    }
+    else{
+        $_SESSION["error"] = 'Nome Utente o password errati';
+        header("location:login.php");
+    }
+    mysqli_free_result($result);
+	}else
+	{
+		printf("Si è verificato un errore di connessione. Si prega di attendere prima di riprovare.");
+	}
+	
+    $dbAccess->closeDBConnection();
+}else{
 
-<!DOCTYPE html>
-<html> 
-    <head>
-        <title>Login</title>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap">
-        <link rel="stylesheet" href="/css/style.css">
-    </head>
-    
-    <form method="post" name="Form" action="checkLogin.php">
-    <h1>Login</h1>
-    <input type="text" id="username" placeholder="Username" name="username" required>
-    <input type="password" id="password" placeholder="Password" name="password" required>
-    <button type="submit" name="login">Accedi</button>
-    <?php
-        if(isset($_SESSION["error"])){
-            $error = $_SESSION["error"];
-            echo '<script language="javascript">';
-            echo "alert('Nome utente o password errati')";
-            echo '</script>';
-        }
-    ?>
-</form>
-<p><a href="../../"> Torna Indietro </a></p>
-</html>
+if(isset($_SESSION["error"])){
+    $error = $_SESSION["error"];
+    echo "<script language='javascript'>
+    alert('Nome utente o password errati');
+    </script>";
+    unset($_SESSION["error"]);
+}
 
-<?php
-unset($_SESSION["error"]);
+$pagina = areaAutenticazione(file_get_contents('../../html/autenticazione/login.html'));
+echo $pagina;
+
+}
 ?>

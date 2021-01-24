@@ -10,13 +10,15 @@ class DBAccess{
 
    //Connessioni
    public function openDBConnection(){
-       $this->connection = mysqli_connect(DBAccess::SERVERNAME, DBAccess::USERNAME, DBAccess::PASSWORD, DBAccess::DBNAME);
-      if(!($this->connection)){
-			return false;
+
+      if(!(mysqli_connect(DBAccess::SERVERNAME, DBAccess::USERNAME, DBAccess::PASSWORD, DBAccess::DBNAME))){
+            return false;
        }
        else{
+            $this->connection = mysqli_connect(DBAccess::SERVERNAME, DBAccess::USERNAME, DBAccess::PASSWORD, DBAccess::DBNAME);
            return true;
        }
+
    }
 
    public function closeDBConnection(){
@@ -35,7 +37,6 @@ class DBAccess{
             return true;
         }
         else{
-            mysqli_free_result($result);
             return false;
         }
    }
@@ -59,7 +60,7 @@ class DBAccess{
 
    public function autentica($nome, $password)
    {   
-       $query = "SELECT * from Utente where nomeUtente='$nome' and password='$password'";
+       $query = "SELECT * from Utente where nomeUtente='$nome' and BINARY password='$password'";
 
        $result = mysqli_query($this->connection, $query);
        
@@ -73,10 +74,18 @@ class DBAccess{
    }
 
    
-   function getCavalli()
+   function getCavalli($ritirati)
    {
-       $query = "SELECT * from cavallo";
-       $result = mysqli_query($this->connection, $query);
+       if($ritirati)
+       {
+            $query = "SELECT * from cavallo where ritiro='0'";
+            $result = mysqli_query($this->connection, $query);
+       }
+       else
+       {
+        $query = "SELECT * from cavallo";
+        $result = mysqli_query($this->connection, $query);
+       }
        return $result;
    }
 
@@ -84,7 +93,7 @@ class DBAccess{
    {
        if($cavalloNuovo)
        {
-           $query = "SELECT cavallo.idCavallo, descrizione, posizione, dataGara, nome, immagine, velocita, fiducia FROM (cavallo INNER JOIN partecipante ON cavallo.idCavallo = partecipante.idCavallo)
+           $query = "SELECT cavallo.idCavallo, descrizione, posizione, dataGara, nome, immagine, fiducia, stanchezza, velocita FROM (cavallo INNER JOIN partecipante ON cavallo.idCavallo = partecipante.idCavallo)
            INNER JOIN gara ON gara.idGara=partecipante.idGara
            WHERE cavallo.idCavallo = '$id' AND gara.stato=2";
            $result = mysqli_query($this->connection, $query);
@@ -183,7 +192,7 @@ class DBAccess{
        $bool = false;
         for($i=0;$i<count($posizioni);$i++)
         {
-            $query = "UPDATE partecipante SET  posizione" . "=". $posizioni[$i]." WHERE idGara='$idGara' AND idCavallo='". $idCavalli[$i]['id'] ."'";
+            $query = "UPDATE partecipante SET posizione" . "=". $posizioni[$i]." WHERE idGara='$idGara' AND idCavallo='". $idCavalli[$i]['id'] ."'";
             mysqli_query($this->connection, $query);
             if(mysqli_affected_rows($this->connection)>0){
                 $bool=true;
@@ -194,7 +203,6 @@ class DBAccess{
         }
 
         $query = "UPDATE gara SET stato='2' where idGara='$idGara'"; 
-        echo $query;
         mysqli_query($this->connection, $query);
         if(mysqli_affected_rows($this->connection)>0){
             $bool = true;
@@ -204,9 +212,60 @@ class DBAccess{
         }
         return $bool;
    }
+
+   public function evitaDoppioni($name)
+   {
+        $query = "select * from cavallo where nome='$name'";
+
+        mysqli_query($this->connection, $query);
+
+        $result = mysqli_query($this->connection, $query);
+        
+        if(mysqli_num_rows($result)>0){
+            mysqli_free_result($result);
+            return false;
+        }
+        else{
+            return true;
+        }
+   }
+
+   public function eliminaCavallo($id)
+   {
+        $query = "update cavallo set ritiro='1' where idCavallo='$id'";
+        mysqli_query($this->connection, $query);
+        if(mysqli_affected_rows($this->connection)>0){
+            return true;
+        }
+        else{
+            return false;
+        }       
+
+   }
    
 
    //Scommesse
+
+	public function getCreditoUtente($username)
+	{
+		$query = "SELECT credito FROM utente WHERE nomeUtente='".$username."'";
+		$result = mysqli_query($this->connection, $query);
+		return $result;
+	}
+	
+	public function getPosizioneCavalloScommessa($idGara,$idCavallo)
+	{
+		$query = "SELECT DISTINCT posizione FROM scommessa,partecipante WHERE scommessa.idGara=partecipante.idGara AND scommessa.idCavallo=partecipante.idCavallo AND scommessa.idGara='".$idGara."' AND scommessa.idCavallo='".$idCavallo."'";
+		$result = mysqli_query($this->connection, $query);
+		return $result;
+	}
+	
+	public function getScommesseUtente($username)
+	{
+		$query = "SELECT DISTINCT scommessa.idGara,scommessa.idCavallo, dataGara, cavallo.nome, puntata, scommessa.stato FROM scommessa INNER JOIN partecipante ON scommessa.idGara = partecipante.idGara INNER JOIN cavallo ON scommessa.idCavallo = cavallo.idCavallo INNER JOIN gara ON partecipante.idGara = gara.idGara WHERE nomeUtente='".$username."'";
+		$result = mysqli_query($this->connection, $query);
+		return $result;
+	}
 
     public function updateDopoPagamento($username, $costo)
 	{
@@ -233,6 +292,37 @@ class DBAccess{
 		{
 			return false;
 		}
+	}
+	
+	public function confermaScommesse($idGara)
+	{
+		$noError = true;
+		$query = "SELECT * FROM scommessa WHERE idCavallo=(SELECT idCavallo FROM partecipante WHERE idGara=".$idGara." AND posizione=1) AND idGara=".$idGara." AND stato=0";
+		$resultQuery = mysqli_query($this->connection, $query);
+		while($row = mysqli_fetch_array($resultQuery))
+		{
+			$toAdd = $row['puntata']*2;
+			$queryUpdateCredito = "UPDATE utente SET credito"."=credito+".$toAdd." WHERE nomeUtente"." ='".$row['nomeUtente']."'";
+			if($this->connection->query($queryUpdateCredito))
+			{
+				$queryUpdateStatoScommessa = "UPDATE scommessa SET stato=1 WHERE nomeUtente='".$row['nomeUtente']."' AND idGara=".$idGara;
+				if($this->connection->query($queryUpdateStatoScommessa))
+				{
+                    mysqli_free_result($resultQuery);
+					return true;
+				}
+				else{
+                    mysqli_free_result($resultQuery);
+					return false;
+				}
+			}
+			else{
+                mysqli_free_result($resultQuery);
+				return false;
+			}
+        }
+        mysqli_free_result($resultQuery);
+		return false;
 	}
 }
 	

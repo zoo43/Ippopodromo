@@ -2,49 +2,53 @@
 <html lang="it">
 
 <head>
-    <title>Aggiungi Cavallo</title> <!-- nitrito hihihihi -->
-    <meta name="title" content="aggiungi-gara" />
-    <meta name="description" content="" />
-    <meta name="keywords" content="" />
-    <meta charset="UTF-8">
-    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
-    <link rel="stylesheet" type="text/css" href="style/style.css" media="screen" />
-    <link rel="stylesheet" type="text/css" href="style/small.css" media="" />
-    <link rel="stylesheet" type="text/css" href="style/print.css" media="print" />
+  <title>Aggiungi Cavallo</title> <!-- nitrito hihihihi -->
+  <meta name="title" content="aggiungi-gara" />
+  <meta name="description" content="" />
+  <meta name="keywords" content="" />
+  <meta charset="UTF-8">
+  <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+  <link rel="stylesheet" type="text/css" href="style/style.css" media="screen" />
+  <link rel="stylesheet" type="text/css" href="style/small.css" media="" />
+  <link rel="stylesheet" type="text/css" href="style/print.css" media="print" />
 </head>
 
 <body>
-    <header>
-        <div id="breadcrumb">
-            <!-- potrebbe essere inutile dato dato che non abbiamo molto da andare in profonditá-->
-            <ul>
-                <li lang="en">Aggiungi Cavallo</li>
-            </ul>
-        </div>
-        <nav id="menu">
-            <ul>
-                <li lang="en"><a href="../../html/Admin/admin.html">Torna al pannello</a></li>
-                <li><a href="../../php/Visualizzazione_Cavalli/cavalli.php">Cavalli</a></li>
-                <li><a href="../../php/Visualizzazione_Gare/risultati.php">Gare</a></li>
-            </ul>
-        </nav>
-        <img src="../../images/logo.jpg" alt="logo ippodromo rimuovi questo alt" />
-    </header>
-    <section>
-        <form method="post" action="../../php/Admin/aggiungiCavallo.php" id="inserimentoCavallo" enctype="multipart/form-data">
-            <h1>Inserisci i dati riguardanti il nuovo cavallo!</h1>         
-            Nome:<input type="text" id="name" placeholder="Nome Cavallo" name="nome" maxlength="50" required><br/>
-            Velocità:<input type="number" id="speed" placeholder="Inserire velocità del cavallo" name="velocita" value="5" min="1" max="10" required><br/>
-            <input type="file" name="img" id="img" accept="image/*" required>
-            <br />
-            <button id="btn" type="submit" value="Upload Image" name="submit">Aggiungi alla lista il nuovo cavallo!</button>
-        </form>
-        <textarea id="description" rows="4" cols="50" name="descrizione" form="inserimentoCavallo" placeholder="Inserire una breve descrizione del cavallo" required></textarea>
-    </section>
-    <footer>
-        <img id="img-valid-code" src="images/valid-xhtml10.png" alt="HTML valido" />
-        <img id="img-valid-css" src="images/vcss-blue.gif" alt="CSS valido" /> <!-- cambiare src dopo aver validato -->
-    </footer>
+  <header>
+    <div id="breadcrumb">
+      <!-- potrebbe essere inutile dato dato che non abbiamo molto da andare in profonditá-->
+      <ul>
+        <li>Pannello amministratore</li>
+        <li>Gestione cavalli</li>
+        <li>Aggiungi Cavallo</li>
+      </ul>
+    </div>
+    <nav id="menu">
+      <ul>
+        <li lang="en"><a href="../../php/Admin/admin.php">Torna al pannello</a></li>
+        <li><a href="../../php/Visualizzazione_Cavalli/cavalli.php">Cavalli</a></li>
+        <li><a href="../../php/Visualizzazione_Gare/risultati.php">Gare</a></li>
+      </ul>
+    </nav>
+    <img src="../../images/logo.jpg" alt="logo ippodromo rimuovi questo alt" />
+  </header>
+  <section>
+    <risultato-inserimento />
+    <form method="post" action="../../php/Admin/aggiungiCavallo.php" id="inserimentoCavallo"
+      enctype="multipart/form-data">
+      <h1>Inserisci i dati riguardanti il nuovo cavallo!</h1>
+      Nome:<input type="text" id="name" placeholder="Nome Cavallo" name="nome" maxlength="50" required><br />
+      Velocità:<input type="number" id="speed" placeholder="Inserire velocità del cavallo" name="velocita" value="5" min="1" max="10" required><br />
+      <input type="file" name="img" id="img" accept="image/*" required><br />
+      <button id="btn" type="submit" value="Upload Image" name="submit">Aggiungi alla lista il nuovo cavallo!</button>
+    </form>
+    <textarea id="description" rows="4" cols="50" name="descrizione" maxlength="255" form="inserimentoCavallo"
+      placeholder="Inserire una breve descrizione del cavallo" required></textarea>
+  </section>
+  <footer>
+    <img id="img-valid-code" src="images/valid-xhtml10.png" alt="HTML valido" />
+    <img id="img-valid-css" src="images/vcss-blue.gif" alt="CSS valido" /> <!-- cambiare src dopo aver validato -->
+  </footer>
 </body>
 
 </html>

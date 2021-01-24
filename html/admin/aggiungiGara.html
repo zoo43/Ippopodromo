@@ -2,91 +2,51 @@
 <html lang="it">
 
 <head>
-    <title>Aggiungi Gara</title> <!-- nitrito hihihihi -->
-    <meta name="title" content="aggiungi-gara" />
-    <meta name="description" content="" />
-    <meta name="keywords" content="" />
-    <meta charset="UTF-8">
-    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
-    <link rel="stylesheet" type="text/css" href="style/style.css" media="screen" />
-    <link rel="stylesheet" type="text/css" href="style/small.css" media="" />
-    <link rel="stylesheet" type="text/css" href="style/print.css" media="print" />
+  <title>Aggiungi Gara</title> <!-- nitrito hihihihi -->
+  <meta name="title" content="aggiungi-gara" />
+  <meta name="description" content="" />
+  <meta name="keywords" content="" />
+  <meta charset="UTF-8">
+  <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+  <link rel="stylesheet" type="text/css" href="style/style.css" media="screen" />
+  <link rel="stylesheet" type="text/css" href="style/small.css" media="" />
+  <link rel="stylesheet" type="text/css" href="style/print.css" media="print" />
 
-    <script>
-        function impostaData()
-        {
-            var date = new Date();
-            var currentDate = date.toISOString().slice(0,10);
-        
-            var ora = date.getHours()+1;
-            var minuti = date.getMinutes();
-            if (date.getHours()+1 < 10) {
-                ora = "0" + ora;
-            }
-            if (date.getMinutes() < 10) {
-                minuti = "0" + minuti;
-            }
-            var currentTime = ora + ':' + minuti;
-        
-            document.getElementById('date').setAttribute("min", currentDate);
-            document.getElementById('date').setAttribute("value", currentDate);
-            document.getElementById('time').setAttribute("value", currentTime);
-        }
 
-        function controllaNumeroCavalli()
-        {
-            var x = document.getElementsByName("cavalli[]");
-            var i;
-            var tot=0;
-            for (i = 0; i < x.length; i++) {
-                if(x[i].checked==true && x[i].type=="checkbox")   
-                {
-                    tot++;
-                }           
-            }
-            if(tot>=4 && tot<=8)
-            {
-                document.getElementById('btn').disabled=false;
-            }
-            else
-            {
-                document.getElementById('btn').disabled=true;
-            }
-        }
-    </script>
+  <script type="text/javascript" src="../../script/controlli.js"></script>
 </head>
 
-<body  onload="impostaData()">
-    <header>
-        <div id="breadcrumb">
-            <!-- potrebbe essere inutile dato dato che non abbiamo molto da andare in profonditá-->
-            <ul>
-                <li lang="en">Aggiungi Gara (Ricorda, una gara deve avere almeno 4 cavalli e un massimo di 8)</li>
-            </ul>
-        </div>
-        <nav id="menu">
-            <ul>
-                <li lang="en"><a href="../../html/Admin/admin.html">Torna al pannello</a></li>
-                <li><a href="../../php/Visualizzazione_Cavalli/cavalli.php">Cavalli</a></li>
-                <li><a href="../../php/Visualizzazione_Gare/risultati.php">Gare</a></li>
-            </ul>
-        </nav>
-        <img src="../../images/logo.jpg" alt="logo ippodromo rimuovi questo alt" />
-    </header>
-    <section>
-        <form method="post" action="../Admin/caricaGara.php">
-            <h1>Scegli i dati della gara! (Ricorda, una gara deve avere almeno 4 cavalli e un massimo di 8)</h1>         
-            <input type="date" id="date" name="date" required>
-            <input type="time" id="time" name="time" min="08:00:00" max="22:00:00" required>
-            <cavalli />
-            <button id='btn' type="submit" name="register" disabled>Inserisci</button>
-        </form>
-    </section>
-    <footer>
-        <img id="img-valid-code" src="images/valid-xhtml10.png" alt="HTML valido" />
-        <img id="img-valid-css" src="images/vcss-blue.gif" alt="CSS valido" /> <!-- cambiare src dopo aver validato -->
-    </footer>
+<body onload="impostaData()">
+  <header>
+    <div id="breadcrumb">
+      <!-- potrebbe essere inutile dato dato che non abbiamo molto da andare in profonditá-->
+      <ul>
+        <li lang="en">Aggiungi Gara (Ricorda, una gara deve avere almeno 4 cavalli e un massimo di 8)</li>
+      </ul>
+    </div>
+    <nav id="menu">
+      <ul>
+        <li lang="en"><a href="../../html/Admin/admin.html">Torna al pannello</a></li>
+        <li><a href="../../php/Visualizzazione_Cavalli/cavalli.php">Cavalli</a></li>
+        <li><a href="../../php/Visualizzazione_Gare/risultati.php">Gare</a></li>
+      </ul>
+    </nav>
+    <img src="../../images/logo.jpg" alt="logo ippodromo rimuovi questo alt" />
+  </header>
+  <risultati-inserimento />
+  <section>
+    <form method="post" action="../../php/Admin/aggiungiGara.php">
+      <h1>Scegli i dati della gara! (Ricorda, una gara deve avere almeno 4 cavalli e un massimo di 8)</h1>
+      <input type="date" id="date" name="date" required>
+      <input type="time" id="time" name="time" max="22:00:00" required>
+      <cavalli />
+      <button id='btn' type="submit" name="register" disabled>Inserisci</button>
+    </form>
+  </section>
+  <footer>
+    <img id="img-valid-code" src="images/valid-xhtml10.png" alt="HTML valido" />
+    <img id="img-valid-css" src="images/vcss-blue.gif" alt="CSS valido" /> <!-- cambiare src dopo aver validato -->
+  </footer>
 </body>
 
 </html>
-

@@ -1,49 +1,33 @@
 <?php
-session_start();
-?>
+require_once('../database.php');
+require_once('../auth.php');
 
-<!DOCTYPE html>
-<html>
-<head>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap">
 
-<script type="text/javascript">
-            function validazioneInput()
-            {
-                var a = document.forms["Form"]["date"].value;
-                var b = document.forms["Form"]["mail"].value;
-                //Mancano da definire controlli (tipo date e mail)
-            }
-        </script>
-</head>
-<body>
-    <form method="post" onsubmit="return validazioneInput()" action="checkRegister.php">
-        <h1>Registrazione</h1>
-        <input type="text" id="username" placeholder="Nome Utente" name="username" maxlength="50" required>
-        <input type="password" id="password" placeholder="Password" name="password" minlength="6" required>
-        <input type="text" id="name" placeholder="Nome" name="name" maxlength="50" required>
-        <input type="text" id="surname" placeholder="Cognome" name="surname" maxlength="50" required>
-        
-        <input type="date" id="date" placeholder="Data di Nascita" name="date" required>
-        
-        <input type="text" id="address" placeholder="Indirizzo" name="address" maxlength="50" required>
-        <input type="text" id="city" placeholder="Città" name="city" maxlength="50" required>
-        <input type="text" id="mail" placeholder="Mail" name="mail" pattern="[a-zA-Z0-9]+[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]{0,}[a-zA-Z0-9]{0,}@[a-zA-Z0-9]{3,}\.[a-zA-Z]{2,3}$" maxlength="50" required>
-
-        <button type="submit" name="register">Registrati</button>
-        <?php        
+if(isset($_POST['register'])){
+    $dbAccess = new DBAccess();
+    $conn = $dbAccess->openDBConnection();
+    if($dbAccess->verificaPresenza($_POST['username'], $_POST['mail'])){
+        $_SESSION["error"] = 'Nome Utente o mail già occupati';
+        header("location:register.php");
+    }
+    else{
+        $dbAccess->inserisciUtente($_POST['username'],$_POST['password'], $_POST['name'], $_POST['surname'], $_POST['date'], $_POST['address'], $_POST['city'], $_POST['mail']);
+        $_SESSION["username"] = $_POST['username'];
+        $_SESSION["credito"] = "100";
+        header("location:../../");
+    }
+    $dbAccess->closeDBConnection();
+}
+else{      
         if(isset($_SESSION["error"])){
             $error = $_SESSION["error"];
             echo '<script language="javascript">';
             echo "alert('Nome utente o mail già presenti nel database')";
             echo '</script>';
+            unset($_SESSION["error"]);
         }
-        ?>
-    </form>
-    <p><a href="../../"> Torna Indietro </a></p>
-</body>
-</html>
+    }
 
-<?php
-unset($_SESSION["error"]);
+$pagina = areaAutenticazione(file_get_contents('../../html/autenticazione/register.html'));
+echo $pagina;
 ?>
