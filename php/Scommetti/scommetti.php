@@ -52,7 +52,7 @@ else
 {
     $scommesse .= '<div class="card">
           <div class="content">
-            <div class="headline"> <h2>Registrati per visualizzare le gare</h2> </div></div>';
+            <div class="headline"> <p>Registrati per visualizzare le gare</p> </div></div>';
 
 }
 }

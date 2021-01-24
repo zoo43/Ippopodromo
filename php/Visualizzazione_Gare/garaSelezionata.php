@@ -22,7 +22,7 @@ while($row = mysqli_fetch_array($result))
     $giorno = $arr[0];
     $ora = $arr[1];
     $classifica .= '<tr>
-    					<td><a href="../Visualizzazione_Cavalli/cavalloSelezionato.php?'. $row["idCavallo"] .'"> '. $row['posizione'] . ' ' . $row['nome'] . ' </a></td> 
+    					<td><a href="../Visualizzazione_Cavalli/cavalloSelezionato.php?value='. $row["idCavallo"] .'"> '. $row['posizione'] . ' ' . $row['nome'] . ' </a></td> 
     				</tr>';
 }
 

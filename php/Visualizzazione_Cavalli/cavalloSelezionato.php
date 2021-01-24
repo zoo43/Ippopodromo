@@ -29,6 +29,15 @@ if($conn)
 
     if($gareggiato)
     { 
+        $lista_gare .= '<table>
+                            <thead class="norm">
+                                <tr>
+                                    <th scope="col">Posizione</th>
+                                    <th scope="col">Giorno</th>
+                                    <th scope="col">Ora</th>
+                                </tr>
+                            </thead>
+                            <tbody>';
         while($row = mysqli_fetch_array($result))
         {    
             $nome = $row['nome'];
@@ -36,8 +45,24 @@ if($conn)
             $descrizione = $row['descrizione'];
             $fiducia = $row['fiducia'];
             $velocita = $row['velocita'];
-            $lista_gare .= '<div class="text"><p>Data: ' . $row["dataGara"] . '     Posizione: ' . $row["posizione"] . '</p></div>';
+            $arr=explode(" ",$row['dataGara']);
+            $giorno = $arr[0];
+            $ora=$arr[1];
+            $lista_gare .= '<tr>
+                                <td data-label="Posizione"> '.$row["posizione"].'</td>
+                                <td data-label="Data"> '.$giorno.'</td>
+                                <td data-label="Ora"> '.$ora.'</td>
+                            </tr>';
+            //$lista_gare .= '<div class="text"><p>Data: ' . $row["dataGara"] . '     Posizione: ' . $row["posizione"] . '</p></div>';
+
+
+
         } 
+
+        
+        $lista_gare.= '</tbody>
+                        </table>';
+
         $Scavallo = '
         './/<img src="../../images/<foto-cavallo />" alt="<descrizione-cavallo />"/>
         '<div class="content">
@@ -48,7 +73,7 @@ if($conn)
         </div>';
         $Scavallo = str_replace(
             array(//"<foto-cavallo />",
-                  "<descrizione-cavallo />", "<nome-cavallo />", "<fiducia-cavallo />", "<velocita-cavallo />"),
+              "<descrizione-cavallo />", "<nome-cavallo />", "<fiducia-cavallo />", "<velocita-cavallo />"),
             array(
                 //$immagine,
                 $descrizione, $nome, $fiducia, $velocita
@@ -66,7 +91,7 @@ if($conn)
 
         $Scavallo = '
         './/<img src="../../images/<foto-cavallo />" alt="<descrizione-cavallo />"/>
-       '<div class="content">
+        '<div class="content">
         <div class="headline"> <h2><nome-cavallo /></h2> </div>
         <div class="text"> <h3>Fiducia: <fiducia-cavallo /></h3> </div>
         <div class="text"> <h3>Velocità: <velocita-cavallo /></h3>  </div>
@@ -74,7 +99,7 @@ if($conn)
         </div>';
         $Scavallo = str_replace(
             array(//"<foto-cavallo />",
-                  "<descrizione-cavallo />", "<nome-cavallo />", "<fiducia-cavallo />", "<velocita-cavallo />"),
+              "<descrizione-cavallo />", "<nome-cavallo />", "<fiducia-cavallo />", "<velocita-cavallo />"),
             array(
                 //$row['immagine'],
                 $row['descrizione'], $row['nome'], $row['fiducia'], $row['velocita']
