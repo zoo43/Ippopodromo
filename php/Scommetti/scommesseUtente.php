@@ -23,18 +23,21 @@ if($conn)
 					if($row['stato']=='1')
 					{
 						$result = $dbAccess->getPosizioneCavalloScommessa($row['idGara'], $row['idCavallo']);
-						$posizione = mysqli_fetch_array($result);
-						if(mysqli_num_rows($posizione)>0)
+						if($result)
 						{
-							if($posizione['posizione'] == '1')
-							{
-								echo "Risultati gara: hai vinto <br />";
+							if(mysqli_num_rows($result)>0)
+							{	
+								$posizione = mysqli_fetch_array($result);
+								if($posizione['posizione'] == '1')
+								{
+									echo "Risultati gara: hai vinto <br />";
+								}
+								else
+								{
+									echo "Risultati gara: hai perso <br />";
+								}
 							}
-							else
-							{
-								echo "Risultati gara: hai perso <br />";
-							}
-						mysqli_free_result($result);
+							mysqli_free_result($result);
 						}
 					}else
 					{
