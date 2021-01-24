@@ -16,7 +16,7 @@ if ($conn) {
             <div class="headline"> <h2><nome-cavallo /></h2> </div>
             <div class="text"> <h3>Fiducia: <fiducia-cavallo /></h3> </div>
             <div class="text"> <h3>Velocità: <velocita-cavallo /></h3>  </div>
-            <div class="button"> <h4><a href="cavalloSelezionato.php?value=<id-cavallo />">Informazioni</a></h4> </div>
+            <a href="cavalloSelezionato.php?value=<id-cavallo />"><div class="button"> <h4>Informazioni</h4> </div></a>
           </div>
         </div>';
 		$cavallo = str_replace(

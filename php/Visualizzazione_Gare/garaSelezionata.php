@@ -8,24 +8,41 @@ parse_str($url_components['query'], $params);
 
 $dbAccess = new DBAccess();
 $conn = $dbAccess->openDBConnection();
+$classifica='';
+$giorno='';
+$ora='';
+
 if($conn)
 {
 $result=$dbAccess->getInfoGara($params['value']);
 
-echo "<p>Classifica:</p>";
-echo "<p>Posizione Cavallo </p>";
 while($row = mysqli_fetch_array($result))
 {
-    $data = $row['dataGara'];
-    echo "<p> ". $row['posizione'] . " " . $row['nome'] . "</p>" ;
+    $arr=explode(" ",$row['dataGara']);
+    $giorno = $arr[0];
+    $ora = $arr[1];
+    $classifica .= '<tr>
+    					<td><a href="../Visualizzazione_Cavalli/cavalloSelezionato.php?'. $row["idCavallo"] .'"> '. $row['posizione'] . ' ' . $row['nome'] . ' </a></td> 
+    				</tr>';
 }
-echo "<p>Gara svoltasi in data: " . $data . "</p>";
+
 mysqli_free_result($result);
 }
 else
 {
-	printf("Si è verificato un errore di connessione. Si prega di attendere prima di riprovare.");
+	$classifica .= '<tr>
+    					<td>Errore dio connessione</td> 
+    				</tr>';
 }
+
 $dbAccess ->closeDBConnection();
-echo "<p><a href='risultati.php'> Torna indietro </a></p>";
+$pagina = file_get_contents('../../html/gare/garaSelezionata.html');
+$pagina = str_replace(
+    array("<classifica />", "<giorno />", "<ora />"),
+    array($classifica, $giorno, $ora),
+    $pagina
+);
+$pagina = areaAutenticazione($pagina);
+
+echo $pagina;
 ?>

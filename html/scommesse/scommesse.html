@@ -8,41 +8,75 @@
   <meta name="keywords" content="" />
   <meta charset="UTF-8">
   <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
-  <link rel="stylesheet" type="text/css" href="style/style.css" media="screen" />
+  <link rel="stylesheet" type="text/css" href="../../style/base.css" media="screen" />
   <link rel="stylesheet" type="text/css" href="style/small.css" media="" />
   <link rel="stylesheet" type="text/css" href="style/print.css" media="print" />
 </head>
 
 <body>
   <header>
-    <div id="breadcrumb">
-      <!-- potrebbe essere inutile dato dato che non abbiamo molto da andare in profonditá-->
-      <ul>
-        <li lang="en">Home</li>
-        <li>cose</li>
-        <li>cose</li>
-      </ul>
+    <header>
+      <nav class="navTop">
+        <div class="nav-bg"></div>
+        <h1 lang="en">Home</h1>
+        <h1> > </h1>
+        <h1>Risultati gare</h1>
+
+        <ul>
+          <li lang="en"><a href="../../index.php">Home</a></li>
+          <li><a>Scommesse</a></li>
+          <li><a href="../Visualizza_Gare/risultati.php">Gare</a></li>
+          <li><a href="../Visualizzazione_Cavalli/cavalli.php">Cavalli</a></li>
+          <li><a href="./chi_siamo.php">Chi siamo</a></li>
+          <li><a> / </a></li>
+          <autenticazione />
+        </ul>
+      </nav>
+    </header>
+
+    <div class="init">
+      <h1>Scommesse aperte</h1>
     </div>
-    <nav id="menu">
-      <ul>
-        <li lang="en"><a href="./home.php">Home</a></li>
-        <li><a href="./scommetti.php">Scommesse</a></li>
-        <li><a href="./gare.php">Gare</a></li>
-        <li><a href="./cavalli.php">Cavalli</a></li>
-        <li><a href="./chi_siamo.php">Chi siamo</a></li>
-      </ul>
-    </nav>
-    <img src="images/logo.jpg" alt="logo ippodromo rimuovi questo alt" />
-  </header>
-  <main>
 
-  </main>
-  <footer>
-    <img id="img-valid-code" src="images/valid-xhtml10.png" alt="HTML valido" />
-    <img id="img-valid-css" src="images/vcss-blue.gif" alt="CSS valido" />
-    <!-- cambiare src dopo aver validato -->
-    boh info varie su noi che non ricordo quali fossero ma si posso aggiungere
+    <div class="wrapper">
+      <div class="wrap">
+
+        <table>
+          <thead class="norm">
+            <tr>
+              <th scope="col">Credito</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td data-label="Credito:"><credito /></td>
+            </tr>
+            <storico />
+          </tbody>
+        </table>
+
+        <main>
+          <lista-scommesse />
+        </main>
+
+      </div>
+    </div>
+    <footer>
+    <div class="content">
+      <div><img class="logo" src="../../images/logo.jpg" alt="Logo"/></div>
+
+      <nav>
+        <ul>
+          <li>Sam</li>
+          <li>Dam</li>
+          <li>Martz</li>
+        </ul>
+      </nav>
+
+    </div>
+    <img id="img-valid-code" src="../../images/valid-xhtml10.png" alt="HTML valido"/>
+    <img id="img-valid-css" src="../../images/vcss-blue.gif" alt="CSS valido"/>
   </footer>
-</body>
+  </body>
 
-</html>
+  </html>

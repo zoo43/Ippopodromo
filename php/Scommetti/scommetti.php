@@ -4,50 +4,77 @@ require_once('../auth.php');
 
 $dbAccess = new DBAccess();
 $conn = $dbAccess->openDBConnection();
+
+$scommesse='<div id="lista-scommesse" class="cards">';
+$credito='registrati per avere il tuo credito';
+$storico='';
+
 if($conn)
 {
 if(isset($_SESSION["username"]))
 {
     $username = $_SESSION["username"];
     $credito = $_SESSION["credito"];
-    echo $username . " Credito:" . $credito;
+    
     $result = $dbAccess->getGare("0");
-	if(mysqli_num_rows($result)>0)
-	{
     while($row = mysqli_fetch_array($result))
-    {
-	$insert = true;
-	$lsu = $dbAccess->getScommesseUtente($username);
-		if(mysqli_num_rows($lsu)>0)
-		{
-		while($rowlsu = mysqli_fetch_array($lsu)) 
-		{
-			if($rowlsu['idGara'] == $row['idGara'])
-			{
-				$insert = false;
-			}
-		}
-		if($insert){
-		echo "<p>" . "Numero Gara: ". $row['idGara'] . " Data della Gara:" . $row['dataGara'] ."</p>";  
-		echo "<p><a href='garaScommessa.php?value=".$row['idGara']."'>Scommetti sulla gara</p></a>";
-		}
-		mysqli_free_result($lsu);
-		}
+    {          
+        $id=$row['idGara'];
+        $arr=explode(" ",$row['dataGara']);
+            $giorno = $arr[0];
+            $ora=$arr[1];
+
+        $scommessa = '<div class="card">
+          <div class="content">
+            <div class="headline"> <h2>Gara <id-scommessa /></h2> </div>
+            <div class="text"> <h3>Data: <data /></h3> </div>
+            <div class="text"> <h3>Ora: <ora /></h3>  </div>
+            <a href="garaScommessa.php?value=<id-scommessa />"> <div class="button"> <h4>Punta</h4> </div></a>
+          </div>
+        </div>';
+        $scommessa = str_replace(
+            array("<id-scommessa />", "<data />", "<ora />"),
+            array(
+                $id, $giorno, $ora),
+            $scommessa
+        );
+        $scommesse .= $scommessa;
+
+
     }
-	}
-	
-	echo "<p><a href='scommesseUtente.php'>Visualizza le tue scommesse</a></p>";
+
+    $storico = '<tr>
+              <td><a href="scommesseUtente.php">Visualizza le tue scommesse</a></td>
+            </tr>';
     mysqli_free_result($result);
 }
 else
 {
-    echo "Accedi per poter scommettere";
+    $scommesse .= '<div class="card">
+          <div class="content">
+            <div class="headline"> <h2>Registrati per visualizzare le gare</h2> </div></div>';
+
 }
 }
 else
 {
-	printf("Si è verificato un errore di connessione. Si prega di attendere prima di riprovare.");
+	$scommesse .= '<div class="card">
+          <div class="content">
+            <div class="headline"> <h2>Errore di connessione</h2> </div></div>';
 }
+
+$scommesse .= '</div>';
+
 $dbAccess->closeDBConnection();
-echo "<p><a href='../../'> Torna indietro </a></p>";
+
+$pagina = file_get_contents('../../html/scommesse/scommesse.html');
+$pagina = areaAutenticazione($pagina);
+$pagina = str_replace(
+    array("<lista-scommesse />", "<credito />", "<storico />"),
+    array($scommesse, $credito, $storico),
+    $pagina
+);
+
+
+echo $pagina;
 ?>
