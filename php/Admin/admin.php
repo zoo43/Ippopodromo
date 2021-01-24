@@ -6,7 +6,7 @@ $dbAccess = new DBAccess();
 $conn = $dbAccess->openDBConnection();
 
 if($conn) {
-    $result_c = $dbAccess->getCavalli();
+    $result_c = $dbAccess->getCavalli(true);
     $numCavalli = isset($result_c) ? mysqli_num_rows($result_c) : 0;
     $result_r = $dbAccess->getGare('2');
     $numGareVuote = isset($result_r) ? mysqli_num_rows($result_r) : 0;

@@ -10,11 +10,9 @@ $conn = $dbAccess->openDBConnection();
 
 if($conn)
 {
-    $path =$dbAccess->eliminaCavallo($params['value']);
-    if($path != false){
-        echo "$path";
-        unlink("../../images/$path");
-        echo "cavallo eliminato con successo";
+   
+    if( $dbAccess->eliminaCavallo($params['value'])){
+        echo "cavallo ritirato con successo";
     }
     else
     {

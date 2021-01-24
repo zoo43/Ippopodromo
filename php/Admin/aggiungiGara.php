@@ -9,7 +9,7 @@ $conn = $dbAccess->openDBConnection();
 
 function stampaListaCavalli($dbAccess,$cavalli)
 {
-    $result = $dbAccess->getCavalli();
+    $result = $dbAccess->getCavalli(true);
     while($row = mysqli_fetch_array($result))
     {                                                                       
         $id = $row['idCavallo'];

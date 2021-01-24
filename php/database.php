@@ -74,10 +74,18 @@ class DBAccess{
    }
 
    
-   function getCavalli()
+   function getCavalli($ritirati)
    {
-       $query = "SELECT * from cavallo";
-       $result = mysqli_query($this->connection, $query);
+       if($ritirati)
+       {
+            $query = "SELECT * from cavallo where ritiro='0'";
+            $result = mysqli_query($this->connection, $query);
+       }
+       else
+       {
+        $query = "SELECT * from cavallo";
+        $result = mysqli_query($this->connection, $query);
+       }
        return $result;
    }
 
@@ -224,26 +232,13 @@ class DBAccess{
 
    public function eliminaCavallo($id)
    {
-        $query = "select * from partecipante inner join gara on gara.idGara=partecipante.idGara where cavallo.idCavallo=" . "'$id' and stato=0";
+        $query = "update cavallo set ritiro='1' where idCavallo='$id'";
         mysqli_query($this->connection, $query);
         if(mysqli_affected_rows($this->connection)>0){
-            return false;
+            return true;
         }
         else{
-            $query = "delete from cavallo where idCavallo=" . "'$id'";
-            mysqli_query($this->connection, $query);
-            echo mysqli_affected_rows($this->connection);
-            if(mysqli_affected_rows($this->connection)!=0){
-                $query = "select immagine from cavallo where idCavallo = " ."'$id'";
-                $result=mysqli_query($this->connection, $query);
-                $row = mysqli_fetch_array($result);
-                $path = $row['immagine'];
-                mysqli_query($this->connection, $query);
-                return $path;
-            }
-            else{
-                return false;
-            }
+            return false;
         }       
 
    }

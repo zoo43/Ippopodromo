@@ -8,7 +8,7 @@ $lista_cavalli = '<div id="lista-cavalli" class="cards">';
 $dbAccess = new DBAccess();
 $conn = $dbAccess->openDBConnection();
 if ($conn) {
-	$result = $dbAccess->getCavalli();
+	$result = $dbAccess->getCavalli(false);
 	while ($row = mysqli_fetch_array($result)) {
 		$cavallo = '<div class="card">
           <img src="../../images/<foto-cavallo />" alt="<descrizione-cavallo />"/>
