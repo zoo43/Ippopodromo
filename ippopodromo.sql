@@ -49,7 +49,7 @@ CREATE TABLE IF NOT EXISTS `gara` (
 -- Dump dei dati della tabella ippopodromo.gara: ~2 rows (circa)
 /*!40000 ALTER TABLE `gara` DISABLE KEYS */;
 INSERT INTO `gara` (`idGara`, `dataGara`, `stato`) VALUES
-	(1ippopodromo, '2005-01-13 09:59:39', 2),
+	(1, '2005-01-13 09:59:39', 2),
 	(2, '2013-01-13 09:59:57', 0),
 	(3, '2021-01-19 16:51:56', 0);
 /*!40000 ALTER TABLE `gara` ENABLE KEYS */;
@@ -127,4 +127,3 @@ INSERT INTO `utente` (`nomeUtente`, `nome`, `cognome`, `dataNascita`, `indirizzo
 /*!40014 SET FOREIGN_KEY_CHECKS=IF(@OLD_FOREIGN_KEY_CHECKS IS NULL, 1, @OLD_FOREIGN_KEY_CHECKS) */;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
-ippopodromo
