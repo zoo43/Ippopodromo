@@ -24,12 +24,13 @@ if(isset($_POST['register']))
     $conn = $dbAccess->openDBConnection();
     if($conn)
     {
-    $dbAccess->updateRisultati($_POST['cavalli'],$_SESSION["cavalli"], $_SESSION['idGara']);
-    unset($_SESSION["cavalli"]);
-    unset($_SESSION['idGara']);
-    unset($_POST['register']);
-    $dbAccess->closeDBConnection();
-    $risultato = "<p class='inserimentoRiuscito'>Risultato inserito con successo</p>";
+        $dbAccess->updateRisultati($_POST['cavalli'],$_SESSION["cavalli"], $_SESSION['idGara']);
+        unset($_SESSION["cavalli"]);
+        unset($_SESSION['idGara']);
+        unset($_POST['register']);
+        $dbAccess->closeDBConnection();
+        $risultato = "<p class='inserimentoRiuscito'>Risultato inserito con successo</p>";
+        header("Refresh:0");
     }
     else
     {

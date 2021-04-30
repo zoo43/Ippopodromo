@@ -25,8 +25,7 @@
 					return false;
 				}
 				}
-				
-				        function controllaPosizioni()
+		function controllaPosizioni()
         {    
             var x = document.getElementsByName("cavalli[]"); 
             var y = x;
