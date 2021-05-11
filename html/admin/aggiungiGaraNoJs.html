@@ -2,8 +2,8 @@
 <html lang="it">
 
 <head>
-  <title>Inserisci risultati gara</title> <!-- nitrito hihihihi -->
-  <meta name="title" content="inserisci-risultati-gara" />
+  <title>Aggiungi Gara</title> <!-- nitrito hihihihi -->
+  <meta name="title" content="aggiungi-gara" />
   <meta name="description" content="" />
   <meta name="keywords" content="" />
   <meta charset="UTF-8">
@@ -11,7 +11,6 @@
   <link rel="stylesheet" type="text/css" href="style/style.css" media="screen" />
   <link rel="stylesheet" type="text/css" href="style/small.css" media="" />
   <link rel="stylesheet" type="text/css" href="style/print.css" media="print" />
-  <script type="text/javascript" src="../../script/controlli.js"></script>
 
 </head>
 
@@ -20,24 +19,29 @@
     <div id="breadcrumb">
       <!-- potrebbe essere inutile dato dato che non abbiamo molto da andare in profonditá-->
       <ul>
-        <li lang="en">Aggiungi Cavallo</li>
+        <li>Pannello amministratore</li>
+        <li>Aggiungi Gara</li>
       </ul>
     </div>
     <nav id="menu">
       <ul>
-        <li lang="en"><a href="../../php/Admin/admin.php">Torna al pannello</a></li>
+        <li lang="en"><a href="../../html/Admin/admin.html">Torna al pannello</a></li>
         <li><a href="../../php/Visualizzazione_Cavalli/cavalli.php">Cavalli</a></li>
         <li><a href="../../php/Visualizzazione_Gare/risultati.php">Gare</a></li>
       </ul>
     </nav>
     <img src="../../images/logo.jpg" alt="logo ippodromo rimuovi questo alt" />
   </header>
+  <risultati-inserimento />
   <section>
-    <risultato-inserimento />
-    <lista-gare />
-    <inserimento-gara-selezionata />
+    <form method="post" action="../../php/Admin/aggiungiGaraNoJs.php">
+      <h1>Scegli i dati della gara! (Ricorda, una gara deve avere almeno 4 cavalli e un massimo di 8)</h1>
+      <input type="date" id="date" name="date" required>
+      <input type="time" id="time" name="time" max="22:00:00" required>
+      <cavalli />
+      <button id='btn' type="submit" name="register">Inserisci</button>
+    </form>
   </section>
-  <p><a href="../../php/Admin/inserisciRisultati.php">Torna ai risultati</a></p>
   <footer>
     <img id="img-valid-code" src="images/valid-xhtml10.png" alt="HTML valido" />
     <img id="img-valid-css" src="images/vcss-blue.gif" alt="CSS valido" /> <!-- cambiare src dopo aver validato -->

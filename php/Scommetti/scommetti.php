@@ -17,30 +17,21 @@ if(isset($_SESSION["username"]))
     $credito = $_SESSION["credito"];
     
     $result = $dbAccess->getGare("0");
-	$noAdd = $dbAccess->getScommesseUtente($username);
     while($row = mysqli_fetch_array($result))
-    {         
-		$toAdd = true;
+    {          
         $id=$row['idGara'];
-		while($rowNoAdd = mysqli_fetch_array($noAdd))
-		{
-			if($id==$rowNoAdd['idGara'])
-			$toAdd = false;
-		}
-		if($toAdd)
-		{
-			$arr=explode(" ",$row['dataGara']);
-			$giorno = $arr[0];
+        $arr=explode(" ",$row['dataGara']);
+            $giorno = $arr[0];
             $ora=$arr[1];
-		
-			$scommessa = '<div class="card">
-							<div class="content">
-								<div class="headline"> <h2>Gara <id-scommessa /></h2> </div>
-								<div class="text"> <h3>Data: <data /></h3> </div>
-								<div class="text"> <h3>Ora: <ora /></h3>  </div>
-								<a href="garaScommessa.php?value=<id-scommessa />"> <div class="button"> <h4>Punta</h4> </div></a>
-							</div>
-						</div>';
+
+        $scommessa = '<div class="card">
+          <div class="content">
+            <div class="headline"> <h2>Gara <id-scommessa /></h2> </div>
+            <div class="text"> <h3>Data: <data /></h3> </div>
+            <div class="text"> <h3>Ora: <ora /></h3>  </div>
+            <a href="garaScommessa.php?value=<id-scommessa />"> <div class="button"> <h4>Punta</h4> </div></a>
+          </div>
+        </div>';
         $scommessa = str_replace(
             array("<id-scommessa />", "<data />", "<ora />"),
             array(
@@ -48,7 +39,7 @@ if(isset($_SESSION["username"]))
             $scommessa
         );
         $scommesse .= $scommessa;
-		}
+
 
     }
 
