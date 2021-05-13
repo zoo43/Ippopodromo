@@ -2,8 +2,8 @@
 <html lang="it">
 
 <head>
-  <title>Aggiungi Cavallo</title> <!-- nitrito hihihihi -->
-  <meta name="title" content="aggiungi-gara" />
+  <title>Inserisci risultati gara</title> <!-- nitrito hihihihi -->
+  <meta name="title" content="inserisci-risultati-gara" />
   <meta name="description" content="" />
   <meta name="keywords" content="" />
   <meta charset="UTF-8">
@@ -11,19 +11,20 @@
   <link rel="stylesheet" type="text/css" href="style/style.css" media="screen" />
   <link rel="stylesheet" type="text/css" href="style/small.css" media="" />
   <link rel="stylesheet" type="text/css" href="style/print.css" media="print" />
+
 </head>
 
 <body>
   <header>
     <div id="breadcrumb">
+      <!-- potrebbe essere inutile dato dato che non abbiamo molto da andare in profonditá-->
       <ul>
-        <li>Pannello amministratore</li>
-        <li>Gestione cavalli</li>
+        <li lang="en">Aggiungi Cavallo</li>
       </ul>
     </div>
     <nav id="menu">
       <ul>
-        <li lang="en"><a href="admin.php">Torna al pannello</a></li>
+        <li lang="en"><a href="../../php/Admin/admin.php">Torna al pannello</a></li>
         <li><a href="../../php/Visualizzazione_Cavalli/cavalli.php">Cavalli</a></li>
         <li><a href="../../php/Visualizzazione_Gare/risultati.php">Gare</a></li>
       </ul>
@@ -31,19 +32,9 @@
     <img src="../../images/logo.jpg" alt="logo ippodromo rimuovi questo alt" />
   </header>
   <section>
-    <a href="../../html/admin/aggiungiCavallo.html">Inserisci un nuovo cavallo</a> <!-- volendo si puó nascondere/visualizzare con js invece che cambiare pagina -->
-    <table>
-      <thead>
-        <tr>
-          <th>Nome</th>
-          <th>Opzioni</th>
-        </tr>
-      </thead>
-      <tfoot></tfoot>
-      <tbody>
-        <lista-cavalli />
-      </tbody>
-    </table>
+    <risultato-inserimento />
+    <lista-gare />
+    <inserimento-gara-selezionata />
   </section>
   <footer>
     <img id="img-valid-code" src="images/valid-xhtml10.png" alt="HTML valido" />
