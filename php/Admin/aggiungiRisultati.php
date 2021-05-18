@@ -24,19 +24,19 @@ if(isset($_POST['register']))
     $conn = $dbAccess->openDBConnection();
     if($conn)
     {
-    $dbAccess->updateRisultati($_POST['cavalli'],$_SESSION["cavalli"], $_SESSION['idGara']);
-    unset($_SESSION["cavalli"]);
-    unset($_SESSION['idGara']);
-    unset($_POST['register']);
-    $dbAccess->closeDBConnection();
-    $risultato = "<p class='inserimentoRiuscito'>Risultato inserito con successo</p>";
+        $dbAccess->updateRisultati($_POST['cavalli'],$_SESSION["cavalli"], $_SESSION['idGara']);
+        unset($_SESSION["cavalli"]);
+        unset($_SESSION['idGara']);
+        unset($_POST['register']);
+        $dbAccess->closeDBConnection();
+        $risultato = "<p class='inserimentoRiuscito'>Risultato inserito con successo</p>";
+        header("Refresh:0");
     }
     else
     {
         echo "problema connessione al DB";
     }
 }
-
 $pagina = file_get_contents('../../html/admin/inserisciRisultati.html');
 $pagina = str_replace(
     array("<lista-gare />", "<inserimento-gara-selezionata />", "<risultato-inserimento />"),

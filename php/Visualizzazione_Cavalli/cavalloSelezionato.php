@@ -8,8 +8,6 @@ parse_str($url_components['query'], $params);
 $dbAccess = new DBAccess();
 $conn = $dbAccess->openDBConnection();
 
-$apertura =  '<div class= "init" style="background: url(\'../../images/';
-
 $cavallo = '<div id="info-cavallo" class="card">';
 $lista_gare = '<section id="gare-cavallo" class="contentbox">';
 
@@ -64,24 +62,23 @@ if($conn)
                         </table>';
 
         $Scavallo = '
-        './/<img src="../../images/<foto-cavallo />" alt="<descrizione-cavallo />"/>
-        '<div class="content">
+        <img src="../../images/<foto-cavallo />" alt="<descrizione-cavallo />"/>
+        <div class="content">
         <div class="headline"> <h2><nome-cavallo /></h2> </div>
         <div class="text"> <h3>Fiducia: <fiducia-cavallo /></h3> </div>
         <div class="text"> <h3>Velocità: <velocita-cavallo /></h3>  </div>
         <div class="text"> <p><descrizione-cavallo /></p>  </div>
         </div>';
         $Scavallo = str_replace(
-            array(//"<foto-cavallo />",
+            array("<foto-cavallo />",
               "<descrizione-cavallo />", "<nome-cavallo />", "<fiducia-cavallo />", "<velocita-cavallo />"),
             array(
-                //$immagine,
+                $immagine,
                 $descrizione, $nome, $fiducia, $velocita
             ),
             $Scavallo
         );
         $cavallo .= $Scavallo;
-        $apertura .= $immagine . '\') no-repeat fixed; background-position: center; background-size: 100%;"> <h1>'. $nome .'</h1>';
         $nome_cavallo = $nome;
     }
     else
@@ -107,7 +104,6 @@ if($conn)
             $Scavallo
         );
         $cavallo .= $Scavallo;
-        $apertura .= $row['immagine'] . '\') no-repeat fixed; background-position: center; background-size: 100%;"> <h1>'. $row['nome'] .'</h1>';
         $nome_cavallo = $row['nome'];
     }
     mysqli_free_result($result);
@@ -120,12 +116,10 @@ $dbAccess->closeDBConnection();
 
 $cavallo .= ' </div>';
 $lista_gare .= ' </section>';
-$apertura .= ' </div>';
 
 $pagina = file_get_contents('../../html/cavalli/cavalloSelezionato.html');
 
 $pagina = str_replace("<nome-cavallo />", $nome_cavallo, $pagina);
-$pagina = str_replace("<apertura-cavallo />", $apertura, $pagina);
 $pagina = str_replace("<info-cavallo />", $cavallo, $pagina);
 $pagina = str_replace("<gare-cavallo />", $lista_gare, $pagina);
 $pagina = areaAutenticazione($pagina);

@@ -25,7 +25,7 @@
         <li>Dashboard</li>
         <li><a href="../../php/Visualizzazione_Cavalli/cavalli.php">Cavalli</a></li>
         <li><a href="../../php/Visualizzazione_Gare/risultati.php">Gare</a></li>
-        <li><a href="../../index.php">Abbandona pannello</a></li>
+        <li><a href="../../php/Autenticazione/logout.php">Abbandona pannello</a></li>
         <autenticazione />
       </ul>
     </nav>
@@ -33,13 +33,13 @@
   </header>
   <main>
     <nav> <!-- questa cosa va mostrata solo se si é loggati, se non lo si é bisogna reindirizzare al login --> 
-      <dl id="db-cards">
+      <dl id="db-cards"> <!-- aggiungere delle icone in css -->
         <dt>
           <h2>Cavalli</h2>
         </dt>
         <dd>
-          <p><num-cavalli /></p>
-          <p><a href="../../php/Admin/gestisciCavalli.php">Gestici i cavalli</a></p>
+          <p><num-cavalli /> <!-- 21 cavalli inseriti --></p>
+          <p><a href="AggiungiCavallo.html">Gestici i cavalli</a></p>
         </dd>
       </dl>
         <dt>
@@ -47,14 +47,14 @@
         </dt>
         <dd>
           <p><num-gare /></p>
-          <p><a href="../../php/admin/aggiungiGara.php">Crea nuove gare</a></p>
+          <p><a href="../../php/Admin/aggiungiGara.php">Crea nuove gare</a></p>
         </dd>
         <dt>
           <h2>Risultati</h2>
         </dt>
         <dd>
           <p><num-risultati /></p>
-          <p><a href="../../php/admin/aggiungiRisultati.php">Aggiungi risultati alle gare concluse</a></p>
+          <p><a href="../../php/Admin/aggiungiRisultati.php">Aggiungi risultati alle gare concluse</a></p>
         </dd>
       </dl>
     </nav>
