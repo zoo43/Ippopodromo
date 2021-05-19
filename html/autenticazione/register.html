@@ -5,30 +5,55 @@
 <head>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap">
   <script type="text/javascript" src="../../script/controlli.js"></script>
-  <link rel="stylesheet" type="text/css" href="../../style/base.css" media="screen" />
-  <link rel="stylesheet" type="text/css" href="style/small.css" media="" />
-  <link rel="stylesheet" type="text/css" href="style/print.css" media="print" />
+  <link rel="stylesheet" type="text/css" href="../../style/style.css" media="screen and (min-width: 1025px)" />
+  <link rel="stylesheet" type="text/css" href="../../style/small.css"
+    media="handheld, screen and (max-width: 1025px)" />
+  <link rel="stylesheet" type="text/css" href="../../style/print.css" media="print" />
 </head>
 
 <body>
-  <form method="post" onsubmit="return validazioneInput()" action="register.php" id="register">
-    <h1>Registrazione</h1>
-    <input type="text" id="username" placeholder="Nome Utente" name="username" maxlength="50" required>
-    <input type="password" id="password" placeholder="Password" name="password" minlength="6" required>
-    <input type="text" id="name" placeholder="Nome" name="name" maxlength="50" required>
-    <input type="text" id="surname" placeholder="Cognome" name="surname" maxlength="50" required>
+  <div class="page">
+    <div class="navbar">
+      <div id="breadcrumb">
+        <!-- potrebbe essere inutile dato dato che non abbiamo molto da andare in profonditá-->
+        <ul>
+          <li lang="en">Home</li>
+        </ul>
+      </div>
 
-    <input type="date" id="date" placeholder="Data di Nascita" name="date" required>
+      <nav id="menu">
+        <ul>
+          <li lang="en">Home</li>
+          <li><a href="php/Visualizzazione_Gare/risultati.php">Gare</a></li>
+          <li><a href="php/Visualizzazione_Cavalli/cavalli.php">Cavalli</a></li>
+          <li><a href='php/Scommetti/scommetti.php'>Scommesse</a></li>
+          <admin />
+          <autenticazione /> <!-- controlla sulla sessione per vedere se aggiungere login/register o logut -->
+        </ul>
+      </nav>
+    </div>
 
-    <input type="text" id="address" placeholder="Indirizzo" name="address" maxlength="50" required>
-    <input type="text" id="city" placeholder="Città" name="city" maxlength="50" required>
-    <input type="text" id="mail" placeholder="Mail" name="mail"
-      pattern="[a-zA-Z0-9]+[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]{0,}[a-zA-Z0-9]{0,}@[a-zA-Z0-9]{3,}\.[a-zA-Z]{2,3}$"
-      maxlength="50" required>
+    <main>
+      <form method="post" onsubmit="return validazioneInput()" action="register.php" id="register">
+        <h1>Registrazione</h1>
+        <input type="text" id="username" placeholder="Nome Utente" name="username" maxlength="50" required>
+        <input type="password" id="password" placeholder="Password" name="password" minlength="6" required>
+        <input type="text" id="name" placeholder="Nome" name="name" maxlength="50" required>
+        <input type="text" id="surname" placeholder="Cognome" name="surname" maxlength="50" required>
 
-    <button type="submit" name="register">Registrati</button>
-  </form>
-  <p><a href="../../"> Torna Indietro </a></p>
+        <input type="date" id="date" placeholder="Data di Nascita" name="date" required>
+
+        <input type="text" id="address" placeholder="Indirizzo" name="address" maxlength="50" required>
+        <input type="text" id="city" placeholder="Città" name="city" maxlength="50" required>
+        <input type="text" id="mail" placeholder="Mail" name="mail"
+          pattern="[a-zA-Z0-9]+[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]{0,}[a-zA-Z0-9]{0,}@[a-zA-Z0-9]{3,}\.[a-zA-Z]{2,3}$"
+          maxlength="50" required>
+
+        <button type="submit" name="register">Registrati</button>
+      </form>
+      <p><a href="../../"> Torna Indietro </a></p>
+    </main>
+  </div>
 </body>
 
 </html>

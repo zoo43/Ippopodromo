@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-<meta http-equiv="refresh" content= "5; url=scommetti.php">
+<!-- <meta http-equiv="refresh" content= "5; url=scommetti.php"> -->
 </head>
 <body>
 <?php
@@ -22,9 +22,7 @@ if($conn)
 			echo('Il pagamento è avvenuto con successo');
 		}else
 		{
-			echo '<script type="text/javascript">';
-			echo 'alert("Si è verificato un errore imprevisto. Si prega di attendere prima di riprovare.")';
-			echo '</script>';
+			echo 'Si è verificato un errore imprevisto. Si prega di attendere prima di riprovare.';
 		}
 	}
 	$dbAccess->closeDBConnection();

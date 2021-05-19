@@ -14,7 +14,7 @@ function areaAutenticazione($pagina, $index = false){
         $autenticazione = "<li><a href='../Autenticazione/logout.php'>Logout</a></li>";
     }
     else{
-        $autenticazione = "<li><a href='../Autenticazione/login.php'>Login </a> / <a href='../Autenticazione/register.php'>Registrati</a></li>";
+        $autenticazione = "<li><a href='../Autenticazione/login.php'>Login </a><li><a href='../Autenticazione/register.php'>Registrati</a></li>";
     }
 
     if($index) {
@@ -22,7 +22,7 @@ function areaAutenticazione($pagina, $index = false){
     }
 
     return str_replace(
-        array("<autenticazione />","<admin />"),
+        array("<autenticazione />", "<admin />"),
         array($autenticazione, $admin), 
         $pagina
     );
