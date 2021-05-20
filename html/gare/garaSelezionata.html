@@ -21,10 +21,7 @@
   <div class="page">
     <div class="navbar">
         <!-- potrebbe essere inutile dato dato che non abbiamo molto da andare in profonditá-->
-        <ul id="breadcrumb">
-          <li lang="en">Home</li>
-          <li>Classifica gara <id-gara /></li>
-        </ul>
+        
       <nav id="menu">
         <ul>
           <li lang="en"><a href="../../">Home</a></li>
@@ -36,10 +33,16 @@
           <autenticazione />
         </ul>
       </nav>
+
+      <ul id="breadcrumb">
+          <li lang="en">Home</li>
+          <li>Risultati Gare</li>
+          <li>Classifica Gara <id-gara /></li>
+      </ul>
     </div>
 
     <main>
-      <h1 id="dataGara">Gara svolta alle: <span><ora /></span> del giorno: <span><giorno /></span></h1>
+      <h1 id="h1data">Gara svolta alle: <span><ora /></span> del giorno: <span><giorno /></span></h1>
       <div class="flex-pc">
         <ol>
           <classifica />

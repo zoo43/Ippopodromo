@@ -6,7 +6,7 @@ $dbAccess = new DBAccess();
 $conn = $dbAccess->openDBConnection();
 
 $scommesse='<div id="lista-scommesse" class="cards">';
-$credito='registrati per avere il tuo credito';
+$credito='<h1 id="h1data">registrati per avere il tuo credito</h1>';
 $storico='';
 
 if($conn)
@@ -14,7 +14,7 @@ if($conn)
 if(isset($_SESSION["username"]))
 {
     $username = $_SESSION["username"];
-    $credito = $_SESSION["credito"];
+    $credito = '<h1 id="h1data">Il tuo credito &eacute;: <span>'. $_SESSION["credito"] .'</span></h1>';
     
     $result = $dbAccess->getGare("0");
     while($row = mysqli_fetch_array($result))
@@ -43,24 +43,18 @@ if(isset($_SESSION["username"]))
 
     }
 
-    $storico = '<tr>
-              <td><a href="scommesseUtente.php">Visualizza le tue scommesse</a></td>
-            </tr>';
+    $storico = '<div class="centerLink"><a href="scommesseUtente.php">Visualizza le tue scommesse</a></div>';
     mysqli_free_result($result);
 }
 else
 {
-    $scommesse .= '<div class="card">
-          <div class="content">
-            <div class="headline"> <p>Registrati per visualizzare le gare</p> </div></div>';
+    $scommesse .= '<h2>Registrati per visualizzare le gare</h2>';
 
 }
 }
 else
 {
-	$scommesse .= '<div class="card">
-          <div class="content">
-            <div class="headline"> <h2>Errore di connessione</h2> </div></div>';
+	$scommesse .= '<h2>Errore di connessione</h2>';
 }
 
 $scommesse .= '</div>';

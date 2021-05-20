@@ -21,59 +21,45 @@
   
   <div class="page">
     <div class="navbar">
-      <div id="breadcrumb">
-        <!-- potrebbe essere inutile dato dato che non abbiamo molto da andare in profonditá-->
-        <ul>
-          <li lang="en">Home</li>
-        </ul>
-      </div>
+      
     
       <nav id="menu">
         <ul>
           <li lang="en"><a href="../../">Home</a></li>
+          <li>Scommesse</li>
           <li><a href="../Visualizzazione_Gare/risultati.php">Gare</a></li>
           <li><a href="../Visualizzazione_Cavalli/cavalli.php">Cavalli</a></li>
-          <li>Scommesse</li>
           <admin />
           <autenticazione /> <!-- controlla sulla sessione per vedere se aggiungere login/register o logut -->
         </ul>
       </nav>
+
+      <div id="breadcrumb">
+        <!-- potrebbe essere inutile dato dato che non abbiamo molto da andare in profonditá-->
+        <ul>
+          <li lang="en">Home</li>
+          <li>Scommesse</li>
+        </ul>
+      </div>
     </div>
 
     <main>
-      <table>
-        <!-- TODO togliere tabella -->
-        <thead class="norm">
-          <tr>
-            <th scope="col">Credito</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td data-label="Credito:">
-              <credito />
-            </td>
-          </tr>
-          <storico />
-        </tbody>
-      </table>
+      <credito />
+
+      <storico />
 
       <lista-scommesse />
     </main>
 
     <footer>
-      <div class="content">
-        <div><img class="logo" src="../../images/logo.jpg" alt="Logo" /></div>
+        <img class="logo" src="../../images/logo.jpeg" alt="Logo Ippodromo" />
 
-        <nav>
           <ul>
             <li>Sam</li>
             <li>Dam</li>
             <li>Martz</li>
           </ul>
-        </nav>
 
-      </div>
       <img id="img-valid-code" src="../../images/valid-xhtml10.png" alt="HTML valido" />
       <img id="img-valid-css" src="../../images/vcss-blue.gif" alt="CSS valido" />
     </footer>

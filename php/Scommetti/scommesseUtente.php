@@ -8,7 +8,7 @@ $conn = $dbAccess->openDBConnection();
 
 if ($conn) {
 	if (isset($_SESSION['username'])) {
-		$credito = $_SESSION["credito"];
+		$credito = '<h1 id="h1data">Il tuo credito &eacute;: <span>'. $_SESSION["credito"] .'</span></h1>';
 		$userResult = $dbAccess->getScommesseUtente($_SESSION['username']);
 
 		if ($userResult && mysqli_num_rows($userResult) > 0) {
@@ -25,9 +25,9 @@ if ($conn) {
 						if ($result && mysqli_num_rows($result) > 0) {
 							$posizione = mysqli_fetch_array($result);
 							if ($posizione['posizione'] == '1') {
-								$scommesse = "<div class='text'>Risultati gara: hai vinto </div>";
+								$scommesse = "<div class='text' class='green'>Risultati gara: hai vinto </div>";
 							} else {
-								$scommesse = "<div class='text'>Risultati gara: hai perso </div>";
+								$scommesse = "<div class='text' class='red'>Risultati gara: hai perso </div>";
 							}
 							mysqli_free_result($result);
 						}
@@ -50,3 +50,4 @@ $pagina = str_replace(
 	array($scommesse, $credito),
 	$pagina);
 echo $pagina;
+?>

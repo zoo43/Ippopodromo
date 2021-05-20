@@ -86,17 +86,41 @@ header h1 {
 	margin-bottom: 15px;
 }
 
-#breadcrumb ul {
-	font-size: 2em;
-	margin: 0;
+#breadcrumb {
+	text-align: center;
+	margin-top: 0;
 }
 
-#breadcrumb ul li {
+#breadcrumb li {
+	text-align: center;
+	font-size: 2em;
+	margin: 0;
   	display: inline-block;
   	list-style: none;
   	margin: 0;
   	padding: .2em .7em;
 }
+
+
+
+#breadcrumb li:before {
+  content: "";
+  
+  display: inline-block;
+  position: relative;
+  top: 8px;
+  left: -27px;
+
+  height: 35px;
+  width: 35px;
+  background-size: contain;
+  background-image: url("../images/arrow.png");
+}
+
+#breadcrumb li:first-child:before {
+  background: none;
+}
+
 /*
 #breadcrumb ul li:before {
   content: "";
@@ -418,12 +442,33 @@ table {
   }
 
 
-#dataGara {
+#h1data {
 	text-align: center;
+	margin-left: 5px;
+	margin-right: 5px;
 }
 
-#dataGara span {
+#h1data span {
 	color: var(--clrOrg);
+}
+
+.centerLink {
+	/*background-color: var(--clrBrw);
+*/	text-align: center;
+	font-size: 1.5em;
+}
+.centerLink a {
+	background-color: var(--clrBrw);
+	padding-right: 5px;
+	padding-left: 5px;
+	text-decoration: none;
+}
+
+.centerLink a:visited {
+	color: var(--clrGrn);
+}
+.centerLink a:hover {
+	color: var(--clrBlu);
 }
             
 ol {
@@ -479,4 +524,76 @@ ol a:hover:after {
   left: -.5em;
   border-left-color: var(--clrOrg);
 }
+
+.form{
+  text-align: center;
+  margin: 0 0 0 0;
+  width: 450px;
+  font-size: 16px;
+  background: var(--clrWht);
+  padding: 30px 30px 15px 30px;
+  border: 5px solid var(--clrOrg);
+}
+
+.form input[type=submit],
+.form input[type=button],
+.form input[type=text],
+.form input[type=password],
+.form input[type=email],
+.form input[type=date],
+.form label
+{
+  font-size: 16px;
+  color: var(--clrOrg);
+
+}
+.form label {
+  display:block;
+  margin-bottom: 10px;
+}
+.form label > span{
+  float: left;
+  width: 150px;
+}
+.form input[type=text],
+.form input[type=password],
+.form input[type=date],
+.form input[type=email] 
+{
+  background: transparent;
+  border: none;
+  border-bottom: 1px dashed #83A4C5;
+  width: 275px;
+  outline: none;
+  padding: 0px 0px 0px 0px;
+  font-style: italic;
+}
+
+.form input[type=text]:focus,
+.form input[type=password]:focus,
+.form input[type=date]:focus,
+.form input[type=email]:focus
+{
+  border-bottom: 1px dashed #D9FFA9;
+}
+
+.form input[type=submit],
+.form input[type=button]{
+  background: var(--clrGrn);
+  border: none;
+  padding: 8px 10px 8px 10px;
+  border-radius: 5px;
+  color: var(--clrOrg);
+}
+.form input[type=submit]:hover,
+.form input[type=button]:hover{
+background: var(--clrDrkGrn);
+}
     
+.red {
+	color: var(--clrSlm);
+}
+
+.green {
+	color: var(--clrGrn);
+}

@@ -12,40 +12,92 @@
   <link rel="stylesheet" type="text/css" href="../../style/small.css"
     media="handheld, screen and (max-width: 1025px)" />
   <link rel="stylesheet" type="text/css" href="../../style/print.css" media="print" />
+
+  <script type="text/javascript">
+      function checkDoc(var userBitSquits)
+      {
+        if(checkBitSquits(userBitSquits) && checkRadio())
+        {
+          return true;
+        }
+        else {
+          return false;
+        }
+      }
+      
+      function checkBitSquits(var userBitSquits)
+      {
+        var n = document.getElementsByTagName('input');
+        var value;
+        for (var i = 0; i < n.length; i++) {
+          if (n[i].type === 'number')
+          {
+            if(n[i].value <= userBitSquits)
+            return true;
+            else
+            {
+              alert('Non hai abbastanza bitSquits :(. Si prega di inserire un importo valido');
+              return false;
+            }
+          }
+        }
+        alert('Qualcosa è andato storto :(');
+        return false;
+      }
+      
+            function checkRadio()
+            {
+        var radios = document.getElementsByTagName('input');
+        var value;
+        for (var i = 0; i < radios.length; i++) {
+          if (radios[i].type === 'radio' && radios[i].checked)
+          {
+            return true;
+          }
+        }
+        alert('Non è stato selezionato nessun cavallo su cui scommettere');
+        return false;
+            }
+  </script>
+
 </head>
 
 <body>
   <header>
-    <h1>Le mie scommesse</h1>
+    <h1>Scommesse aperte</h1>
   </header>
-
+  
   <div class="page">
     <div class="navbar">
-
+      
+    
       <nav id="menu">
         <ul>
           <li lang="en"><a href="../../">Home</a></li>
+          <li>Scommesse</li>
           <li><a href="../Visualizzazione_Gare/risultati.php">Gare</a></li>
           <li><a href="../Visualizzazione_Cavalli/cavalli.php">Cavalli</a></li>
-          <li><a href='scommetti.php'>Scommesse</a></li>
           <admin />
           <autenticazione /> <!-- controlla sulla sessione per vedere se aggiungere login/register o logut -->
         </ul>
       </nav>
 
-      <ul id="breadcrumb">
-        <li lang="en">Home</li>
-        <li>Scommesse</li>
-        <li>Storico Scommesse</li>
-      </ul>
+      <div id="breadcrumb">
+        <ul>
+          <li lang="en">Home</li>
+          <li>Scommesse</li>
+          <li>Gara <id-gara /></li>
+        </ul>
+      </div>
     </div>
 
     <main>
-      
       <credito />
 
-      <lista-scommesse-utente />
-    
+      <form method="post" onsubmit="return checkDoc(<credito />);" action="confirmScommessaGara.php" id="formScommessa">
+
+      </form>
+
     </main>
 
     <footer>

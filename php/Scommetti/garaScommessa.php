@@ -1,55 +1,3 @@
-<!DOCTYPE html>
-<html>
-<head>
-<script type="text/javascript">
-			function checkDoc(var userBitSquits)
-			{
-				if(checkBitSquits(userBitSquits) && checkRadio())
-				{
-					return true;
-				}
-				else {
-					return false;
-				}
-			}
-			
-			function checkBitSquits(var userBitSquits)
-			{
-				var n = document.getElementsByTagName('input');
-				var value;
-				for (var i = 0; i < n.length; i++) {
-					if (n[i].type === 'number')
-					{
-						if(n[i].value <= userBitSquits)
-						return true;
-						else
-						{
-							alert('Non hai abbastanza bitSquits :(. Si prega di inserire un importo valido');
-							return false;
-						}
-					}
-				}
-				alert('Qualcosa è andato storto :(');
-				return false;
-			}
-			
-            function checkRadio()
-            {
-				var radios = document.getElementsByTagName('input');
-				var value;
-				for (var i = 0; i < radios.length; i++) {
-					if (radios[i].type === 'radio' && radios[i].checked)
-					{
-						return true;
-					}
-				}
-				alert('Non è stato selezionato nessun cavallo su cui scommettere');
-				return false;
-            }
-        </script>
-</head>
-
-<body>
 <?php
 require_once('../database.php');
 require_once('../auth.php');
@@ -89,5 +37,12 @@ if($conn)
 	}
 }
 echo "<p><a href='scommetti.php'> Torna indietro </a></p>";
+
+$pagina = areaAutenticazione(file_get_contents('../../html/scommesse/garaScommessa.html'));
+$pagina = str_replace(
+	array("<id-gara />", "<credito />", "<data />"),
+	array($idgara, $credito, $data),
+	$pagina);
+echo $pagina;
+
 ?>
-</body>
