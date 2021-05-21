@@ -10,39 +10,50 @@ $dbAccess = new DBAccess();
 $conn = $dbAccess->openDBConnection();
 if($conn)
 {
-	if(isset($_SESSION["username"]))
-	{
-	$creditoUtente = $_SESSION["credito"];
-	echo '<form method="post" onsubmit="return checkDoc($creditoUtente);" action="confirmScommessaGara.php" id="formScommessa">';
 	$idgara = $params['value'];
 	$result=@$dbAccess->getInfoGara($idgara);
+	if(mysqli_num_rows($result)>0)
 	$data = mysqli_fetch_array($result)["dataGara"];
-	mysqli_free_result($result);
-	echo 'Numero Gara: <label form="formScommessa">'.$params["value"].'</label><br />';
-	echo 'Data Gara: <label form="formScommessa">'.$data.'</label><br />';
-	echo '<input type="number" name="scommessa" value="1" min="1" max='.$creditoUtente.'>'; 
-	print("<br />");
-	$cavGara = $dbAccess->getCavalliGara($params['value']);
-	
-	while($row = mysqli_fetch_array($cavGara))
+	if(isset($data))
 	{
-		print('<input type="radio" name="cavallo" value="'.$row["idCavallo"].'">'.$row["nome"]);
-		print("<br />");
-	}
-	mysqli_free_result($cavGara);
-	echo '<input type="hidden" name="idGara" value="'.$params["value"].'"/>';
-	echo '<input type="hidden" name="dataGara" value="'.$data.'"/>';
-	echo '<button type="submit" name="scommetti">Scommetti</button>';
-	$dbAccess->closeDBConnection();
-	echo '</form>';
+		if(isset($_SESSION["username"]))
+		{
+		$creditoUtente = $_SESSION["credito"];
+		$form = '<form method="post" onsubmit="return checkDoc($creditoUtente);" action="confirmScommessaGara.php" id="formScommessa">';
+		mysqli_free_result($result);
+		$form .= 'Numero Gara: <label form="formScommessa">'.$params["value"].'</label><br />';
+		$form .= 'Data Gara: <label form="formScommessa">'.$data.'</label><br />';
+		$form .= '<input type="number" name="scommessa" value="1" min="1" max='.$creditoUtente.'><br />'; 
+		$cavGara = $dbAccess->getCavalliGara($params['value']);
+	
+		while($row = mysqli_fetch_array($cavGara))
+		{
+			$form .= '<input type="radio" name="cavallo" value="'.$row["idCavallo"].'">'.$row["nome"].'<br />';
+		}
+		mysqli_free_result($cavGara);
+		$form .= '<input type="hidden" name="idGara" value="'.$params["value"].'"/>';
+		$form .= '<input type="hidden" name="dataGara" value="'.$data.'"/>';
+		$form .= '<button type="submit" name="scommetti">Scommetti</button>';
+		$dbAccess->closeDBConnection();
+		$form .= '</form>';
+		} else 
+		{
+			$form = "<p>Per scommettere devi avere effettuato il login</p>";
+			$creditoUtente = "Non disponibile";
+		}
+	} else
+	{
+		$form = "<p>Gara non trovata</p>";
+		$creditoUtente = "Non disponibile";
+		$data = "Non disponibile";
 	}
 }
-echo "<p><a href='scommetti.php'> Torna indietro </a></p>";
+$form .= "<p><a href='scommetti.php'> Torna indietro </a></p>";
 
 $pagina = areaAutenticazione(file_get_contents('../../html/scommesse/garaScommessa.html'));
 $pagina = str_replace(
-	array("<id-gara />", "<credito />", "<data />"),
-	array($idgara, $creditoUtente, $data),
+	array("<id-gara />", "<credito />", "<data />", "<form />"),
+	array($idgara, $creditoUtente, $data, $form),
 	$pagina);
 echo $pagina;
 
