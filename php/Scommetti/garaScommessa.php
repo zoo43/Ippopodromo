@@ -14,7 +14,8 @@ if($conn)
 	{
 	$creditoUtente = $_SESSION["credito"];
 	echo '<form method="post" onsubmit="return checkDoc($creditoUtente);" action="confirmScommessaGara.php" id="formScommessa">';
-	$result=@$dbAccess->getInfoGara($params['value']);
+	$idgara = $params['value'];
+	$result=@$dbAccess->getInfoGara($idgara);
 	$data = mysqli_fetch_array($result)["dataGara"];
 	mysqli_free_result($result);
 	echo 'Numero Gara: <label form="formScommessa">'.$params["value"].'</label><br />';
@@ -41,7 +42,7 @@ echo "<p><a href='scommetti.php'> Torna indietro </a></p>";
 $pagina = areaAutenticazione(file_get_contents('../../html/scommesse/garaScommessa.html'));
 $pagina = str_replace(
 	array("<id-gara />", "<credito />", "<data />"),
-	array($idgara, $credito, $data),
+	array($idgara, $creditoUtente, $data),
 	$pagina);
 echo $pagina;
 
