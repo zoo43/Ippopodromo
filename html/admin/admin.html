@@ -2,60 +2,68 @@
 <html lang="it">
 
 <head>
-  <title>Pannello amministratore - Ippodromo NO₂</title> <!-- oppure &#8322; -->
-  <meta name="title" content="Pannello amministratore - Ippodromo NO₂" />
-  <meta name="description" content="" />
-  <meta name="keywords" content="" />
+  <title>Dashboard amministratore - Ippodromo NO₂</title> <!-- oppure &#8322; -->
+  <meta name="title" content="Dashboard amministratore - Ippodromo NO₂" />
   <meta charset="UTF-8">
   <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
-  <link rel="stylesheet" type="text/css" href="style/style.css" media="screen" />
-  <link rel="stylesheet" type="text/css" href="style/small.css" media="" />
-  <link rel="stylesheet" type="text/css" href="style/print.css" media="print" />
+  <link rel="stylesheet" type="text/css" href="../../style/style.css" media="screen and (min-width: 1025px)" />
+  <link rel="stylesheet" type="text/css" href="../../style/small.css" media="handheld, screen and (max-width: 1025px)" />
+  <link rel="stylesheet" type="text/css" href="../../style/print.css" media="print" />
 </head>
 
 <body>
   <header>
-    <div id="breadcrumb"> <!-- potrebbe essere inutile dato dato che non abbiamo molto da andare in profonditá-->
-      <ul>
-        <li lang="en">Pannello amministratore</li>
-      </ul>
-    </div>
+    <h1><span lang="en">Dashboard</span> amministratore</h1>
+  </header>
+  <div class="page">
+    <div class="navbar">
     <nav id="menu">
       <ul>
-        <li>Dashboard</li>
+        <li lang="en">Dashboard</li>
         <li><a href="../../php/Visualizzazione_Cavalli/cavalli.php">Cavalli</a></li>
         <li><a href="../../php/Visualizzazione_Gare/risultati.php">Gare</a></li>
-        <li><a href="../../php/Autenticazione/logout.php">Abbandona pannello</a></li>
+        <li><a href="../../">Abbandona dashboard</a></li>
         <autenticazione />
       </ul>
     </nav>
-    <img src="../../images/logo.jpg" alt="logo ippodromo rimuovi questo alt" />
-  </header>
+    <ul id="breadcrumb">
+      <li><span lang="en">Dashboard</span> amministratore</li>
+    </ul>
+  </div>
+
   <main>
-    <nav> <!-- questa cosa va mostrata solo se si é loggati, se non lo si é bisogna reindirizzare al login --> 
-      <dl id="db-cards"> <!-- aggiungere delle icone in css -->
+    <nav>
+      <!-- questa cosa va mostrata solo se si é loggati, se non lo si é bisogna reindirizzare al login -->
+      <dl id="db-cards">
+        <!-- aggiungere delle icone in css -->
         <dt>
           <h2>Cavalli</h2>
         </dt>
         <dd>
-          <p><num-cavalli /> <!-- 21 cavalli inseriti --></p>
-          <p><a href="AggiungiCavallo.html">Gestici i cavalli</a></p>
+          <p>
+            <num-cavalli />
+          </p>
+          <p><a href="gestisciCavalli.php">Gestici i cavalli</a></p>
         </dd>
       </dl>
-        <dt>
-          <h2>Gare</h2>
-        </dt>
-        <dd>
-          <p><num-gare /></p>
-          <p><a href="../../php/Admin/aggiungiGara.php">Crea nuove gare</a></p>
-        </dd>
-        <dt>
-          <h2>Risultati</h2>
-        </dt>
-        <dd>
-          <p><num-risultati /></p>
-          <p><a href="../../php/Admin/aggiungiRisultati.php">Aggiungi risultati alle gare concluse</a></p>
-        </dd>
+      <dt>
+        <h2>Gare</h2>
+      </dt>
+      <dd>
+        <p>
+          <num-gare />
+        </p>
+        <p><a href="aggiungiGara.php">Crea nuove gare</a></p>
+      </dd>
+      <dt>
+        <h2>Risultati</h2>
+      </dt>
+      <dd>
+        <p>
+          <num-risultati />
+        </p>
+        <p><a href="aggiungiRisultati.php">Aggiungi risultati alle gare concluse</a></p>
+      </dd>
       </dl>
     </nav>
   </main>
@@ -65,6 +73,7 @@
     <!-- cambiare src dopo aver validato -->
     boh info varie su noi che non ricordo quali fossero ma si posso aggiungere
   </footer>
+  </div>
 </body>
 
 </html>

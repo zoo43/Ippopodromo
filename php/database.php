@@ -114,7 +114,7 @@ class DBAccess{
 
 
    //Risultati
-   public function getGare($stato)
+   public function getGare($stato, $gara_corsa = false)
    {
         if($stato == 2)
         {
@@ -124,7 +124,11 @@ class DBAccess{
         }
         else
         {
-            $query = "SELECT dataGara, idGara from Gara where stato=$stato and dataGara< " . "'".date('Y-m-d H:i:s') ."'";
+            if($gara_corsa)
+                $sign = "<";
+            else
+                $sign = ">=";
+            $query = "SELECT dataGara, idGara from Gara where stato=$stato and dataGara " . $sign . "'".date('Y-m-d H:i:s') ."'";
             $result = mysqli_query($this->connection, $query);
             return $result;
         }

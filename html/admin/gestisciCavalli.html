@@ -2,54 +2,56 @@
 <html lang="it">
 
 <head>
-  <title>Aggiungi Cavallo</title> <!-- nitrito hihihihi -->
+  <title>Gestisci cavalli - Ippodromo NO₂</title>
   <meta name="title" content="aggiungi-gara" />
-  <meta name="description" content="" />
-  <meta name="keywords" content="" />
   <meta charset="UTF-8">
   <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
-  <link rel="stylesheet" type="text/css" href="style/style.css" media="screen" />
-  <link rel="stylesheet" type="text/css" href="style/small.css" media="" />
-  <link rel="stylesheet" type="text/css" href="style/print.css" media="print" />
+  <link rel="stylesheet" type="text/css" href="../../style/style.css" media="screen and (min-width: 1025px)" />
+  <link rel="stylesheet" type="text/css" href="../../style/small.css" media="handheld, screen and (max-width: 1025px)" />
+  <link rel="stylesheet" type="text/css" href="../../style/print.css" media="print" />
 </head>
 
 <body>
   <header>
-    <div id="breadcrumb">
-      <ul>
-        <li>Pannello amministratore</li>
-        <li>Gestione cavalli</li>
+    <h1>Gestici i cavalli</h1>
+  </header>
+  <div class="page">
+    <div class="navbar">
+      <nav id="menu">
+        <ul>
+          <li lang="en"><a href="admin.php">Dashboard</a></li>
+          <li><a href="../Visualizzazione_Cavalli/cavalli.php">Cavalli</a></li>
+          <li><a href="../Visualizzazione_Gare/risultati.php">Gare</a></li>
+          <li><a href="../../">Abbandona dashboard</a></li>
+          <autenticazione />
+        </ul>
+      </nav>
+      <ul id="breadcrumb">
+        <li><span lang="en">Dashboard</span> amministratore</li>
+        <li>Gestici i cavalli</li>
       </ul>
     </div>
-    <nav id="menu">
-      <ul>
-        <li lang="en"><a href="admin.php">Torna al pannello</a></li>
-        <li><a href="../../php/Visualizzazione_Cavalli/cavalli.php">Cavalli</a></li>
-        <li><a href="../../php/Visualizzazione_Gare/risultati.php">Gare</a></li>
-      </ul>
-    </nav>
-    <img src="../../images/logo.jpg" alt="logo ippodromo rimuovi questo alt" />
-  </header>
-  <section>
-    <a href="../../html/admin/aggiungiCavallo.html">Inserisci un nuovo cavallo</a> <!-- volendo si puó nascondere/visualizzare con js invece che cambiare pagina -->
-    <table>
-      <thead>
-        <tr>
-          <th>Nome</th>
-          <th>Opzioni</th>
-        </tr>
-      </thead>
-      <tfoot></tfoot>
-      <tbody>
-        <lista-cavalli />
-      </tbody>
-    </table>
-  </section>
-  <p><a href="javascript:history.back()">Torna indietro</a></p>
-  <footer>
-    <img id="img-valid-code" src="images/valid-xhtml10.png" alt="HTML valido" />
-    <img id="img-valid-css" src="images/vcss-blue.gif" alt="CSS valido" /> <!-- cambiare src dopo aver validato -->
-  </footer>
+    <main>
+      <a href="../../html/admin/aggiungiCavallo.html">Inserisci un nuovo cavallo</a>
+      <!-- volendo si puó nascondere/visualizzare con js invece che cambiare pagina -->
+      <table>
+        <thead>
+          <tr>
+            <th>Nome</th>
+            <th>Opzioni</th>
+          </tr>
+        </thead>
+        <tfoot></tfoot>
+        <tbody>
+          <lista-cavalli />
+        </tbody>
+      </table>
+    </main>
+    <footer>
+      <img id="img-valid-code" src="images/valid-xhtml10.png" alt="HTML valido" />
+      <img id="img-valid-css" src="images/vcss-blue.gif" alt="CSS valido" /> <!-- cambiare src dopo aver validato -->
+    </footer>
+  </div>
 </body>
 
 </html>
