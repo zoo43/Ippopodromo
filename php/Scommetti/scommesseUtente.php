@@ -17,7 +17,16 @@ if ($conn) {
 					$scommesse .= '<div class="card"><div class="content">';
 					$scommesse .= "<div class='headline'>Numero gara: " . $row['idGara'] . "</div>";
 					$scommesse .= "<div class='text'>Data gara: " . $row['dataGara'] . "</div>";
-					$scommesse .= "<div class='text'>Stato gara: " . $row['stato'] . "</div>";
+
+					if($row['stato'] == '0'){
+						$scommesse .= "<div class='text'>Stato gara: programmata</div>";
+					}
+					else if($row['stato'] == '1'){
+						$scommesse .= "<div class='text'>Stato gara: in corso</div>";
+					}
+					else {
+						$scommesse .= "<div class='text'>Stato gara: conclusa</div>";
+					}
 					$scommesse .= "<div class='text'>Cavallo puntato: <a href='../visualizzazione_Cavalli/cavalloSelezionato.php?value=" . $row['idCavallo'] . "'>" . $row['nome'] . "</a> </div>";
 					$scommesse .= "<div class='text'>Valore puntata: " . $row['puntata'] . "</div>";
 					if ($row['stato'] == '2') {
