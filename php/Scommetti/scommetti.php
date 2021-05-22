@@ -17,13 +17,24 @@ if(isset($_SESSION["username"]))
     $credito = '<h1 id="h1data">Il tuo credito &eacute;: <span>'. $_SESSION["credito"] .'</span></h1>';
     
     $result = $dbAccess->getGare("0");
+	$resultGareUtente = $dbAccess->getScommesseUtente($username);
+	
     while($row = mysqli_fetch_array($result))
     {          
         $id=$row['idGara'];
         $arr=explode(" ",$row['dataGara']);
             $giorno = $arr[0];
             $ora=$arr[1];
-
+		$contains = false;
+		while($rowGareUtente = mysqli_fetch_array($resultGareUtente))
+		{
+		if($rowGareUtente["idGara"] == $id)
+		{
+			$contains = true;
+		}
+		}
+		if($contains == false)
+		{
         $scommessa = '<div class="card">
           <div class="content">
             <div class="headline"> <h2>Gara <id-scommessa /></h2> </div>
@@ -39,10 +50,8 @@ if(isset($_SESSION["username"]))
             $scommessa
         );
         $scommesse .= $scommessa;
-
-
+		}
     }
-
     $storico = '<div class="centerLink"><a href="scommesseUtente.php">Visualizza le tue scommesse</a></div>';
     mysqli_free_result($result);
 }
