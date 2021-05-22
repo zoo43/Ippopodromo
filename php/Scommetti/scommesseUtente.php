@@ -18,10 +18,10 @@ if ($conn) {
 					$scommesse .= "<div class='headline'>Numero gara: " . $row['idGara'] . "</div>";
 					$scommesse .= "<div class='text'>Data gara: " . $row['dataGara'] . "</div>";
 
-					if($row['stato'] == '0'){
+					if($row['statoGara'] == '0'){
 						$scommesse .= "<div class='text'>Stato gara: programmata</div>";
 					}
-					else if($row['stato'] == '1'){
+					else if($row['statoGara'] == '1'){
 						$scommesse .= "<div class='text'>Stato gara: in corso</div>";
 					}
 					else {
@@ -29,14 +29,14 @@ if ($conn) {
 					}
 					$scommesse .= "<div class='text'>Cavallo puntato: <a href='../visualizzazione_Cavalli/cavalloSelezionato.php?value=" . $row['idCavallo'] . "'>" . $row['nome'] . "</a> </div>";
 					$scommesse .= "<div class='text'>Valore puntata: " . $row['puntata'] . "</div>";
-					if ($row['stato'] == '2') {
+					if ($row['statoGara'] == '2') {
 						$result = $dbAccess->getPosizioneCavalloScommessa($row['idGara'], $row['idCavallo']);
 						if ($result && mysqli_num_rows($result) > 0) {
 							$posizione = mysqli_fetch_array($result);
 							if ($posizione['posizione'] == '1') {
-								$scommesse = "<div class='text' class='green'>Risultati gara: hai vinto </div>";
+								$scommesse .= "<div class='text' class='green'>Risultati gara: hai vinto </div>";
 							} else {
-								$scommesse = "<div class='text' class='red'>Risultati gara: hai perso </div>";
+								$scommesse .= "<div class='text' class='red'>Risultati gara: hai perso </div>";
 							}
 							mysqli_free_result($result);
 						}
