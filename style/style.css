@@ -165,6 +165,16 @@ a:hover {
   color: var(--clrBlu);
 }
 
+.tracks {
+  grid-column: 1;
+  grid-auto-rows: 33.3%;
+
+
+  background-image: url("../images/horse-tracks.png");
+  background-size: cover;
+ background-repeat: repeat; 
+}
+
 main {
 	/*width: 84%;*/
 	/*float: right;*/
