@@ -11,6 +11,7 @@
   --clrOrg: #cc9900;
   --clrDrkGrn: #2d862d;
   --clrSlm: #ff6666;
+  --clrBrx: #800000;
 }
 
 body {
@@ -73,7 +74,7 @@ header h1 {
 
 #breadcrumb {
 	background-image: url("../images/wood_pattern.png");
-	background-color: var(--clrSlm);
+	background-color: var(--clrBrx);
 
 	align-self: center;
 
@@ -205,11 +206,19 @@ header h1 {
 }
 
 #menu a:visited {
-  	color: var(--clrOrg);
+  color: var(--clrBlu);
 }
 
 #menu a:hover {
-  	color: var(--clrGrn);
+  color: var(--clrDrkGrn);
+}
+
+a:visited {
+  color: var(--clrBlu);
+}
+
+a:hover {
+  color: var(--clrDrkGrn);
 }
 
 
