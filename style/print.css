@@ -1,0 +1,25 @@
+html{
+	font-family: "Times New Roman", Times, serif;
+	font-size:12pt;
+	}
+
+header{
+	padding:0.1em 1.5em 0.5em;
+	}
+.logo{ display:none;}
+nav{display:none;}
+.page{padding:0.1em 1.5em 0.5em;}
+footer{display:none;}
+
+a:link:after, 
+a:visited:after {
+	content: " [" attr(href) "] ";
+	font-size:90%;
+}
+
+img {display: none;}
+
+ .cards img {
+	height: 7em;
+	width: 7em;
+}
