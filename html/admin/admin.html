@@ -7,7 +7,8 @@
   <meta charset="UTF-8">
   <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
   <link rel="stylesheet" type="text/css" href="../../style/style.css" media="screen and (min-width: 1025px)" />
-  <link rel="stylesheet" type="text/css" href="../../style/small.css" media="handheld, screen and (max-width: 1025px)" />
+  <link rel="stylesheet" type="text/css" href="../../style/small.css"
+    media="handheld, screen and (max-width: 1025px)" />
   <link rel="stylesheet" type="text/css" href="../../style/print.css" media="print" />
 </head>
 
@@ -17,75 +18,75 @@
   </header>
   <div class="page">
     <div class="navbar">
-    <nav id="menu">
-      <ul>
-        <li lang="en">Dashboard</li>
-        <li><a href="../../php/Visualizzazione_Cavalli/cavalli.php">Cavalli</a></li>
-        <li><a href="../../php/Visualizzazione_Gare/risultati.php">Gare</a></li>
-        <li><a href="../../">Abbandona dashboard</a></li>
-        <autenticazione />
+      <nav id="menu">
+        <ul>
+          <li lang="en">Dashboard</li>
+          <li><a href="../../php/Visualizzazione_Cavalli/cavalli.php">Cavalli</a></li>
+          <li><a href="../../php/Visualizzazione_Gare/risultati.php">Gare</a></li>
+          <li><a href="../../">Abbandona dashboard</a></li>
+          <autenticazione />
+        </ul>
+      </nav>
+      <ul id="breadcrumb">
+        <li><span lang="en">Dashboard</span> amministratore</li>
       </ul>
-    </nav>
-    <ul id="breadcrumb">
-      <li><span lang="en">Dashboard</span> amministratore</li>
-    </ul>
-  </div>
+    </div>
 
-  <main>
-    <nav>
-      <!-- questa cosa va mostrata solo se si è loggati, se non lo si è bisogna reindirizzare al login -->
-      <dl id="db-cards">
-        <!-- aggiungere delle icone in css -->
+    <main>
+      <nav>
+        <!-- questa cosa va mostrata solo se si è loggati, se non lo si è bisogna reindirizzare al login -->
+        <dl id="db-cards">
+          <!-- aggiungere delle icone in css -->
+          <dt>
+            <h2>Cavalli</h2>
+          </dt>
+          <dd>
+            <p>
+              <num-cavalli />
+            </p>
+            <p><a href="gestisciCavalli.php">Gestisci i cavalli</a></p>
+          </dd>
+        </dl>
         <dt>
-          <h2>Cavalli</h2>
+          <h2>Gare</h2>
         </dt>
         <dd>
           <p>
-            <num-cavalli />
+            <num-gare />
           </p>
-          <p><a href="gestisciCavalli.php">Gestisci i cavalli</a></p>
+          <p><a href="aggiungiGara.php">Crea nuove gare</a></p>
         </dd>
-      </dl>
-      <dt>
-        <h2>Gare</h2>
-      </dt>
-      <dd>
-        <p>
-          <num-gare />
-        </p>
-        <p><a href="aggiungiGara.php">Crea nuove gare</a></p>
-      </dd>
-      <dt>
-        <h2>Risultati</h2>
-      </dt>
-      <dd>
-        <p>
-          <num-risultati />
-        </p>
-        <p><a href="aggiungiRisultati.php">Aggiungi risultati alle gare concluse</a></p>
-      </dd>
-      </dl>
-    </nav>
-  </main>
-  <footer>
-    <div id="copyright">
+        <dt>
+          <h2>Risultati</h2>
+        </dt>
+        <dd>
+          <p>
+            <num-risultati />
+          </p>
+          <p><a href="aggiungiRisultati.php">Aggiungi risultati alle gare concluse</a></p>
+        </dd>
+        </dl>
+      </nav>
+    </main>
+    <footer>
       <img class="logo" src="../../images/logo.jpeg" alt="Logo Ippodromo" />
-      <p>
-        Bella amico, grazie per fare il lavoro pesante al posto nostro. Ovviamente questo è tutto volontariato da parte tua, quindi non pagheremo nulla, ma come sempre sappi che la ricompensa più grande è sempre il sorriso di chi aiuti, quindi ecco a te <abbr title="Emoticon sorridente">:)</abbr>. Come? Vuoi sapere dove abbiamo nascosto la tua famiglia? E vorresti anche uscire dalla cantina, poter mangiare come si deve, e dormire su di un letto e non più sul pavimento? Ma di cosa stai parlando?
-      </p>
-      <div id="authors">
-        I tuoi padroni:
-        <ul>
-          <li>Cecio</li>
-          <li>Dam</li>
-          <li>Martz</li>
-          <li>Sam</li>
-        </ul>
+      <div id="copyright">
+        <p>
+          Bella amico, grazie per fare il lavoro pesante al posto nostro. Ovviamente questo è tutto volontariato da parte tua, quindi non pagheremo nulla, ma come sempre sappi che la ricompensa più grande è sempre il sorriso di chi aiuti, quindi ecco a te <abbr title="Emoticon sorridente">:)</abbr>. Come? Vuoi sapere dove abbiamo nascosto la tua famiglia? E vorresti anche uscire dalla cantina, poter mangiare come si deve, e dormire su di un letto e non più sul pavimento? Ma di cosa stai parlando?
+        </p>
+        <div id="authors">
+          I tuoi padroni:
+          <ul>
+            <li>Cecio</li>
+            <li>Dam</li>
+            <li>Martz</li>
+            <li>Sam</li>
+          </ul>
+        </div>
       </div>
-    </div>
-    <img id="img-valid-code" src="../../images/valid-xhtml10.png" alt="HTML valido" />
-    <img id="img-valid-css" src="../../images/vcss-blue.gif" alt="CSS valido" />
-  </footer>
+      <img id="img-valid-code" src="../../images/valid-xhtml10.png" alt="HTML valido" />
+      <img id="img-valid-css" src="../../images/vcss-blue.gif" alt="CSS valido" />
+    </footer>
   </div>
 </body>
 
