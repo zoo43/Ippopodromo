@@ -2,31 +2,20 @@
 <html lang="it">
 
 <head>
-  <title>Inserisci risultati - Ippodromo NO₂¯</title>
-  <meta name="title" content="inserisci-risultati" />
+  <title>Inserisci risultati gara</title> <!-- nitrito hihihihi -->
+  <meta name="title" content="inserisci-risultati-gara" />
+  <noscript>
+    <style>html{display:none;}</style>
+    <meta http-equiv="refresh" content="0.0;url=inserisciRisultatiNoJs.html">
+  </noscript>
+  <meta name="description" content="" />
+  <meta name="keywords" content="" />
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" type="text/css" href="../../style/style.css" media="screen and (min-width: 1025px)" />
-  <link rel="stylesheet" type="text/css" href="../../style/small.css"
-    media="handheld, screen and (max-width: 1025px)" />
-  <link rel="stylesheet" type="text/css" href="../../style/print.css" media="print" />
-
-  <script>
-    function controllaPosizioni() {
-      var x = document.getElementsByName("cavalli[]");
-      var y = x;
-      var uguali = false;
-
-      for (i = 0; i < x.length; i++) {
-        for (j = 0; j < x.length; j++) {
-          if (x[i].value == x[j].value && x[i].value != "" && x[j].value != "" && i != j) {
-            uguali = true;
-          }
-        }
-      }
-      document.getElementById('btn').disabled = uguali;
-    }
-  </script>
+  <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+  <link rel="stylesheet" type="text/css" href="style/style.css" media="screen" />
+  <link rel="stylesheet" type="text/css" href="style/small.css" media="" />
+  <link rel="stylesheet" type="text/css" href="style/print.css" media="print" />
+  <script type="text/javascript" src="../../script/controlli.js"></script>
 
 </head>
 

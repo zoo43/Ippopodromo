@@ -23,7 +23,7 @@ function areaAutenticazione($pagina, $index = false){
 
     return str_replace(
         array("<autenticazione />","<admin />"),
-        array($autenticazione, $admin), 
+        array($autenticazione, $admin),
         $pagina
     );
 }

@@ -3,9 +3,9 @@ require_once('../database.php');
 require_once('../auth.php');
 
 
-$url = $_SERVER['REQUEST_URI'];    
-$url_components = parse_url($url); 
-@parse_str($url_components['query'], $params); 
+$url = $_SERVER['REQUEST_URI'];
+$url_components = parse_url($url);
+@parse_str($url_components['query'], $params);
 $dbAccess = new DBAccess();
 $conn = $dbAccess->openDBConnection();
 if($conn)
@@ -23,9 +23,9 @@ if($conn)
 		mysqli_free_result($result);
 		$form .= 'Numero Gara: <label form="formScommessa">'.$params["value"].'</label><br />';
 		$form .= 'Data Gara: <label form="formScommessa">'.$data.'</label><br />';
-		$form .= '<input type="number" name="scommessa" value="1" min="1" max='.$creditoUtente.'><br />'; 
+		$form .= '<input type="number" name="scommessa" value="1" min="1" max='.$creditoUtente.'><br />';
 		$cavGara = $dbAccess->getCavalliGara($params['value']);
-	
+
 		while($row = mysqli_fetch_array($cavGara))
 		{
 			$form .= '<input type="radio" name="cavallo" value="'.$row["idCavallo"].'">'.$row["nome"].'<br />';
@@ -36,7 +36,7 @@ if($conn)
 		$form .= '<button type="submit" name="scommetti">Scommetti</button>';
 		$dbAccess->closeDBConnection();
 		$form .= '</form>';
-		} else 
+		} else
 		{
 			$form = "<p>Per scommettere devi avere effettuato il login</p>";
 			$creditoUtente = "Non disponibile";

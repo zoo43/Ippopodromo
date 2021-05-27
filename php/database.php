@@ -1,6 +1,6 @@
 <?php
 
-class DBAccess{   
+class DBAccess{
    private const SERVERNAME =  "localhost" ;
    private const USERNAME = "root";
    private const PASSWORD = "";
@@ -25,7 +25,7 @@ class DBAccess{
         mysqli_close($this->connection);
    }
 
-   
+
    //Registrazione
    public function verificaPresenza($username, $mail)
    {
@@ -59,11 +59,11 @@ class DBAccess{
    //Login
 
    public function autentica($nome, $password)
-   {   
+   {
        $query = "SELECT * from Utente where nomeUtente='$nome' and BINARY password='$password'";
 
        $result = mysqli_query($this->connection, $query);
-       
+
        if(mysqli_affected_rows($this->connection)>0){
            return $result;
        }
@@ -73,7 +73,7 @@ class DBAccess{
        }
    }
 
-   
+
    function getCavalli($ritirati)
    {
        if($ritirati)
@@ -144,9 +144,9 @@ class DBAccess{
 
         if(mysqli_affected_rows($this->connection)>0){
         for ($i = 0; $i < count($arr) ; $i++) {
-            
+
             $string = $arr[$i];
-            $query = "INSERT INTO partecipante (idGara,idCavallo) VALUES('$id','" . $string . "')"; 
+            $query = "INSERT INTO partecipante (idGara,idCavallo) VALUES('$id','" . $string . "')";
             mysqli_query($this->connection, $query);
         }
         mysqli_free_result($result);
@@ -193,7 +193,7 @@ class DBAccess{
             }
         }
 
-        $query = "UPDATE gara SET stato='2' where idGara='$idGara'"; 
+        $query = "UPDATE gara SET stato='2' where idGara='$idGara'";
         mysqli_query($this->connection, $query);
         if(mysqli_affected_rows($this->connection)>0){
             $bool = true;
@@ -211,7 +211,7 @@ class DBAccess{
         mysqli_query($this->connection, $query);
 
         $result = mysqli_query($this->connection, $query);
-        
+
         if(mysqli_num_rows($result)>0){
             mysqli_free_result($result);
             return false;
@@ -230,10 +230,10 @@ class DBAccess{
         }
         else{
             return false;
-        }       
+        }
 
    }
-   
+
 
    //Scommesse
 
@@ -243,14 +243,14 @@ class DBAccess{
 		$result = mysqli_query($this->connection, $query);
 		return $result;
 	}
-	
+
 	public function getPosizioneCavalloScommessa($idGara,$idCavallo)
 	{
 		$query = "SELECT DISTINCT posizione FROM scommessa,partecipante WHERE scommessa.idGara=partecipante.idGara AND scommessa.idCavallo=partecipante.idCavallo AND scommessa.idGara='".$idGara."' AND scommessa.idCavallo='".$idCavallo."'";
 		$result = mysqli_query($this->connection, $query);
 		return $result;
 	}
-	
+
 	public function getScommesseUtente($username)
 	{
 		$query = "SELECT DISTINCT scommessa.idGara,scommessa.idCavallo, dataGara, cavallo.nome, puntata, scommessa.stato, gara.stato AS statoGara FROM scommessa INNER JOIN partecipante ON scommessa.idGara = partecipante.idGara INNER JOIN cavallo ON scommessa.idCavallo = cavallo.idCavallo INNER JOIN gara ON partecipante.idGara = gara.idGara WHERE nomeUtente='".$username."'";
@@ -271,20 +271,20 @@ class DBAccess{
 	   }
     }
 
-	
+
 	public function aggiuntaScommessa($username, $idGara, $idCavallo, $puntata)
 	{
 		$query = "INSERT INTO scommessa(idGara, idCavallo, nomeUtente, puntata) VALUES ('".$idGara."','".$idCavallo."','".$username."','".$puntata."')";
 		if($this->connection->query($query))
 		{
-			return $this->updateDopoPagamento($username, $puntata); 
+			return $this->updateDopoPagamento($username, $puntata);
 		}
 		else
 		{
 			return false;
 		}
 	}
-	
+
 	public function confermaScommesse($idGara)
 	{
 		$noError = true;
@@ -316,5 +316,5 @@ class DBAccess{
 		return false;
 	}
 }
-	
+
 ?>

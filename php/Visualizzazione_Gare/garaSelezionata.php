@@ -2,9 +2,9 @@
 require_once('../database.php');
 require_once('../auth.php');
 
-$url = $_SERVER['REQUEST_URI'];    
-$url_components = parse_url($url); 
-parse_str($url_components['query'], $params); 
+$url = $_SERVER['REQUEST_URI'];
+$url_components = parse_url($url);
+parse_str($url_components['query'], $params);
 
 $dbAccess = new DBAccess();
 $conn = $dbAccess->openDBConnection();
@@ -23,7 +23,7 @@ while($row = mysqli_fetch_array($result))
     $giorno = $arr[0];
     $ora = $arr[1];
     // $classifica .= '<tr>
-    // 					<td><a href="../Visualizzazione_Cavalli/cavalloSelezionato.php?value='. $row["idCavallo"] .'"> '. $row['posizione'] . ' ' . $row['nome'] . ' </a></td> 
+    // 					<td><a href="../Visualizzazione_Cavalli/cavalloSelezionato.php?value='. $row["idCavallo"] .'"> '. $row['posizione'] . ' ' . $row['nome'] . ' </a></td>
     // 				</tr>';
 
     $classifica .= '<li>

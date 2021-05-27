@@ -1,9 +1,9 @@
 <?php
 require_once('../database.php');
 require_once('../auth.php');
-$url = $_SERVER['REQUEST_URI'];    
-$url_components = parse_url($url); 
-parse_str($url_components['query'], $params); 
+$url = $_SERVER['REQUEST_URI'];
+$url_components = parse_url($url);
+parse_str($url_components['query'], $params);
 
 $dbAccess = new DBAccess();
 $conn = $dbAccess->openDBConnection();
@@ -26,7 +26,7 @@ if($conn)
 
 
     if($gareggiato)
-    { 
+    {
         $lista_gare .= '<table>
                             <thead class="norm">
                                 <tr>
@@ -37,7 +37,7 @@ if($conn)
                             </thead>
                             <tbody>';
         while($row = mysqli_fetch_array($result))
-        {    
+        {
             $nome = $row['nome'];
             $immagine = $row['immagine'];
             $descrizione = $row['descrizione'];
@@ -55,9 +55,9 @@ if($conn)
 
 
 
-        } 
+        }
 
-        
+
         $lista_gare.= '</tbody>
                         </table>';
 
