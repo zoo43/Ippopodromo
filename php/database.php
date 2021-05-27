@@ -246,7 +246,7 @@ class DBAccess{
 
 	public function getPosizioneCavalloScommessa($idGara,$idCavallo)
 	{
-		$query = "SELECT DISTINCT posizione FROM scommessa,partecipante WHERE scommessa.idGara=partecipante.idGara AND scommessa.idCavallo=partecipante.idCavallo AND scommessa.idGara='".$idGara."' AND scommessa.idCavallo='".$idCavallo."'";
+		$query = "SELECT posizione FROM partecipante WHERE partecipante.idGara='".$idGara."' AND partecipante.idCavallo='".$idCavallo."'";
 		$result = mysqli_query($this->connection, $query);
 		return $result;
 	}
