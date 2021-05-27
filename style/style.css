@@ -324,6 +324,7 @@ footer .logo{
   flex-direction: column;
   justify-content: space-between;
 
+
   color: var(--clrGrn);
 }
 
@@ -334,7 +335,7 @@ footer .logo{
   max-width: 260px;
   height: 30px;
   /*background: var(--clrGrn);*/
-  border-radius: var(--text-radius);
+  border-radius: var(--border-radius);
 }
 .card .text {
   display: block;
@@ -342,7 +343,7 @@ footer .logo{
   max-width: 500px;
   height: 20px;
   /*background: var(--clrGrn);*/
-  border-radius: var(--text-radius);
+  border-radius: var(--border-radius);
 }
 .card .button {
   display: block;
@@ -350,7 +351,7 @@ footer .logo{
   max-width: 120px;
   height: 35px;
   background: var(--clrOrg);
-  border-radius: var(--text-radius);
+  border-radius: var(--border-radius);
   text-align: center;
   font-size: 1.2em;
 }
@@ -359,7 +360,8 @@ footer .logo{
 }
 
 .cards .content {
-  padding: 40px;
+  padding: 0;
+  padding-bottom: 5px;
   vertical-align: bottom;
 }
 .cards img {
@@ -501,7 +503,7 @@ ol a:hover:after {
   border-left-color: var(--clrOrg);
 }
     
-.form{
+form{
   text-align: center;
   margin: 0 0 0 35%;
   width: 450px;
@@ -511,58 +513,58 @@ ol a:hover:after {
   border: 5px solid var(--clrOrg);
 }
 
-.form input[type=submit],
-.form input[type=button],
-.form input[type=text],
-.form input[type=password],
-.form input[type=email],
-.form input[type=date],
-.form label
+form input[type=submit],
+form input[type=button],
+form input[type=text],
+form input[type=password],
+form input[type=email],
+form input[type=date],
+form label
 {
   font-size: 16px;
   color: var(--clrOrg);
 
 }
-.form label {
+form label {
   display:block;
   margin-bottom: 10px;
 }
-.form label > span{
+form label > span{
   float: left;
   width: 150px;
 }
-.form input[type=text],
-.form input[type=password],
-.form input[type=date],
-.form input[type=email] 
+form input[type=text],
+form input[type=password],
+form input[type=date],
+form input[type=email] 
 {
   background: transparent;
   border: none;
-  border-bottom: 1px dashed #83A4C5;
+  border-bottom: 1px dashed var(--clrOrg);
   width: 275px;
   outline: none;
   padding: 0px 0px 0px 0px;
   font-style: italic;
 }
 
-.form input[type=text]:focus,
-.form input[type=password]:focus,
-.form input[type=date]:focus,
-.form input[type=email]:focus
+form input[type=text]:focus,
+form input[type=password]:focus,
+form input[type=date]:focus,
+form input[type=email]:focus
 {
-  border-bottom: 1px dashed #D9FFA9;
+  border: 4px solid var(--clrOrg);
 }
 
-.form input[type=submit],
-.form input[type=button]{
+form input[type=submit],
+form input[type=button]{
   background: var(--clrGrn);
   border: none;
   padding: 8px 10px 8px 10px;
   border-radius: 5px;
   color: var(--clrOrg);
 }
-.form input[type=submit]:hover,
-.form input[type=button]:hover{
+form input[type=submit]:hover,
+form input[type=button]:hover{
 background: var(--clrDrkGrn);
 }
 
@@ -587,13 +589,13 @@ background: var(--clrDrkGrn);
 }
 
 .right-element {
-	float: right;
+	float: right !important;
 }
 .left-element {
-	float: left;
+	float: left !important;
 }
 .center-element {
-	float: center;
+	float: center !important;
 }
 
 
