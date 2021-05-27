@@ -2,19 +2,18 @@
 <html lang="it">
 
 <head>
-  <title>Inserisci risultati gara</title> <!-- nitrito hihihihi -->
-  <meta name="title" content="inserisci-risultati-gara" />
+  <title>Inserisci risultati - Ippodromo NO₂¯</title>
+  <meta name="title" content="inserisci-risultati" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <noscript>
     <style>html{display:none;}</style>
     <meta http-equiv="refresh" content="0.0;url=inserisciRisultatiNoJs.html">
   </noscript>
-  <meta name="description" content="" />
-  <meta name="keywords" content="" />
-  <meta charset="UTF-8">
-  <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
-  <link rel="stylesheet" type="text/css" href="style/style.css" media="screen" />
-  <link rel="stylesheet" type="text/css" href="style/small.css" media="" />
-  <link rel="stylesheet" type="text/css" href="style/print.css" media="print" />
+  <link rel="stylesheet" type="text/css" href="../../style/style.css" media="screen and (min-width: 1025px)" />
+  <link rel="stylesheet" type="text/css" href="../../style/small.css"
+    media="handheld, screen and (max-width: 1025px)" />
+  <link rel="stylesheet" type="text/css" href="../../style/print.css" media="print" />
   <script type="text/javascript" src="../../script/controlli.js"></script>
 
 </head>
@@ -40,12 +39,9 @@
       </ul>
     </div>
     <main>
-      <form method="post" action="../../php/Admin/caricaRisultati.php" id="inserimentoCavallo"
-        enctype="multipart/form-data">
-        <h1>Inserisci i dati riguardanti questa gara!</h1>
-        <risultati />
-        <button id="btn" type="submit" name="register" disabled>Inserisci</button>
-      </form>
+        <risultato-inserimento />
+        <lista-gare />
+        <inserimento-gara-selezionata />
     </main>
     <footer>
       <img class="logo" src="../../images/logo.jpeg" alt="Logo Ippodromo" />

@@ -52,9 +52,6 @@ if($conn)
                                 <td data-label="Ora"> '.$ora.'</td>
                             </tr>';
             //$lista_gare .= '<div class="text"><p>Data: ' . $row["dataGara"] . '     Posizione: ' . $row["posizione"] . '</p></div>';
-
-
-
         }
 
 
@@ -86,19 +83,18 @@ if($conn)
         $row = mysqli_fetch_array($result);
         $lista_gare .= '<div class="text"><p>Questo cavallo non ha ancora partecipato a nessuna gara </p></div>';
 
-        $Scavallo = '
-        './/<img src="../../images/<foto-cavallo />" alt="<descrizione-cavallo />"/>
-        '<div class="content">
+        $Scavallo = '<img src="../../images/<foto-cavallo />" alt="<descrizione-cavallo />"/>
+        <div class="content">
         <div class="headline"> <h2><nome-cavallo /></h2> </div>
         <div class="text"> <h3>Fiducia: <fiducia-cavallo /></h3> </div>
         <div class="text"> <h3>Velocità: <velocita-cavallo /></h3>  </div>
         <div class="text"> <p><descrizione-cavallo /></p>  </div>
         </div>';
         $Scavallo = str_replace(
-            array(//"<foto-cavallo />",
+            array("<foto-cavallo />",
               "<descrizione-cavallo />", "<nome-cavallo />", "<fiducia-cavallo />", "<velocita-cavallo />"),
             array(
-                //$row['immagine'],
+                $row['immagine'],
                 $row['descrizione'], $row['nome'], $row['fiducia'], $row['velocita']
             ),
             $Scavallo
