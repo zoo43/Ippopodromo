@@ -26,8 +26,11 @@ else{
             echo '</script>';
             unset($_SESSION["error"]);
         }
-    }
+        
+        if(isset($_SESSION['username'])){
+            header('Location: ../../');
+        }
+}
 
 $pagina = areaAutenticazione(file_get_contents('../../html/autenticazione/register.html'));
 echo $pagina;
-?>

@@ -1,9 +1,3 @@
-<!DOCTYPE HTML>
-<html>
-<head>
-<!-- <meta http-equiv="refresh" content= "5; url=scommetti.php"> -->
-</head>
-<body>
 <?php
 require_once('../database.php');
 require_once('../auth.php');

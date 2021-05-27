@@ -2,6 +2,10 @@
 require_once('../database.php');
 require_once('../auth.php');
 
+if(!isset($_SESSION['admin'])) {
+    header('Location: ../../');
+}
+
 $lista = '';
 $dbAccess = new DBAccess();
 $conn = $dbAccess->openDBConnection();

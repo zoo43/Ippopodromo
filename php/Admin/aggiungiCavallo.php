@@ -1,6 +1,10 @@
 <?php
 require_once('../database.php');
 
+if (!isset($_SESSION['admin'])) {
+    header('Location: ../../');
+}
+
 $risultatoAggiunta = "";
 
 if(isset($_POST['submit']))

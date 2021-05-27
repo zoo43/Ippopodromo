@@ -1,7 +1,10 @@
 <?php
-
 require_once('../database.php');
 session_Start();
+
+if (!isset($_SESSION['admin'])) {
+    header('Location: ../../');
+}
 
 $dbAccess = new DBAccess();
 $conn = $dbAccess->openDBConnection();

@@ -2,6 +2,10 @@
 require_once('../database.php');
 session_Start();
 
+if (!isset($_SESSION['admin'])) {
+    header('Location: ../../');
+}
+
 $gare = '<table><caption>Gare ancora aperte</caption><thead><tr><th>ID gara</th><th>Data</th><th>Opzioni</th></tr></thead><tfoot></tfoot><tbody>';
 $selezione = '';
 $risultato = '';

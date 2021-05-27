@@ -1,6 +1,7 @@
 <?php
 require_once('../auth.php');
 require_once('../database.php');
+
 if(isset($_POST['login'])){
     $dbAccess = new DBAccess();
     $conn = $dbAccess->openDBConnection();
@@ -16,7 +17,7 @@ if(isset($_POST['login'])){
         if($row['admin'])
         {
             $_SESSION["admin"]=$row["admin"];
-        }   
+        }
         header("location:../../");
     }
     else{
@@ -32,13 +33,17 @@ if(isset($_POST['login'])){
     $dbAccess->closeDBConnection();
 }else{
 
-if(isset($_SESSION["error"])){
-    $error = $_SESSION["error"];
-    echo "<script language='javascript'>
-    alert('Nome utente o password errati');
-    </script>";
-    unset($_SESSION["error"]);
-}
+    if(isset($_SESSION["error"])){
+        $error = $_SESSION["error"];
+        echo "<script language='javascript'>
+        alert('Nome utente o password errati');
+        </script>";
+        unset($_SESSION["error"]);
+    }
+
+    if (isset($_SESSION['username'])) {
+        header('Location: ../../');
+    }
 
 $pagina = areaAutenticazione(file_get_contents('../../html/autenticazione/login.html'));
 echo $pagina;

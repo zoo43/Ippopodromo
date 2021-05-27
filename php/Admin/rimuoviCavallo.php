@@ -1,5 +1,10 @@
 <?php
 require_once('../database.php');
+
+if (!isset($_SESSION['admin'])) {
+    header('Location: ../../');
+}
+
 $url = $_SERVER['REQUEST_URI'];    
 $url_components = parse_url($url); 
 parse_str($url_components['query'], $params); 
