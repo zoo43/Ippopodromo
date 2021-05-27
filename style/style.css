@@ -251,8 +251,9 @@ footer ul li{
 
 footer .logo{
 	grid-column: 2;
-	grid-row: 2; 
+	grid-row: 1; 
 
+  margin-top: 20px;
   	width: 50px;
   	height: 50px;
   	border-radius: 0.5em;
@@ -268,13 +269,13 @@ footer .logo{
 #img-valid-code {
 	grid-column: 1;
 	margin: 5px;
-  grid-row-end: 5;
+  grid-row-end: 3;
 }
 
 #img-valid-css {
 	grid-column: 7;
 	margin: 5px;
-  grid-row-end: 5;
+  grid-row-end: 3;
 }
 
 
