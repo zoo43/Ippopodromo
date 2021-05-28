@@ -1,6 +1,6 @@
 <?php
 require_once('../database.php');
-require_once('../auth.php');
+session_start();
 
 if (!isset($_SESSION['admin'])) {
     header('Location: ../../');
@@ -13,17 +13,25 @@ parse_str($url_components['query'], $params);
 $dbAccess = new DBAccess();
 $conn = $dbAccess->openDBConnection();
 
-
+$ris='';
+$lista = '';
 if($conn)
 {
    
     if( $dbAccess->eliminaCavallo($params['value'])){
-        echo "cavallo ritirato con successo";
+        $ris = "cavallo ritirato con successo";
     }
     else
     {
-        echo "problema nel dialogo con il db (il cavallo potrebbe partecipare una gara e sarebbe quindi impossibile da eliminare)";
+        $ris = "problema nel dialogo con il db (il cavallo potrebbe partecipare una gara e sarebbe quindi impossibile da eliminare)";
     }
+
+    $result = $dbAccess->getCavalli(true);
+    while($row = mysqli_fetch_array($result)) {
+        $lista .= "<tr><td>" . $row['nome'] . "</td><td><a href='rimuoviCavallo.php?value=" . $row['idCavallo'] . "'>Elimina</td></tr>";
+    }
+    $_SESSION["risultatoEliminazione"] = $ris;
+    header("Location: gestisciCavalli.php");
 }
 else
 {

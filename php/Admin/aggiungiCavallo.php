@@ -73,5 +73,7 @@ if (isset($_POST['submit'])) {
     echo $pagina;
     unset($_POST['submit']);
 } else {
-    header('location:../../html/admin/aggiungiCavallo.html');
+    $pagina = file_get_contents('../../html/admin/aggiungiCavallo.html');
+    $pagina = str_replace("<risultato-inserimento />", "", $pagina);
+    echo $pagina;
 }
