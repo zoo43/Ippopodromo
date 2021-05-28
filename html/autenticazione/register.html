@@ -40,20 +40,32 @@
     </div>
 
     <main>
-      <form method="post" onsubmit="return validazioneInput()" action="register.php" id="register">
-        <h2>Registrazione</h2>
-        <input type="text" id="username" placeholder="Nome Utente" name="username" maxlength="50" required>
-        <input type="password" id="password" placeholder="Password" name="password" minlength="6" required>
-        <input type="text" id="name" placeholder="Nome" name="name" maxlength="50" required>
-        <input type="text" id="surname" placeholder="Cognome" name="surname" maxlength="50" required>
-        <input type="date" id="date" placeholder="Data di Nascita" name="date" required>
-        <input type="text" id="address" placeholder="Indirizzo" name="address" maxlength="50" required>
-        <input type="text" id="city" placeholder="Città" name="city" maxlength="50" required>
-        <input type="text" id="mail" placeholder="Mail" name="mail" pattern="[a-zA-Z0-9]+[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]{0,}[a-zA-Z0-9]{0,}@[a-zA-Z0-9]{3,}\.[a-zA-Z]{2,3}$" maxlength="50" required>
-
-        <button type="submit" name="register">Registrati</button>
+      <form method="post" onsubmit="return validazioneInput()" action="register.php" id="register" aria-labelledby="form-header">
+        <h2 id="form-header">Registrazione</h2>
+        <label for="username"><span>Username</span></label>
+        <input type="text" id="username" placeholder="swag.barca69" name="username" maxlength="50" aria-label="Username" required>
+        <label for="password"><span>Password</span></label>
+        <input type="password" id="password" placeholder="Password" name="password" minlength="6" aria-label="Password" required>
+        <fieldset>
+          <legend>Nominativo</legend>
+          <label for="name"><span>Nome</span></label>
+          <input type="text" id="name" placeholder="Swag" name="name" maxlength="50" aria-label="Nome" required>
+          <label for="surname"><span>Cognome</span></label>
+          <input type="text" id="surname" placeholder="Barca" name="surname" maxlength="50" aria-label="Cognome" required>
+        </fieldset>
+        <label for="date"><span>Data di nascita (GG/MM/AAAA)</span></label>
+        <input type="date" id="date" placeholder="14/07/1974" name="date" aria-label="Data di nascita (giorno/mese/anno)" required>
+        <fieldset>
+          <legend>Residenza</legend>
+          <label for="address"><span>Indirizzo</span></label>
+          <input type="text" id="address" placeholder="Indirizzo" name="address" maxlength="50" aria-label="Indirizzo" required>
+          <label for="city"><span>Città</span></label>
+          <input type="text" id="city" placeholder="Città" name="city" maxlength="50" aria-label="Città" required>
+        </fieldset>
+        <label for="mail"><span>Indirizzo e-mail</span></label>
+        <input type="text" id="mail" placeholder="Mail" name="mail" pattern="[a-zA-Z0-9]+[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]{0,}[a-zA-Z0-9]{0,}@[a-zA-Z0-9]{3,}\.[a-zA-Z]{2,3}$" maxlength="50" aria-label="indirizzo email" required>
+        <input type="submit" name="register" value="Registrati" />
       </form>
-      <p class="centerLink"><a href="../../"> Torna Indietro </a></p>
     </main>
     <footer>
       <img class="logo" src="../../images/logo.jpeg" alt="Logo Ippodromo NO₂¯" />

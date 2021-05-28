@@ -35,18 +35,19 @@
     </div>
     <main>
       <risultato-inserimento />
-      <form method="post" action="../../php/Admin/aggiungiCavallo.php" id="inserimentoCavallo"
-        enctype="multipart/form-data">
-        <h1>Inserisci i dati riguardanti il nuovo cavallo!</h1>
-        Nome:<input type="text" id="name" placeholder="Nome Cavallo" name="nome" maxlength="50" required><br />
-        Velocità:<input type="number" id="speed" placeholder="Inserire velocità del cavallo" name="velocita" value="5"
-          min="1" max="10" required><br />
-        <input type="file" name="img" id="img" accept="image/*" required>
-        <br />
-        <button id="btn" type="submit" value="Upload Image" name="submit">Aggiungi alla lista il nuovo cavallo!</button>
+      <form method="post" action="../../php/Admin/aggiungiCavallo.php" id="inserimentoCavallo" enctype="multipart/form-data" aria-labelledby="form-header">
+        <h2 id="form-header">Inserisci i dati riguardanti il nuovo cavallo!</h2>
+        <label for="name"><span>Nome</span></label>
+        <input type="text" id="name" placeholder="Nome Cavallo" name="nome" maxlength="50" aria-label="Nome cavallo" required="required"><br />
+        <label for="speed"><span>Velocità</span></label>
+        <input type="number" id="speed" placeholder="Inserire velocità del cavallo" name="velocita" value="5"
+          min="1" max="10" aria-label="Velocità" required="required">
+        <label for="img"><span>Foto cavallo</span></label>
+        <input type="file" name="img" id="img" accept="image/*" aria-label="Foto cavallo" required="required">
+        <label for="description"><span>Descrizione</span></label>
+        <textarea id="description" rows="4" cols="50" name="descrizione" placeholder="Inserire una breve descrizione del cavallo" aria-label="Descrizione" required="required"></textarea>
+        <input id="submit-cavallo" type="submit" value="Aggiungi il nuovo cavallo alla lista!" name="submit" />
       </form>
-      <textarea id="description" rows="4" cols="50" name="descrizione" form="inserimentoCavallo"
-        placeholder="Inserire una breve descrizione del cavallo" required></textarea>
     </main>
     <footer>
       <img class="logo" src="../../images/logo.jpeg" alt="Logo Ippodromo NO₂¯" />

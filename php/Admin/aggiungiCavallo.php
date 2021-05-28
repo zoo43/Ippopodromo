@@ -70,10 +70,12 @@ if (isset($_POST['submit'])) {
     }
     $pagina = file_get_contents('../../html/admin/aggiungiCavallo.html');
     $pagina = str_replace("<risultato-inserimento />", $risultatoAggiunta, $pagina);
+    $pagina = areaAutenticazione($pagina);
     echo $pagina;
     unset($_POST['submit']);
 } else {
     $pagina = file_get_contents('../../html/admin/aggiungiCavallo.html');
     $pagina = str_replace("<risultato-inserimento />", "", $pagina);
+    $pagina = areaAutenticazione($pagina);
     echo $pagina;
 }

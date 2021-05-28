@@ -47,5 +47,6 @@ $pagina = str_replace(
     array($gare, $selezione, $risultato),
     $pagina
 );
+$pagina = areaAutenticazione($pagina);
 echo $pagina;
 ?>

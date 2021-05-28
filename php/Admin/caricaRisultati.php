@@ -15,6 +15,7 @@ $dbAccess->updateRisultati($_POST['cavalli'],$_SESSION["cavalli"], $_SESSION['id
 unset($_SESSION["cavalli"]);
 unset($_SESSION['idGara']);
 echo "//Pulsante per tornare indietro";
+$pagina = areaAutenticazione($pagina);
 $dbAccess->closeDBConnection();
 
 

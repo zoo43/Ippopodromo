@@ -31,8 +31,7 @@ if(isset($_SESSION["risultatoEliminazione"]))
 $dbAccess->closeDBConnection();
 $pagina = areaAutenticazione(file_get_contents('../../html/admin/gestisciCavalli.html'));
 $pagina = str_replace(array("<lista-cavalli />","<risultato-eliminazione />"), array($lista, $risultato), $pagina);
-
-
+$pagina = areaAutenticazione($pagina);
 
 echo $pagina;
 ?>

@@ -11,7 +11,7 @@ $url_components = parse_url($url);
 parse_str($url_components['query'], $params);
 
 $gare = '';
-$selezione = '<form method="post" action="aggiungiRisultatiNoJs.php" id="inserimentoCavallo" enctype="multipart/form-data"><h1>Inserisci i risultati della gara:</h1>';
+$selezione = '<form method="post" action="aggiungiRisultatiNoJs.php" id="inserimentoCavallo" enctype="multipart/form-data"><h2 id="form-header">Inserisci i risultati della gara</h2>';
 $risultato = '';
 $dbAccess = new DBAccess();
 
@@ -34,10 +34,10 @@ if($conn) {
     $_SESSION["cavalli"] = $cavalli;
     for($i=0; $i<count($cavalli);$i++)
     {
-        $selezione .= '<label for="cav'. $cavalli[$i]['id'] .'">' . $cavalli[$i]['name'] . '</label>';
-        $selezione .= "<input type='number' id='cav".$cavalli[$i]['id']."' placeholder='Pos' name='cavalli[]' value='1' min='1' max='".count($cavalli)."' required><br/>";
-    }
-    $selezione .= '<button id="btn" type="submit" name="register">Inserisci</button></form>';
+            $selezione .= '<label for="cav' . $cavalli[$i]['id'] . '"><span>' . $cavalli[$i]['name'] . '</span></label>';
+            $selezione .= "<input type='number' onchange='controllaPosizioni()' id='cav" . $cavalli[$i]['id'] . "' name='cavalli[]' value='1' min='1' max='" . count($cavalli) . "' aria-label=" . $cavalli[$i]['name'] . "required='required' />";
+        }
+        $selezione .= '<input id="btn" type="submit" name="register" disabled="disabled" value="Aggiorna risultati" /></form>';
     $dbAccess->closeDBConnection();
 }
 else {
@@ -53,5 +53,6 @@ $pagina = str_replace(
     array("<lista-gare />", "<inserimento-gara-selezionata />", "<risultato-inserimento />"),
     array($gare, $selezione, $risultato),
     $pagina);
+$pagina = areaAutenticazione($pagina);
 echo $pagina;
 ?>

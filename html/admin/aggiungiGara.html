@@ -39,12 +39,15 @@
       </ul>
     </div>
     <main>
-      <form method="post" action="../Admin/caricaGara.php">
-        <h1>Scegli i dati della gara! (Ricorda, una gara deve avere almeno 4 cavalli e un massimo di 8)</h1>
-        <input type="date" id="date" name="date" required>
-        <input type="time" id="time" name="time" min="08:00:00" max="22:00:00" required>
+      <form method="post" action="../Admin/caricaGara.php" aria-labelledby="form-header">
+        <h2 id="form-header">Inserisci le informazioni della gara</h2>
+        <p>In ogni gara corrono almeno 4 cavalli e non più di 8 cavalli</p>
+        <label for="date"><span>Data gara (GG/MM/AAAA)</span></label>
+        <input type="date" id="date" name="date" aria-label="Data gara (giorno/mese/anno)" required="required">
+        <label for="time"><span>Orario gara (HH/MM)</span></label>
+        <input type="time" id="time" name="time" min="08:00:00" max="22:00:00" aria-label="Orario gara (ore/minuti)" required="required">
         <cavalli />
-        <button id='btn' type="submit" name="register" disabled>Inserisci</button>
+        <input id='submit-button' type="submit" name="register" value="Inserisci la gara" disabled="disabled" />
       </form>
     </main>
     <footer>
