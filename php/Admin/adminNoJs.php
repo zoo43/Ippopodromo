@@ -8,14 +8,15 @@ if(!isset($_SESSION['admin'])) {
 
 $dbAccess = new DBAccess();
 $conn = $dbAccess->openDBConnection();
-
+// TODO sistemare numeri
 if($conn) {
     $result_c = $dbAccess->getCavalli(true);
     $numCavalli = isset($result_c) ? mysqli_num_rows($result_c) : 0;
-    $result_r = $dbAccess->getGare('2');
-    $numGareVuote = isset($result_r) ? mysqli_num_rows($result_r) : 0;
-    $result_g = $dbAccess->getGare('0');
-    $numGare = (isset($result_g) ? mysqli_num_rows($result_g) : 0) + $numGareVuote;
+    $result_r = $dbAccess->getGare('0');
+    $numGareNonSvolte = isset($result_r) ? mysqli_num_rows($result_r) : 0;
+    $numGareAttesaRisultato = $numGareNonSvolte;
+    $result_g_conc = $dbAccess->getGare('2');
+    $numGare = (isset($result_g_conc) ? mysqli_num_rows($result_g_conc) : 0) + $numGareAttesaRisultato;
 }
 else {
     printf("Si è verificato un errore di connessione. Si prega di attendere prima di riprovare.");
@@ -24,12 +25,12 @@ $dbAccess->closeDBConnection();
 
 $numCavalli = "$numCavalli cavalli inseriti.";
 $numGare = "$numGare gare totali inserite.";
-$numGareVuote = "$numGareVuote gare di cui puoi inserire i risultati.";
+$numGareNonSvolte = "$numGareNonSvolte gare di cui puoi inserire i risultati.";
 $pagina = areaAutenticazione(file_get_contents('../../html/admin/adminNoJs.html'));
 
 $pagina = str_replace(
     array("<num-cavalli />", "<num-gare />", "<num-risultati />"),
-    array($numCavalli, $numGare, $numGareVuote),
+    array($numCavalli, $numGare, $numGareNonSvolte),
     $pagina
 );
 

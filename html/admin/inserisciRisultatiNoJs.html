@@ -2,65 +2,64 @@
 <html lang="it">
 
 <head>
-  <title>Inserisci risultati - Ippodromo NO₂¯</title> <!-- nitrito hihihihi -->
-  <meta name="title" content="inserisci-risultati-gara" />
-  <meta name="description" content="" />
-  <meta name="keywords" content="" />
+  <title>Inserisci risultati - Ippodromo NO₂¯</title>
+  <meta name="title" content="inserisci risultati - Ippodromo NO₂¯" />
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" type="text/css" href="style/style.css" media="screen" />
-  <link rel="stylesheet" type="text/css" href="style/small.css" media="" />
-  <link rel="stylesheet" type="text/css" href="style/print.css" media="print" />
+  <link rel="stylesheet" type="text/css" href="../../style/style.css" media="screen and (min-width: 1025px)" />
+  <link rel="stylesheet" type="text/css" href="../../style/small.css"
+    media="handheld, screen and (max-width: 1025px)" />
+  <link rel="stylesheet" type="text/css" href="../../style/print.css" media="print" />
+  <script type="text/javascript" src="../../script/controlli.js"></script>
 
 </head>
 
 <body>
   <header>
-    <div class="page">
+    <h1>Inserisci risultati gara</h1>
+  </header>
+  <div class="page">
+    <div class="navbar">
       <nav id="menu">
         <ul>
-          <li lang="en"><a href="../../php/Admin/admin.php">Torna al pannello</a></li>
-          <li><a href="../../php/Visualizzazione_Cavalli/cavalli.php">Cavalli</a></li>
-          <li><a href="../../php/Visualizzazione_Gare/risultati.php">Gare</a></li>
+          <li lang="en"><a href="admin.php">Dashboard</a></li>
+          <li><a href="../Visualizzazione_Cavalli/cavalli.php">Cavalli</a></li>
+          <li><a href="../Visualizzazione_Gare/risultati.php">Gare</a></li>
           <li><a href="../info/chi_siamo.php">Chi siamo</a></li>
+          <li><a href="../../">Abbandona dashboard</a></li>
+          <autenticazione />
         </ul>
       </nav>
-      <!-- potrebbe essere inutile dato dato che non abbiamo molto da andare in profonditá-->
       <ul id="breadcrumb">
-        <li lang="en">Aggiungi Cavallo</li>
+        <li><span lang="en">Dashboard</span> amministratore</li>
+        <li>Inserisci risultati</li>
       </ul>
     </div>
-    <img src="../../images/logo.jpg" alt="logo ippodromo rimuovi questo alt" />
-  </header>
-  <section>
-    <risultato-inserimento />
-    <lista-gare />
-    <inserimento-gara-selezionata />
-  </section>
-  <footer>
-    <img class="logo" src="../../images/logo.jpeg" alt="Logo Ippodromo NO₂¯" />
-    <div id="copyright">
-      <p>
-        Bella amico, grazie per fare il lavoro pesante al posto nostro. Ovviamente questo è tutto volontariato da parte
-        tua, quindi non pagheremo nulla, ma come sempre sappi che la ricompensa più grande è sempre il sorriso di chi
-        aiuti, quindi ecco a te <abbr title="Emoticon sorridente">:)</abbr>. Come? Vuoi sapere dove abbiamo nascosto la
-        tua famiglia? E vorresti anche uscire dalla cantina, poter mangiare come si deve, e dormire su di un letto e non
-        più sul pavimento? Ma di cosa stai parlando?
-      </p>
-      <div id="authors">
-        I tuoi padroni:
-        <ul>
-          <li>Cecio</li>
-          <li>Dam</li>
-          <li>Martz</li>
-          <li>Sam</li>
-        </ul>
+    <main>
+        <risultato-inserimento />
+        <lista-gare />
+        <inserimento-gara-selezionata />
+    </main>
+    <footer>
+      <img class="logo" src="../../images/logo.jpeg" alt="Logo Ippodromo NO₂¯" />
+      <div id="copyright">
+        <p>
+          Bella amico, grazie per fare il lavoro pesante al posto nostro. Ovviamente questo è tutto volontariato da parte tua, quindi non pagheremo nulla, ma come sempre sappi che la ricompensa più grande è sempre il sorriso di chi aiuti, quindi ecco a te <abbr title="Emoticon sorridente">:)</abbr>. Come? Vuoi sapere dove abbiamo nascosto la tua famiglia? E vorresti anche uscire dalla cantina, poter mangiare come si deve, e dormire su di un letto e non più sul pavimento? Ma di cosa stai parlando?
+        </p>
+        <div id="authors">
+          I tuoi padroni:
+          <ul>
+            <li>Cecio</li>
+            <li>Dam</li>
+            <li>Martz</li>
+            <li>Sam</li>
+          </ul>
+        </div>
       </div>
-    </div>
-    <img id="img-valid-code" src="../../images/valid-xhtml10.png" alt="HTML valido" />
-    <img id="img-valid-css" src="../../images/vcss-blue.gif" alt="CSS valido" />
-  </footer>
-  </body>
+      <img id="img-valid-code" src="../../images/valid-xhtml10.png" alt="HTML valido" />
+      <img id="img-valid-css" src="../../images/vcss-blue.gif" alt="CSS valido" />
+    </footer>
+  </div>
 </body>
 
 </html>

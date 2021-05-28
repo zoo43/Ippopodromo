@@ -12,10 +12,9 @@ $conn = $dbAccess->openDBConnection();
 if($conn) {
     $result_c = $dbAccess->getCavalli(true);
     $numCavalli = isset($result_c) ? mysqli_num_rows($result_c) : 0;
-    $result_r = $dbAccess->getGare('0', true);
+    $result_r = $dbAccess->getGare('0');
     $numGareNonSvolte = isset($result_r) ? mysqli_num_rows($result_r) : 0;
-    $result_g = $dbAccess->getGare('0', false);
-    $numGareAttesaRisultato = (isset($result_g) ? mysqli_num_rows($result_g) : 0) + $numGareNonSvolte;
+    $numGareAttesaRisultato = $numGareNonSvolte;
     $result_g_conc = $dbAccess->getGare('2');
     $numGare = (isset($result_g_conc) ? mysqli_num_rows($result_g_conc) : 0) + $numGareAttesaRisultato;
 }
