@@ -14,7 +14,7 @@ if($conn)
 if(isset($_SESSION["username"]))
 {
     $username = $_SESSION["username"];
-    $credito = '<h1 id="h1data">Il tuo credito &eacute;: <span>'. $_SESSION["credito"] .'</span></h1>';
+    $credito = '<h1 id="h1Bitsquit">Il tuo credito &eacute;: <span>'. $_SESSION["credito"] .'</span></h1>';
     
     $result = $dbAccess->getGare("0");
 	$resultGareUtente = $dbAccess->getScommesseUtente($username);

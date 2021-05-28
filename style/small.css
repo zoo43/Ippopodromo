@@ -4,14 +4,17 @@
 :root{
   --border-radius: 0.5em;
   --header-color: rgb(50, 50, 50);
+  --back-color: #2D862D;
+  --button-color: #033700;
   --clrBrw: #663300;
-  --clrBlu: #006699;
+  --clrBlu: #5AB6E7;
   --clrWht: #efefef;
-  --clrGrn: #339933;
-  --clrOrg: #cc9900;
-  --clrDrkGrn: #2d862d;
-  --clrSlm: #ff6666;
+  --clrGrn: #45CD45;
+  --clrOrg: #E6AC00;
+  --clrDrkGrn: #09D785;
+  --clrSlm: #820D0D;
   --clrBrx: #800000;
+  --clrBlk: #272727;
 }
 
 html {
@@ -24,7 +27,7 @@ body {
   overflow-x: hidden;
 	display: flex;
 	flex-direction: column;
-	background-color: var(--clrDrkGrn);
+	background-color: var(--back-color);
 }
 
 .topPic {
@@ -362,6 +365,8 @@ footer .logo{
   max-width: 260px;
   height: 30px;
   /*background: var(--clrGrn);*/
+
+  color: var(--clrOrg);
   border-radius: var(--border-radius);
 }
 .card .text {
@@ -377,11 +382,17 @@ footer .logo{
   margin: 20px auto 0 auto;
   max-width: 120px;
   height: 35px;
-  background: var(--clrOrg);
+  background: var(--button-color);
   border-radius: var(--border-radius);
   text-align: center;
   font-size: 1.2em;
+  -webkit-transition-duration: 0.4s;
+  transition-duration: 0.4s;
 }
+.card .button:hover {
+  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+}
+
 .card a {
   text-decoration: none;
 }
@@ -393,7 +404,7 @@ footer .logo{
 }
 .cards img {
   width: 100%;
-  height: 300px;
+  height: auto;
   position: center;
   border-radius: var(--border-radius);
 }
@@ -492,6 +503,7 @@ table {
 }
 
 #h1data span {
+  background-color: var(--clrBrw);
 	color: var(--clrOrg);
 }
 
@@ -545,7 +557,7 @@ ol a:before {
   left: -2.5em;
   top: 50%;
   margin-top: -1em;
-  background: var(--clrOrg);
+  background: var(--button-color);
   height: 2em;
   width: 2em;
   line-height: 2em;
@@ -565,7 +577,7 @@ ol a:after {
 
 ol a:hover:after {
   left: -.5em;
-  border-left-color: var(--clrOrg);
+  border-left-color: var(--button-color);
 }
 
 form{
@@ -633,16 +645,16 @@ form input[type=button]:hover{
 background: var(--clrDrkGrn);
 }
     
-.red {
+.lose {
 	color: var(--clrSlm);
 }
 
-.green {
+.win {
 	color: var(--clrGrn);
 }
 
 .imgContent {
-  width: 40%;
+  width: 10em;
 
   height: auto;
 
@@ -709,4 +721,23 @@ main dt + dt + dd + dt {
   flex-wrap: wrap;
 
   justify-content: center;
+}
+
+#h1Bitsquit {
+  text-align: center;
+}
+#h1Bitsquit span {
+  background-color: var(--clrBrw);
+  color: var(--clrOrg);
+}
+#h1Bitsquit:after {
+  content: "";
+  position: relative;
+  top: 5px;
+  left: 4px;
+  display: inline-block;
+  height: 30px;
+  width: 30px;
+  background-size: contain;
+  background-image: url("../images/bitsquit.png");
 }
