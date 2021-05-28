@@ -1,9 +1,16 @@
 <?php 
 require_once('../database.php');
+require_once('../auth.php');
 
-if (!isset($_SESSION['admin'])) {
+
+if(!isset($_SESSION["admin"]))
+{
     header('Location: ../../');
+    echo "ciao admin";
 }
+
+
+
 
 $risultatiAggiunta = '';
 $cavalli = '';

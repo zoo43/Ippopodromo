@@ -1,5 +1,6 @@
 <?php 
 require_once('../database.php');
+require_once('../auth.php');
 
 if (!isset($_SESSION['admin'])) {
     header('Location: ../../');

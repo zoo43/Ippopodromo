@@ -1,5 +1,6 @@
 <?php
 require_once('../database.php');
+require_once('../auth.php');
 session_Start();
 
 if (!isset($_SESSION['admin'])) {

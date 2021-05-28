@@ -1,5 +1,6 @@
 <?php
 require_once('../database.php');
+require_once('../auth.php');
 
 if (!isset($_SESSION['admin'])) {
     header('Location: ../../');
@@ -72,5 +73,5 @@ if (isset($_POST['submit'])) {
     echo $pagina;
     unset($_POST['submit']);
 } else {
-    header('location:../../html/admin/gestisciCavalli.html');
+    header('location:../../html/admin/aggiungiCavallo.html');
 }
