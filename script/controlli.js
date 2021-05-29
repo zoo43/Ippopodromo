@@ -84,10 +84,10 @@ function controllaNumeroCavalli()
 	}
 	if(tot>=4 && tot<=8)
 	{
-		document.getElementById('btn').disabled=false;
+		document.getElementById('submit-button').disabled=false;
 	}
 	else
 	{
-		document.getElementById('btn').disabled=true;
+		document.getElementById('submit-button').disabled=true;
 	}
 }
