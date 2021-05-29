@@ -11,7 +11,7 @@ $url_components = parse_url($url);
 parse_str($url_components['query'], $params);
 
 $gare = '';
-$selezione = '<form method="post" action="aggiungiRisultati.php" id="inserimentoCavallo" enctype="multipart/form-data"><h2 id="form-header">Inserisci i risultati della gara</h2>';
+$selezione = '<form method="post" action="verificaInserimento.php" id="inserimentoCavallo" enctype="multipart/form-data"><h2 id="form-header">Inserisci i risultati della gara</h2>';
 $risultato = '';
 $dbAccess = new DBAccess();
 

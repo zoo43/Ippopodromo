@@ -11,7 +11,7 @@ $url_components = parse_url($url);
 parse_str($url_components['query'], $params);
 
 $gare = '';
-$selezione = '<form method="post" action="aggiungiRisultatiNoJs.php" id="inserimentoCavallo" enctype="multipart/form-data"><h2 id="form-header">Inserisci i risultati della gara</h2>';
+$selezione = '<form method="post" action="verificaInserimentoNoJs.php" id="inserimentoCavallo" enctype="multipart/form-data"><h2 id="form-header">Inserisci i risultati della gara</h2>';
 $risultato = '';
 $dbAccess = new DBAccess();
 
@@ -37,7 +37,7 @@ if($conn) {
             $selezione .= '<label for="cav' . $cavalli[$i]['id'] . '"><span>' . $cavalli[$i]['name'] . '</span></label>';
             $selezione .= "<input type='number' onchange='controllaPosizioni()' id='cav" . $cavalli[$i]['id'] . "' name='cavalli[]' value='1' min='1' max='" . count($cavalli) . "' aria-label=" . $cavalli[$i]['name'] . "required='required' />";
         }
-        $selezione .= '<input id="btn" type="submit" name="register" disabled="disabled" value="Aggiorna risultati" /></form>';
+        $selezione .= '<input id="btn" type="submit" name="register" value="Aggiorna risultati" /></form>';
     $dbAccess->closeDBConnection();
 }
 else {
