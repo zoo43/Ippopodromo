@@ -16,6 +16,7 @@
     <h1>Aggiungi un cavallo</h1>
   </header>
   <div class="page">
+    <a href="#content" class="visually-hidden">Vai al contenuto</a>
     <div class="navbar">
       <nav id="menu">
         <ul>
@@ -33,7 +34,7 @@
         <li>Aggiungi Cavallo</li>
       </ul>
     </div>
-    <main>
+    <main id="content">
       <risultato-inserimento />
       <form method="post" action="../../php/Admin/aggiungiCavallo.php" id="inserimentoCavallo" enctype="multipart/form-data" aria-labelledby="form-header">
         <h2 id="form-header">Inserisci i dati riguardanti il nuovo cavallo!</h2>
@@ -48,6 +49,7 @@
         <textarea id="description" rows="4" cols="50" name="descrizione" placeholder="Inserire una breve descrizione del cavallo" aria-label="Descrizione" required="required"></textarea>
         <input id="submit-cavallo" type="submit" value="Aggiungi il nuovo cavallo alla lista!" name="submit" />
       </form>
+      <a href="#menu" class="visually-hidden go-back-button">Torna al menù</a>
     </main>
     <footer>
       <img class="logo" src="../../images/logo.jpeg" alt="Logo Ippodromo NO₂¯" />

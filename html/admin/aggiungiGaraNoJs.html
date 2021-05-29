@@ -18,6 +18,7 @@
     <h1>Aggiungi una gara</h1>
   </header>
   <div class="page">
+    <a href="#content" class="visually-hidden">Vai al contenuto</a>
     <div class="navbar">
       <nav id="menu">
         <ul>
@@ -35,7 +36,7 @@
       </ul>
     </div>
     <risultati-inserimento />
-    <main>
+    <main id="content">
       <form method="post" action="../../php/Admin/aggiungiGaraNoJs.php">
         <h1>Scegli i dati della gara! (Ricorda, una gara deve avere almeno 4 cavalli e un massimo di 8)</h1>
         <input type="date" id="date" name="date" required>
@@ -43,6 +44,7 @@
         <cavalli />
         <button id='btn' type="submit" name="register">Inserisci</button>
       </form>
+      <a href="#menu" class="visually-hidden go-back-button">Torna al menù</a>
     </main>
     <footer>
       <img class="logo" src="../../images/logo.jpeg" alt="Logo Ippodromo NO₂¯" />

@@ -19,6 +19,7 @@
   </header>
 
   <div class="page">
+    <a href="#content" class="visually-hidden">Vai al contenuto</a>
     <div class="navbar">
       <nav id="menu">
         <ul>
@@ -37,7 +38,7 @@
       </ul>
     </div>
 
-    <main>
+    <main id="content">
       <form method="post" name="Form" action="login.php" aria-labelledby="form-header">
         <h2 id="form-header">Login</h2>
         <label for="username"><span>Username</span></label>
@@ -48,6 +49,7 @@
           <input type="submit" name="login" value="Accedi">
         </span>
       </form>
+      <a href="#menu" class="visually-hidden go-back-button">Torna al menù</a>
     </main>
     
     <footer>
