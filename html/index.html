@@ -9,7 +9,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" type="text/css" href="style/style.css" media="screen and (min-width: 1025px)" />
-  <link rel="stylesheet" type="text/css" href="style/small.css" media="screen and (max-width: 1025px)" />
+  <link rel="stylesheet" type="text/css" href="style/small.css" media="handheld, screen and (max-width: 1025px)" />
   <link rel="stylesheet" type="text/css" href="style/print.css" media="print" />
 </head>
 
@@ -24,8 +24,9 @@
     <a href="#content" class="visually-hidden">Vai al contenuto</a>
 
     <div class="navbar">
-      <nav id="menu">
-        <ul aria-label="Menù principale">
+      <nav id="menu" aria-labelledby="menu-label">
+        <h2 id="menu-label" class="visually-hidden">Menù principale</h2>
+        <ul aria-labelledby="menu-label">
           <li lang="en">Home</li>
           <li><a href='php/Scommetti/scommetti.php'>Scommesse</a></li>
           <li><a href="php/Visualizzazione_Gare/risultati.php">Gare</a></li>
@@ -36,28 +37,28 @@
         </ul>
       </nav>
 
-      <ul id="breadcrumb">
+      <ul id="breadcrumb" aria-label="Ti trovi in:">
         <li lang="en">Home</li>
       </ul>
     </div>
 
     <main id="content">
       <dl class="content center-element">
-          <dt><h2>Il nostro ippodromo</h2></dt>
+          <dt>Il nostro ippodromo</dt>
           <dd class="flex-home">
             <p>
               Questo ippodromo nasce come pista per corse clandestine di ippopotami, ma col tempo i soldi che abbiamo rubato dai nostri clienti ci hanno permesso di espandere le nostre gare anche ai cavalli, uno degli animali più seguiti dagli scommettitori incalliti, il che ci ha permesso di fare ancora più soldi.
             </p>
             <img src="images/ippodromo.jpg" class="imgContent center-element" alt="Vista aerea notturna dell'Ippodromo NO₂¯" />
           </dd>
-        <dt><h2>Scommesse</h2></dt>
+        <dt>Scommesse</dt>
         <dd>
           <p>
               Grazie all'internet, possiamo fare ancora più soldi! Registrati sul nostro sito per avere la possibilità di poter scommettere anche da casa sulle gare del nostro ippodromo.
           </p>
           <img src="images/gambling_horses.jpg" class="imgContent center-element" alt="" />
         </dd>
-        <dt><h2>Valuta virtuale: Bitscuits</h2></dt>
+        <dt>Valuta virtuale: Bitscuits</dt>
         <dd>
           <p>
             Utilizza la nostra valuta per scommettere e non dover accedere di continuo al tuo conto bancario Otterrai un po' di bitscuits gratuiti se decidi di registrarti, per farti credere che puoi anche vincere scommettendo!

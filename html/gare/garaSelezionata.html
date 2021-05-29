@@ -23,8 +23,9 @@
     <div class="navbar">
 
 
-      <nav id="menu">
-        <ul>
+      <nav id="menu" aria-labelledby="menu-label">
+        <h2 id="menu-label" class="visually-hidden">Menù principale</h2>
+        <ul aria-labelledby="menu-label">
           <li lang="en"><a href="../../">Home</a></li>
           <li><a href="../Scommetti/scommetti.php">Scommesse</a></li>
           <li><a href="risultati.php">Gare</a></li>
@@ -35,7 +36,7 @@
         </ul>
       </nav>
 
-      <ul id="breadcrumb">
+      <ul id="breadcrumb" aria-label="Ti trovi in:">
           <li lang="en">Home</li>
           <li>Risultati Gare</li>
           <li>Classifica Gara <id-gara /></li>

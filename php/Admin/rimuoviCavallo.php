@@ -37,5 +37,6 @@ else
 {
 	printf("Si è verificato un errore di connessione. Si prega di attendere prima di riprovare.");
 }
+$pagina = areaAutenticazione($pagina);
 $dbAccess->closeDBConnection();
 ?>

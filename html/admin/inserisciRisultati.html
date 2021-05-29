@@ -24,8 +24,9 @@
   <div class="page">
     <a href="#content" class="visually-hidden">Vai al contenuto</a>
     <div class="navbar">
-      <nav id="menu">
-        <ul>
+      <nav id="menu" aria-labelledby="menu-label">
+        <h2 id="menu-label" class="visually-hidden">Menù principale</h2>
+        <ul aria-labelledby="menu-label">
           <li lang="en"><a href="admin.php">Dashboard</a></li>
           <li><a href='../../php/Scommetti/scommetti.php'>Scommesse</a></li>
           <li><a href="../Visualizzazione_Cavalli/cavalli.php">Cavalli</a></li>
@@ -35,15 +36,15 @@
           <autenticazione />
         </ul>
       </nav>
-      <ul id="breadcrumb">
+      <ul id="breadcrumb" aria-label="Ti trovi in:">
         <li><span lang="en">Dashboard</span> amministratore</li>
         <li>Inserisci risultati</li>
       </ul>
     </div>
     <main id="content">
-        <risultato-inserimento />
-        <lista-gare />
-        <inserimento-gara-selezionata />
+      <risultato-inserimento />
+      <lista-gare />
+      <inserimento-gara-selezionata />
       <a href="#menu" class="visually-hidden go-back-button">Torna al menù</a>
     </main>
     <footer>

@@ -25,8 +25,9 @@
     <div class="navbar">
       
     
-      <nav id="menu">
-        <ul>
+      <nav id="menu" aria-labelledby="menu-label">
+        <h2 id="menu-label" class="visually-hidden">Menù principale</h2>
+        <ul aria-labelledby="menu-label">
           <li lang="en"><a href="../../">Home</a></li>
           <li>Scommesse</li>
           <li><a href="../Visualizzazione_Gare/risultati.php">Gare</a></li>
@@ -37,13 +38,11 @@
         </ul>
       </nav>
 
-      <div id="breadcrumb">
-        <ul>
-          <li lang="en">Home</li>
-          <li>Scommesse</li>
-          <li>Gara <id-gara /></li>
-        </ul>
-      </div>
+      <ul id="breadcrumb" aria-label="Ti trovi in:">
+        <li lang="en">Home</li>
+        <li>Scommesse</li>
+        <li>Gara <id-gara /></li>
+      </ul>
     </div>
 
     <main id="content">
