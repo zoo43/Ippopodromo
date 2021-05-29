@@ -2,7 +2,7 @@
 require_once('../database.php');
 require_once('../auth.php');
 
-
+$risultato='';
 if(isset($_POST['register'])){
     $dbAccess = new DBAccess();
     $conn = $dbAccess->openDBConnection();
@@ -20,10 +20,7 @@ if(isset($_POST['register'])){
 }
 else{      
         if(isset($_SESSION["error"])){
-            $error = $_SESSION["error"];
-            echo '<script language="javascript">';
-            echo "alert('Nome utente o mail già presenti nel database')";
-            echo '</script>';
+            $risultato = $_SESSION["error"];
             unset($_SESSION["error"]);
         }
         
@@ -33,4 +30,5 @@ else{
 }
 
 $pagina = areaAutenticazione(file_get_contents('../../html/autenticazione/register.html'));
+$pagina = str_replace("<risultato-verifica />",$risultato,$pagina);
 echo $pagina;

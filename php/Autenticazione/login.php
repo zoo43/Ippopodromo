@@ -2,6 +2,8 @@
 require_once('../auth.php');
 require_once('../database.php');
 
+$risultato='';
+
 if(isset($_POST['login'])){
     $dbAccess = new DBAccess();
     $conn = $dbAccess->openDBConnection();
@@ -24,7 +26,6 @@ if(isset($_POST['login'])){
         $_SESSION["error"] = 'Nome Utente o password errati';
         header("location:login.php");
     }
-    mysqli_free_result($result);
 	}else
 	{
 		printf("Si è verificato un errore di connessione. Si prega di attendere prima di riprovare.");
@@ -34,19 +35,18 @@ if(isset($_POST['login'])){
 }else{
 
     if(isset($_SESSION["error"])){
-        $error = $_SESSION["error"];
-        echo "<script language='javascript'>
-        alert('Nome utente o password errati');
-        </script>";
+        $risultato = $_SESSION["error"];
         unset($_SESSION["error"]);
     }
 
     if (isset($_SESSION['username'])) {
         header('Location: ../../');
     }
+}
+
+
 
 $pagina = areaAutenticazione(file_get_contents('../../html/autenticazione/login.html'));
+$pagina = str_replace("<risultato-verifica />",$risultato,$pagina);
 echo $pagina;
-
-}
 ?>
