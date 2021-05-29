@@ -19,7 +19,7 @@ if($conn)
 		if(isset($_SESSION["username"]))
 		{
 		$creditoUtente = $_SESSION["credito"];
-		$credito = '<h1 id="h1Bitsquit">Il tuo credito &eacute;: <span>'. $creditoUtente .'</span></h1>';
+		$credito = '<h1 id="h1Bitsquit">Il tuo credito &eacute;: <span id="creditoUtente">'. $creditoUtente .'</span></h1>';
 		
 		$form = '<form method="post" onsubmit="return checkDoc()" action="confirmScommessaGara.php" id="formScommessa">';
 		mysqli_free_result($result);

@@ -13,22 +13,18 @@ function checkDoc()
 function checkBitSquits()
 {
 	var n = document.getElementsByTagName('input');
-	var spans = document.getElementById('h1Bitsquit');
-	bitScuits = spans.getElementsByTagName('span');
-	console.log(bitScuits);
+	var bitScuits = document.getElementById('creditoUtente').innerText;
+	bitScuits = parseInt(bitScuits);
     var value;
-	if(bitScuits === 'number')
-	{
-		for (var i = 0; i < n.length; i++) {
-			if (n[i].type === 'number')
+	for (var i = 0; i < n.length; i++) {
+		if (n[i].type === 'number')
+		{
+			if(n[i].value <= bitScuits)
+			return true;
+			else
 			{
-				if(n[i].value <= bitScuits)
-				return true;
-				else
-				{
-					alert('Non hai abbastanza bitSquits :(. Si prega di inserire un importo valido');
-					return false;
-				}
+				alert('Non hai abbastanza bitSquits :(. Si prega di inserire un importo valido');
+				return false;
 			}
 		}
 	}
