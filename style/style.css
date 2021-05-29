@@ -540,6 +540,9 @@ form input[type=password],
 form input[type=email],
 form input[type=date],
 form input[type=time],
+form input[type=checkbox],
+form input[type=number],
+form input[type=radio],
 form label
 {
   font-size: 1.7em;
@@ -561,7 +564,9 @@ form input[type=text],
 form input[type=password],
 form input[type=date],
 form input[type=email],
-form input[type=time]
+form input[type=time],
+form input[type=number],
+form input[type=radio]
 {
   background: transparent;
   border: none;
@@ -576,7 +581,9 @@ form input[type=text]:focus,
 form input[type=password]:focus,
 form input[type=date]:focus,
 form input[type=email]:focus,
-form input[type=time]:focus
+form input[type=time]:focus,
+form input[type=number]:focus,
+form input[type=radio]:focus
 {
   border: 4px solid var(--clrOrg);
 }
@@ -596,8 +603,9 @@ form input[type=button]:hover{
 background: var(--clrSlm);
 }
 
-form input[type=checkbox] {
-  margin: auto;
+form input[type=checkbox],
+form input[type=radio] {
+  margin-top: 20px;
 }
 
 #v-distance {
