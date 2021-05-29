@@ -48,6 +48,8 @@ else {
     $risultato = "<p class='inserimentoFallito'>C'é stato un errore con l'id della gara passato</p>";
 }
 
+
+
 $pagina = file_get_contents('../../html/admin/inserisciRisultati.html');
 $pagina = str_replace(
     array("<lista-gare />", "<inserimento-gara-selezionata />", "<risultato-inserimento />"),

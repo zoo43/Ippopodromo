@@ -35,13 +35,14 @@ if(isset($_POST['register']))
         unset($_POST['register']);
         $dbAccess->closeDBConnection();
         $risultato = "<p class='inserimentoRiuscito'>Risultato inserito con successo</p>";
-        header("Refresh:0");
     }
     else
     {
-        echo "problema connessione al DB";
+        $risultato = "problema connessione al DB";
     }
 }
+
+
 $pagina = file_get_contents('../../html/admin/inserisciRisultati.html');
 $pagina = str_replace(
     array("<lista-gare />", "<inserimento-gara-selezionata />", "<risultato-inserimento />"),
