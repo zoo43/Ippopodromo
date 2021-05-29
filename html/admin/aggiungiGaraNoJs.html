@@ -23,6 +23,7 @@
       <nav id="menu">
         <ul>
           <li lang="en"><a href="admin.php">Dashboard</a></li>
+          <li><a href='../../php/Scommetti/scommetti.php'>Scommesse</a></li>
           <li><a href="../Visualizzazione_Cavalli/cavalli.php">Cavalli</a></li>
           <li><a href="../Visualizzazione_Gare/risultati.php">Gare</a></li>
           <li><a href="../info/chi_siamo.php">Chi siamo</a></li>
@@ -37,7 +38,7 @@
     </div>
     <main id="content">
       <risultati-inserimento />
-      <form method="post" action="../../php/Admin/aggiungiGaraNoJs.php">
+      <form method="post" action="../../php/Admin/aggiungiGaraNoJs.php" id="inserimentoGara" aria-labelledby="form-header">
         <h2 id="form-header">Inserisci le informazioni della gara</h2>
         <p>In ogni gara corrono almeno 4 cavalli e non più di 8 cavalli</p>
         <label for="date"><span>Data gara (GG/MM/AAAA)</span></label>

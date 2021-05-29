@@ -23,7 +23,8 @@ if(isset($_POST['register']))
     }
     if($parimerito==true)
     {
-        echo "Non possono esserci parimeriti!";
+        $risultato = "<p class='inserimentoFallito'>Più cavalli non possono avere la stessa posizione in classifica. <a href='#inserimentoCavallo'>Vai all'errore</a></p>";
+
     }  
     else
     {
@@ -34,11 +35,11 @@ if(isset($_POST['register']))
             unset($_SESSION['idGara']);
             unset($_POST['register']);
             $dbAccess->closeDBConnection();
-            $risultato = "<p class='inserimentoRiuscito'>Risultato inserito con successo</p>";
+            $risultato = "<p class='inserimentoRiuscito'>Risultato inserito con successo.</p>";
         }
         else
         {
-            $risultato = "problema connessione al DB";
+            $risultato = "<p class='inserimentoFallito'>C'é stato un problema nell'aggiornamento del database.</p>";
         }
     }
     $_SESSION['risultatoInserimento'] = $risultato;

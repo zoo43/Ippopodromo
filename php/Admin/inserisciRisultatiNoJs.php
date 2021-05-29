@@ -11,7 +11,7 @@ $url_components = parse_url($url);
 parse_str($url_components['query'], $params);
 
 $gare = '';
-$selezione = '<form method="post" action="verificaInserimentoNoJs.php" id="inserimentoCavallo" enctype="multipart/form-data"><h2 id="form-header">Inserisci i risultati della gara</h2>';
+$selezione = '<form method="post" action="verificaInserimentoNoJs.php" id="inserimentoRisultato" enctype="multipart/form-data"><h2 id="form-header">Inserisci i risultati della gara</h2>';
 $risultato = '';
 $dbAccess = new DBAccess();
 
@@ -41,7 +41,7 @@ if($conn) {
     $dbAccess->closeDBConnection();
 }
 else {
-    printf("Si è verificato un errore di connessione. Si prega di attendere prima di riprovare.");
+        $risultato = "<p class='inserimentoFallito'>C'é stato un errore con l'id della gara passato</p>";
 }
 }
 else {

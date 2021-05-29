@@ -13,11 +13,11 @@ if(isset($_POST['register']))
         unset($_SESSION['idGara']);
         unset($_POST['register']);
         $dbAccess->closeDBConnection();
-        $risultato = "<p class='inserimentoRiuscito'>Risultato inserito con successo</p>";
+        $risultato = "<p class='inserimentoRiuscito'>Risultato inserito con successo.</p>";
     }
     else
     {
-        $risultato = "problema connessione al DB";
+        $risultato = "<p class='inserimentoFallito'>C'é stato un problema nell'aggiornamento del database.</p>";
     }
     $_SESSION['risultatoInserimento'] = $risultato;
     header("Location:aggiungiRisultati.php");
