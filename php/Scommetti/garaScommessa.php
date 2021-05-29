@@ -18,6 +18,7 @@ if($conn)
 	{
 		if(isset($_SESSION["username"]))
 		{
+		$credito = '<h1 id="h1Bitsquit">Il tuo credito &eacute;: <span>'. $_SESSION["credito"] .'</span></h1>';
 		$creditoUtente = $_SESSION["credito"];
 		$form = '<form method="post" onsubmit="return checkDoc($creditoUtente);" action="confirmScommessaGara.php" id="formScommessa">';
 		mysqli_free_result($result);
@@ -33,27 +34,26 @@ if($conn)
 		mysqli_free_result($cavGara);
 		$form .= '<input type="hidden" name="idGara" value="'.$params["value"].'"/>';
 		$form .= '<input type="hidden" name="dataGara" value="'.$data.'"/>';
-		$form .= '<button type="submit" name="scommetti">Scommetti</button>';
+		$form .= '<input type="submit" name="scommetti" value="Scommetti"/>';
 		$dbAccess->closeDBConnection();
 		$form .= '</form>';
 		} else
 		{
 			$form = "<p>Per scommettere devi avere effettuato il login</p>";
-			$creditoUtente = "Non disponibile";
+			$credito = "Non disponibile";
 		}
 	} else
 	{
 		$form = "<p>Gara non trovata</p>";
-		$creditoUtente = "Non disponibile";
+		$credito = "Non disponibile";
 		$data = "Non disponibile";
 	}
 }
-$form .= "<p><a href='scommetti.php'> Torna indietro </a></p>";
 
 $pagina = areaAutenticazione(file_get_contents('../../html/scommesse/garaScommessa.html'));
 $pagina = str_replace(
 	array("<id-gara />", "<credito />", "<data />", "<form />"),
-	array($idgara, $creditoUtente, $data, $form),
+	array($idgara, $credito, $data, $form),
 	$pagina);
 echo $pagina;
 

@@ -25,7 +25,7 @@ function stampaListaCavalli($dbAccess,$cavalli)
     {                                                                       
         $id = $row['idCavallo'];
         $name = $row['nome'];
-        $cavalli = $cavalli . "<input type='checkbox' onchange='controllaNumeroCavalli()' id='$id' name='cavalli[]' value='$id' aria-label='$name'><label for='$id'>$name</label>";
+        $cavalli = $cavalli . "<input type='checkbox' onchange='controllaNumeroCavalli()' id='$id' name='cavalli[]' value='$id' aria-label='$name'><label for='$id'><span>$name</span></label>";
     }
     mysqli_free_result($result);
     return $cavalli;
