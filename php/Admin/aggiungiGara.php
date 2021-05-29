@@ -8,10 +8,7 @@ if(!isset($_SESSION["admin"]))
     header('Location: ../../');
 }
 
-
-
-
-$risultatiAggiunta = '';
+$risultatoAggiunta = '';
 $cavalli = '';
 $dbAccess = new DBAccess();
 $conn = $dbAccess->openDBConnection();
@@ -36,17 +33,17 @@ if(isset($_POST['register']))
     {
         if($dbAccess->caricaGare($_POST['date'], $_POST['time'], $_POST['cavalli']))
         {
-            $risultatiAggiunta = "<p class='inserimentoRiuscito'>Gara inserita con successo</p>";
+            $risultatoAggiunta = "<p class='inserimentoRiuscito'>Gara inserita con successo</p>";
             $cavalli=stampaListaCavalli($dbAccess, $cavalli);
         }
         else
         {
-            $risultatoAggiunta .= "<p class='inserimentoFallito'>C'è stato un problema</p>";
+            $risultatoAggiunta .= "<p class='inserimentoFallito'>C'è stato un problema con l'aggiornamento del database.</p>";
         }
         $dbAccess->closeDBConnection();
     }
     else{
-        $risultatoAggiunta = "<p class='inserimentoFallito'>Problema di connessione al DB</p>";
+        $risultatoAggiunta = "<p class='inserimentoFallito'>Problema di connessione al database. </p>";
     }
 }
 else
@@ -58,7 +55,7 @@ else
     }
     else
     {
-        printf("Si è verificato un errore di connessione. Si prega di attendere prima di riprovare.");
+        $risultatoAggiunta = "<p class='inserimentoFallito'>Si è verificato un errore di connessione con il database. Si prega di attendere prima di riprovare.</p>";
     }
 
 }
@@ -66,7 +63,7 @@ else
 $pagina = file_get_contents("../../html/admin/aggiungiGara.html");
 $pagina = str_replace(
     array("<risultati-inserimento />", "<cavalli />"),
-    array($risultatiAggiunta, $cavalli), 
+    array($risultatoAggiunta, $cavalli), 
     $pagina
 );
 $pagina = areaAutenticazione($pagina);

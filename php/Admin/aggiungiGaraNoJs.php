@@ -6,7 +6,7 @@ if (!isset($_SESSION['admin'])) {
     header('Location: ../../');
 }
 
-$risultatiAggiunta = '';
+$risultatoAggiunta = '';
 $cavalli = '';
 $dbAccess = new DBAccess();
 $conn = $dbAccess->openDBConnection();
@@ -35,14 +35,14 @@ if(isset($_POST['register']))
         $inputT=$_POST['time'];
         if($date > $inputD)
         {
-            echo "La gara deve avvenire, almeno oggi, non prima";
+            $risultatoAggiunta .= "<p class='inserimentoFallito'>La gara deve avvenire almeno oggi, non prima. <a href='#date'>Vai all'errore</a></p>";
             $cavalli=stampaListaCavalli($dbAccess, $cavalli);
         }
         else
         {
             if($hour > $inputT)
             {
-                echo "La gara non può partire nel passato!";
+                $risultatoAggiunta .= "<p class='inserimentoFallito'>La gara non può partire nel passato! <a href='#time'>Vai all'errore</a></p>";
                 $cavalli=stampaListaCavalli($dbAccess, $cavalli);
             }
             else
@@ -53,24 +53,24 @@ if(isset($_POST['register']))
                     {
                         if($dbAccess->caricaGare($_POST['date'], $_POST['time'], $_POST['cavalli']))
                         {
-                            $risultatiAggiunta = "<p class='inserimentoRiuscito'>Gara inserita con successo</p>";
+                            $risultatoAggiunta = "<p class='inserimentoRiuscito'>Gara inserita con successo</p>";
                             $cavalli=stampaListaCavalli($dbAccess, $cavalli);
                         }
                         else
                         {
-                            $risultatoAggiunta .= "<p class='inserimentoFallito'>C'è stato un problema</p>";
+                            $risultatoAggiunta .= "<p class='inserimentoFallito'>C'è stato un problema con l'aggiornamento del database.</p>";
                         }
                         $dbAccess->closeDBConnection();
                     }
                     else
                     {
-                        echo "Non hai inserito un numero sufficiente di cavalli (Ne servono aleno 4)!";
+                        $risultatoAggiunta .= "<p class='inserimentoFallito'>Non hai inserito un numero sufficiente di cavalli (almeno 4). <a href='#horses'>Vai all'errore</a></p>";
                         $cavalli=stampaListaCavalli($dbAccess, $cavalli);
                     }
                 }
                 else
                 {
-                    echo "Devi inserire i cavalli!";
+                    $risultatoAggiunta .= "<p class='inserimentoFallito'>Non hai inserito cavalli. <a href='#horses'>Vai all'errore</a></p>";
                     $cavalli=stampaListaCavalli($dbAccess, $cavalli);
                 }
             }
@@ -89,14 +89,14 @@ else
     }
     else
     {
-        printf("Si è verificato un errore di connessione. Si prega di attendere prima di riprovare.");
+        $risultatoAggiunta = "Si è verificato un errore di connessione. Si prega di attendere prima di riprovare.";
     }
 
 }
 $pagina = file_get_contents("../../html/admin/aggiungiGaraNoJs.html");
 $pagina = str_replace(
     array("<risultati-inserimento />", "<cavalli />"),
-    array($risultatiAggiunta, $cavalli), 
+    array($risultatoAggiunta, $cavalli), 
     $pagina
 );
 $pagina = areaAutenticazione($pagina);
