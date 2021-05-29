@@ -41,7 +41,7 @@ function controllaPosizioni()
 			}
 		}
 	}       
-	document.getElementById('btn').disabled=uguali;
+	document.getElementById('submit-button').disabled=uguali;
 }
 
 function impostaData()
