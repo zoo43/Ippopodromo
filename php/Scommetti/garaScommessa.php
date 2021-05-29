@@ -18,9 +18,10 @@ if($conn)
 	{
 		if(isset($_SESSION["username"]))
 		{
-		$credito = '<h1 id="h1Bitsquit">Il tuo credito &eacute;: <span>'. $_SESSION["credito"] .'</span></h1>';
 		$creditoUtente = $_SESSION["credito"];
-		$form = '<form method="post" onsubmit="return checkDoc($creditoUtente);" action="confirmScommessaGara.php" id="formScommessa">';
+		$credito = '<h1 id="h1Bitsquit">Il tuo credito &eacute;: <span>'. $creditoUtente .'</span></h1>';
+		
+		$form = '<form method="post" onsubmit="return checkDoc()" action="confirmScommessaGara.php" id="formScommessa">';
 		mysqli_free_result($result);
 		$form .= 'Numero Gara: <label form="formScommessa">'.$params["value"].'</label><br />';
 		$form .= 'Data Gara: <label form="formScommessa">'.$data.'</label><br />';

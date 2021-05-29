@@ -1,6 +1,6 @@
-function checkDoc(userBitSquits)
+function checkDoc()
 {
-    if(checkBitSquits(userBitSquits) && checkRadio())
+    if(checkBitSquits() && checkRadio())
     {
 		return true;
 	}
@@ -10,19 +10,25 @@ function checkDoc(userBitSquits)
 	}
 }
 
-function checkBitSquits(userBitSquits)
+function checkBitSquits()
 {
 	var n = document.getElementsByTagName('input');
+	var spans = document.getElementById('h1Bitsquit');
+	bitScuits = spans.getElementsByTagName('span');
+	console.log(bitScuits);
     var value;
-    for (var i = 0; i < n.length; i++) {
-		if (n[i].type === 'number')
-		{
-			if(n[i].value <= userBitSquits)
-            return true;
-            else
-            {
-				alert('Non hai abbastanza bitSquits :(. Si prega di inserire un importo valido');
-				return false;
+	if(bitScuits === 'number')
+	{
+		for (var i = 0; i < n.length; i++) {
+			if (n[i].type === 'number')
+			{
+				if(n[i].value <= bitScuits)
+				return true;
+				else
+				{
+					alert('Non hai abbastanza bitSquits :(. Si prega di inserire un importo valido');
+					return false;
+				}
 			}
 		}
 	}
