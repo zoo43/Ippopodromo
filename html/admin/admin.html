@@ -40,7 +40,7 @@
     </div>
 
     <main id="content">
-      <nav>
+      <nav class="center-element">
         <!-- questa cosa va mostrata solo se si è loggati, se non lo si è bisogna reindirizzare al login -->
         <dl id="db-cards">
           <!-- aggiungere delle icone in css -->
@@ -48,27 +48,27 @@
             <h2>Cavalli</h2>
           </dt>
           <dd>
-            <p>
+            <h3 class="brw-back">
               <num-cavalli />
-            </p>
-            <p><a href="gestisciCavalli.php">Gestisci i cavalli</a></p>
+            </h3>
+            <p><a href="gestisciCavalli.php" class="centerLink">Gestisci i cavalli</a></p>
           </dd>
         </dl>
         <dt>
           <h2>Gare</h2>
         </dt>
         <dd>
-          <p><num-gare /></p>
-          <p><a href="../../php/admin/aggiungiGara.php">Crea nuove gare</a></p>
+          <h3 class="brw-back"><num-gare /></h3>
+          <p><a href="../../php/admin/aggiungiGara.php" class="centerLink">Crea nuove gare</a></p>
         </dd>
         <dt>
           <h2>Risultati</h2>
         </dt>
         <dd>
-          <p>
+          <h3 class="brw-back">
             <num-risultati />
-          </p>
-          <p><a href="aggiungiRisultati.php">Aggiungi risultati alle gare concluse</a></p>
+          </h3>
+          <p><a href="aggiungiRisultati.php" class="centerLink">Aggiungi risultati alle gare concluse</a></p>
         </dd>
         </dl>
       </nav>

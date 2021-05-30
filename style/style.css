@@ -758,3 +758,8 @@ main dt + dt + dd + dt {
 
   width: 0.2em ;
 }
+
+.brw-back {
+  background: var(--clrBrw);
+  border-radius: var(--border-radius);
+}
