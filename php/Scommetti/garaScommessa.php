@@ -23,14 +23,14 @@ if($conn)
 		
 		$form = '<form method="post" onsubmit="return checkDoc()" action="confirmScommessaGara.php" id="formScommessa">';
 		mysqli_free_result($result);
-		$form .= 'Numero Gara: <label form="formScommessa">'.$params["value"].'</label><br />';
-		$form .= 'Data Gara: <label form="formScommessa">'.$data.'</label><br />';
-		$form .= '<input type="number" name="scommessa" value="1" min="1" max='.$creditoUtente.'><br />';
+		$form .= 'Numero Gara: <label form="formScommessa">'.$params["value"].'</label>';
+		$form .= 'Data Gara: <label form="formScommessa">'.$data.'</label>';
+		$form .= '<input type="number" name="scommessa" value="1" min="1" max='.$creditoUtente.'>';
 		$cavGara = $dbAccess->getCavalliGara($params['value']);
 
 		while($row = mysqli_fetch_array($cavGara))
 		{
-			$form .= '<input type="radio" name="cavallo" value="'.$row["idCavallo"].'">'.$row["nome"].'<br />';
+			$form .= '<div class="flex-div"><input type="radio" name="cavallo" value="'.$row["idCavallo"].'"><label>'.$row["nome"].'</label></div>';
 		}
 		mysqli_free_result($cavGara);
 		$form .= '<input type="hidden" name="idGara" value="'.$params["value"].'"/>';

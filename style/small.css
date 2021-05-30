@@ -21,6 +21,7 @@
   --clrSlm: #820D0D;
   --clrBrx: #800000;
   --clrBlk: #272727;
+  --clrGry: #808080;
 }
 
 html {
@@ -640,8 +641,7 @@ form input[type=password],
 form input[type=date],
 form input[type=email],
 form input[type=time],
-form input[type=number],
-form input[type=radio]
+form input[type=number]
 {
   background: transparent;
   border: none;
@@ -678,10 +678,21 @@ form input[type=button]:hover{
 background: var(--clrSlm);
 }
 
-form input[type=checkbox],
+form input[type=submit]:disabled,
+form input[type=button]:disabled{
+background: var(--clrGry);
+}
+
+form input[type=submit]:disabled:hover,
+form input[type=button]:disabled:hover{
+background: var(--clrGry);
+}
+
+
+/*form input[type=checkbox],
 form input[type=radio] {
   margin-top: 20px;
-}
+}*/
 
 .lose {
 	color: var(--clrSlm);
@@ -801,4 +812,29 @@ main dt + dt + dd + dt {
 
   margin: 5px 0 5px 0;
 
+}
+
+.flex-div {
+  display: grid;            
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr);
+
+  justify-items: center;
+
+  margin-top: 20px;
+  /*display: inline-flex;*/
+}
+
+.flex-div label{
+  grid-column: 2;
+  grid-row: 1;
+
+  float: center;
+}
+
+.flex-div input{
+  grid-column: 3;
+  grid-row: 1;
+
+
+  width: 0.2em ;
 }
