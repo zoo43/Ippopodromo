@@ -23,7 +23,7 @@
 					$creditoUtente = $_SESSION["credito"];
 					$credito = '<h1 id="h1Bitsquit">Il tuo credito &eacute;: <span id="creditoUtente">'. $creditoUtente .'</span></h1>';
 					
-					$form = '<form method="post" onsubmit="return checkDoc()" action="confirmScommessaGara.php" id="formScommessa">';
+					$form = '<form method="post" action="confirmScommessaGara.php" id="formScommessa">';
 					mysqli_free_result($result);
 					$form .= 'Numero Gara: <label form="formScommessa">'.$params["value"].'</label><br />';
 					$form .= 'Data Gara: <label form="formScommessa">'.$data.'</label><br />';
@@ -54,8 +54,7 @@
 				$credito = "Non disponibile";
 				$data = "Non disponibile";
 			}
-		} 
-		else
+		}else
 		{
 			$idgara= "Non disponibile";
 			$form = "<p>Gara non trovata</p>";
@@ -64,7 +63,7 @@
 		}
 	}
 	
-	$pagina = areaAutenticazione(file_get_contents('../../html/scommesse/garaScommessa.html'));
+	$pagina = areaAutenticazione(file_get_contents('../../html/scommesse/garaScommessaNoJs.html'));
 	$pagina = str_replace(
 	array("<id-gara />", "<credito />", "<data />", "<form />"),
 	array($idgara, $credito, $data, $form),

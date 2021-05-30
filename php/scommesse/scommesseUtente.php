@@ -30,7 +30,7 @@
 						else {
 							$scommesse .= "<div class='text'>Stato gara: conclusa</div>";
 						}
-						$scommesse .= "<div class='text'>Cavallo puntato: <a href='../cavalli/cavalloSelezionato.php?value=" . $row['idCavallo'] . "'>" . $row['nome'] . "</a> </div>";
+						$scommesse .= "<div class='text'>Cavallo puntato: <a href='../visualizzazione_Cavalli/cavalloSelezionato.php?value=" . $row['idCavallo'] . "'>" . $row['nome'] . "</a> </div>";
 						$scommesse .= "<div class='text'>Valore puntata: " . $row['puntata'] . "</div>";
 						if ($row['statoGara'] == '2') {
 							$result = $dbAccess->getPosizioneCavalloScommessa($row['idGara'], $row['idCavallo']);
