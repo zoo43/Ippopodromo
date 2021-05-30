@@ -13,16 +13,17 @@ if ($conn) {
 		$cavallo = '<div class="card">
           <img src="../../images/<foto-cavallo />" alt="<descrizione-cavallo />"/>
           <div class="content">
-            <div class="headline"> <h2><nome-cavallo /></h2> </div>
+            <div class="headline"> <h2><nome-cavallo /><ritirato /></h2> </div>
             <div class="text"> <h3>Fiducia: <fiducia-cavallo /></h3> </div>
             <div class="text"> <h3>Velocità: <velocita-cavallo /></h3>  </div>
             <a href="cavalloSelezionato.php?value=<id-cavallo />"><div class="button"> <h4>Informazioni</h4> </div></a>
           </div>
         </div>';
+		$ritirato = $row['ritiro'] == 1 ? "(ritirato)" : "";
 		$cavallo = str_replace(
-			array("<foto-cavallo />", "<descrizione-cavallo />", "<nome-cavallo />", "<fiducia-cavallo />", "<velocita-cavallo />", "<id-cavallo />"),
+			array("<foto-cavallo />", "<descrizione-cavallo />", "<nome-cavallo />", "<ritirato />", "<fiducia-cavallo />", "<velocita-cavallo />", "<id-cavallo />"),
 			array(
-				$row['immagine'], $row['descrizione'], $row['nome'], $row['fiducia'], $row['velocita'], $row['idCavallo']
+				$row['immagine'], $row['descrizione'], $row['nome'], $ritirato, $row['fiducia'], $row['velocita'], $row['idCavallo']
 			),
 			$cavallo
 		);

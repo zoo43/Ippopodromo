@@ -43,6 +43,7 @@ if($conn)
             $descrizione = $row['descrizione'];
             $fiducia = $row['fiducia'];
             $velocita = $row['velocita'];
+            $ritirato = $row['ritiro'] == 1 ? "(ritirato)" : "";
             $arr=explode(" ",$row['dataGara']);
             $giorno = $arr[0];
             $ora=$arr[1];
@@ -61,17 +62,17 @@ if($conn)
         $Scavallo = '
         <img src="../../images/<foto-cavallo />" alt="<descrizione-cavallo />"/>
         <div class="content">
-        <div class="headline"> <h2><nome-cavallo /></h2> </div>
+        <div class="headline"> <h2><nome-cavallo /> <ritirato /></h2> </div>
         <div class="text"> <h3>Fiducia: <fiducia-cavallo /></h3> </div>
         <div class="text"> <h3>Velocità: <velocita-cavallo /></h3>  </div>
         <div class="text"> <p><descrizione-cavallo /></p>  </div>
         </div>';
         $Scavallo = str_replace(
             array("<foto-cavallo />",
-              "<descrizione-cavallo />", "<nome-cavallo />", "<fiducia-cavallo />", "<velocita-cavallo />"),
+              "<descrizione-cavallo />", "<nome-cavallo />", "<ritirato />", "<fiducia-cavallo />", "<velocita-cavallo />"),
             array(
                 $immagine,
-                $descrizione, $nome, $fiducia, $velocita
+                $descrizione, $nome, $ritirato, $fiducia, $velocita
             ),
             $Scavallo
         );

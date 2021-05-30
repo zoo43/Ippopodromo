@@ -29,7 +29,7 @@
 		//Registrazione
 		public function verificaPresenza($username, $mail)
 		{
-			$query = "SELECT * from Utente where nomeUtente='$username' or mail='$mail';";
+			$query = "SELECT * from utente where nomeUtente='$username' or mail='$mail';";
 			
 			$result = mysqli_query($this->connection, $query);
 			if(mysqli_num_rows($result)>0){
@@ -43,7 +43,7 @@
 		
 		public function inserisciUtente($username, $password, $name, $surname, $date, $address, $city, $mail)
 		{
-			$query = "INSERT INTO Utente (nomeUtente, nome, cognome, dataNascita, indirizzo, citta, credito, password, mail, admin) VALUES
+			$query = "INSERT INTO utente (nomeUtente, nome, cognome, dataNascita, indirizzo, citta, credito, password, mail, admin) VALUES
 			('$username', '$name', '$surname', '$date', '$address', '$city', '100', '$password', '$mail', '0');";
 			
 			mysqli_query($this->connection, $query);
@@ -60,7 +60,7 @@
 		
 		public function autentica($nome, $password)
 		{
-			$query = "SELECT * from Utente where nomeUtente='$nome' and BINARY password='$password';";
+			$query = "SELECT * from utente where nomeUtente='$nome' and BINARY password='$password';";
 			
 			$result = mysqli_query($this->connection, $query);
 			
@@ -93,7 +93,7 @@
 		{
 			if($cavalloNuovo)
 			{
-				$query = "SELECT cavallo.idCavallo, descrizione, posizione, dataGara, nome, immagine, fiducia, stanchezza, velocita FROM (cavallo INNER JOIN partecipante ON cavallo.idCavallo = partecipante.idCavallo)
+				$query = "SELECT cavallo.idCavallo, descrizione, posizione, dataGara, nome, immagine, fiducia, stanchezza, velocita, ritiro FROM (cavallo INNER JOIN partecipante ON cavallo.idCavallo = partecipante.idCavallo)
 				INNER JOIN gara ON gara.idGara=partecipante.idGara
 				WHERE cavallo.idCavallo = '$id' AND gara.stato=2;";
 				$result = mysqli_query($this->connection, $query);
@@ -106,7 +106,7 @@
 			}
 			else
 			{
-				$query = "SELECT idCavallo, descrizione, nome, immagine, velocita, fiducia FROM cavallo WHERE cavallo.idCavallo = '$id';";
+				$query = "SELECT idCavallo, descrizione, nome, immagine, velocita, fiducia, ritiro FROM cavallo WHERE cavallo.idCavallo = '$id';";
 				$result = mysqli_query($this->connection, $query);
 				return $result;
 			}
@@ -116,7 +116,7 @@
 		//Risultati
 		public function getGare($stato)
 		{
-            $query = "SELECT dataGara, idGara from Gara where stato=$stato;";
+            $query = "SELECT dataGara, idGara from gara where stato=$stato;";
             $result = mysqli_query($this->connection, $query);
             return $result;
 		}
