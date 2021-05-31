@@ -16,7 +16,7 @@
 			$username = $_SESSION["username"];
 			$query = $dbAccess->getCreditoUtente($username);
 			$_SESSION["credito"] = mysqli_fetch_array($query)["credito"];
-			$credito = '<h1 id="h1Bitsquit">Il tuo credito &eacute;: <span>'. $_SESSION["credito"] .'</span></h1>';
+			$credito = '<h1 id="h1Bitscuit">Il tuo credito &eacute;: <span>'. $_SESSION["credito"] .'</span></h1>';
 			
 			$result = $dbAccess->getGare("0");
 			

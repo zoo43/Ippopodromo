@@ -654,14 +654,14 @@ main dt + dt + dd + dt {
   justify-content: center;
 }
 
-#h1Bitsquit {
+#h1Bitscuit {
   text-align: center;
 }
-#h1Bitsquit span {
+#h1Bitscuit span {
   background-color: var(--clrBrw);
   color: var(--clrOrg);
 }
-#h1Bitsquit:after {
+#h1Bitscuit:after {
   content: "";
   position: relative;
   top: 5px;
@@ -670,7 +670,7 @@ main dt + dt + dd + dt {
   height: 30px;
   width: 30px;
   background-size: contain;
-  background-image: url("../images/bitsquit.png");
+  background-image: url("../images/bitscuit.png");
 }
 
 .visually-hidden {

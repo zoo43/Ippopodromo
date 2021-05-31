@@ -11,7 +11,7 @@
 			
 			$query = $dbAccess->getCreditoUtente($_SESSION['username']);
 			$_SESSION["credito"] = mysqli_fetch_array($query)['credito'];
-			$credito = '<h1 id="h1Bitsquit">Il tuo credito &eacute;: <span>'. $_SESSION['credito'] .'</span></h1>';
+			$credito = '<h1 id="h1Bitscuit">Il tuo credito &eacute;: <span>'. $_SESSION['credito'] .'</span></h1>';
 			$userResult = $dbAccess->getScommesseUtente($_SESSION['username']);
 			
 			if ($userResult && mysqli_num_rows($userResult) > 0) {

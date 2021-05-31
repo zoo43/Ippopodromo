@@ -1,6 +1,6 @@
 function checkDoc()
 {
-    if(checkBitSquits() && checkRadio())
+    if(checkBitScuits() && checkRadio())
     {
 		return true;
 	}
@@ -10,7 +10,7 @@ function checkDoc()
 	}
 }
 
-function checkBitSquits()
+function checkBitScuits()
 {
 	var n = document.getElementsByTagName('input');
 	var bitScuits = document.getElementById('creditoUtente').innerText;
@@ -23,7 +23,7 @@ function checkBitSquits()
 			return true;
 			else
 			{
-				alert('Non hai abbastanza bitSquits :(. Si prega di inserire un importo valido');
+				alert('Non hai abbastanza bitScuits :(. Si prega di inserire un importo valido');
 				return false;
 			}
 		}
