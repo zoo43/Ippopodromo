@@ -27,7 +27,7 @@
   --clrGry: #808080;
 }
 
-html, body {
+body {
   max-width: 1200px;
   min-height: 50vh;
   margin: 0em auto;
@@ -37,15 +37,17 @@ html, body {
 html {
   background-image: url("../images/wood_pattern.png");
   background-color: var(--html-back-color);
-  border-width: 0px 3px 0px 3px;
-  border-style: ridge;
-	border-color: var(--clrBrw);
+  
 }
 
 body {
 	display: flex;
 	flex-direction: column;
 	background-color: var(--back-color);
+
+  border-width: 0px 3px 0px 3px;
+  border-style: ridge;
+  border-color: var(--clrBrw);
 }
 
 .topPic {
@@ -91,6 +93,7 @@ header h1 {
 }
 
 .navbar {
+  margin-left: 10px;
 	display: grid;            
 	grid-template-columns: 1fr;            
 	grid-gap: 20px;
@@ -106,7 +109,6 @@ header h1 {
 
 	color: var(--clrWht);
 
-  border-left-width: 0;
 	border-style: ridge;
 	border-color: var(--clrBrw);
 }
@@ -208,6 +210,8 @@ a:focus {
 }
 
 main {
+  margin-right: 10px;
+
 	background-color: var(--clrBrw);
 
 	grid-column: 2/7;
@@ -218,7 +222,6 @@ main {
 
 	color: var(--clrWht);
 
-  border-right-width: 0;
 	border-style: ridge;
 	border-color: var(--clrBrw);
 }
@@ -304,15 +307,18 @@ footer .logo{
   text-align: center;
 }
 .card {
-  min-width: 24em;
+  min-width: 12em;
   background: var(--clrBrw);
-  width: calc(24% - 15px);
+  width: calc(12% - 15px);
   margin: 5px 5px 5px 5px;
   border-radius: var(--border-radius);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-
+  
+  border-style: ridge;
+  border-color: var(--clrBrw);
+  border-width: 5px;
 
   color: var(--clrGrn);
 }
@@ -329,7 +335,7 @@ footer .logo{
 }
 .card .text {
   display: block;
-  margin: 10px auto;
+  margin: 20px 0 20px 0;
   max-width: 500px;
   height: 20px;
   border-radius: var(--border-radius);
