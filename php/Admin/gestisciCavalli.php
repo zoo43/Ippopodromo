@@ -15,7 +15,7 @@ $conn = $dbAccess->openDBConnection();
 if($conn) {
     $result = $dbAccess->getCavalli(true);
     while($row = mysqli_fetch_array($result)) {
-        $lista .= "<tr><td>" . $row['nome'] . "</td><td><a href='rimuoviCavallo.php?value=" . $row['idCavallo'] . "'>Elimina</td></tr>";
+        $lista .= "<tr><td>" . $row['nome'] . "</td><td><a href='rimuoviCavallo.php?value=" . $row['idCavallo'] . "'>Elimina</a></td></tr>";
     }
 }
 else {

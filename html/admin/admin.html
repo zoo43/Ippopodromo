@@ -30,7 +30,7 @@
         <h2 id="menu-label" class="visually-hidden">Menù principale</h2>
         <ul aria-labelledby="menu-label">
           <li lang="en">Dashboard</li>
-          <li><a href='../../php/scommesse/scommetti.php'>Scommesse</a></li>
+          <li><a href='../../php/scommesse/scommesse.php'>Scommesse</a></li>
           <li><a href="../../php/cavalli/cavalli.php">Cavalli</a></li>
           <li><a href="../../php/gare/risultati.php">Gare</a></li>
           <li><a href="../info/chi_siamo.php">Chi siamo</a></li>
@@ -49,29 +49,25 @@
         <!-- questa cosa va mostrata solo se si è loggati, se non lo si è bisogna reindirizzare al login -->
         <dl id="db-cards">
           <!-- aggiungere delle icone in css -->
-          <dt>
-            <h2>Cavalli</h2>
-          </dt>
+          <dt>Cavalli</dt>
           <dd>
-            <h3>
+            <p>
               <num-cavalli />
-            </h3>
+            </p>
             <p><a href="gestisciCavalli.php" class="centerLink">Gestisci i cavalli</a></p>
           </dd>
-          <dt>
-            <h2>Gare</h2>
-          </dt>
+          <dt>Gare</dt>
           <dd>
-            <h3><num-gare /></h3>
+            <p>
+              <num-gare />
+            </p>
             <p><a href="../../php/admin/aggiungiGara.php" class="centerLink">Crea nuove gare</a></p>
           </dd>
-          <dt>
-            <h2>Risultati</h2>
-          </dt>
+          <dt>Risultati</dt>
           <dd>
-            <h3>
+            <p>
               <num-risultati />
-            </h3>
+            </p>
             <p><a href="aggiungiRisultati.php" class="centerLink">Aggiungi risultati alle gare concluse</a></p>
           </dd>
         </dl>

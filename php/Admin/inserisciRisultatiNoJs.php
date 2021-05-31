@@ -35,9 +35,9 @@ if($conn) {
     for($i=0; $i<count($cavalli);$i++)
     {
             $selezione .= '<label for="cav' . $cavalli[$i]['id'] . '"><span>' . $cavalli[$i]['name'] . '</span><span class="visually-hidden">(Richiesto)</span></label>';
-            $selezione .= "<input type='number' id='cav" . $cavalli[$i]['id'] . "' name='cavalli[]' value='1' min='1' max='" . count($cavalli) . "' aria-label=" . $cavalli[$i]['name'] . "required='required' />";
-        }
-        $selezione .= '<input id="btn" type="submit" name="register" value="Aggiorna risultati" /></form>';
+            $selezione .= "<input type='number' id='cav" . $cavalli[$i]['id'] . "' name='cavalli[]' value='1' min='1' max='" . count($cavalli) . "' aria-label='" . $cavalli[$i]['name'] . "' required='required' />";
+    }
+    $selezione .= '<input id="btn" type="submit" name="register" value="Aggiorna risultati" /></form>';
     $dbAccess->closeDBConnection();
 }
 else {
@@ -48,9 +48,9 @@ else {
     $risultato = "<p class='inserimentoFallito'>C'é stato un errore con l'id della gara passato</p>";
 }
 
-$torna_indietro = '<a href="./aggiungiRisultati.php" class="centerLink">Torna indietro</a>';
+$torna_indietro = '<a href="./aggiungiRisultatiNoJs.php" class="centerLink">Torna indietro</a>';
 
-$pagina = file_get_contents('../../html/admin/inserisciRisultati.html');
+$pagina = file_get_contents('../../html/admin/inserisciRisultatiNoJs.html');
 $pagina = str_replace(
     array("<lista-gare />", "<inserimento-gara-selezionata />", "<risultato-inserimento />", "<torna-indietro />"),
     array($gare, $selezione, $risultato, $torna_indietro),

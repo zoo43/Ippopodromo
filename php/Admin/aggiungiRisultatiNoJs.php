@@ -7,7 +7,7 @@ if (!isset($_SESSION['admin'])) {
 }
 
 
-$gare = '<table><caption>Gare ancora aperte</caption><thead><tr><th>ID gara</th><th>Data</th><th>Opzioni</th></tr></thead><tfoot></tfoot><tbody>';
+$gare = '<table><caption>Gare ancora aperte</caption><thead><tr><th>ID gara</th><th>Data</th><th>Opzioni</th></tr></thead><tbody>';
 $selezione = '';
 $risultatoInserimento='';
 $dbAccess = new DBAccess();

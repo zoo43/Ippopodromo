@@ -21,7 +21,7 @@ if (isset($_SESSION["username"])) {
 		$confirm = '<input type="submit" class="button" value="Conferma" disabled="disabled" />';
 	}
 } else {
-	header('Location: scommetti.php');
+	header('Location: scommesse.php');
 }
 
 $pagina = areaAutenticazione(file_get_contents('../../html/scommesse/confirmScommessa.html'));

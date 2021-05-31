@@ -14,7 +14,7 @@ function checkBitScuits()
 {
 	var n = document.getElementsByTagName('input');
 	var bitScuits = document.getElementById('creditoUtente').innerText;
-	bitScuits = parseInt(bitScuits);
+	bitScuits = parseInt(bitScuits, 10);
     var value;
 	for (var i = 0; i < n.length; i++) {
 		if (n[i].type === 'number')
