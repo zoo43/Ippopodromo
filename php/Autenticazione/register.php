@@ -4,6 +4,14 @@ require_once('../auth.php');
 
 $risultato='';
 if(isset($_POST['register'])){
+    $birthDate = $_POST['date'];
+	$birthDate = explode("/", $birthDate);
+	$age = (date("md", date("U", mktime(0, 0, 0, $birthDate[1], $birthDate[2], $birthDate[0]))) > date("md")
+    ? ((date("Y") - $birthDate[0]) - 1)
+    : (date("Y") - $birthDate[0]));
+	
+	if($age>=18)
+	{
     $dbAccess = new DBAccess();
     $conn = $dbAccess->openDBConnection();
     if($dbAccess->verificaPresenza($_POST['username'], $_POST['mail'])){
@@ -17,6 +25,11 @@ if(isset($_POST['register'])){
         header("location:../../");
     }
     $dbAccess->closeDBConnection();
+    }
+	else{
+		$_SESSION["error"] = 'Devi essere maggiorenne per usufruire di questo servizio';
+		printf("Devi essere maggiorenne per usufruire di questo servizio");
+	}
 }
 else{      
         if(isset($_SESSION["error"])){
