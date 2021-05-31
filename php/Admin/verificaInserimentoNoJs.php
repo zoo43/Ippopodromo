@@ -23,7 +23,7 @@ if(isset($_POST['register']))
     }
     if($parimerito==true)
     {
-        $risultato = "<p class='inserimentoFallito'>Più cavalli non possono avere la stessa posizione in classifica. <a href='#inserimentoCavallo'>Vai all'errore</a></p>";
+        $risultato = "<p class='inserimentoFallito'>Più cavalli non possono avere la stessa posizione in classifica.</p>";
 
     }  
     else

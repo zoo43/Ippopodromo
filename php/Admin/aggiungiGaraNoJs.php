@@ -19,7 +19,7 @@ function stampaListaCavalli($dbAccess,$cavalli)
     {                                                                       
         $id = $row['idCavallo'];
         $name = $row['nome'];
-        $cavalli = $cavalli . "<div class='flex-div'><input type='checkbox' onchange='controllaNumeroCavalli()' id='$id' name='cavalli[]' value='$id' aria-label='$name'> <label for='$id'><span>$name</span></label></div>";
+        $cavalli = $cavalli . "<div class='flex-div'><input type='checkbox' id='$id' name='cavalli[]' value='$id' aria-label='$name'> <label for='$id'><span>$name</span></label></div>";
     }
     mysqli_free_result($result);
     return $cavalli;
@@ -35,14 +35,14 @@ if(isset($_POST['register']))
         $inputT=$_POST['time'];
         if($date > $inputD)
         {
-            $risultatoAggiunta .= "<p class='inserimentoFallito'>La gara deve avvenire almeno oggi, non prima. <a href='#date'>Vai all'errore</a></p>";
+            $risultatoAggiunta .= "<p class='inserimentoFallito'>La gara deve avvenire almeno oggi, non prima.</p>";
             $cavalli=stampaListaCavalli($dbAccess, $cavalli);
         }
         else
         {
-            if($hour > $inputT)
+            if($date == $inputD && $hour > $inputT)
             {
-                $risultatoAggiunta .= "<p class='inserimentoFallito'>La gara non può partire nel passato! <a href='#time'>Vai all'errore</a></p>";
+                $risultatoAggiunta .= "<p class='inserimentoFallito'>La gara non può partire nel passato!</p>";
                 $cavalli=stampaListaCavalli($dbAccess, $cavalli);
             }
             else
@@ -64,13 +64,13 @@ if(isset($_POST['register']))
                     }
                     else
                     {
-                        $risultatoAggiunta .= "<p class='inserimentoFallito'>Non hai inserito un numero sufficiente di cavalli (almeno 4). <a href='#horses'>Vai all'errore</a></p>";
+                        $risultatoAggiunta .= "<p class='inserimentoFallito'>Non hai inserito un numero sufficiente di cavalli (almeno 4).</p>";
                         $cavalli=stampaListaCavalli($dbAccess, $cavalli);
                     }
                 }
                 else
                 {
-                    $risultatoAggiunta .= "<p class='inserimentoFallito'>Non hai inserito cavalli. <a href='#horses'>Vai all'errore</a></p>";
+                    $risultatoAggiunta .= "<p class='inserimentoFallito'>Non hai inserito cavalli.</p>";
                     $cavalli=stampaListaCavalli($dbAccess, $cavalli);
                 }
             }

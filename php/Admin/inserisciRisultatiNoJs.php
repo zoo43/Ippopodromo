@@ -35,7 +35,7 @@ if($conn) {
     for($i=0; $i<count($cavalli);$i++)
     {
             $selezione .= '<label for="cav' . $cavalli[$i]['id'] . '"><span>' . $cavalli[$i]['name'] . '</span></label>';
-            $selezione .= "<input type='number' onchange='controllaPosizioni()' id='cav" . $cavalli[$i]['id'] . "' name='cavalli[]' value='1' min='1' max='" . count($cavalli) . "' aria-label=" . $cavalli[$i]['name'] . "required='required' />";
+            $selezione .= "<input type='number' id='cav" . $cavalli[$i]['id'] . "' name='cavalli[]' value='1' min='1' max='" . count($cavalli) . "' aria-label=" . $cavalli[$i]['name'] . "required='required' />";
         }
         $selezione .= '<input id="btn" type="submit" name="register" value="Aggiorna risultati" /></form>';
     $dbAccess->closeDBConnection();
