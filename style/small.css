@@ -20,7 +20,7 @@
   --clrDrkGrn: #09D785;
   --clrSlm: #820D0D;
   --clrBrx: #800000;
-  --clrBlk: #272727;
+  --clrBlk: #111;
   --clrGry: #808080;
 }
 
@@ -561,10 +561,7 @@ ol a {
   color: var(--clrWht);
 }
 
-ol a:hover {
-	color: var(--clrBlu);
-	background: var(--clrSlm);
-}       
+ol a:hover { background: var(--clrSlm); }       
 ol a:before {
   content: counter(li);
   counter-increment: li;
@@ -681,11 +678,12 @@ background: var(--clrSlm);
 form input[type=submit]:disabled,
 form input[type=button]:disabled{
 background: var(--clrGry);
+color: var(--clrBlk);
 }
-
 form input[type=submit]:disabled:hover,
 form input[type=button]:disabled:hover{
-background: var(--clrGry);
+  background: var(--clrGry);
+  color: var(--clrBlk);
 }
 
 

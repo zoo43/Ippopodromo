@@ -20,7 +20,7 @@
   --clrDrkGrn: #09D785;
   --clrSlm: #820D0D;
   --clrBrx: #800000;
-  --clrBlk: #272727;
+  --clrBlk: #111;
   --clrGry: #808080;
 }
 
@@ -152,9 +152,8 @@ header h1 {
   display: inline-block;
   height: 25px;
   width: 25px;
-  /* TODO: aggiungi immagine */
-  /* background-size: contain;
-  background-image: url(""); */
+  background-size: contain;
+  background-image: url("../images/tick.png");
 }
 
 #breadcrumb li:last-child:before {
@@ -496,7 +495,7 @@ ol a {
   color: var(--clrWht);
 }
 
-ol a:hover {background: var(--clrSlm);}       
+ol a:hover {background: var(--clrSlm); }       
 ol a:before {
   content: counter(li);
   counter-increment: li;
@@ -613,10 +612,12 @@ background: var(--clrSlm);
 form input[type=submit]:disabled,
 form input[type=button]:disabled{
 background: var(--clrGry);
+color: var(--clrBlk);
 }
 form input[type=submit]:disabled:hover,
 form input[type=button]:disabled:hover{
-background: var(--clrGry);
+  background: var(--clrGry);
+  color: var(--clrBlk);
 }
 
 /*form input[type=checkbox],
