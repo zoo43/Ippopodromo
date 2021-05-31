@@ -362,6 +362,9 @@ footer .logo{
   /*background: var(--clrGrn);*/
   border-radius: var(--border-radius);
 }
+/*.text span {
+  display: inline;
+}*/
 .card .button {
   display: block;
   margin: 20px auto 0 auto;
@@ -389,7 +392,6 @@ footer .logo{
 .cards img {
   width: 100%;
   height: auto;
-  position: center;
   border-radius: var(--border-radius);
 }
 
@@ -564,7 +566,6 @@ form label {
   margin-bottom: 10px;
 }
 form label > span{
-  float: center;
   width: 150px;
 }
 form input[type=text],
@@ -654,9 +655,6 @@ form input[type=radio] {
 }
 .left-element {
 	float: left !important;
-}
-.center-element {
-	float: center !important;
 }
 
 
@@ -748,8 +746,6 @@ main dt + dt + dd + dt {
 .flex-div label{
   grid-column: 2;
   grid-row: 1;
-
-  float: center;
 }
 
 .flex-div input{

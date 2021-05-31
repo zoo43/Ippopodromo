@@ -19,7 +19,9 @@ a:visited:after {
 
 img {display: none;}
 
- .cards img {
+ .card img {
+ 	display: block;
+ 	margin-top: 10px;
 	height: 7em;
 	width: 7em;
 }
