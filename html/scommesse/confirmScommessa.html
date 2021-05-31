@@ -1,101 +1,101 @@
 <!DOCTYPE html>
 <html lang="it">
-    
-    <head>
-        <meta charset="UTF-8">
-        <title>
-            Conferma scommessa - Ippodromo NO₂¯
-        </title>
-        <meta name="title" content="Conferma scommessa - Ippodromo NO₂¯" />
-        <meta name="description" content="Conferma il cavallo e la quantità da puntare sulla gara selezionata all'Ippodromo NO₂¯" />
-        <meta name="keywords" content="scommesse, cavalli, corse, ippodromo, no2, nitrito" />
-        <meta name="author" content="Francesco Dallan (Cecio), Damiano Mason (Dam), Matteo Martini (Martz), Samuele Sartor (Sam)" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" type="text/css" href="../../style/style.css" media="screen and (min-width: 1025px)" />
-        <link rel="stylesheet" type="text/css" href="../../style/small.css" media="screen and (max-width: 1025px)" />
-        <link rel="stylesheet" type="text/css" href="../../style/print.css" media="print" />
-        <link rel="icon" href="../../images/logo.jpeg" />
-    </head>
-    
-    <body>
-        
-        <header>
-            <h1>
-                Conferma scommessa
-            </h1>
-        </header>
-        
-        <div class="page">
-            <a href="#content" class="visually-hidden">Vai al contenuto</a>
-            <div class="navbar">
-                
-                <nav id="menu" aria-labelledby="menu-label">
-                    <h2 id="menu-label" class="visually-hidden">Menù principale</h2>
-                    <ul aria-labelledby="menu-label">
-                        <li><a href="../../">Home</a></li>
-                        <li><a href="../scommesse/scommetti.php">Scommesse</a></li>
-                        <li><a href="../gare/risultati.php">Gare</a></li>
-                        <li><a href='cavalli.php'>Cavalli</a></li>
-                        <li><a href="../info/chi_siamo.php">Chi siamo</a></li>
-                        <admin />
-                        <autenticazione />
-                    </ul>
-                </nav>
-                
-                <ul id="breadcrumb" aria-label="Ti trovi in:">
-                    <li lang="en">Home</li>
-                    <li>Scommesse</li>
-                    <li>Conferma scommessa</li>
-                </ul>
+
+<head>
+  <meta charset="UTF-8">
+  <title>
+    Conferma scommessa - Ippodromo NO₂¯
+  </title>
+  <meta name="title" content="Conferma scommessa - Ippodromo NO₂¯" />
+  <meta name="description" content="Conferma il cavallo e la quantità da puntare sulla gara selezionata all'Ippodromo NO₂¯" />
+  <meta name="keywords" content="scommesse, cavalli, corse, ippodromo, no2, nitrito" />
+  <meta name="author" content="Francesco Dallan (Cecio), Damiano Mason (Dam), Matteo Martini (Martz), Samuele Sartor (Sam)" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="../../style/style.css" media="screen and (min-width: 1025px)" />
+  <link rel="stylesheet" type="text/css" href="../../style/small.css" media="screen and (max-width: 1025px)" />
+  <link rel="stylesheet" type="text/css" href="../../style/print.css" media="print" />
+  <link rel="icon" href="../../images/logo.jpeg" />
+</head>
+
+<body>
+
+  <header>
+    <h1>
+      Conferma scommessa
+    </h1>
+  </header>
+
+  <div class="page">
+    <a href="#content" class="visually-hidden">Vai al contenuto</a>
+    <div class="navbar">
+
+      <nav id="menu" aria-labelledby="menu-label">
+        <h2 id="menu-label" class="visually-hidden">Menù principale</h2>
+        <ul aria-labelledby="menu-label">
+          <li><a href="../../">Home</a></li>
+          <li><a href="../scommesse/scommetti.php">Scommesse</a></li>
+          <li><a href="../gare/risultati.php">Gare</a></li>
+          <li><a href='cavalli.php'>Cavalli</a></li>
+          <li><a href="../info/chi_siamo.php">Chi siamo</a></li>
+          <admin />
+          <autenticazione />
+        </ul>
+      </nav>
+
+      <ul id="breadcrumb" aria-label="Ti trovi in:">
+        <li lang="en">Home</li>
+        <li>Scommesse</li>
+        <li>Conferma scommessa</li>
+      </ul>
+    </div>
+
+    <main id="content">
+        <form action="risultatoScommessa.php" method="post">
+          <div class="headline">
+            <h2>Gara numero <num-gara /></h2>
+          </div>
+          <div class="text">
+            <h3>Data: <data-gara /></h3>
+          </div>
+          <div class="text">
+            <h3>Ora: <ora-gara /></h3>
+          </div>
+          <div class="text">
+            <h3>Cavallo: <cavallo /></h3>
+          </div>
+          <div class="text">
+            <h3>Puntata: <valore-puntata /></h3>
+          </div>
+          <form-inputs />
+          <a href="scommetti.php">
+            <div class="button">
+              Annulla
             </div>
-            
-            <main id="content">
-                <form action="risultatoScommessa.php" method="post">
-                    <div class="headline">
-                        <h2>Gara numero <num-gara /></h2>
-                    </div>
-                    <div class="text">
-                        <h3>Data: <data-gara /></h3>
-                    </div>
-                    <div class="text">
-                        <h3>Ora: <ora-gara /></h3>
-                    </div>
-                    <div class="text">
-                        <h3>Cavallo: <cavallo /></h3>
-                    </div>
-                    <div class="text">
-                        <h3>Puntata: <valore-puntata /></h3>
-                    </div>
-                    <form-inputs />
-                    <a href="scommetti.php">
-                        <div class="button">
-                            Annulla
-                        </div>
-                    </a>
-                    <confirm-input />
-                </form>
-                <a href="#menu" class="visually-hidden go-back-button">Torna al menù</a>
-            </main>
-            <footer>
-                <img class="logo" src="../../images/logo.jpeg" alt="Logo Ippodromo NO₂¯" />
-                <div id="copyright">
-                    <p>
-                        Questo sito incoraggia vivamente allo spendere tutti i propri soldi sulla piattaforma NO₂¯ (Nitrito). Le vincite sono incoraggiate solo se giustificate dalla successiva perdita di una somma maggiore di denaro. L'ippodromo non si prende alcuna responsabilità in caso di perdita di tutto il proprio capitale da parte dell'utente; al contrario, si prende con gioia tutto il capitale.
-                    </p>
-                    <div id="authors">
-                        <p>Quelli che si pigliano i tuoi soldi:</p>
-                        <ul>
-                            <li>Cecio</li>
-                            <li>Dam</li>
-                            <li>Martz</li>
-                            <li>Sam</li>
-                        </ul>
-                    </div>
-                </div>
-                <img id="img-valid-code" src="../../images/valid-xhtml10.png" alt="HTML valido" />
-                <img id="img-valid-css" src="../../images/vcss-blue.gif" alt="CSS valido" />
-            </footer>
+          </a>
+          <confirm-input />
+        </form>
+      <a href="#menu" class="visually-hidden go-back-button">Torna al menù</a>
+    </main>
+    <footer>
+      <img class="logo" src="../../images/logo.jpeg" alt="Logo Ippodromo NO₂¯" />
+      <div id="copyright">
+        <p>
+          Questo sito incoraggia vivamente allo spendere tutti i propri soldi sulla piattaforma NO₂¯ (Nitrito). Le vincite sono incoraggiate solo se giustificate dalla successiva perdita di una somma maggiore di denaro. L'ippodromo non si prende alcuna responsabilità in caso di perdita di tutto il proprio capitale da parte dell'utente; al contrario, si prende con gioia tutto il capitale.
+        </p>
+        <div id="authors">
+          <p>Quelli che si pigliano i tuoi soldi:</p>
+          <ul>
+            <li>Cecio</li>
+            <li>Dam</li>
+            <li>Martz</li>
+            <li>Sam</li>
+          </ul>
         </div>
-    </body>
-    
+      </div>
+      <img id="img-valid-code" src="../../images/valid-xhtml10.png" alt="HTML valido" />
+      <img id="img-valid-css" src="../../images/vcss-blue.gif" alt="CSS valido" />
+    </footer>
+  </div>
+</body>
+
 </html>

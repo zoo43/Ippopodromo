@@ -1,96 +1,96 @@
 <!DOCTYPE html>
 <html lang="it">
-    
-    <head>
-        <meta charset="UTF-8">
-        <title>Dashboard amministratore - Ippodromo NO₂¯</title> <!-- oppure &#8322; -->
-        <meta name="title" content="Dashboard amministratore - Ippodromo NO₂¯" />
-        <meta name="description" content="Pannello amministratore dell'ippodromo NO₂¯" />
-        <meta name="keywords" content="ippodromo, no2, nitrito, cavalli, scommesse, corse, fantini, ippopotami" />
-        <meta name="author" content="Francesco Dallan (Cecio), Damiano Mason (Dam), Matteo Martini (Martz), Samuele Sartor (Sam)" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" type="text/css" href="../../style/style.css" media="screen and (min-width: 1025px)" />
-        <link rel="stylesheet" type="text/css" href="../../style/small.css" media="screen and (max-width: 1025px)" />
-        <link rel="stylesheet" type="text/css" href="../../style/print.css" media="print" />
-        <link rel="icon" href="../../images/logo.jpeg" />
-    </head>
-    
-    <body>
-        <header>
-            <h1><span lang="en">Dashboard</span> amministratore</h1>
-        </header>
-        <div class="page">
-            <a href="#content" class="visually-hidden">Vai al contenuto</a>
-            <div class="navbar">
-                <nav id="menu" aria-labelledby="menu-label">
-                    <h2 id="menu-label" class="visually-hidden">Menù principale</h2>
-                    <ul aria-labelledby="menu-label">
-                        <li lang="en">Dashboard</li>
-                        <li><a href='../../php/scommesse/scommetti.php'>Scommesse</a></li>
-                        <li><a href="../../php/cavalli/cavalli.php">Cavalli</a></li>
-                        <li><a href="../../php/gare/risultati.php">Gare</a></li>
-                        <li><a href="../info/chi_siamo.php">Chi siamo</a></li>
-                        <li><a href="../../">Abbandona dashboard</a></li>
-                        <autenticazione />
-                    </ul>
-                </nav>
-                <ul id="breadcrumb" aria-label="Ti trovi in:">
-                    <li><span lang="en">Dashboard</span> amministratore</li>
-                </ul>
-            </div>
-            <main id="content">
-                <nav>
-                    <dl id="db-cards">
-                        <dt>
-                            <h2>Cavalli</h2>
-                        </dt>
-                        <dd>
-                            <h3 class="brw-back"><num-cavalli /></h3>
-                            <p><a href="../../php/admin/gestisciCavalli.php" class="centerLink">Gestici i cavalli</a></p>
-                        </dd>
-                    </dl>
-                    <dt>
-                        <h2>Gare</h2>
-                    </dt>
-                    <dd>
-                        <h3 class="brw-back"><num-gare /></h3>
-                        <p><a href="../../php/admin/aggiungiGaraNoJs.php" class="centerLink">Crea nuove gare</a></p>
-                    </dd>
-                    <dt>
-                        <h2>Risultati</h2>
-                    </dt>
-                    <dd>
-                        <h3 class="brw-back"><num-risultati /></h3>
-                        <p><a href="../../php/admin/aggiungiRisultatiNoJs.php" class="centerLink">Aggiungi risultati alle gare concluse</a></p>
-                    </dd>
-                </dl>
-            </nav>
-            <a href="#menu" class="visually-hidden go-back-button">Torna al menù</a>
-        </main>
-        <footer>
-            <img class="logo" src="../../images/logo.jpeg" alt="Logo Ippodromo NO₂¯" />
-            <div id="copyright">
-                <p>
-                    Bella amico, grazie per fare il lavoro pesante al posto nostro. Ovviamente questo è tutto volontariato da parte
-                    tua, quindi non pagheremo nulla, ma come sempre sappi che la ricompensa più grande è sempre il sorriso di chi
-                    aiuti, quindi ecco a te <abbr title="Emoticon sorridente">:)</abbr>. Come? Vuoi sapere dove abbiamo nascosto la
-                    tua famiglia? E vorresti anche uscire dalla cantina, poter mangiare come si deve, e dormire su di un letto e non
-                    più sul pavimento? Ma di cosa stai parlando?
-                </p>
-                <div id="authors">
-                    <p>I tuoi padroni:</p>
-                    <ul>
-                        <li>Cecio</li>
-                        <li>Dam</li>
-                        <li>Martz</li>
-                        <li>Sam</li>
-                    </ul>
-                </div>
-            </div>
-            <img id="img-valid-code" src="../../images/valid-xhtml10.png" alt="HTML valido" />
-            <img id="img-valid-css" src="../../images/vcss-blue.gif" alt="CSS valido" />
-        </footer>
+
+<head>
+  <meta charset="UTF-8">
+  <title>Dashboard amministratore - Ippodromo NO₂¯</title> <!-- oppure &#8322; -->
+  <meta name="title" content="Dashboard amministratore - Ippodromo NO₂¯" />
+  <meta name="description" content="Pannello amministratore dell'ippodromo NO₂¯" />
+  <meta name="keywords" content="ippodromo, no2, nitrito, cavalli, scommesse, corse, fantini, ippopotami" />
+  <meta name="author" content="Francesco Dallan (Cecio), Damiano Mason (Dam), Matteo Martini (Martz), Samuele Sartor (Sam)" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="../../style/style.css" media="screen and (min-width: 1025px)" />
+  <link rel="stylesheet" type="text/css" href="../../style/small.css" media="screen and (max-width: 1025px)" />
+  <link rel="stylesheet" type="text/css" href="../../style/print.css" media="print" />
+  <link rel="icon" href="../../images/logo.jpeg" />
+</head>
+
+<body>
+  <header>
+    <h1><span lang="en">Dashboard</span> amministratore</h1>
+  </header>
+  <div class="page">
+    <a href="#content" class="visually-hidden">Vai al contenuto</a>
+    <div class="navbar">
+      <nav id="menu" aria-labelledby="menu-label">
+        <h2 id="menu-label" class="visually-hidden">Menù principale</h2>
+        <ul aria-labelledby="menu-label">
+          <li lang="en">Dashboard</li>
+          <li><a href='../../php/scommesse/scommetti.php'>Scommesse</a></li>
+          <li><a href="../../php/cavalli/cavalli.php">Cavalli</a></li>
+          <li><a href="../../php/gare/risultati.php">Gare</a></li>
+          <li><a href="../info/chi_siamo.php">Chi siamo</a></li>
+          <li><a href="../../">Abbandona dashboard</a></li>
+          <autenticazione />
+        </ul>
+      </nav>
+      <ul id="breadcrumb" aria-label="Ti trovi in:">
+        <li><span lang="en">Dashboard</span> amministratore</li>
+      </ul>
     </div>
+    <main id="content">
+      <nav>
+        <dl id="db-cards">
+          <dt>
+            <h2>Cavalli</h2>
+          </dt>
+          <dd>
+            <h3 class="brw-back"><num-cavalli /></h3>
+            <p><a href="../../php/admin/gestisciCavalli.php" class="centerLink">Gestici i cavalli</a></p>
+          </dd>
+        </dl>
+          <dt>
+            <h2>Gare</h2>
+          </dt>
+          <dd>
+            <h3 class="brw-back"><num-gare /></h3>
+            <p><a href="../../php/admin/aggiungiGaraNoJs.php" class="centerLink">Crea nuove gare</a></p>
+          </dd>
+          <dt>
+            <h2>Risultati</h2>
+          </dt>
+          <dd>
+            <h3 class="brw-back"><num-risultati /></h3>
+            <p><a href="../../php/admin/aggiungiRisultatiNoJs.php" class="centerLink">Aggiungi risultati alle gare concluse</a></p>
+          </dd>
+        </dl>
+      </nav>
+      <a href="#menu" class="visually-hidden go-back-button">Torna al menù</a>
+    </main>
+    <footer>
+      <img class="logo" src="../../images/logo.jpeg" alt="Logo Ippodromo NO₂¯" />
+      <div id="copyright">
+        <p>
+          Bella amico, grazie per fare il lavoro pesante al posto nostro. Ovviamente questo è tutto volontariato da parte
+          tua, quindi non pagheremo nulla, ma come sempre sappi che la ricompensa più grande è sempre il sorriso di chi
+          aiuti, quindi ecco a te <abbr title="Emoticon sorridente">:)</abbr>. Come? Vuoi sapere dove abbiamo nascosto la
+          tua famiglia? E vorresti anche uscire dalla cantina, poter mangiare come si deve, e dormire su di un letto e non
+          più sul pavimento? Ma di cosa stai parlando?
+        </p>
+        <div id="authors">
+          <p>I tuoi padroni:</p>
+          <ul>
+            <li>Cecio</li>
+            <li>Dam</li>
+            <li>Martz</li>
+            <li>Sam</li>
+          </ul>
+        </div>
+      </div>
+      <img id="img-valid-code" src="../../images/valid-xhtml10.png" alt="HTML valido" />
+      <img id="img-valid-css" src="../../images/vcss-blue.gif" alt="CSS valido" />
+    </footer>
+  </div>
 </body>
 
 </html>

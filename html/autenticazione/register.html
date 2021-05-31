@@ -1,98 +1,98 @@
 <!DOCTYPE html>
 <html>
+
+
+<head>
+  <meta charset="UTF-8">
+  <title>Registrazione - Ippodromo NO₂¯</title>
+  <meta name="title" content="Registrazione - Ippodromo NO₂¯" />
+  <meta name="description" content="Pagina di registrazione utente per scommettere all'Ippodromo NO₂¯" />
+  <meta name="keywords" content="ippodromo, no2, nitrito, cavalli, scommesse, corse, fantini, ippopotami" />
+  <meta name="author" content="Francesco Dallan (Cecio), Damiano Mason (Dam), Matteo Martini (Martz), Samuele Sartor (Sam)" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="../../style/style.css" media="screen and (min-width: 1025px)" />
+  <link rel="stylesheet" type="text/css" href="../../style/small.css" media="screen and (max-width: 1025px)" />
+  <link rel="stylesheet" type="text/css" href="../../style/print.css" media="print" />
+  <link rel="icon" href="../../images/logo.jpeg" />
+</head>
+
+<body>
+  <header>
+    <h1>Registrati</h1>
+  </header>
+
+  <div class="page">
+    <a href="#content" class="visually-hidden">Vai al contenuto</a>
+    <div class="navbar">
+      <nav id="menu" aria-labelledby="menu-label">
+        <h2 id="menu-label" class="visually-hidden">Menù principale</h2>
+        <ul aria-labelledby="menu-label">
+          <li lang="en"><a href="../..">Home</a></li>
+          <li><a href='../../php/scommesse/scommetti.php'>Scommesse</a></li>
+          <li><a href="../../php/gare/risultati.php">Gare</a></li>
+          <li><a href="../../php/cavalli/cavalli.php">Cavalli</a></li>
+          <li><a href="../info/chi_siamo.php">Chi siamo</a></li>
+          <li><a href="../../php/Autenticazione/login.php">Login</a></li>
+          <li>Registrati</li>
+        </ul>
+      </nav>
     
-    
-    <head>
-        <meta charset="UTF-8">
-        <title>Registrazione - Ippodromo NO₂¯</title>
-        <meta name="title" content="Registrazione - Ippodromo NO₂¯" />
-        <meta name="description" content="Pagina di registrazione utente per scommettere all'Ippodromo NO₂¯" />
-        <meta name="keywords" content="ippodromo, no2, nitrito, cavalli, scommesse, corse, fantini, ippopotami" />
-        <meta name="author" content="Francesco Dallan (Cecio), Damiano Mason (Dam), Matteo Martini (Martz), Samuele Sartor (Sam)" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" type="text/css" href="../../style/style.css" media="screen and (min-width: 1025px)" />
-        <link rel="stylesheet" type="text/css" href="../../style/small.css" media="screen and (max-width: 1025px)" />
-        <link rel="stylesheet" type="text/css" href="../../style/print.css" media="print" />
-        <link rel="icon" href="../../images/logo.jpeg" />
-    </head>
-    
-    <body>
-        <header>
-            <h1>Registrati</h1>
-        </header>
-        
-        <div class="page">
-            <a href="#content" class="visually-hidden">Vai al contenuto</a>
-            <div class="navbar">
-                <nav id="menu" aria-labelledby="menu-label">
-                    <h2 id="menu-label" class="visually-hidden">Menù principale</h2>
-                    <ul aria-labelledby="menu-label">
-                        <li lang="en"><a href="../..">Home</a></li>
-                        <li><a href='../../php/scommesse/scommetti.php'>Scommesse</a></li>
-                        <li><a href="../../php/gare/risultati.php">Gare</a></li>
-                        <li><a href="../../php/cavalli/cavalli.php">Cavalli</a></li>
-                        <li><a href="../info/chi_siamo.php">Chi siamo</a></li>
-                        <li><a href="../../php/Autenticazione/login.php">Login</a></li>
-                        <li>Registrati</li>
-                    </ul>
-                </nav>
-                
-                <ul id="breadcrumb" aria-label="Ti trovi in:">
-                    <li lang="en">Home</li>
-                    <li>Registrazione</li>
-                </ul>
-            </div>
-            
-            <main id="content">
-                <risultato-verifica />
-                <form method="post" onsubmit="return validazioneInput()" action="register.php" id="register" aria-labelledby="form-header">
-                    <h2 id="form-header">Registrazione</h2>
-                    <label for="username"><span>Username</span></label>
-                    <input type="text" id="username" placeholder="swag.barca69" name="username" maxlength="50" aria-label="Username" required>
-                    <label for="password"><span>Password</span></label>
-                    <input type="password" id="password" placeholder="Password" name="password" minlength="6" aria-label="Password" required>
-                    <fieldset>
-                        <legend>Nominativo</legend>
-                        <label for="name"><span>Nome</span></label>
-                        <input type="text" id="name" placeholder="Swag" name="name" maxlength="50" aria-label="Nome" required>
-                        <label for="surname"><span>Cognome</span></label>
-                        <input type="text" id="surname" placeholder="Barca" name="surname" maxlength="50" aria-label="Cognome" required>
-                    </fieldset>
-                    <label for="date"><span>Data di nascita (GG/MM/AAAA)</span></label>
-                    <input type="date" id="date" placeholder="14/07/1974" name="date" aria-label="Data di nascita (giorno/mese/anno)" required>
-                    <fieldset>
-                        <legend>Residenza</legend>
-                        <label for="address"><span>Indirizzo</span></label>
-                        <input type="text" id="address" placeholder="Indirizzo" name="address" maxlength="50" aria-label="Indirizzo" required>
-                        <label for="city"><span>Città</span></label>
-                        <input type="text" id="city" placeholder="Città" name="city" maxlength="50" aria-label="Città" required>
-                    </fieldset>
-                    <label for="mail"><span>Indirizzo e-mail</span></label>
-                    <input type="text" id="mail" placeholder="Mail" name="mail" pattern="[a-zA-Z0-9]+[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]{0,}[a-zA-Z0-9]{0,}@[a-zA-Z0-9]{3,}\.[a-zA-Z]{2,3}$" maxlength="50" aria-label="indirizzo email" required>
-                    <input type="submit" name="register" value="Registrati" />
-                </form>
-                <a href="#menu" class="visually-hidden go-back-button">Torna al menù</a>
-            </main>
-            <footer>
-                <img class="logo" src="../../images/logo.jpeg" alt="Logo Ippodromo NO₂¯" />
-                <div id="copyright">
-                    <p>
-                        Questo sito incoraggia vivamente allo spendere tutti i propri soldi sulla piattaforma NO₂¯ (Nitrito). Le vincite sono incoraggiate solo se giustificate dalla successiva perdita di una somma maggiore di denaro. L'ippodromo non si prende alcuna responsabilità in caso di perdita di tutto il proprio capitale da parte dell'utente; al contrario, si prende con gioia tutto il capitale.
-                    </p>
-                    <div id="authors">
-                        Quelli che si pigliano i tuoi soldi:
-                        <ul>
-                            <li>Cecio</li>
-                            <li>Dam</li>
-                            <li>Martz</li>
-                            <li>Sam</li>
-                        </ul>
-                    </div>
-                </div>
-                <img id="img-valid-code" src="../../images/valid-xhtml10.png" alt="HTML valido" />
-                <img id="img-valid-css" src="../../images/vcss-blue.gif" alt="CSS valido" />
-            </footer>
+      <ul id="breadcrumb" aria-label="Ti trovi in:">
+        <li lang="en">Home</li>
+        <li>Registrazione</li>
+      </ul>
+    </div>
+
+    <main id="content">
+      <risultato-verifica />
+      <form method="post" onsubmit="return validazioneInput()" action="register.php" id="register" aria-labelledby="form-header">
+        <h2 id="form-header">Registrazione</h2>
+        <label for="username"><span>Username</span></label>
+        <input type="text" id="username" placeholder="swag.barca69" name="username" maxlength="50" aria-label="Username" required>
+        <label for="password"><span>Password</span></label>
+        <input type="password" id="password" placeholder="Password" name="password" minlength="6" aria-label="Password" required>
+        <fieldset>
+          <legend>Nominativo</legend>
+          <label for="name"><span>Nome</span></label>
+          <input type="text" id="name" placeholder="Swag" name="name" maxlength="50" aria-label="Nome" required>
+          <label for="surname"><span>Cognome</span></label>
+          <input type="text" id="surname" placeholder="Barca" name="surname" maxlength="50" aria-label="Cognome" required>
+        </fieldset>
+        <label for="date"><span>Data di nascita (GG/MM/AAAA)</span></label>
+        <input type="date" id="date" placeholder="14/07/1974" name="date" aria-label="Data di nascita (giorno/mese/anno)" required>
+        <fieldset>
+          <legend>Residenza</legend>
+          <label for="address"><span>Indirizzo</span></label>
+          <input type="text" id="address" placeholder="Indirizzo" name="address" maxlength="50" aria-label="Indirizzo" required>
+          <label for="city"><span>Città</span></label>
+          <input type="text" id="city" placeholder="Città" name="city" maxlength="50" aria-label="Città" required>
+        </fieldset>
+        <label for="mail"><span>Indirizzo e-mail</span></label>
+        <input type="text" id="mail" placeholder="Mail" name="mail" pattern="[a-zA-Z0-9]+[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]{0,}[a-zA-Z0-9]{0,}@[a-zA-Z0-9]{3,}\.[a-zA-Z]{2,3}$" maxlength="50" aria-label="indirizzo email" required>
+        <input type="submit" name="register" value="Registrati" />
+      </form>
+      <a href="#menu" class="visually-hidden go-back-button">Torna al menù</a>
+    </main>
+    <footer>
+      <img class="logo" src="../../images/logo.jpeg" alt="Logo Ippodromo NO₂¯" />
+      <div id="copyright">
+        <p>
+          Questo sito incoraggia vivamente allo spendere tutti i propri soldi sulla piattaforma NO₂¯ (Nitrito). Le vincite sono incoraggiate solo se giustificate dalla successiva perdita di una somma maggiore di denaro. L'ippodromo non si prende alcuna responsabilità in caso di perdita di tutto il proprio capitale da parte dell'utente; al contrario, si prende con gioia tutto il capitale.
+        </p>
+        <div id="authors">
+          Quelli che si pigliano i tuoi soldi:
+          <ul>
+            <li>Cecio</li>
+            <li>Dam</li>
+            <li>Martz</li>
+            <li>Sam</li>
+          </ul>
         </div>
-    </body>
-    
+      </div>
+      <img id="img-valid-code" src="../../images/valid-xhtml10.png" alt="HTML valido" />
+      <img id="img-valid-css" src="../../images/vcss-blue.gif" alt="CSS valido" />
+    </footer>
+  </div>
+</body>
+
 </html>
