@@ -14,9 +14,11 @@
   --button-color: #033700;
   --clrBrw: #663300;
   --clrBlu: #5AB6E7;
+  --clrPrp: #d193f9;
   --clrWht: #efefef;
   --clrGrn: #45CD45;
-  --clrOrg: #E6AC00;
+  --clrYlw: #E6AC00;
+  --clrOrg: #f99d62;
   --clrDrkGrn: #09D785;
   --clrSlm: #820D0D;
   --clrBrx: #800000;
@@ -72,7 +74,7 @@ header h1 {
 }
 
 #breadcrumb {
-	background-image: url("../images/wood_pattern.png");
+	
 	background-color: var(--clrSlm);
 
 	align-self: center;
@@ -173,28 +175,29 @@ header h1 {
   	transition: .25s ease-in-out;
 }
 
-#menu a:visited {
-  color: var(--clrBlu);
+#menu a:hover {
+  color: var(--clrOrg);
 }
 
-#menu a:hover {
-  color: var(--clrDrkGrn);
+#menu a:focus {
+  color: var(--clrOrg);
 }
 
 a {
   color: var(--clrGrn);
 }
 a:visited {
-  color: var(--clrBlu);
+  color: var(--clrPrp);
 }
 
 a:hover {
-  color: var(--clrDrkGrn);
+  color: var(--clrOrg);
 }
 
 a:focus {
+  color: var(--clrOrg);
   border-style: ridge;
-  border-color: var(--clrDrkGrn);
+  border-color: var(--clrOrg);
 }
 
 .cards a:focus {
@@ -202,7 +205,6 @@ a:focus {
 }
 
 main {
-	background-image: url("../images/wood_pattern.png");
 	background-color: var(--clrBrw);
 
 	align-self: center;
@@ -318,7 +320,7 @@ footer .logo{
   max-width: 260px;
   height: 30px;
 
-  color: var(--clrOrg);
+  color: var(--clrYlw);
   border-radius: var(--border-radius);
 }
 .card .text {
@@ -377,7 +379,7 @@ table {
   	table-layout: fixed;
   	margin: 20px 0 20px 0;
   	border-radius: var(--border-radius);
-  	color: var(--clrOrg);
+  	color: var(--clrYlw);
   }
 
   table caption {
@@ -398,10 +400,10 @@ table {
   
   table tr {
   	background: var(--clrBrw);
-  	border: 1px solid var(--clrOrg);
+  	border: 1px solid var(--clrYlw);
   	padding: .35em;
 
-    border-bottom: 3px solid var(--clrOrg);
+    border-bottom: 3px solid var(--clrYlw);
     display: block;
     margin-bottom: .625em;
     border-radius: var(--border-radius);
@@ -415,7 +417,7 @@ table {
   
   table td {
   	padding: .625em;
-    border-bottom: 1px solid var(--clrOrg);
+    border-bottom: 1px solid var(--clrYlw);
     display: block;
     font-size: .8em;
     text-align: right;
@@ -454,7 +456,7 @@ table {
 
 #h1data span {
   background-color: var(--clrBrw);
-	color: var(--clrOrg);
+	color: var(--clrYlw);
 }
 
 .centerLink {
@@ -466,13 +468,6 @@ table {
 	padding-right: 5px;
 	padding-left: 5px;
 	text-decoration: none;
-}
-
-.centerLink a:visited {
-	color: var(--clrGrn);
-}
-.centerLink a:hover {
-	color: var(--clrBlu);
 }
             
 ol {
@@ -537,7 +532,7 @@ form{
   font-size: 16px;
   background: var(--clrBrw);
   padding: 30px 30px 15px 30px;
-  border: 5px solid var(--clrOrg);
+  border: 5px solid var(--clrYlw);
 }
 
 form input[type=submit],
@@ -553,7 +548,7 @@ form input[type=radio],
 form label
 {
   font-size: 1.7em;
-  color: var(--clrOrg);
+  color: var(--clrYlw);
 
   align-self: center;
   text-align: center;
@@ -566,31 +561,20 @@ form label {
 form label > span{
   width: 150px;
 }
-form input[type=text],
-form input[type=password],
-form input[type=date],
-form input[type=email],
-form input[type=time],
-form input[type=number]
+form input
 {
   background: transparent;
   border: none;
-  border-bottom: 1px dashed var(--clrOrg);
+  border-bottom: 1px dashed var(--clrYlw);
   width: 275px;
   outline: none;
   padding: 0px 0px 0px 0px;
   font-style: italic;
 }
 
-form input[type=text]:focus,
-form input[type=password]:focus,
-form input[type=date]:focus,
-form input[type=email]:focus,
-form input[type=time]:focus,
-form input[type=number]:focus,
-form input[type=radio]:focus
+form input:focus
 {
-  border: 4px solid var(--clrOrg);
+  outline: 4px solid var(--clrYlw);
 }
 
 form input[type=submit],
@@ -599,7 +583,7 @@ form input[type=button]{
   border: none;
   padding: 8px 10px 8px 10px;
   border-radius: 5px;
-  color: var(--clrOrg);
+  color: var(--clrYlw);
 
   margin-top: 10px;
 }
@@ -698,7 +682,7 @@ main dt + dt + dd + dt {
 }
 #h1Bitscuit span {
   background-color: var(--clrBrw);
-  color: var(--clrOrg);
+  color: var(--clrYlw);
 }
 #h1Bitscuit:after {
   content: "";

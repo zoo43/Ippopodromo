@@ -12,11 +12,14 @@
   --header-color: rgb(50, 50, 50);
   --back-color: #2D862D;
   --button-color: #033700;
+  --html-back-color: peru;
   --clrBrw: #663300;
   --clrBlu: #5AB6E7;
+  --clrPrp: #d193f9;
   --clrWht: #efefef;
   --clrGrn: #45CD45;
-  --clrOrg: #E6AC00;
+  --clrYlw: #E6AC00;
+  --clrOrg: #f99d62;
   --clrDrkGrn: #09D785;
   --clrSlm: #820D0D;
   --clrBrx: #800000;
@@ -24,10 +27,22 @@
   --clrGry: #808080;
 }
 
-body {
-	margin: auto;
+html, body {
+  max-width: 1024px;
+  min-height: 50vh;
+  margin: 0em auto;
+  padding: 0em;
+}
 
-  overflow-x: hidden;
+html {
+  background-image: url("../images/wood_pattern.png");
+  background-color: var(--html-back-color);
+  border-width: 0px 3px 0px 3px;
+  border-style: ridge;
+	border-color: var(--clrBrw);
+}
+
+body {
 	display: flex;
 	flex-direction: column;
 	background-color: var(--back-color);
@@ -86,12 +101,12 @@ header h1 {
 	grid-auto-rows: minmax(min-content, max-content);
 
 	min-width: 280px;
-
-	background-image: url("../images/wood_pattern.png");
+	
 	background-color: var(--clrSlm);
 
 	color: var(--clrWht);
 
+  border-left-width: 0;
 	border-style: ridge;
 	border-color: var(--clrBrw);
 }
@@ -166,16 +181,17 @@ a {
   color: var(--clrGrn);
 }
 a:visited {
-  color: var(--clrBlu);
+  color: var(--clrPrp);
 }
 
 a:hover {
-  color: var(--clrDrkGrn);
+  color: var(--clrOrg);
 }
 
 a:focus {
   border-style: ridge;
-  border-color: var(--clrDrkGrn);
+  color: var(--clrOrg);
+  border-color: var(--clrOrg);
 }
 .cards a:focus {
   border: unset;
@@ -192,7 +208,6 @@ a:focus {
 }
 
 main {
-	background-image: url("../images/wood_pattern.png");
 	background-color: var(--clrBrw);
 
 	grid-column: 2/7;
@@ -203,6 +218,7 @@ main {
 
 	color: var(--clrWht);
 
+  border-right-width: 0;
 	border-style: ridge;
 	border-color: var(--clrBrw);
 }
@@ -308,7 +324,7 @@ footer .logo{
   max-width: 260px;
   height: 30px;
 
-  color: var(--clrOrg);
+  color: var(--clrYlw);
   border-radius: var(--border-radius);
 }
 .card .text {
@@ -367,7 +383,7 @@ table {
   table-layout: fixed;
   margin: 20px 0 20px 0;
   border-radius: var(--border-radius);
-  color: var(--clrOrg);
+  color: var(--clrYlw);
 }
 
 table caption {
@@ -377,7 +393,7 @@ table caption {
 
 table tr {
   background: var(--clrBrw);
-  border: 1px solid var(--clrOrg);
+  border: 1px solid var(--clrYlw);
   padding: .35em;
   border-radius: var(--border-radius);
 }
@@ -408,7 +424,7 @@ table th {
 
 #h1data span {
   background-color: var(--clrBrw);
-	color: var(--clrOrg);
+	color: var(--clrYlw);
 }
 
 .centerLink {
@@ -492,7 +508,7 @@ form{
   font-size: 16px;
   background: var(--clrBrw);
   padding: 30px 30px 15px 30px;
-  border: 5px solid var(--clrOrg);
+  border: 5px solid var(--clrYlw);
 }
 
 form input[type=submit],
@@ -508,7 +524,7 @@ form input[type=radio],
 form label
 {
   font-size: 1.7em;
-  color: var(--clrOrg);
+  color: var(--clrYlw);
 
   align-self: center;
   text-align: center;
@@ -521,31 +537,20 @@ form label {
 form label > span{
   width: 150px;
 }
-form input[type=text],
-form input[type=password],
-form input[type=date],
-form input[type=email],
-form input[type=time],
-form input[type=number]
+form input
 {
   background: transparent;
   border: none;
-  border-bottom: 1px dashed var(--clrOrg);
+  border-bottom: 1px dashed var(--clrYlw);
   width: 275px;
   outline: none;
   padding: 0px 0px 0px 0px;
   font-style: italic;
 }
 
-form input[type=text]:focus,
-form input[type=password]:focus,
-form input[type=date]:focus,
-form input[type=email]:focus,
-form input[type=time]:focus,
-form input[type=number]:focus,
-form input[type=radio]:focus
+form input:focus
 {
-  border: 4px solid var(--clrOrg);
+  outline: 4px solid var(--clrYlw);
 }
 
 form input[type=submit],
@@ -554,7 +559,7 @@ form input[type=button]{
   border: none;
   padding: 8px 10px 8px 10px;
   border-radius: 5px;
-  color: var(--clrOrg);
+  color: var(--clrYlw);
 
   margin-top: 10px;
 }
@@ -659,7 +664,7 @@ main dt + dt + dd + dt {
 }
 #h1Bitscuit span {
   background-color: var(--clrBrw);
-  color: var(--clrOrg);
+  color: var(--clrYlw);
 }
 #h1Bitscuit:after {
   content: "";
