@@ -9,11 +9,12 @@ $url_components = parse_url($url);
 $dbAccess = new DBAccess();
 $conn = $dbAccess->openDBConnection();
 if ($conn) {
+	
 	if (isset($params["value"])) {
 		$idgara = $params['value'];
 		$result = @$dbAccess->getInfoGara($idgara);
 		if (mysqli_num_rows($result) > 0)
-			$data = mysqli_fetch_array($result)["dataGara"];
+			$data =str_replace('-','/', mysqli_fetch_array($result)["dataGara"]);
 		if (isset($data)) {
 			if (isset($_SESSION["username"])) {
 				$creditoUtente = $_SESSION["credito"];

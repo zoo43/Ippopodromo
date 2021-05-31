@@ -23,7 +23,7 @@
 			while($row = mysqli_fetch_array($result))
 			{          
 				$id=$row['idGara'];
-				$arr=explode(" ",$row['dataGara']);
+				$arr=explode(" ",str_replace('-','/',$row['dataGara']));
 				$giorno = $arr[0];
 				$ora=$arr[1];
 				$contains = false;

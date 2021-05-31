@@ -19,7 +19,7 @@
 					while ($row = mysqli_fetch_array($userResult)) {
 						$scommesse .= '<div class="card"><div class="content">';
 						$scommesse .= "<div class='headline'>Numero gara: " . $row['idGara'] . "</div>";
-						$scommesse .= "<div class='text'>Data gara: " . $row['dataGara'] . "</div>";
+						$scommesse .= "<div class='text'>Data gara: " . str_replace('-','/',$row['dataGara']) . "</div>";
 						
 						if($row['statoGara'] == '0'){
 							$scommesse .= "<div class='text'>Stato gara: programmata</div>";

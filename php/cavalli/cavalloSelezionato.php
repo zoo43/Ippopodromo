@@ -44,7 +44,7 @@ if($conn)
             $fiducia = $row['fiducia'];
             $velocita = $row['velocita'];
             $ritirato = $row['ritiro'] == 1 ? "(ritirato)" : "";
-            $arr=explode(" ",$row['dataGara']);
+            $arr=explode(" ",str_replace('-','/', $row["dataGara"]));
             $giorno = $arr[0];
             $ora=$arr[1];
             $lista_gare .= '<tr>

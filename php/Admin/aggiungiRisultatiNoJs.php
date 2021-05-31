@@ -15,7 +15,7 @@ $conn = $dbAccess->openDBConnection();
 if ($conn) {
     $result = $dbAccess->getGare("0");
     while ($row = mysqli_fetch_array($result)) {
-        $gare .= '<tr><td>Gara ' . $row['idGara'] . '</td><td>' . $row['dataGara'] . '</td><td><a href="inserisciRisultatiNoJs.php?value=' . $row['idGara'] . '">Inserisci risultati</a></td></tr>';
+        $gare .= '<tr><td>Gara ' . $row['idGara'] . '</td><td>' . str_replace('-','/', $row["dataGara"])  . '</td><td><a href="inserisciRisultatiNoJs.php?value=' . $row['idGara'] . '">Inserisci risultati</a></td></tr>';
     }
     $gare .= '</tbody></table>';
     mysqli_free_result($result);
