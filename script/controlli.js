@@ -82,12 +82,15 @@ function controllaNumeroCavalli()
 			tot++;
 		}           
 	}
+	var submitButton = document.getElementById('submit-button');
 	if(tot>=4 && tot<=8)
 	{
-		document.getElementById('submit-button').disabled=false;
+		submitButton.disabled = false;
+		submitButton.value = "Inserisci la gara";
 	}
 	else
 	{
-		document.getElementById('submit-button').disabled=true;
+		submitButton.disabled = true;
+		submitButton.value = "Inserisci la gara (disabilitato)";
 	}
 }

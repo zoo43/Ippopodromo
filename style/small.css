@@ -648,6 +648,7 @@ main dt, dd {
 main dt {
     text-align:right;
     font-weight:bold;
+    font-size: 1.5em;
     clear:left;
     float:left;
 }
@@ -703,6 +704,7 @@ main dt + dt + dd + dt {
 .visually-hidden {
 	height: 1px;
 	width: 1px;
+  margin: 0;
 	overflow: hidden;
 	clip: rect(1px, 1px, 1px, 1px);
 }
@@ -743,8 +745,4 @@ main dt + dt + dd + dt {
 
 
   width: 0.2em ;
-}
-.brw-back {
-  background: var(--clrBrw);
-  border-radius: var(--border-radius);
 }

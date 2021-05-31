@@ -27,7 +27,7 @@ if ($conn) {
 				$form .= '<label for="val-scommessa"><span>Valore scommessa (almeno 1)</span></label><input type="number" name="scommessa" id="val-scommessa" value="1" min="1" max=' . $creditoUtente . ' aria-label="Valore scommessa (almeno 1)" />';
 				$cavGara = $dbAccess->getCavalliGara($params['value']);
 
-				$form .= '<fieldset id="horses"><legend>Cavallo</legend><h3>Scegli il cavallo su cui puntare</h3>';
+				$form .= '<fieldset id="horses"><legend>Cavallo<span class="visually-hidden">(Richiesto)</span></legend><h3>Scegli il cavallo su cui puntare</h3>';
 				while ($row = mysqli_fetch_array($cavGara)) {
 					$form .= '<div class="flex-div"><input type="radio" name="cavallo" id="horse-' . $row["idCavallo"] . '" value="' . $row["idCavallo"] . '" aria-label="' . $row["nome"] . '" /><label for="horse-' . $row["idCavallo"] . '">' . $row["nome"] . '</label></div>';
 					$form .= '<input type="hidden" name="nome-cavallo-' . $row["idCavallo"] . '" value="' . $row["nome"] . '"/>';
