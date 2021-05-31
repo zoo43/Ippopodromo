@@ -576,6 +576,14 @@ form input
   font-style: italic;
 }
 
+form input[type="text"],
+form input[type="email"],
+form input[type="number"],
+form textarea {
+  font-size: 1.5em;
+  font-family: 'Geneva', 'Thaoma', 'Arial', sans-serif;
+}
+
 form input:focus
 {
   outline: 4px solid var(--clrYlw);

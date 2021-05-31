@@ -5,7 +5,7 @@ require_once('../auth.php');
 $risultato='';
 if(isset($_POST['register'])){
     $birthDate = $_POST['date'];
-	$birthDate = explode("/", $birthDate);
+	$birthDate = explode("-", $birthDate);
 	$age = (date("md", date("U", mktime(0, 0, 0, $birthDate[1], $birthDate[2], $birthDate[0]))) > date("md")
     ? ((date("Y") - $birthDate[0]) - 1)
     : (date("Y") - $birthDate[0]));
