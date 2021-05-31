@@ -34,7 +34,8 @@
           <autenticazione />
         </ul>
       </nav>
-      <ul id="breadcrumb" aria-label="Ti trovi in:">
+      <ul id="breadcrumb">
+        <li class="visually-hidden">Ti trovi in:</li>
         <li><span lang="en">Dashboard</span> amministratore</li>
         <li>Gestisci cavalli</li>
         <li>Aggiungi Cavallo</li>
@@ -55,6 +56,7 @@
         <textarea id="description" rows="4" cols="50" name="descrizione" placeholder="Inserire una breve descrizione del cavallo" aria-label="Descrizione" required="required"></textarea>
         <input id="submit-cavallo" type="submit" value="Aggiungi il nuovo cavallo alla lista!" name="submit" />
       </form>
+      <a href="./gestisciCavalli.php" class="centerLink">Torna indietro</a>
       <a href="#menu" class="visually-hidden go-back-button">Torna al menù</a>
     </main>
     <footer>

@@ -35,8 +35,8 @@ if(isset($_SESSION["risultatoInserimento"]))
 
 $pagina = file_get_contents('../../html/admin/inserisciRisultatiNoJs.html');
 $pagina = str_replace(
-    array("<lista-gare />", "<inserimento-gara-selezionata />", "<risultato-inserimento />"),
-    array($gare, $selezione, $risultatoInserimento),
+    array("<lista-gare />", "<inserimento-gara-selezionata />", "<risultato-inserimento />", "<torna-indietro />"),
+    array($gare, $selezione, $risultatoInserimento, ""),
     $pagina
 );
 $pagina = areaAutenticazione($pagina);
