@@ -19,11 +19,11 @@ if($conn)
 {
    
     if( $dbAccess->eliminaCavallo($params['value'])){
-        $ris = "cavallo ritirato con successo";
+        $ris = "<p class='inserimentoRiuscito'>Cavallo ritirato con successo.</p>";
     }
     else
     {
-        $ris = "problema nel dialogo con il db (il cavallo potrebbe partecipare una gara e sarebbe quindi impossibile da eliminare)";
+        $ris = "<p class='inserimentoFallito'>Problema nel dialogo con il db (il cavallo potrebbe partecipare una gara e sarebbe quindi impossibile da eliminare)</p>";
     }
 
     $result = $dbAccess->getCavalli(true);

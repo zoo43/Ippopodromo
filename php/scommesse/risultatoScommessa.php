@@ -25,7 +25,7 @@ if($conn)
 	}
 	$dbAccess->closeDBConnection();
 }
-$risultato .= "<p><a href='scommesse.php'> Torna alle scommesse </a></p>";
+$risultato .= "<p><a href='scommesse.php' class='centerLink'> Torna alle scommesse </a></p>";
 $pagina = areaAutenticazione(file_get_contents('../../html/scommesse/risultatoScommessa.html'));
 $pagina = str_replace(
 	array("<risultato />", "<titolo-risultato />", "<meta-title-risultato />"),

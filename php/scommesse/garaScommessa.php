@@ -24,7 +24,7 @@ if ($conn) {
 				$form .= '<div>Numero gara: ' . $params["value"] . '</div>';
 				$form .= '<div>Data gara: ' . $data . '</div>';
 				$form .= '<label for="val-scommessa"><span>Valore scommessa (almeno 1)</span><span class="visually-hidden">(Richiesto)</span></label><input type="number" name="scommessa" id="val-scommessa" value="1" min="1" max=' . $creditoUtente . ' aria-label="Valore scommessa (almeno 1)" required="required" />';
-				$form .= '<p id="errorBitScuit" hidden>Inserisci un importo valido.</p>';
+				$form .= '<p id="errorBitScuit" class="inserimentoFallito" hidden>Inserisci un importo valido.</p>';
 				$cavGara = $dbAccess->getCavalliGara($params['value']);
 
 				$form .= '<fieldset id="horses"><legend>Cavallo<span class="visually-hidden">(Richiesto)</span></legend><h3>Scegli il cavallo su cui puntare</h3>';
@@ -32,7 +32,7 @@ if ($conn) {
 					$form .= '<div class="flex-div"><input type="radio" name="cavallo" id="horse-' . $row["idCavallo"] . '" value="' . $row["idCavallo"] . '" aria-label="' . $row["nome"] . '" /><label for="horse-' . $row["idCavallo"] . '">' . $row["nome"] . '</label></div>';
 					$form .= '<input type="hidden" name="nome-cavallo-' . $row["idCavallo"] . '" value="' . $row["nome"] . '"/>';
 				}
-				$form .= '<p id="errorRadio" hidden>Non è stato selezionato nessun cavallo su cui scommettere.</p>';
+				$form .= '<p id="errorRadio" class="inserimentoFallito" hidden>Nessun cavallo selezionato.</p>';
 				$form .= '</fieldset>';
 				mysqli_free_result($cavGara);
 				$form .= '<input type="hidden" name="idGara" value="' . $params["value"] . '"/>';
@@ -46,13 +46,13 @@ if ($conn) {
 			}
 		} else {
 			$idgara = "Non disponibile";
-			$form = "<p>Gara non trovata</p>";
+			$form = "<p class='inserimentoFallito'>Gara non trovata</p>";
 			$credito = "Non disponibile";
 			$data = "Non disponibile";
 		}
 	} else {
 		$idgara = "Non disponibile";
-		$form = "<p>Gara non trovata</p>";
+		$form = "<p class='inserimentoFallito'>Gara non trovata</p>";
 		$credito = "Non disponibile";
 		$data = "Non disponibile";
 	}

@@ -46,7 +46,7 @@ function controllaPosizioni()
 	}
 	else
 	{
-		alert("Non hai inserito correttamente le posizioni dei cavalli (non possono esserci parimeriti");
+		alert("Non hai inserito correttamente le posizioni dei cavalli (non possono esserci parimeriti)");
 	}
 }
 
