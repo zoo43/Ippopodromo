@@ -28,7 +28,7 @@ if(isset($_POST['register'])){
     }
 	else{
 		$_SESSION["error"] = 'Devi essere maggiorenne per usufruire di questo servizio';
-		printf("Devi essere maggiorenne per usufruire di questo servizio");
+		header("location:register.php");
 	}
 }
 else{      

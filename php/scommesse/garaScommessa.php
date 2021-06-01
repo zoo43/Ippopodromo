@@ -31,6 +31,7 @@ if ($conn) {
 					$form .= '<div class="flex-div"><input type="radio" name="cavallo" id="horse-' . $row["idCavallo"] . '" value="' . $row["idCavallo"] . '" aria-label="' . $row["nome"] . '" /><label for="horse-' . $row["idCavallo"] . '">' . $row["nome"] . '</label></div>';
 					$form .= '<input type="hidden" name="nome-cavallo-' . $row["idCavallo"] . '" value="' . $row["nome"] . '"/>';
 				}
+				$form .= '<p id="error" hidden>Non è stato selezionato nessun cavallo su cui scommettere.</p>';
 				$form .= '</fieldset>';
 				mysqli_free_result($cavGara);
 				$form .= '<input type="hidden" name="idGara" value="' . $params["value"] . '"/>';
