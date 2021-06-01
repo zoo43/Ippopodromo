@@ -51,6 +51,11 @@ function jsGareControl()
 	document.getElementById('inserimentoGara').action = "";
 }
 
+function jsRisultatiControl()
+{
+	document.getElementById('inserimentoRisultato').action = "";
+}
+
 function impostaData()
 {
 	jsGareControl()
