@@ -30,7 +30,6 @@ function controllaPosizioni()
 	var x = document.getElementsByName("cavalli[]"); 
 	var y = x;
 	var uguali = false;
-	
 	for(i=0;i<x.length;i++)
 	{                
 		for(j=0;j<x.length;j++)
@@ -41,11 +40,20 @@ function controllaPosizioni()
 			}
 		}
 	}       
-	document.getElementById('submit-button').disabled=uguali;
+	if(!uguali)
+	{
+		document.getElementById('inserimentoRisultato').action = "../admin/verificaInserimento.php";
+	}
+}
+
+function jsGareControl()
+{
+	document.getElementById('inserimentoGara').action = "";
 }
 
 function impostaData()
 {
+	jsGareControl()
 	var date = new Date();
 	var currentDate = date.toISOString().slice(0,10);
 	
@@ -82,15 +90,12 @@ function controllaNumeroCavalli()
 			tot++;
 		}           
 	}
-	var submitButton = document.getElementById('submit-button');
 	if(tot>=4 && tot<=8)
 	{
-		submitButton.disabled = false;
-		submitButton.value = "Inserisci la gara";
+		document.getElementById('inserimentoGara').action = "verificaInserimentoGara.php";
 	}
 	else
 	{
-		submitButton.disabled = true;
-		submitButton.value = "Inserisci la gara (disabilitato)";
+		alert ("Non hai inserito un giusto numero di cavalli");
 	}
 }
