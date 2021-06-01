@@ -101,6 +101,7 @@ function controllaNumeroCavalli()
 	}
 	else
 	{
-		alert ("Non hai inserito un giusto numero di cavalli");
+		//document.getElementById("error").hidden=false;
+		alert ("Non hai inserito un numero corretto di cavalli");
 	}
 }
