@@ -44,6 +44,10 @@ function controllaPosizioni()
 	{
 		document.getElementById('inserimentoRisultato').action = "../admin/verificaInserimento.php";
 	}
+	else
+	{
+		alert("Non hai inserito correttamente le posizioni dei cavalli (non possono esserci parimeriti");
+	}
 }
 
 function jsGareControl()
@@ -53,7 +57,10 @@ function jsGareControl()
 
 function jsRisultatiControl()
 {
-	document.getElementById('inserimentoRisultato').action = "";
+	try{
+		document.getElementById('inserimentoRisultato').action = "";
+	}
+	catch{}
 }
 
 function impostaData()
@@ -101,7 +108,6 @@ function controllaNumeroCavalli()
 	}
 	else
 	{
-		//document.getElementById("error").hidden=false;
 		alert ("Non hai inserito un numero corretto di cavalli");
 	}
 }

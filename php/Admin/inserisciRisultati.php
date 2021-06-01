@@ -37,7 +37,7 @@ if($conn) {
             $selezione .= '<label for="cav' . $cavalli[$i]['id'] . '"><span>' . $cavalli[$i]['name'] . '</span><span class="visually-hidden">(Richiesto)</span></label>';
             $selezione .= "<input type='number' id='cav" . $cavalli[$i]['id'] . "' name='cavalli[]' value='1' min='1' max='" . count($cavalli) . "' aria-label='" . $cavalli[$i]['name'] . "' required='required' />";
     }
-    $selezione .= '<input id="btn" onclick="controllaPosizioni()" type="submit" name="register" value="Aggiorna risultati" /></form>';
+    $selezione .= '<input id="btn" type="submit" onclick="controllaPosizioni()" name="register" value="Aggiorna risultati" /></form>';
     $dbAccess->closeDBConnection();
 }
 else {
