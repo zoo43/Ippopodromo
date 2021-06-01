@@ -19,11 +19,12 @@ if ($conn) {
 				$creditoUtente = $_SESSION["credito"];
 				$credito = '<h1 id="h1Bitscuit">Il tuo credito &eacute;: <span id="creditoUtente">' . $creditoUtente . '</span></h1>';
 
-				$form = '<form method="post" onsubmit="return checkRadio()" action="confirmScommessaGara.php" id="formScommessa" aria-labelledby="form-header"><h2 id="form-header">Fai la tua scommessa</h2>';
+				$form = '<form method="post" onsubmit="return checkDoc()" action="confirmScommessaGara.php" id="formScommessa" aria-labelledby="form-header"><h2 id="form-header">Fai la tua scommessa</h2>';
 				mysqli_free_result($result);
 				$form .= '<div>Numero gara: ' . $params["value"] . '</div>';
 				$form .= '<div>Data gara: ' . $data . '</div>';
 				$form .= '<label for="val-scommessa"><span>Valore scommessa (almeno 1)</span><span class="visually-hidden">(Richiesto)</span></label><input type="number" name="scommessa" id="val-scommessa" value="1" min="1" max=' . $creditoUtente . ' aria-label="Valore scommessa (almeno 1)" required="required" />';
+				$form .= '<p id="errorBitScuit" hidden>Inserisci un importo valido.</p>';
 				$cavGara = $dbAccess->getCavalliGara($params['value']);
 
 				$form .= '<fieldset id="horses"><legend>Cavallo<span class="visually-hidden">(Richiesto)</span></legend><h3>Scegli il cavallo su cui puntare</h3>';
@@ -31,7 +32,7 @@ if ($conn) {
 					$form .= '<div class="flex-div"><input type="radio" name="cavallo" id="horse-' . $row["idCavallo"] . '" value="' . $row["idCavallo"] . '" aria-label="' . $row["nome"] . '" /><label for="horse-' . $row["idCavallo"] . '">' . $row["nome"] . '</label></div>';
 					$form .= '<input type="hidden" name="nome-cavallo-' . $row["idCavallo"] . '" value="' . $row["nome"] . '"/>';
 				}
-				$form .= '<p id="error" hidden>Non è stato selezionato nessun cavallo su cui scommettere.</p>';
+				$form .= '<p id="errorRadio" hidden>Non è stato selezionato nessun cavallo su cui scommettere.</p>';
 				$form .= '</fieldset>';
 				mysqli_free_result($cavGara);
 				$form .= '<input type="hidden" name="idGara" value="' . $params["value"] . '"/>';
