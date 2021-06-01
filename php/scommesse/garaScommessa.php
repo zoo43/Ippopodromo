@@ -19,7 +19,7 @@ if ($conn) {
 				$creditoUtente = $_SESSION["credito"];
 				$credito = '<h1 id="h1Bitscuit">Il tuo credito &eacute;: <span id="creditoUtente">' . $creditoUtente . '</span></h1>';
 
-				$form = '<form method="post" onsubmit="return checkDoc()" action="confirmScommessaGara.php" id="formScommessa" aria-labelledby="form-header"><h2 id="form-header">Fai la tua scommessa</h2>';
+				$form = '<form method="post" onsubmit="return checkRadio()" action="confirmScommessaGara.php" id="formScommessa" aria-labelledby="form-header"><h2 id="form-header">Fai la tua scommessa</h2>';
 				mysqli_free_result($result);
 				$form .= '<div>Numero gara: ' . $params["value"] . '</div>';
 				$form .= '<div>Data gara: ' . $data . '</div>';
