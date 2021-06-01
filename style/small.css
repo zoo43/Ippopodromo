@@ -333,6 +333,11 @@ footer .logo{
   height: 20px;
   border-radius: var(--border-radius);
 }
+.card .text a {
+  background-color: var(--button-color);
+  border-radius: var(--border-radius);
+  text-decoration: underline;
+}
 .card .button {
   display: block;
   margin: 20px auto 0 auto;
@@ -704,6 +709,8 @@ main li {
 }
 
 .fonting {
+  margin-left: 5px;
+  margin-right: 5px;
   font-size: 1.3em;
   letter-spacing: 1px;
 }
