@@ -710,6 +710,7 @@ main dt + dt + dd + dt {
 }
 
 .visually-hidden {
+  display: inline-block;
 	height: 1px;
 	width: 1px;
   margin: 0;
@@ -753,4 +754,26 @@ main dt + dt + dd + dt {
 
 
   width: 0.2em ;
+}
+
+.inserimentoRiuscito {
+  background-color: var(--button-color);
+  color: var(--clrWht);
+  border-radius: 0.5em;
+  border: 2px solid;
+  border-color: var(--clrBlk);
+
+  padding: 0.3em;
+  margin: 0.7em 5%;
+}
+
+.inserimentoFallito {
+  background-color: var(--clrSlm);
+  color: var(--clrWht);
+  border-radius: 0.5em;
+  border: 2px solid;
+  border-color: var(--clrBlk);
+
+  padding: 0.3em;
+  margin: 0.7em 5%;
 }

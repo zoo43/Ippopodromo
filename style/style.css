@@ -723,3 +723,27 @@ main dt + dt + dd + dt {
 
   width: 0.2em ;
 }
+
+.inserimentoRiuscito {
+  background-color: var(--button-color);
+  color: var(--clrWht);
+  border-radius: 0.5em;
+  border: 2px solid;
+  border-color: var(--clrBlk);
+
+  width: max-content;
+  padding: 0.6em;
+  margin: 0.7em auto;
+}
+
+.inserimentoFallito {
+  background-color: var(--clrSlm);
+  color: var(--clrWht);
+  border-radius: 0.5em;
+  border: 2px solid;
+  border-color: var(--clrBlk);
+
+  width: max-content;
+  padding: 0.6em;
+  margin: 0.7em auto;
+}
