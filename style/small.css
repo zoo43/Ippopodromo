@@ -34,9 +34,9 @@ body {
 	margin: auto;
 
   overflow-x: hidden;
-	display: flex;
-	flex-direction: column;
-	background-color: var(--back-color);
+  display: flex;
+  flex-direction: column;
+  background-color: var(--back-color);
 }
 
 .topPic {
@@ -97,10 +97,10 @@ header h1 {
 	text-align: center;
 	font-size: 1em;
 	margin: 0;
-  	display: inline-block;
-  	list-style: none;
-  	margin: 0;
-  	padding: 0 1em .7em 0 ;
+ display: inline-block;
+ list-style: none;
+ margin: 0;
+ padding: 0 1em .7em 0 ;
 }
 
 
@@ -148,31 +148,31 @@ header h1 {
 
   font-size: 1.7em;
 
-    list-style: none;
-    margin: 0;
-    padding: 0;
+  list-style: none;
+  margin: 0;
+  padding: 0;
 
 }
 
 #menu ul li {
-    position: relative;
+  position: relative;
 
-    background-position: center;
+  background-position: center;
   background-image: url("../images/bottom_banner.png");
   background-repeat: no-repeat;
   background-size: 100% 100%;
 }
 
 #menu a {
-  	width: 100%;
-  	height: 100%;
+ width: 100%;
+ height: 100%;
 
-  	color: var(--clrGrn);
-  	text-decoration: none;
+ color: var(--clrGrn);
+ text-decoration: none;
 
-  	font-weight: lighter;
-  	letter-spacing: 1px;
-  	transition: .25s ease-in-out;
+ font-weight: lighter;
+ letter-spacing: 1px;
+ transition: .25s ease-in-out;
 }
 
 #menu a:hover {
@@ -213,10 +213,10 @@ main {
   flex-direction: column;
   justify-content: center;
 
-	color: var(--clrWht);
+  color: var(--clrWht);
 
-	border-style: ridge;
-	border-color: var(--clrBrw);
+  border-style: ridge;
+  border-color: var(--clrBrw);
 }
 
 main dl {
@@ -252,13 +252,13 @@ footer ul {
 }
 
 footer ul li{
-    display: inline-block;
-    list-style: none;
-    width: 60px;
-    height: 18px;
-    background: white;
-    border-radius: 0.5em;
-    margin: 0 auto;
+  display: inline-block;
+  list-style: none;
+  width: 60px;
+  height: 18px;
+  background: white;
+  border-radius: 0.5em;
+  margin: 0 auto;
 
 }
 
@@ -276,9 +276,9 @@ footer .logo{
 
 .logo{ 
 
-    width: 50px;
-    height: 50px;
-    border-radius: 0.5em;
+  width: 50px;
+  height: 50px;
+  border-radius: 0.5em;
 }
 
 #img-valid-code {
@@ -303,7 +303,6 @@ footer .logo{
 }
 .card {
   min-width: 10em;
-  background: var(--clrBrw);
   width: calc(10% - 15px);
   margin: 5px 5px 5px 5px;
   border-radius: var(--border-radius);
@@ -375,81 +374,80 @@ footer .logo{
 
 
 table {
-    border: 0;
-    border-collapse: collapse;
-  	margin: 0;
-  	padding: 0;
-  	width: 100%;
-  	table-layout: fixed;
-  	margin: 20px 0 20px 0;
-  	border-radius: var(--border-radius);
-  	color: var(--clrYlw);
-  }
+  border: 0;
+  border-collapse: collapse;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  table-layout: fixed;
+  margin: 20px 0 20px 0;
+  border-radius: var(--border-radius);
+  color: var(--clrYlw);
+}
 
-  table caption {
-    font-size: 1.3em;
-    margin: .5em 0 .75em;
-  }
-  
-  .norm {
-    border: none;
-    clip: rect(0 0 0 0);
-    height: 1px;
-    margin: -1px;
-    overflow: hidden;
-    padding: 0;
-    position: absolute;
-    width: 1px;
-  }
-  
-  table tr {
-  	background: var(--clrBrw);
-  	border: 1px solid var(--clrYlw);
-  	padding: .35em;
+table caption {
+  font-size: 1.3em;
+  margin: .5em 0 .75em;
+}
 
-    border-bottom: 3px solid var(--clrYlw);
-    display: block;
-    margin-bottom: .625em;
-    border-radius: var(--border-radius);
-  }
+.norm {
+  border: none;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+}
 
-  table th {
-  	padding: .625em;
-  	text-align: center;
-  	border-radius: var(--border-radius);
-  }
-  
-  table td {
-  	padding: .625em;
-    border-bottom: 1px solid var(--clrYlw);
-    display: block;
-    font-size: .8em;
-    text-align: right;
-    border-radius: var(--border-radius);
-  }
-  
-  table td::before {
-    content: attr(data-label);
-    float: left;
-    font-weight: bold;
-    text-transform: uppercase;
-  }
-  
-  table td:last-child {
-    border-bottom: 0;
-  }
+table tr {
+ border: 1px solid var(--clrYlw);
+ padding: .35em;
+
+ border-bottom: 3px solid var(--clrYlw);
+ display: block;
+ margin-bottom: .625em;
+ border-radius: var(--border-radius);
+}
+
+table th {
+ padding: .625em;
+ text-align: center;
+ border-radius: var(--border-radius);
+}
+
+table td {
+ padding: .625em;
+ border-bottom: 1px solid var(--clrYlw);
+ display: block;
+ font-size: .8em;
+ text-align: right;
+ border-radius: var(--border-radius);
+}
+
+table td::before {
+  content: attr(data-label);
+  float: left;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+table td:last-child {
+  border-bottom: 0;
+}
 
 
-  table td a{
-  	color: #ddd;
-  }
+table td a{
+ color: #ddd;
+}
 
-  table th {
-  	font-size: .85em;
-  	letter-spacing: .1em;
-  	text-transform: uppercase;
-  	border-radius: var(--border-radius);
-  }
+table th {
+ font-size: .85em;
+ letter-spacing: .1em;
+ text-transform: uppercase;
+ border-radius: var(--border-radius);
+}
 
 
 #h1data {
@@ -459,21 +457,23 @@ table {
 }
 
 #h1data span {
-  background-color: var(--clrBrw);
 	color: var(--clrYlw);
 }
 
 .centerLink {
-	text-align: center;
-	font-size: 1.5em;
+  text-align: center;
+  font-size: 1.5em;
+  text-decoration: none;
+
+  border-radius: var(--border-radius);
+  border-style: ridge;
+  border-color: var(--clrYlw);
+  border-width: 0 0 3px 0;
+
+  padding-right: 5px;
+  padding-left: 5px;
 }
-.centerLink a {
-	background-color: var(--clrBrw);
-	padding-right: 5px;
-	padding-left: 5px;
-	text-decoration: none;
-}
-            
+
 ol {
   counter-reset: li; 
   list-style: none; 
@@ -492,6 +492,10 @@ ol a {
   text-align: center;
   transition: all .3s ease-out;
   color: var(--clrWht);
+
+  border-style: ridge;
+  border-color: var(--clrBrw);
+  border-width: 3px;
 }
 
 ol a:hover { background: var(--clrSlm); }       
@@ -532,9 +536,8 @@ form{
 
   text-align: center;
   margin: 0 0 0 0;
-  width: 19em;
+  width: 80%;
   font-size: 16px;
-  background: var(--clrBrw);
   padding: 30px 30px 15px 30px;
   border: 5px solid var(--clrYlw);
 }
@@ -602,18 +605,27 @@ form input[type=button]{
 }
 form input[type=submit]:hover,
 form input[type=button]:hover{
-background: var(--clrSlm);
+  background: var(--clrSlm);
 }
 
 form input[type=submit]:disabled,
 form input[type=button]:disabled{
-background: var(--clrGry);
-color: var(--clrBlk);
+  background: var(--clrGry);
+  color: var(--clrBlk);
 }
 form input[type=submit]:disabled:hover,
 form input[type=button]:disabled:hover{
   background: var(--clrGry);
   color: var(--clrBlk);
+}
+
+form input[type=checkbox],
+form input[type=radio] {
+  -ms-transform: scale(2);
+  -moz-transform: scale(2); 
+  -webkit-transform: scale(2); 
+  -o-transform: scale(2); 
+  transform: scale(2);
 }
 
 .lose {
@@ -645,44 +657,58 @@ form input[type=button]:disabled:hover{
 
 main dl:after {content:"";display:table;clear:both;}
 main dd {
-    padding:.5em 0;
+  padding:.5em 0;
 }
 main dl {
-    width:100%;
+  width:100%;
 }
 main dt, dd {
-    display: inline-block;
-    width:30%;
+  display: inline-block;
 }
 main dt {
-    text-align:right;
-    font-weight:bold;
-    font-size: 1.5em;
-    clear:left;
-    float:left;
+  text-align:right;
+  font-weight:bold;
+  font-size: 1.5em;
+  clear:left;
+  float:left;
 }
 main dd {
-    width:70%;
-    padding-left:1em;
-    clear:right;
+  width:70%;
+  padding-left:1em;
+  clear:right;
+
+  font-size: 1.2em;
+  letter-spacing: 1px;
 }
 main dd + dd {
-    float:right;
-    clear:both;
+  float:right;
+  clear:both;
 }
 main dt:first-child {
-    padding-top:.5em;
+  padding-top:.5em;
 }
 main dd + dt {
-    clear:both;
-    padding-top:.5em;
+  clear:both;
+  padding-top:.5em;
 }
 main dt + dt + dd {
-    margin-top: -2em;
+  margin-top: -2em;
 }
 main dt + dt + dd + dt {
-    margin-top: 2em;
+  margin-top: 2em;
 }
+
+main li {
+  font-size: 1.3em;
+  letter-spacing: 1px;
+}
+
+.fonting {
+  font-size: 1.3em;
+  letter-spacing: 1px;
+}
+
+
 
 .flex-home {
   display: flex;
@@ -695,7 +721,6 @@ main dt + dt + dd + dt {
   text-align: center;
 }
 #h1Bitscuit span {
-  background-color: var(--clrBrw);
   color: var(--clrYlw);
 }
 #h1Bitscuit:after {
@@ -712,11 +737,11 @@ main dt + dt + dd + dt {
 
 .visually-hidden {
   display: inline-block;
-	height: 1px;
-	width: 1px;
+  height: 1px;
+  width: 1px;
   margin: 0;
-	overflow: hidden;
-	clip: rect(1px, 1px, 1px, 1px);
+  overflow: hidden;
+  clip: rect(1px, 1px, 1px, 1px);
 }
 
 .go-back-button {
@@ -745,7 +770,7 @@ main dt + dt + dd + dt {
 }
 
 .flex-div label{
-  grid-column: 2;
+  grid-column: 1 / span 2;
   grid-row: 1;
 }
 
